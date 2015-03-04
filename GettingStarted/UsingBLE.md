@@ -42,7 +42,7 @@ If an advertisement-only solution isn’t enough, you can have a transactional i
 
 Physical Web brings devices to the internet via websites (rather than device-specific applications), by using BLE as a business card that includes a link to the website; interactions with the device are performed via the website. Using websites rather than apps means that users don't have to install a new app for every device they want to interact with; the interaction is easier and more immediate.
 
-The method used to provide the link is called [URI Beacon](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_URIBeacon/), and it will be the first example we'll [show you](/GettingStarted/URIBeacon.md) when we get to programming our BLE devices. A URI Beacon can be attached to anything that you might want to provide information about, or that you can provide any sort of interface for.
+The method used to provide the link is called [URI Beacon](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_URIBeacon/), and it will be the first example we'll [show you]() when we get to programming our BLE devices. A URI Beacon can be attached to anything that you might want to provide information about, or that you can provide any sort of interface for.
 
 For example, the beacon can be attached to a vending machine that you might then control via the web interface the beacon sent you to. The web interface can let you make a large purchase (providing sodas for several people in one transaction) by letting you select several options and pay for them all at once.
 
