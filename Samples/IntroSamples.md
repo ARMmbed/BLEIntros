@@ -10,8 +10,8 @@ This section is intended to help you learn how to use BLE on mbed boards, and wi
 
 For all of these, you should have:
 
-+ A BLE-enabled mbed board, but don't worry if you don't have one yet - we'll show you how it would have worked.
+1. A BLE-enabled mbed board, but don't worry if you don't have one yet - we'll show you how it would have worked.
 
-+ A user account on [developer.mbed.org](developer.mbed.org) to see the compiler. We recommend you get access to the compiler even if you don't have a board yet, so that you can play along with the example.
+2. A user account on [developer.mbed.org](developer.mbed.org) to see the compiler. We recommend you get access to the compiler even if you don't have a board yet, so that you can play along with the example.
 
 Some tutorials or samples will have additional requirements, such as phone apps or additional hardware. These will be listed before you start working, so that you can have everything ready.

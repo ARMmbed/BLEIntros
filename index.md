@@ -28,4 +28,3 @@ The compiler fulfils two main purposes: it gives you a programming environment (
 
 Programming for mbed is done in *C++*. Don’t let C++ put you off; you can get quite a lot done with BLE without learning C++ in great detail, as many of its advanced features are not normally required.
 We'll walk you through using the compiler as we get started on our [coding samples](#samplesintro).
-___

@@ -58,9 +58,11 @@ Each of these characteristics should only contain the information its label says
 
 A characteristic is fully defined by its declaration, value and descriptor:
 
-	1.	The **declaration** contains data about the characteristic, such as its universally unique identifier (UUID).
-	2.	The **value** is the “interesting” part of the characteristic, in that it’s the value that contains the data you’re viewing and reacting to.
-	3.	The **descriptor** is not mandatory; you can use it to provide more information about a characteristic or to control its behaviour. For example, descriptors are used when working with notifications.
+1. The **declaration** contains data about the characteristic, such as its universally unique identifier (UUID).
+
+2. The **value** is the “interesting” part of the characteristic, in that it’s the value that contains the data you’re viewing and reacting to.
+
+3. The **descriptor** is not mandatory; you can use it to provide more information about a characteristic or to control its behaviour. For example, descriptors are used when working with notifications.
 
 Characteristics can be either static (like your device's manufacturer name) or dynamic: your device can generate a new value for them as required. For example, in the Heart Rate Service, the current heart rate is a characteristic that gets a new value regularly.
 

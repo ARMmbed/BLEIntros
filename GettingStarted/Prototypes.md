@@ -23,5 +23,3 @@ At the moment, BLE devices don't have independent internet access. To get intern
 2. The BLE device can get internet over its BLE connection to a mobile phone. When the phone terminates the BLE connection, the BLE device will lose its internet access. This doesn't require additional hardware, so it doesn't affect the price of the board, but it does mean that for the device to have constant internet access it will need a phone (or BLE-enabled computer) next to it.
 
 3. In the future, we may find routers that accept BLE connections, in the same way that they currently accept WiFi connections.
-
-______
