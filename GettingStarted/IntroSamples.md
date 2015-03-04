@@ -1,8 +1,6 @@
-<a name="samplesintro">
-#Tutorials and Samples - an Overview
-</a>
+#Tutorials and Samples Overview
 
-This section is intended to help you learn how to use BLE on mbed boards, and with the mbed Compiler. It has two main areas:
+Our tutorials and samples are intended to help you learn how to use BLE on mbed boards, and with the mbed Compiler. We have:
 
 1. **Tutorials** to get you into the swing of things. All our tutorials include a quick-guide for experienced developers and more detailed explanations for new developers. A few of the first tutorials include some C++ background. The tutorials are numbered; you can work through them in any order you want, but if you're new to C++, you should probably go by the order we've suggested.
 

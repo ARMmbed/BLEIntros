@@ -1,7 +1,4 @@
-
-<a name="limitations">
 #What Can't you Do?
-</a>
 
 Technology always has limitations. For mbed BLE, the most important ones are:
 

@@ -1,8 +1,4 @@
-
-
-<a name="connection_parameters">
 #Connection Parameters
-</a>
 
 There are several parameters that affect the connection between the central and peripheral devices. You'll see later how to edit them. For now, we'll just explain a few of them.
 

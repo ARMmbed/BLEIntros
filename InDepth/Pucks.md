@@ -1,7 +1,4 @@
-
-<a name="pucks">
 #Pucks
-</a>
 
 [Pucks](http://nordicsemiconductor.github.io/puck/) are a BLE-enabled mbed platform created by Nordic Semiconductor. They use your [smart phone](http://nordicsemiconductor.github.io/puck/tutorials/smartphone-apps.html) to get you into the internet of things. All pucks use the Puck.h file, which handles the BLE aspect of the puck; you can then write your own program to take advantage of the device's BLE capacity.
 

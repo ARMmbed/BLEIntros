@@ -1,7 +1,5 @@
-
-<a name="ble_in_depth">
 #BLE in Depth
-</a>
+
 This document explores how BLE works, especially how you can can advertising and services for different purposes. 
 
 ##Peripheral and Central Devices v Servers and Clients
