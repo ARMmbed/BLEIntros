@@ -1,6 +1,6 @@
 #What Does it all Do?
 
-The combination of an mbed board, extra components and BLE capabilities give you lots of possibilities for prototyping and production. Let's look at a few of those now (we'll discuss the limitations [later](/BLEIntros/InDepth/Limitations.md/)).
+The combination of an mbed board, extra components and BLE capabilities give you lots of possibilities for prototyping and production. Let's look at a few of those now (we'll discuss the limitations [later](/InDepth/Limitations/)).
 
 ##Gathering Information
 
