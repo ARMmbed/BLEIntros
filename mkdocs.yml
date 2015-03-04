@@ -2,8 +2,8 @@ site_name: BLE_Intro
 
 pages:
 - ['index.md','Introduction to mbed BLE']
-- ['Getting_Started/UsingBLE.md', 'Getting Started', 'Intro to BLE']
-- ['Getting_Started/Prototypes.md', 'Getting Started','Prototyping a BLE Project']
+- ['GettingStarted/UsingBLE.md', 'Getting Started', 'Intro to BLE']
+- ['GettingStarted/Prototypes.md', 'Getting Started','Prototyping a BLE Project']
 - ['InDepth/BLEInDepth.md','BLE in Depth', 'Modes and Profiles']
 - ['InDepth/ConnectionParameters.md','BLE in Depth', 'Connection Parameters']
 - ['InDepth/Limitations.md','BLE in Depth', 'BLE Limitations']
