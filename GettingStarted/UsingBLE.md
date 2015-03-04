@@ -58,4 +58,4 @@ FOTA works (on the Nordic nRF51822 board), but at the moment we recommend that y
 
 ##What are pucks?
 
-[Pucks](#pucks) are small BLE devices that trigger events on your phone, display information or mimic infrared remote controls. For example, you can teach your kids' phones to text you when they enter the house, display the weather on a puck next to the umbrella stand or turn on the AC or the telly when you rotate the puck.
+[Pucks](/InDepth/Pucks/) are small BLE devices that trigger events on your phone, display information or mimic infrared remote controls. For example, you can teach your kids' phones to text you when they enter the house, display the weather on a puck next to the umbrella stand or turn on the AC or the telly when you rotate the puck.

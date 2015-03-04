@@ -28,7 +28,7 @@ Services and characteristics (and their supporting attributes) are the fundament
 
 *Profile* may sound like a big concept, but it's simply a way of ensuring that services are combined correctly, as sometimes more than one service is needed to get a device working. For example, the Heart Rate *Profile* includes two services: the Heart Rate Service and the Device Information Service. The Blood Pressure Profile similarly includes the Blood Pressure and Device Information services.
 
-BLE has been around for a while, so it has some standard services that you can tap into. Going back to our heart rate monitor example, the Heart Rate Service is well established and very easy to use; it can read information from a BLE heart rate monitor and send it to an app. You'll see that in a later [coding sample](#heartratesample).
+BLE has been around for a while, so it has some standard services that you can tap into. Going back to our heart rate monitor example, the Heart Rate Service is well established and very easy to use; it can read information from a BLE heart rate monitor and send it to an app. You'll see that in a later [coding sample](/GettingStarted/HeartRate/).
 
 Before you start working on a project, it's worthwhile to see if there's already a service that can do what you need done; it'll save you lots of coding and testing. You can find the list of available profiles and services [here](https://developer.bluetooth.org/TechnologyOverview/Pages/Profiles.aspx).
 

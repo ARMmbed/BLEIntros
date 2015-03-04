@@ -25,4 +25,4 @@ To tell the API what to do, you need a programming environment. BLE, like all ot
 The compiler fulfils two main purposes: it gives you a programming environment (a place in which to write your code), and it can turn (compile) that code into something that can be executed on the mbed platforms. The compiler can take the same code and compile it for different mbed platforms, meaning you can try out your project on different boards and pick the one that suits you best, without having to re-write your program. 
 
 Programming for mbed is done in *C++*. Don’t let C++ put you off; you can get quite a lot done with BLE without learning C++ in great detail, as many of its advanced features are not normally required.
-We'll walk you through using the compiler as we get started on our [coding samples](#samplesintro).
+We'll walk you through using the compiler as we get started on our [coding samples](/GettingStarted/IntroSamples/).
