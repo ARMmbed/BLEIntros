@@ -1,4 +1,4 @@
-site_name: BLE_Intro
+site_name: BLE Intro for Designers
 
 pages:
 - ['index.md','Introduction to mbed BLE']
