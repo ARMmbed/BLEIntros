@@ -4,7 +4,6 @@ pages:
 - ['index.md','Introduction to mbed BLE']
 - ['GettingStarted/DevIntro.md', 'Getting Started', 'BLE: the Short Version']
 - ['GettingStarted/DesignersIntro.md', 'Getting Started', 'BLE: the Long Version']
-- ['GettingStarted/UsingBLE.md', 'Getting Started', 'Using BLE']
 - ['GettingStarted/Prototypes.md', 'Getting Started','Prototyping a BLE Project']
 - ['GettingStarted/IntroSamples.md','Getting Started', 'Tutorials Overview']
 - ['GettingStarted/URIBeacon.md','Getting Started', 'Tutorial: URI Beacon']
