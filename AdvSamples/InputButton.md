@@ -66,11 +66,12 @@ Here's a basic template code to get you off the ground. We've thrown in a blinki
 		/* set the interval at which advertisements are sent out; this has
  		* an implication power consumption--radio activity being a
  		* biggest draw on average power. The other software controllable
- 		* parameter which influences power is the radio's TX power
- 		* level--there's an API to adjust that. */
+ 		* parameter which influences power is the TX power of the radio
+ 		* level--there is an API to adjust that. */
+		
 		ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); /* 1000ms. */
 
-		/* we're finally good to go with advertisements. */
+		/* we are finally good to go with advertisements. */
 		ble.startAdvertising();
 	
 		while (true) {
