@@ -14,6 +14,7 @@ Let's work our way towards creating a service for a trivial sensor: a button. We
 
 Here's a basic template code to get you off the ground. We've thrown in a blinking LED to indicate program stability.This code doesn't create any custom service; it advertises Button as the device name through the advertisement payload. The application is discoverable (LE_GENERAL_DISCOVERABLE) and connectable (ADV_CONNECTABLE_UNDIRECTED), and offers only the standard GAP and GATT services. The function disconnectionCallback re-starts advertisements if connection is lost.
 
+``` c
 
 	#include "mbed.h"
 	#include "BLEDevice.h"
@@ -78,6 +79,7 @@ Here's a basic template code to get you off the ground. We've thrown in a blinki
 		ble.waitForEvent();
 		}
 	}
+```
 
 ###Assigning UUIDs
 Now, let's get down to the business of creating a BLE service for a button. This service will have a single read-only characteristic holding a boolean value for the button’s state.
@@ -86,7 +88,7 @@ Bluetooth Smart requires the use of UUIDs to identify types for all involved ent
 
 We've chosen a custom UUID space for our button service: 0xA000 for the service, and 0xA001 for the contained characteristic. This avoids collision with the standard UUIDs.
 
-	define BUTTON_SERVICE_UUID              0xA000
+	#define BUTTON_SERVICE_UUID              0xA000
 	#define BUTTON_STATE_CHARACTERISTIC_UUID 0xA001
 	 
 	...
@@ -203,6 +205,7 @@ So, now we have the following code which defines a custom button service contain
 	}
 
 ###Updating the Button’s State
+
 So far, the buttonState characteristic within the service has been static. We can now add some code to update the characteristic when the button is pressed or released, using the BLEDevice::updateCharacteristicValue() API.
 
 The following code sets up callbacks for when button1 is pressed or released:
@@ -299,6 +302,7 @@ Note that updateCharacteristicValue() identifies the buttonState characteristic 
 	}
 
 ###The ButtonService Class
+
 The above application is fully functional, but has grown to be a bit messy. In particular, all the plumbing creating the button service could be encapsulated within a ButtonService class. In other words, it should be possible to substitute most of the above code with a simple initialization of a ButtonService class, while retaining the functionality.
 
 Here's something to get you started with the ButtonService class:

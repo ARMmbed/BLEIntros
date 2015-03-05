@@ -14,3 +14,4 @@ pages:
 - ['InDepth/CreatingServices.md','BLE in Depth', 'Creating Services']
 - ['AdvSamples/Overview.md','Advanced Samples', 'Advanced Samples Overview']
 - ['AdvSamples/InputButton.md','Advanced Samples', 'Input Service Template']
+- ['AdvSamples/LEDReadWrite.md','Advanced Samples', 'Actuator Service Template']
