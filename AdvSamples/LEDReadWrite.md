@@ -1,14 +1,15 @@
-#Template for an Actuator Service
-##Creating a Service
+#Creating an Actuator Service
+
 With mbed BLE, we offer a growing set of SIG-defined BLE services implemented as C++ headers to ease application development. These can be found under [our services folder](https://github.com/mbedmicro/BLE_API/tree/master/services).
 
 But, we don’t expect you to settle for what’s already been done; we expect you to develop applications for custom sensors and actuators, often outside the scope of the standard Bluetooth services. In this case, you could use the BLE_API, but you may find that you benefit from modeling your own custom services as C++ classes, for ease of use (and reuse).
 
 In a [recent post](/AdvSamples/InputButton/), we went over the process of setting up a custom BLE service encapsulating a read-only characteristic. In this document, we'd like to capture the creation of a service with a read-write characteristic. Taken together, these would then form the basis of most BLE services.
 
-##LED Service
+#LED Service
 Let's work our way towards creating a service for a trivial actuator: an LED. We'll assume a use-case where a phone -app would like to connect to this mbed application and set the LED state. In the non-connected state, the application simply advertises its capability of providing an LED service.
-###The Basic Template - Advertising and Connecting
+
+##The Basic Template - Advertising and Connecting
 Here's a template to get you started with the very basics. We've thrown in a blinking LED to indicate program stability.
 
 This code doesn't create any custom service; it advertises LED as the device name through the advertisement payload. The application is discoverable (LE_GENERAL_DISCOVERABLE) and connectable (ADV_CONNECTABLE_UNDIRECTED), and offers only the standard GAP and GATT services. The function **disconnectionCallback** re-starts advertisements if connection is lost.
@@ -83,7 +84,7 @@ This code doesn't create any custom service; it advertises LED as the device nam
 
 ```
 
-###Assigning UUIDs
+##Assigning UUIDs
 Now, let's get down to the business of creating a BLE service for an LED. This service will have a single write-only characteristic holding a boolean value for the LED’s state.
 Bluetooth Smart requires the use of UUIDs to identify types for all involved entities. We'll need two UUIDs - one each - for the LED service and the encapsulated characteristic. If we had been creating one of the standard SIG defined services, we'd have followed the standard [UUID definitions](https://developer.bluetooth.org/gatt/services/Pages/ServicesHome.aspx).
 
@@ -105,7 +106,7 @@ Adding the LED service UUID to the advertising payload is purely optional. Havin
 
 **Note:** interpreting non-standard UUID has limited use, and may only work with custom phone apps.
 
-###The LED State Characteristic
+##The LED State Characteristic
 
 BLE_API offers C++ abstractions for entities involved in the definition of services. A GattService object is composed of one or more GattCharacteristics (representing state variables exposed by the service). Every GattCharacteristic, in turn, implicitly contains at least a GattAttribute to hold the value; it may be embellished with further GattAttributes if needed, but that is uncommon.
 
@@ -134,7 +135,7 @@ We can just as easily use a ReadWriteGattCharacterisitc<T> for the ledState, to 
 
 ```
 
-###Constructing the LED Service
+##Constructing the LED Service
 
 The ledState characteristic can be used to construct a GATT service called 'ledService'. We use a bit of C/C++ syntax to create a one-element array, using an initializer list of pointers to GattCharacteristics. 
 
@@ -145,7 +146,7 @@ This service can then be added to the BLE stack using BLEDevice::addService():
 	ble.addService(ledService);
 
 
-###Putting it Together
+##Putting it Together
 
 So, now we have the following code which defines a custom led service containing a readable and writable characteristic:
 
@@ -217,7 +218,7 @@ So, now we have the following code which defines a custom led service containing
 	}
 ```
 
-###Controlling the LED
+##Controlling the LED
 So far, the ledState characteristic within the service had no binding to a physical LED. The user may be able to write to this characteristic from a phone app, but it would not actuate anything in the application.
 We can introduce a real LED with the following:
 
@@ -333,7 +334,7 @@ Note that within the onDataWritten callback, we can identify the characteristic 
 
 ```
 
-###The LEDService Class
+##The LEDService Class
 The above application is fully functional, but has grown to be a bit messy. In particular, most of the plumbing creating the LED service could be substituted with a simple initialization of a LEDService class, while retaining the functionality.
 
 Here's something to get started with the LEDService class:
