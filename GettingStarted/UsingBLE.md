@@ -59,3 +59,13 @@ FOTA works (on the Nordic nRF51822 board), but at the moment we recommend that y
 ##What are pucks?
 
 [Pucks](/InDepth/Pucks/) are small BLE devices that trigger events on your phone, display information or mimic infrared remote controls. For example, you can teach your kids' phones to text you when they enter the house, display the weather on a puck next to the umbrella stand or turn on the AC or the telly when you rotate the puck.
+
+##How a BLE Device Gets Internet Access
+
+At the moment, BLE devices don't have independent internet access. To get internet access, you can do one of three things:
+
+1. You can give your board a secondary communication method, like Ethernet or WiFi. This can easily double the price of the board, however. 
+
+2. The BLE device can get internet over its BLE connection to a mobile phone. When the phone terminates the BLE connection, the BLE device will lose its internet access. This doesn't require additional hardware, so it doesn't affect the price of the board, but it does mean that for the device to have constant internet access it will need a phone (or BLE-enabled computer) next to it.
+
+3. In the future, we may find routers that accept BLE connections, in the same way that they currently accept WiFi connections.
