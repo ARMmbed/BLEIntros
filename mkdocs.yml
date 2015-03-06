@@ -1,4 +1,4 @@
-site_name: BLE Intro for Designers
+site_name: Introduction to mbed BLE
 
 pages:
 - ['index.md','Introduction to mbed BLE']
@@ -9,7 +9,6 @@ pages:
 - ['InDepth/ConnectionParameters.md','BLE in Depth', 'Connection Parameters']
 - ['InDepth/Limitations.md','BLE in Depth', 'BLE Limitations']
 - ['InDepth/Pucks.md','BLE in Depth', 'Pucks']
-- ['InDepth/CreatingServices.md','BLE in Depth', 'Creating Services']
 - ['GettingStarted/IntroSamples.md','Tutorials', 'Tutorials Overview']
 - ['GettingStarted/URIBeacon.md','Tutorials', 'Tutorial: URI Beacon']
 - ['GettingStarted/HeartRate.md','Tutorials', 'Tutorial: Heart Rate']

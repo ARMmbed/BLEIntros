@@ -1,4 +1,4 @@
-#BLE for Designers
+#mbed BLE for Designers
 
 BLE is an exciting technology that has a natural appeal for designers who are looking to create art or solve problems. If you're a designer, and you've never programmed anything, we're here to help you get your idea prototyped using BLE on mbed boards.
 
