@@ -1,4 +1,4 @@
-#Tutorials and Samples Overview
+#Tutorials Overview
 
 Our tutorials are here to help you learn how to use BLE on mbed boards, and with the mbed Compiler. All tutorials include a quick-guide for experienced developers and more detailed explanations for new developers. A few of the first tutorials include some C++ background. 
 

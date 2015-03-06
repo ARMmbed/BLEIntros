@@ -25,9 +25,9 @@ Here's a basic template code to get you off the ground. We've thrown in a blinki
 	DigitalOut led1(LED1);
 	
 	const static char DEVICE_NAME[] = "Button"; 	/* setting up a device name helps with identifying
-												* your device; this is often very useful when
-												* there are several other BLE devices in the
-												* neighborhood. */
+													* your device; this is often very useful when
+													* there are several other BLE devices in the
+													* neighborhood. */
 
 	void disconnectionCallback(Gap::Handle_t handle, Gap::DisconnectionReason_t reason)
 	{
@@ -43,12 +43,12 @@ Here's a basic template code to get you off the ground. We've thrown in a blinki
 	
 	int main(void)
 	{
-		led1 = 1;                        	/* aliveness LED starts out with being off; doesn't really */
-									/* matter too much because we only toggle it. */
-		Ticker ticker;                   	/* A mechanism for periodic callbacks. */
-		ticker.attach(periodicCallback, 1);  /* Setting up a callback to go at an interval of 1s. */
+		led1 = 1;                        		/* aliveness LED starts out with being off; doesn't really */
+												/* matter too much because we only toggle it. */
+		Ticker ticker;                   		/* A mechanism for periodic callbacks. */
+		ticker.attach(periodicCallback, 1); 	/* Setting up a callback to go at an interval of 1s. */
 
-		ble.init();                      	/*  initialize the BLE stack and controller. */
+		ble.init();                      		/*  initialize the BLE stack and controller. */
 		ble.onDisconnection(disconnectionCallback);
 
 		/* setup advertising */

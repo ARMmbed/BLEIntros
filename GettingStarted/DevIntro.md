@@ -50,9 +50,9 @@ If you want more information about how BLE works, see our [BLE in Depth document
 
 ___
 
-##Samples
+##Quick Samples
 
-**Tip:** The samples are written for experienced BLE developers with an understanding of the mbed IDE; if you want more information about the IDE, see the [extended tutorials](/GettingStarted/IntroSamples/). 
+**Tip:** The quick samples are written for experienced BLE developers with an understanding of the mbed IDE; if you want more information about the IDE, see the [tutorials](/GettingStarted/IntroSamples/), which offer extended versions of the same samples. 
 
 The samples cover:
 
@@ -65,12 +65,10 @@ The samples cover:
 ____
 
 <a name="uribeaconsample">
-##Sample One: URI Beacon
+##Quick Sample One: URI Beacon
 </a>
 
-###What You'll Need
-
-Tip: If you don’t know how to register your board, or how to work with the mbed compiler, please see the [extended URI Beacon tutorial](/GettingStarted/URIBeacon/). 
+**Tip:** If you don’t know how to register your board, or how to work with the mbed compiler, please see the [extended URI Beacon tutorial](/GettingStarted/URIBeacon/). 
 
 To get this sample working, you'll need:
 
@@ -86,8 +84,6 @@ To get this sample working, you'll need:
 + A BLE-enabled mbed board.
 
 + A user on [developer.mbed.org](developer.mbed.org) to see the compiler.
-
-###Quick Guide
 
 If you’re familiar with mbed and our compiler, you can get the beacon working in just a few minutes:
 
@@ -107,16 +103,12 @@ Energy/code/BLE_URIBeacon/) program.
 ____
 
 <a name="hearratesample">
-##Sample Two: Heart Rate
+##Quick Sample Two: Heart Rate
 </a>
-
-###What You'll Need
 
 **Tip:** If you don’t know how to register your board, or how to work with the mbed compiler, please see the [extended URI Beacon tutorial](/GettingStarted/URIBeacon/). 
 
-To see the heart rate information on your phone, download PanoBike for [iOS](https://itunes.apple.com/gb/app/panobike/id567403997?mt=8) or [Android](https://play.google.com/store/apps/details?id=com.topeak.panobike&hl=en).
-
-###Quick Guide
+To see the heart rate information on your phone, download PanoBike for [iOS](https://itunes.apple.com/gb/app/panobike/id567403997?mt=8) or [Android](https://play.google.com/store/apps/details?id=com.topeak.panobike&hl=en). Then:
 
 1. Open the compiler and select or add your board.
 

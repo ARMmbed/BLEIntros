@@ -22,21 +22,21 @@ This code doesn't create any custom service; it advertises LED as the device nam
 	#include "BLEDevice.h"
 
 	BLEDevice   ble;            	/* Instantiation of a BLEDevice in
-								* global scope allows us to refer to
-								* it anywhere in the program. */
+									* global scope allows us to refer to
+									* it anywhere in the program. */
 
 	DigitalOut  alivenessLED(LED1); /* helper LED to indicate system aliveness. */
 
-	const static char DEVICE_NAME[] = "LED";  /* setting up a device name helps with identifying
-										* your device; this is often very useful when
-										* there are several other BLE devices in the
-										* neighborhood. */
+	const static char DEVICE_NAME[] = "LED";  	/* setting up a device name helps with identifying
+												* your device; this is often very useful when
+												* there are several other BLE devices in the
+												* neighborhood. */
 
 	void disconnectionCallback(Gap::Handle_t handle, Gap::DisconnectionReason_t reason)
 	{
-		ble.startAdvertising();  /* One needs to explicitly re-enable
-								* advertisements after a connection
-								* teardown. */
+		ble.startAdvertising();  /	* You need to explicitly re-enable
+									* advertisements after a connection
+									* teardown. */
 	}
 
 	void periodicCallback(void)
@@ -47,9 +47,9 @@ This code doesn't create any custom service; it advertises LED as the device nam
 	int main(void)
 	{
 		alivenessLED = 0;                	/* aliveness LED starts out with being off; doesn't really
-										* matter too much because we only toggle it. */
+											* matter too much because we only toggle it. */
 		Ticker ticker;                   	/* A mechanism for periodic callbacks. */
-		ticker.attach(periodicCallback, 1);  /* Setting up a callback to go at an interval of 1s. */
+		ticker.attach(periodicCallback, 1);	/* Setting up a callback to go at an interval of 1s. */
 
 		ble.init();                      	/*  initialize the BLE stack and controller. */
 		ble.onDisconnection(disconnectionCallback);

@@ -1,4 +1,4 @@
-#BLE in Depth
+#BLE Modes and Profiles
 
 This document explores how BLE works, especially how you can can advertising and services for different purposes. 
 
