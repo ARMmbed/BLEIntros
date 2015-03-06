@@ -57,7 +57,7 @@ BLE is intended for low power, battery-operated devices, and so typical applicat
 
 If you want a small and power-efficient device, you probably don't want to store too much locally; send your information to a server instead (it doesn't have to be a web server; it can be your own computer, if it's set up correctly).
 
-Because of restrictions on energy use in radio operation, BLE is a short-range method, meaning you'll be able to send information over BLE only if your device and your destination are quite close - a range of a few dozen meters tens of meters. If they're further away, you'll need to use Ethernet (regular cable connection), WiFi or radio.
+Because of restrictions on energy use in radio operation, BLE is a short-range method, meaning you'll be able to send information over BLE only if your device and your destination are quite close - a range of a few dozen meters. If they're further away, you'll need to use Ethernet (regular cable connection), WiFi or radio.
 
 ##Working With Apps or Websites
 

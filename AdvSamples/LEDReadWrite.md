@@ -41,8 +41,7 @@ This code doesn't create any custom service; it advertises LED as the device nam
 
 	void periodicCallback(void)
 	{
-
-	alivenessLED = !alivenessLED; /* Do blinky on LED1 to indicate system aliveness. */
+		alivenessLED = !alivenessLED; /* Do blinky on LED1 to indicate system aliveness. */
 	}
 
 	int main(void)
@@ -79,8 +78,7 @@ This code doesn't create any custom service; it advertises LED as the device nam
 		ble.startAdvertising();
 
 		while (true) {
-
-		ble.waitForEvent();
+			ble.waitForEvent();
 		}
 	}
 
@@ -172,7 +170,7 @@ So, now we have the following code which defines a custom led service containing
 
 	void disconnectionCallback(Gap::Handle_t handle, Gap::DisconnectionReason_t reason)
 	{
-	ble.startAdvertising();
+		ble.startAdvertising();
 	}
 
 	void periodicCallback(void)
@@ -217,7 +215,7 @@ So, now we have the following code which defines a custom led service containing
 		ble.startAdvertising();
 
 		while (true) {
-		ble.waitForEvent();
+			ble.waitForEvent();
 		}
 	}
 ```
@@ -241,14 +239,14 @@ The following code sets up callbacks for when the phone app attempts to write to
 	...
 	
 	/**
-		* This callback allows the LEDService to receive updates to the ledState Characteristic.
-		*
-		* @param[in] params
-		*     Information about the characterisitc being updated.
+	* This callback allows the LEDService to receive updates to the ledState Characteristic.
+	*
+	* @param[in] params
+	*     Information about the characterisitc being updated.
 	*/
 	void onDataWrittenCallback(const GattCharacteristicWriteCBParams *params) {
 		if (params->charHandle == ledState.getValueHandle()) {
-		/* Do something here to the actuated LED based on the received params. */
+			/* Do something here to the actuated LED based on the received params. */
 		}
 	}
 
@@ -285,11 +283,11 @@ Note that within the onDataWritten callback, we can identify the characteristic 
 
 	void periodicCallback(void)
 	{
-	alivenessLED = !alivenessLED; /* Do blinky on LED1 to indicate system aliveness. */
+		alivenessLED = !alivenessLED; /* Do blinky on LED1 to indicate system aliveness. */
 	}
 
 	/**
-	* This callback allows the LEDService to receive updates to the ledState Characteristic.	
+	* This callback allows the LEDService to receive updates to the ledState Characteristic.
 	*
 	* @param[in] params
 	* 	Information about the characterisitc being updated.
@@ -309,12 +307,12 @@ Note that within the onDataWritten callback, we can identify the characteristic 
 	}
 
 	int main(void)
-		{
-			alivenessLED = 0;
-			actuatedLED  = 0;
+	{
+		alivenessLED = 0;
+		actuatedLED  = 0;
 	
-			Ticker ticker;
-			ticker.attach(periodicCallback, 1);
+		Ticker ticker;
+		ticker.attach(periodicCallback, 1);
 
 		ble.init();
 		ble.onDisconnection(disconnectionCallback);
@@ -381,7 +379,7 @@ Nearly all BLE APIs require a reference to the BLEDevice, so we must require thi
 		LEDService(BLEDevice &_ble, bool initialValueForLEDCharacteristic) :
 		ble(_ble), ledState(LED_STATE_CHARACTERISTIC_UUID, &initialValueForLEDCharacteristic)
 		{
-		/* empty */
+			/* empty */
 		}
 	private:
 		BLEDevice                     	&ble;
@@ -402,17 +400,14 @@ We can move more of the service’s setup into the constructor:
 		const static uint16_t LED_STATE_CHARACTERISTIC_UUID = 0xA001;
 
 		LEDService(BLEDevice &_ble, bool initialValueForLEDCharacteristic) :
-		ble(_ble), ledState(LED_STATE_CHARACTERISTIC_UUID, &initialValueForLEDCharacteristic)
+		ble(_ble), ledState(LED_STATE_CHARACTERISTIC_UUID, &initialValueForLEDCharacteristic {
 
-	{
-
-		GattCharacteristic *charTable[] = {&ledState};
-		GattService         ledService(LED_SERVICE_UUID, charTable, sizeof(charTable) / sizeof(GattCharacteristic *));
-		ble.addService(ledService);
-	}
+			GattCharacteristic *charTable[] = {&ledState};
+			GattService         ledService(LED_SERVICE_UUID, charTable, sizeof(charTable) / sizeof(GattCharacteristic *));
+			ble.addService(ledService);
+		}
 
 	private:
-
 		BLEDevice                         &ble;
 		ReadWriteGattCharacteristic<bool>  ledState;
 	};
@@ -434,18 +429,15 @@ And here's a small extension with a helper API that fetches the value handle for
 		const static uint16_t LED_STATE_CHARACTERISTIC_UUID = 0xA001;
 
 		LEDService(BLEDevice &_ble, bool initialValueForLEDCharacteristic) :
-		ble(_ble), ledState(LED_STATE_CHARACTERISTIC_UUID, &initialValueForLEDCharacteristic)
-
-	{
-
-		GattCharacteristic *charTable[] = {&ledState};
-		GattService         ledService(LED_SERVICE_UUID, charTable, sizeof(charTable) / sizeof(GattCharacteristic *));
-		ble.addService(ledService);
-	}
+		ble(_ble), ledState(LED_STATE_CHARACTERISTIC_UUID, &initialValueForLEDCharacteristic) {
+			GattCharacteristic *charTable[] = {&ledState};
+			GattService         ledService(LED_SERVICE_UUID, charTable, sizeof(charTable) / sizeof(GattCharacteristic *));
+			ble.addService(ledService);
+		}
 
 		GattAttribute::Handle_t getValueHandle() const {
-		return ledState.getValueHandle();
-	}
+			return ledState.getValueHandle();
+		}
 
 	private:
 		BLEDevice                         &ble;
@@ -520,8 +512,8 @@ And now with this encapsulated away in the LEDService, the main application is m
 		ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); /* 1000ms. */
 		ble.startAdvertising();
 
-	while (true) {
-		ble.waitForEvent();
+		while (true) {
+			ble.waitForEvent();
 		}
 	}
 

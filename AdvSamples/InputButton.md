@@ -19,15 +19,15 @@ Here's a basic template code to get you off the ground. We've thrown in a blinki
 	#include "mbed.h"
 	#include "BLEDevice.h"
 	
-	BLEDevice   ble;            	/* Instantiation of a BLEDevice in 
+	BLEDevice   ble;        /* Instantiation of a BLEDevice in 
 							* global scope allows us to refer to
 							* it anywhere in the program. */
 	DigitalOut led1(LED1);
 	
-	const static char DEVICE_NAME[] = "Button"; /* setting up a device name helps with identifying
-										* your device; this is often very useful when
-										* there are several other BLE devices in the
-										* neighborhood. */
+	const static char DEVICE_NAME[] = "Button"; 	/* setting up a device name helps with identifying
+												* your device; this is often very useful when
+												* there are several other BLE devices in the
+												* neighborhood. */
 
 	void disconnectionCallback(Gap::Handle_t handle, Gap::DisconnectionReason_t reason)
 	{
@@ -166,24 +166,22 @@ So, now we have the following code which defines a custom button service contain
 	static const uint16_t uuid16_list[] = {BUTTON_SERVICE_UUID}; 
 	
 	void disconnectionCallback(Gap::Handle_t handle, Gap::DisconnectionReason_t reason)
-	
 	{
-	ble.startAdvertising();
+		ble.startAdvertising();
 	} 
 
 	void periodicCallback(void)
 	{
-	led1 = !led1; /* Do blinky on LED1 to indicate system aliveness. */
+		led1 = !led1; /* Do blinky on LED1 to indicate system aliveness. */
 	}
 	int main(void)
 	{
+		led1 = 1;
+		Ticker ticker;
+		ticker.attach(periodicCallback, 1);
 
-	led1 = 1;
-	Ticker ticker;
-	ticker.attach(periodicCallback, 1);
-
-	ble.init();
-	ble.onDisconnection(disconnectionCallback);
+		ble.init();
+		ble.onDisconnection(disconnectionCallback);
 
 		/*
 		* The part which sets up the characteristic and service. Objects
@@ -192,23 +190,23 @@ So, now we have the following code which defines a custom button service contain
 		* application runs.
 		*/
 
-	bool buttonPressed = false;
-	ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, &buttonPressed, 	GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY);
+		bool buttonPressed = false;
+		ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, &buttonPressed, 		GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY);
 
-	GattCharacteristic *charTable[] = {&buttonState};
-	GattService         buttonService(BUTTON_SERVICE_UUID, charTable, sizeof(charTable) / sizeof(GattCharacteristic *));
-	ble.addService(buttonService);
+		GattCharacteristic *charTable[] = {&buttonState};
+		GattService         buttonService(BUTTON_SERVICE_UUID, charTable, sizeof(charTable) / sizeof(GattCharacteristic *));
+		ble.addService(buttonService);
 
-	/* setup advertising */
-	ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED | GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
-	ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_16BIT_SERVICE_IDS, (uint8_t *)uuid16_list, sizeof(uuid16_list));
-	ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME, (uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
-	ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
-	ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); /* 1000ms. */
-	ble.startAdvertising();
+		/* setup advertising */
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED | GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_16BIT_SERVICE_IDS, (uint8_t *)uuid16_list, sizeof(uuid16_list));
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME, (uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
+		ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
+		ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); /* 1000ms. */
+		ble.startAdvertising();
 
-	while (true) {
-		ble.waitForEvent();
+		while (true) {
+			ble.waitForEvent();
 		}
 	}
 ```
@@ -237,8 +235,8 @@ The following code sets up callbacks for when button1 is pressed or released:
 	int main(void)
 	{
 	...
-	button.fall(buttonPressedCallback);//falling edge
-	button.rise(buttonReleasedCallback);//rising edge
+		button.fall(buttonPressedCallback);//falling edge
+		button.rise(buttonReleasedCallback);//rising edge
 
 ```
 
@@ -264,53 +262,51 @@ Note that updateCharacteristicValue() identifies the buttonState characteristic 
 
 	void buttonPressedCallback(void)
 	{
-	buttonPressed = true;
-	ble.updateCharacteristicValue(buttonState.getValueHandle(), (uint8_t *)&buttonPressed, sizeof(bool));
+		buttonPressed = true;
+		ble.updateCharacteristicValue(buttonState.getValueHandle(), (uint8_t *)&buttonPressed, sizeof(bool));
 	}
 	
 	void buttonReleasedCallback(void)
 	{
-	buttonPressed = false;
-	ble.updateCharacteristicValue(buttonState.getValueHandle(), (uint8_t *)&buttonPressed, sizeof(bool));
+		buttonPressed = false;
+		ble.updateCharacteristicValue(buttonState.getValueHandle(), (uint8_t *)&buttonPressed, sizeof(bool));
 	}
 
 	void disconnectionCallback(Gap::Handle_t handle, Gap::DisconnectionReason_t reason)
-
 	{
-	ble.startAdvertising();
+		ble.startAdvertising();
 	}
 
 	void periodicCallback(void)
 	{
-	led1 = !led1; /* Do blinky on LED1 to indicate system aliveness. */
+		led1 = !led1; /* Do blinky on LED1 to indicate system aliveness. */
 	}
 
 	int main(void)
-
 	{
-	led1 = 1;
-	Ticker ticker;
-	ticker.attach(periodicCallback, 1);
-	button.fall(buttonPressedCallback);
-	button.rise(buttonReleasedCallback);
+		led1 = 1;
+		Ticker ticker;
+		ticker.attach(periodicCallback, 1);
+		button.fall(buttonPressedCallback);
+		button.rise(buttonReleasedCallback);
 
-	ble.init();
-	ble.onDisconnection(disconnectionCallback);
+		ble.init();
+		ble.onDisconnection(disconnectionCallback);
 
-	GattCharacteristic *charTable[] = {&buttonState};
-	GattService         buttonService(BUTTON_SERVICE_UUID, charTable, sizeof(charTable) / sizeof(GattCharacteristic *));
-	ble.addService(buttonService);
+		GattCharacteristic *charTable[] = {&buttonState};
+		GattService         buttonService(BUTTON_SERVICE_UUID, charTable, sizeof(charTable) / sizeof(GattCharacteristic *));
+		ble.addService(buttonService);
 
-	/* setup advertising */
-	ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED | GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
-	ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_16BIT_SERVICE_IDS, (uint8_t *)uuid16_list, sizeof(uuid16_list));
-	ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME, (uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
-	ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
-	ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); /* 1000ms. */
-	ble.startAdvertising();
+		/* setup advertising */
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED | GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_16BIT_SERVICE_IDS, (uint8_t *)uuid16_list, sizeof(uuid16_list));
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME, (uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
+		ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
+		ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); /* 1000ms. */
+		ble.startAdvertising();
 
-	while (true) {
-		ble.waitForEvent();
+		while (true) {
+			ble.waitForEvent();
 		}
 	}
 ``` 
@@ -385,7 +381,7 @@ We can move more of the service’s setup into the constructor:
 	{
 		GattCharacteristic *charTable[] = {&buttonState};
 		GattService         buttonService(ButtonService::BUTTON_SERVICE_UUID, charTable, sizeof(charTable) / sizeof(GattCharacteristic *));
-	ble.addService(buttonService);
+		ble.addService(buttonService);
 	}
 
 	private:
@@ -407,7 +403,7 @@ And here's a small extension with a helper API that updates the button’s state
 	public:
 		const static uint16_t BUTTON_SERVICE_UUID              = 0xA000;
 		const static uint16_t BUTTON_STATE_CHARACTERISTIC_UUID = 0xA000;
-	ButtonService(BLEDevice &_ble, bool buttonPressedInitial) :
+		ButtonService(BLEDevice &_ble, bool buttonPressedInitial) :
 		ble(_ble), buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, &buttonPressedInitial, GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY)
 	{
 		GattCharacteristic *charTable[] = {&buttonState};
@@ -474,19 +470,19 @@ And now with this encapsulated away in the ButtonService, the main application i
 		ble.init();
 		ble.onDisconnection(disconnectionCallback);
 
-	ButtonService buttonService(ble, false /* initial value for button pressed */);
-	buttonServicePtr = &buttonService;
+		ButtonService buttonService(ble, false /* initial value for button pressed */);
+		buttonServicePtr = &buttonService;
 
-	/* setup advertising */
-	ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED | GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
-	ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_16BIT_SERVICE_IDS, (uint8_t *)uuid16_list, sizeof(uuid16_list));
-	ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME, (uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
-	ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
-	ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); /* 1000ms. */
-	ble.startAdvertising();
+		/* setup advertising */
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED | GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_16BIT_SERVICE_IDS, (uint8_t *)uuid16_list, sizeof(uuid16_list));
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME, (uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
+		ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
+		ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); /* 1000ms. */
+		ble.startAdvertising();
 
-	while (true) {
-		ble.waitForEvent();
+		while (true) {
+			ble.waitForEvent();
 		}
 	}
 ``` 
