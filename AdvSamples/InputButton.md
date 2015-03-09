@@ -81,6 +81,10 @@ Here's a basic template code to get you off the ground. We've thrown in a blinki
 	}
 ```
 
+This is what the app looks like (on the nRF Master Control Panel):
+
+![App discovery](/AdvSamples/Images/Button/ButtonDiscovery.png)
+
 ##Assigning UUIDs
 
 Now, let's get down to the business of creating a BLE service for a button. This service will have a single read-only characteristic holding a boolean value for the button’s state.
@@ -211,6 +215,11 @@ So, now we have the following code which defines a custom button service contain
 	}
 ```
 
+When you connect to the service, you can see the characteristic and enable notifications (note that you must manually enable them - the service doesn't force notifications on the client):
+
+![App notifications](/AdvSamples/Images/Button/Notifications.png)
+
+
 ##Updating the Button’s State
 
 So far, the buttonState characteristic within the service has been static. We can now add some code to update the characteristic when the button is pressed or released, using the BLEDevice::updateCharacteristicValue() API.
@@ -310,6 +319,10 @@ Note that updateCharacteristicValue() identifies the buttonState characteristic 
 		}
 	}
 ``` 
+
+With notifications active, you can see the button characteristic's value change when you press the button on the board:
+
+![Side by side - zero and one](AdvSamples/Images/Button/SideBySide)
 
 ##The ButtonService Class
 
