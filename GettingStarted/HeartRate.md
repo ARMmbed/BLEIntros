@@ -250,19 +250,19 @@ Here is our app, discovered on nRF:
 
 ![Discover](/GettingStarted/Images/HeartRate/Discover.png)
 
-By clicking on the line, I can see some more information about it:
+By clicking on the line, we can see some more information about it:
 
 ![Information](/GettingStarted/Images/HeartRate/Connect.png)
 
-I can click **Connect** to see the full details:
+We can click **Connect** to see the full details:
 
 ![Full info](/GettingStarted/Images/HeartRate/StartNoti.png)
 
-If I click the **notifications** button, I'll be asking the service to notify my device of updates. In our case, that will be heart rate values:
+If we click the **notifications** button, we'll be asking the service to notify our device of updates. In our case, that will be heart rate values:
 
 ![Heart rate](/GettingStarted/Images/HeartRate/ShowRate1.png)
 
-The server will notify my phone with each new value:
+The server will notify our phone with each new value:
 
 ![Heart rate](/GettingStarted/Images/HeartRate/ShowRate2.png)
 
