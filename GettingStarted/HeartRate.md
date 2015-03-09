@@ -239,3 +239,33 @@ The default name is "Nordic_HRM". You can change it to anything you like (but st
 	const static char     DEVICE_NAME[]        = "I_Renamed_This";
 
 **Tip**: iOS "sticks" to the name it first discovers for each beacon, so whatever name you choose now you'll have for a while. This is called *caching*, and is intended to save your phone some time and energy.
+
+____
+
+##Viewing the Service Details
+
+Panobike and other fitness apps show you the heart rate, but you can use [nRF Master Control Panel](http://www.nordicsemi.com/eng/Products/nRFready-Demo-APPS/nRF-Master-Control-Panel-for-Android-4.3), [LightBlue](https://itunes.apple.com/gb/app/lightblue-bluetooth-low-energy/id557428110?mt=8) and similar products to see more details.
+
+Here is our app, discovered on nRF:
+
+![Discover](/GettingStarted/Images/HeartRate/Discover.png)
+
+By clicking on the line, I can see some more information about it:
+
+![Information](/GettingStarted/Images/HeartRate/Connect.png)
+
+I can click **Connect** to see the full details:
+
+![Full info](/GettingStarted/Images/HeartRate/StartNoti.png)
+
+If I click the **notifications** button, I'll be asking the service to notify my device of updates. In our case, that will be heart rate values:
+
+![Heart rate](/GettingStarted/Images/HeartRate/ShowRate1.png)
+
+The server will notify my phone with each new value:
+
+![Heart rate](/GettingStarted/Images/HeartRate/ShowRate2.png)
+
+
+
+
