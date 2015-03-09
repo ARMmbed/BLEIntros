@@ -84,6 +84,10 @@ This code doesn't create any custom service; it advertises LED as the device nam
 
 ```
 
+This is what the app looks like (on the nRF Master Control Panel):
+
+![App discovery](/AdvSamples/Images/LED/DiscoverService.png)
+
 ##Assigning UUIDs
 
 Now, let's get down to the business of creating a BLE service for an LED. This service will have a single write-only characteristic holding a boolean value for the LED’s state.
@@ -336,6 +340,14 @@ Note that within the onDataWritten callback, we can identify the characteristic 
 	}
 
 ```
+
+When you connect to the app, you can see that the characteristic is read/write:
+
+![Read write](/AdvSamples/Images/LED/ReadWrite.png)
+
+If you click the **write** button you can enter a new value:
+
+![Read write](/AdvSamples/Images/LED/WriteValue.png)
 
 ##The LEDService Class
 
