@@ -1,6 +1,6 @@
 #mbed BLE
 
-Welcome; we're here to help you build something awesome with an mbed-enabled BLE platform.
+Welcome. We're here to help you build something awesome with an mbed-enabled BLE platform.
 
 If you're totally new check out our [starters documentation](/GettingStarted/DesignersIntro/), which will walk you through everything you need to know. If you have some BLE experience, check out the [short version](/GettingStarted/DevIntro/) and get your first project up and running. 
 
