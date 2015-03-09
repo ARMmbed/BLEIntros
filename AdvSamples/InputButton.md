@@ -322,7 +322,7 @@ Note that updateCharacteristicValue() identifies the buttonState characteristic 
 
 With notifications active, you can see the button characteristic's value change when you press the button on the board:
 
-![Side by side - zero and one](AdvSamples/Images/Button/SideBySide)
+![Side by side - zero and one](/AdvSamples/Images/Button/SideBySide.png)
 
 ##The ButtonService Class
 
