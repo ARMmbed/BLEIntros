@@ -250,7 +250,7 @@ Here is our app, discovered on nRF:
 
 ![Discover](/GettingStarted/Images/HeartRate/Discover.png)
 
-By clicking on the line, we can see some more information about it:
+By clicking the HRM entry, we can see some more information about it:
 
 ![Information](/GettingStarted/Images/HeartRate/Connect.png)
 
@@ -264,7 +264,7 @@ If we click the **notifications** button, we'll be asking the service to notify 
 
 The server will notify our phone with each new value:
 
-![Heart rate](/GettingStarted/Images/HeartRate/ShowRate2.png)
+![Updated heart rate](/GettingStarted/Images/HeartRate/ShowRate2.png)
 
 
 
