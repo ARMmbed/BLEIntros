@@ -65,7 +65,7 @@ The samples cover:
 ____
 
 <a name="uribeaconsample">
-##Quick Sample One: URI Beacon
+###Quick Sample One: URI Beacon
 </a>
 
 **Tip:** If you don’t know how to register your board, or how to work with the mbed compiler, please see the [extended URI Beacon tutorial](/GettingStarted/URIBeacon/). 
@@ -103,7 +103,7 @@ Energy/code/BLE_URIBeacon/) program.
 ____
 
 <a name="hearratesample">
-##Quick Sample Two: Heart Rate
+###Quick Sample Two: Heart Rate
 </a>
 
 **Tip:** If you don’t know how to register your board, or how to work with the mbed compiler, please see the [extended URI Beacon tutorial](/GettingStarted/URIBeacon/). 
