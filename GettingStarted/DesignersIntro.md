@@ -75,20 +75,6 @@ The method used to provide the link is called [URI Beacon](http://developer.mbed
 
 For example, the beacon can be attached to a vending machine that you might then control via the web interface the beacon sent you to. The web interface can let you make a large purchase (providing sodas for several people in one transaction) by letting you select several options and pay for them all at once.
 
-##What's Meshing, and Does it Work?
-
-Meshing means sending information from one BLE device to another, and at the moment there's no easy way of doing it with BLE. 
-
-##What's FOTA, and Does it Work?
-
-FOTA stands for Firmware Over the Air, and is a method of updating the BLE device's programming (reprogramming it) remotely, rather than by physically connecting it to the computer. 
-
-FOTA works (on the Nordic nRF51822 board), but at the moment we recommend that you don't use it unless you know how to make it secure.
-
-##What are pucks?
-
-[Pucks](/InDepth/Pucks/) are small BLE devices that trigger events on your phone, display information or mimic infrared remote controls. For example, you can teach your kids' phones to text you when they enter the house, display the weather on a puck next to the umbrella stand or turn on the AC or the telly when you rotate the puck.
-
 ##How a BLE Device Gets Internet Access
 
 At the moment, BLE devices don't have independent internet access. To get internet access, you can do one of three things:
