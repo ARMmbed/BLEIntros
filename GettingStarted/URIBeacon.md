@@ -33,10 +33,9 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 
 1. Open the compiler and select or add your board.
 
-2. Import the [BLE_URIBeacon](http://developer.mbed.org/teams/Bluetooth-Low-
-Energy/code/BLE_URIBeacon/) program.
+2. Import the [``BLE_URIBeacon``](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_URIBeacon/) program.
 
-3. In main.cpp, find the line *    uriBeaconConfig = new URIBeaconConfigService(ble, params,** "http://uribeacon.org", defaultAdvPowerLevels)**; and edit the URL. Note that it's limited to 18 characters, with “http://www.” (or “http://”, if there’s no “www” ) counting as one, and the suffix “.org” (or “.com”) counting as another.
+3. In ``main.cpp``, find the line ``uriBeaconConfig = new URIBeaconConfigService(ble, params, "http://uribeacon.org", defaultAdvPowerLevels);`` and edit the URL. Note that it's limited to 18 characters, with “http://www.” (or “http://”, if there’s no “www” ) counting as one, and the suffix “.org” (or “.com”) counting as another.
 
 5. Compile the code. It will be downloaded to your Downloads folder (on some browsers you may need to specify a download location).
 
@@ -76,8 +75,7 @@ To select a board for the program:
 
 URI Beacons have a basic structure that's fully available on the mbed website. All you need to do is import it to the compiler and replace the default information with your own. To do that:
 
-1. Go to the [BLE_URIBeacon](http://developer.mbed.org/teams/Bluetooth-Low-
-Energy/code/BLE_URIBeacon/) page.
+1. Go to the [BLE_URIBeacon](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_URIBeacon/) page.
 
 2. On the right-hand side of the page, click *Import this program*.
 
@@ -101,9 +99,9 @@ ___
 
 **If you don't want to get too deep into the code - skip [ahead](#edituribeacon).**
 
-The URI Beacon program is a very small and simple one. The only part of it that you need to look at is the *main.cpp* file, which is - as the name suggests - the program's main file. The other files you can ignore - they're there to help the compiler do its job.
+The URI Beacon program is a very small and simple one. The only part of it that you need to look at is the ``main.cpp`` file, which is - as the name suggests - the program's main file. The other files you can ignore for now - they're there to help the compiler do its job.
 
-Click *main.cpp* to see its code.
+Click ``main.cpp`` to see its code.
 
 <a name=”comments”>
 ###Comments
@@ -122,7 +120,7 @@ The first thing you'll see is a bunch of green text, sitting between /* a  * /.
 	#include "DeviceInformationService.h"
 	#include "ConfigParamsPersistence.h"
 
-The next bit of the program is the inclusions list. This tells the compiler which files other than the main.cpp file it needs to include when it compiles your program. You can see that the URI Beacon program has five files it includes. These all focus on different capabilities, such as working with the mbed board (mbed.h) or the BLE itself (BLEDevice.h).
+The next bit of the program is the inclusions list. This tells the compiler which files other than the ``main.cpp`` file it needs to include when it compiles your program. You can see that the ``URI Beacon`` program has six files it includes. These all focus on different capabilities, such as working with the mbed board (``mbed.h``) or the BLE itself (``BLEDevice.h``).
 
 <a name=”objects”>
 ###Objects
@@ -132,11 +130,11 @@ You may have heard the phrase "object oriented programming". It's a big concept,
 
 Once you've created instances you can use each one independently of the others. So you could, for example, create a hundred houses and then re-paint the window frames on just one of them. Manipulating the object or using the object to affect others is done using functions. It's important to understand that if you have the definition of an object, but don't have an instance of the object (in other words, if you only have a blueprint, but haven't actually built the house) you can't get anything done with your house; you cannot hang up pictures before you've built the walls.
 
-In our program, we have an object type called BLEDevice. This is a blueprint that includes instructions for communicating with the BLE API (remember that the BLE API is a way of telling the BLE chip what to do without need to know how it does it). The first line of our program builds an instance of the object - builds an actual house - and gives it a name. We do this by first saying what we want to build, and then what to call it. So the line
+In our program, we have an object type called ``BLEDevice``. This is a blueprint that includes instructions for communicating with the ``BLE API`` (remember that the ``BLE API`` is a way of telling the BLE chip what to do without need to know how it does it). The first line of our program builds an instance of the object - builds an actual house - and gives it a name. We do this by first saying what we want to build, and then what to call it. So the line
 
 	BLEDevice ble;
 
-Says "give me an instance of the object type BLEDevice, and call it ble", so now we have an object that knows how to talk to the BLE API.
+Says "give me an instance of the object type BLEDevice, and call it ble", so now we have an object that knows how to talk to the ``BLE API``.
 
 There's a lot more code in the program, but we'll ignore it for now. You'll learn about it in later samples. Let's just see how to set up the beacon to advertise what we want it to.
 
@@ -196,7 +194,7 @@ To get a URI Beacon:
 
 2. You imported your board to the mbed Compiler, so that the compiler knows which board to prepare your code for.
 
-3. You imported the URI Beacon program from mbed.org to your compiler.
+3. You imported the ``URI Beacon`` program from mbed.org to your compiler.
 
 4. You edited the program to include your own URL. 
 
