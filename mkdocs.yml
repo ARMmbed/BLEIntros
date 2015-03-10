@@ -14,3 +14,4 @@ pages:
 - ['AdvSamples/Overview.md','Advanced Samples', 'Advanced Samples Overview']
 - ['AdvSamples/InputButton.md','Advanced Samples', 'Sample 1: Input Service Template']
 - ['AdvSamples/LEDReadWrite.md','Advanced Samples', 'Sample 2: Actuator Service Template']
+- ['BLE_FAQ.md', 'FAQ']
