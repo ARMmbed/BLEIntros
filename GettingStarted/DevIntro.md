@@ -83,7 +83,7 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 2. Import the [BLE_URIBeacon](http://developer.mbed.org/teams/Bluetooth-Low-
 Energy/code/BLE_URIBeacon/) program.
 
-3. In main.cpp, find the line *nrfURIBeaconConfigService uriBeaconConfig(ble, **"http://www.mbed.org"**);* and edit the URL. Note that it's limited to 30 characters, with “http://” and “www.” each counting as one.
+3. In main.cpp, find the line *nrfURIBeaconConfigService uriBeaconConfig(ble, **"http://www.mbed.org"**);* and edit the URL. Note that it's limited to 18 characters, with “http://www.” (or “http://”, if there’s no “www” ) counting as one, and the suffix “.org” (or “.com”) counting as another.
 
 5. Compile the code. It will be downloaded to your Downloads folder (on some browsers you may need to specify a download location).
 
