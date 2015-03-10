@@ -14,7 +14,7 @@ This two-way communication means that a single device can be used both to send i
 
 [mbed](http://developer.mbed.org) gives you three things: a platform, APIs for that platform, and a programming environment (compiler). 
 
-The platforms are little boards with a processor, which have various capabilities like receiving input, generating output and storing small bits of information. Some boards require an external BLE component, and [some](http://developer.mbed.org/platforms/mbed-HRM1017/) [have it](http://developer.mbed.org/platforms/RedBearLab-BLE-Nano/) [built-in](http://developer.mbed.org/platforms/Nordic-nRF51-Dongle/).
+The platforms are little boards with a processor, which have various capabilities like receiving input, generating output and storing small bits of information. Some boards require an external [BLE component](http://developer.mbed.org/components/cat/bluetooth/), and [some](http://developer.mbed.org/platforms/mbed-HRM1017/) [have it](http://developer.mbed.org/platforms/RedBearLab-BLE-Nano/) [built-in](http://developer.mbed.org/platforms/Nordic-nRF51-Dongle/).
 
 Because platforms are standard pieces of hardware, it’s up to you to tell them what to do. mbed has created APIs - Application Program Interface - that let you order off the menu. For example, if you want to send something over Bluetooth, you don't need to know the exact commands and sequence of events; you just need to tell the API that you want to send something - we've made sure the API knows how to do it. This is called *abstraction*, and you'll run into that word quite often on our website. BLE has its own API, called BLE_API.
 
@@ -30,6 +30,10 @@ We'll walk you through using the compiler as we get started on our [coding sampl
 #What Does it all Do?
 
 The combination of an mbed board, extra components and BLE capabilities give you lots of possibilities for prototyping and production. Let's look at a few of those now (we'll discuss the limitations [later](/InDepth/Limitations/)).
+
+BLE requires an intermediary to be really useful: a website or app on your mobile or tablet. See the next section for options.
+
+![Connecting](/GettingStarted/Images/ConnectDiagram.png)
 
 ##Gathering Information
 
