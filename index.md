@@ -10,4 +10,4 @@ Some other references are our:
 * [Code samples](/AdvSamples/Overview/), which cover service creation.
 * Our [in depth review](/InDepth/BLEInDepth/) of BLE concepts.
 
-If after reading through our documents you find that you still have questions, try our [FAQ](/BLE_FAQ/) or ask [the community](https://developer.mbed.org/teams/Bluetooth-Low-Energy/community/).
+If after reading through our documents you find that you still have questions, try our [FAQ](/Additional/BLE_FAQ/) or ask [the community](https://developer.mbed.org/teams/Bluetooth-Low-Energy/community/).
