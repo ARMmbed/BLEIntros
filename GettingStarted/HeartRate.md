@@ -27,7 +27,7 @@ If you're familiar with mbed and our compiler, you can get the heart rate monito
 
 2. Import the [``heart rate service``](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_HeartRate/).
 
-3. In ``main.cpp``, find the line ``const static char     DEVICE_NAME[]        = "Nordic_HRM";`` and change the beacon's name from Nordic_HRM. 
+3. In ``main.cpp``, find the line ``const static char DEVICE_NAME[] = "Nordic_HRM";`` and change the beacon's name from Nordic_HRM. 
 
 4. Compile the code. It will be downloaded to your Downloads folder (on some browsers you may need to specify a download location).
 
