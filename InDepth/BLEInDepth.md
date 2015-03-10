@@ -1,14 +1,24 @@
 #BLE Modes and Profiles
 
-This document explores how BLE works, especially how you can can advertising and services for different purposes. 
+This document explores how BLE works, especially how you can use connected and advertising mode for different purposes. 
 
 ##Peripheral and Central Devices v Servers and Clients
 
-When we connect devices over BLE, we think of them as being either a peripheral (slave) device or a central (master) device. The Bluetooth standard established this division to match the resources available on the devices: the master will typically have more computing resources and energy - a computer or a tablet, for example - while the slave - an mbed device - will be constrained. 
+When we connect devices over BLE, we think of them as being either a peripheral (slave) device or a central (master) device. The Bluetooth standard established this division to match the resources available on the devices: the master will typically have more computing resources and available energy - a computer or a tablet, for example - while the slave - an mbed device - will be constrained in both respects. 
 
-At the moment, mbed and BLE_API support the creation of peripheral devices. We expect to be able to cover central devices soon.
+Currently, mbed's BLE_API supports the creation of peripheral devices. We plan to extend this to central devices soon
 
-BLE uses two additional terms to describe the connecting entities: server and client. *Server* is the device that has information it wishes to share, and in BLE that is typically the peripheral. *Client* is the device that wants information and services, and in BLE that is typically the central device - the phone. Please note that the terms “server” and “client” are used when discussing the exchange of information, whereas “central” and “peripheral” are used to denote the origin and target of a BLE connection. It is not uncommon for the central to be connecting as a client, and the peripheral to be acting as a server.  
+BLE uses two additional terms to describe the connecting entities: server and client:
+
+1. **Server:** the device that has information it wishes to share, and in BLE that is typically the peripheral (the mbed board).
+
+2. **Client:** the device that wants information and services, and in BLE that is typically the central device - the phone.
+
+The terms *server* and *client* are used when discussing the exchange of information, whereas *central* and *peripheral* are used to denote the origin and target of a BLE connection. It is not uncommon for the central to be connecting as a client, and the peripheral to be acting as a server. 
+
+![Server and client](/GettingStarted/Images/clientserver.png)
+
+##Initiating Connections
 
 The central initiates and controls the connection, in the sense that the peripheral (the BLE device) cannot force the central to scan for BLE devices, view their information, connect or maintain a connection with them and so on. The central is free to establish or terminate a connection and decides for itself how often to ask the peripheral for information. However, the peripheral can recommend some things to the central, and you'll see [later](connection_parameters) how that's done.
 
@@ -19,6 +29,8 @@ When you set up a BLE device, the first thing it does it advertise its presence 
 Advertisements are limited to a maximum of about 31 bytes. For many applications, a peripheral may only want to periodically broadcast a small amount of information that can fit in an advertisement, and as long as this data can be shared insecurely you don't need to do anything beyond setting up advertisements. But sometimes you'll want to provide more information or a service, and for that you'll need to set up a "conversation" between your BLE device and a user's phone. This conversation is what's known as *connected mode*, and it describes a relationship between two devices: the peripheral BLE device and the central device.
 
 For now, advertising and connected modes cannot co-exist; a BLE peripheral device (like a heart rate monitor) can only be connected to one central device (such as your mobile phone). The moment a connection is established, the BLE peripheral will stop advertising, and no other central device will be able to connect to it (since they can't discover that the device is there if it's not advertising). New connections can be established only after the original connection is terminated and the BLE peripheral starts advertising again. Please note that the latest Bluetooth standard allows advertisements to continue in parallel with connections, and this will become a part of mbed BLE_API before the end of 2015. 
+
+![Connected and advertising](/GettingStarted/Images/adv_conn_modes.png)
 
 ##Services and Profiles (GATT)
 
