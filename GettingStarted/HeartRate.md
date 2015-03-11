@@ -64,11 +64,9 @@ The code we generated for this sample may seem long and complex, but when we bre
 
 We start with setting up the service:
 
-```c
 	 /* Setup primary service. */
 	uint8_t hrmCounter = 100;
 	HeartRateService hrService(ble, hrmCounter, HeartRateService::LOCATION_FINGER);
-```
 
 The first line is only a comment, telling us the general purpose of this section. 
 
@@ -102,8 +100,9 @@ When we create the instance of a type, we first give it a name (in this case ``h
 
 Once we create an instance of a type by giving it a name and its initial parameters, we can start using it. Objects have functions that are defined along with them (they're part of the type's blueprint), and can be accessed from every instance of an object. In this case, the functions are all in the ``HeartRateService.h`` file that we used to create the object.
 
-This is what we do with the ``hrService`` object:
+This is what we do with the `hrService` object:
 
+```c
 	while (true) {
 		if (triggerSensorPolling && ble.getGapState().connected) {
 			triggerSensorPolling = false;
@@ -120,6 +119,7 @@ This is what we do with the ``hrService`` object:
 		} else {
 			ble.waitForEvent();
 		}
+```
 
 Let's break that down.
 
