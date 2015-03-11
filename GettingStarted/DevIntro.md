@@ -16,7 +16,7 @@ BLE requires an intermediary to be really useful: a website or app on your mobil
 
 <img align="center">![Connecting](/GettingStarted/Images/ConnectDiagram.png "A BLE device requires an app or website running on a phone")</img>
 
-<span style="color:green">A BLE device requires an app or website running on a phone</span>
+<span align="center" style="color:green">A BLE device requires an app or website running on a phone</span>
 
 ___
 
