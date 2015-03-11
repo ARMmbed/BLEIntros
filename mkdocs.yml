@@ -4,7 +4,6 @@ pages:
 - ['index.md','Introduction to mbed BLE']
 - ['GettingStarted/DevIntro.md', 'Getting Started', 'BLE: the Short Version']
 - ['GettingStarted/DesignersIntro.md', 'Getting Started', 'BLE: the Long Version']
-- ['GettingStarted/Prototypes.md', 'Getting Started','Prototyping a BLE Project']
 - ['InDepth/Events.md','BLE in Depth', 'Event-Driven Programming']
 - ['InDepth/BLEInDepth.md','BLE in Depth', 'Modes and Profiles']
 - ['InDepth/ConnectionParameters.md','BLE in Depth', 'Connection Parameters']

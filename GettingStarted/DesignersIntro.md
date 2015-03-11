@@ -10,6 +10,10 @@ You've probably met BLE in a fitness tracker or a smart TV, but the beauty of BL
 
 This two-way communication means that a single device can be used both to send information and to perform actions based on that information. You could [water your garden](http://www.hosepipeban.org.uk/hosepipe-ban-current-situation/) when the ground is dry, put a beacon with your details on your dog's collar, or flash a light when a car comes too close to your bicycle. You can do anything, so long as you have the right sensor with an appropriate BLE-enabled platform - like mbed.
 
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+**Note:** BLE requires an intermediary to be really useful: a website or app on your mobile or tablet. We'll discuss this later.
+</span>
+
 ##mbed
 
 [mbed](http://developer.mbed.org) gives you three things: a platform, APIs for that platform, and a programming environment (compiler). 
@@ -30,11 +34,6 @@ We'll walk you through using the compiler as we get started on our [coding sampl
 #What Does it all Do?
 
 The combination of an mbed board, extra components and BLE capabilities give you lots of possibilities for prototyping and production. Let's look at a few of those now (we'll discuss the limitations [later](/InDepth/Limitations/)).
-
-BLE requires an intermediary to be really useful: a website or app on your mobile or tablet. See the next section for options.
-
-![Connecting](/GettingStarted/Images/ConnectDiagram.png "A BLE device requires an app or website running on a phone")
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">A BLE device requires an app or website running on a phone</span>
 
 ##Gathering Information
 
