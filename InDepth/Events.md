@@ -4,7 +4,7 @@ mbed programming is event-driven: it responds to interrupts coming from the hard
 
 Event handlers are often preemptive, meaning they can interrupt the main program’s execution to force their own execution; the main program will resume when the interrupting event is fully handled. In the case of BLE, we expect the main program to be a sleep loop (``waitForEvent``), which means that the device will sleep unless it receives an interrupt - which is why BLE is a low energy technology.
 
-<span style="text-align:center;">
+<span style="text-align:center; display:block;">
 ![events](/GettingStarted/Images/EventHandle.png "An event interrupts the main loop and triggers an event handler. The interrupt is handled, and the event handler then returns control to main()")
 </span>
 <span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">An event interrupts the main loop and triggers an event handler. The interrupt is handled, and the event handler then returns control to main()</span>
