@@ -10,10 +10,10 @@ Currently, mbed's BLE_API supports the creation of peripheral devices. We plan t
 
 BLE uses two additional terms to describe the connecting entities: server and client:
 
-Server
+**Server**
 : 	the device that has information it wishes to share, and in BLE that 	is typically the peripheral (the mbed board).
 
-Client
+**Client**
 : 	the device that wants information and services, and in BLE that is 	typically the central device - the phone.
 
 The terms *server* and *client* are used when discussing the exchange of information, whereas *central* and *peripheral* are used to denote the origin and target of a BLE connection. It is not uncommon for the central to be connecting as a client, and the peripheral to be acting as a server. 
