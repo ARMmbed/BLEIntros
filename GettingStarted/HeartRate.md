@@ -192,7 +192,10 @@ Code in embedded applications is executed in two contexts:
 
 Event handlers are often preemptive, meaning they can interrupt the main program’s execution to force their own execution; the main program will resume when the interrupting event is fully handled. In the case of BLE, we expect the main program to be a sleep loop (``waitForEvent``), which means that the device will sleep unless it receives an interrupt - which is why BLE is a low energy technology.
 
+<span style="text-align:center; display:block;">
 ![events](/GettingStarted/Images/EventHandle.png "An event interrupts the main loop and triggers an event handler. The interrupt is handled, and the event handler then returns control to main()")
+</span>
+
 <span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">An event interrupts the main loop and triggers an event handler. The interrupt is handled, and the event handler then returns control to main()</span>
 
 
@@ -255,24 +258,33 @@ Panobike and other fitness apps show you the heart rate, but you can use [nRF Ma
 
 Here is our app, discovered on nRF:
 
+<span style="text-align:center; display:block;">
 ![Discover](/GettingStarted/Images/HeartRate/Discover.png)
+</soan>
 
 By clicking the HRM entry, we can see some more information about it:
 
+<span style="text-align:center; display:block;">
 ![Information](/GettingStarted/Images/HeartRate/Connect.png)
+</span>
 
 We can click **Connect** to see the full details:
 
+<span style="text-align:center; display:block;">
 ![Full info](/GettingStarted/Images/HeartRate/StartNoti.png)
+</span>
 
 If we click the **notifications** button, we'll be asking the service to notify our device of updates. In our case, that will be heart rate values:
 
+<span style="text-align:center; display:block;">
 ![Heart rate](/GettingStarted/Images/HeartRate/ShowRate1.png)
+</span>
 
 The server will notify our phone with each new value:
 
+<span style="text-align:center; display:block;">
 ![Updated heart rate](/GettingStarted/Images/HeartRate/ShowRate2.png)
-
+</span>
 
 
 

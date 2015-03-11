@@ -18,7 +18,9 @@ BLE uses two additional terms to describe the connecting entities - server and c
 
 The terms *server* and *client* are used when discussing the exchange of information, whereas *central* and *peripheral* are used to denote the origin and target of a BLE connection. It is not uncommon for the central to be connecting as a client, and the peripheral to be acting as a server. 
 
+<span style="text-align:center; display:block;">
 ![Server and client](/GettingStarted/Images/clientserver.png "The mbed board is the server or peripheral; the phones are the clients or centrals")
+</span>
 <span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">The mbed board is the server or peripheral; the phones are the clients or centrals</span>
 
 
@@ -34,7 +36,9 @@ Advertisements are limited to a maximum of about 31 bytes. For many applications
 
 For now, advertising and connected modes cannot co-exist; a BLE peripheral device (like a heart rate monitor) can only be connected to one central device (such as your mobile phone). The moment a connection is established, the BLE peripheral will stop advertising, and no other central device will be able to connect to it (since they can't discover that the device is there if it's not advertising). New connections can be established only after the original connection is terminated and the BLE peripheral starts advertising again. Please note that the latest Bluetooth standard allows advertisements to continue in parallel with connections, and this will become a part of mbed BLE_API before the end of 2015. 
 
+<span style="text-align:center; display:block;">
 ![Connected and advertising](/GettingStarted/Images/adv_conn_modes.png "Advertising mode is one to many, whereas connected mode is one to one")
+</span>
 <span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">Advertising mode is one to many, whereas connected mode is one to one</span>
 
 
@@ -96,5 +100,7 @@ More information about UUID assignments is available in our [service creation sa
 
 The full breakdown for a profile is, therefore: one or more services, each containing zero or more characteristic, with zero or more descriptors for every characteristic:
 
+<span style="text-align:center; display:block;">
 ![breakdown](/InDepth/Images/BLE_Profile_Breakdown.png "A single profile can contains several services, and each of the services can contain several characteristics")
+</span>
 <span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">A single profile can contains several services, and each of the services can contain several characteristics</span>

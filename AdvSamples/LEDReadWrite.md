@@ -82,7 +82,9 @@ This code doesn't create any custom service; it advertises LED as the device nam
 
 This is what the app looks like (on the nRF Master Control Panel):
 
+<span style="text-align:center; display:block;">
 ![App discovery](/AdvSamples/Images/LED/DiscoverService.png)
+</span>
 
 ##Assigning UUIDs
 
@@ -321,11 +323,15 @@ Note that within the ``onDataWritten`` callback, we can identify the characteris
 
 When you connect to the app, you can see that the characteristic is read/write:
 
+<span style="text-align:center; display:block;">
 ![Read write](/AdvSamples/Images/LED/ReadWrite.png)
+</span>
 
 If you click the **write** button you can enter a new value:
 
+<span style="text-align:center; display:block;">
 ![Read write](/AdvSamples/Images/LED/WriteValue.png)
+</span>
 
 ##The LEDService Class
 

@@ -55,7 +55,9 @@ To select a board for the program:
 
 2. Plug your board into your computer's USB port. The board will be displayed in your file browser as a removable storage (similar to plugging in your phone or a USB stick).
 
+<span style="text-align:center; display:block;">
 ![Adding board](/GettingStarted/Images/URIBeacon/DeviceOnMac.png)
+</span>
 
 3. In your file browser, double-click the board to see its files. By default, every board has an HTML file. 
 
@@ -63,11 +65,15 @@ To select a board for the program:
 
 5. On the board's page, click *Add to your mbed Compiler*.
 
+<span style="text-align:center; display:block;">
 ![Adding board](/GettingStarted/Images/URIBeacon/Adding_Platform.png)
+</span>
 
 6. The compiler will open with your board. You're ready to program. 
 
+<span style="text-align:center; display:block;">
 ![Adding board](/GettingStarted/Images/URIBeacon/IDE_Empty.png)
+</span>
 
 <a name=”import”>
 ##Getting a URI Beacon Program
@@ -79,15 +85,21 @@ URI Beacons have a basic structure that's fully available on the mbed website. A
 
 2. On the right-hand side of the page, click *Import this program*.
 
+<span style="text-align:center; display:block;">
 ![Importing program](/GettingStarted/Images/URIBeacon/Import_URIBeacon.png)
+</span>
 
 3. The compiler will open with an import dialog box. You can give your program a name, or use the default (BLE_URIBeacon).
 
+<span style="text-align:center; display:block;">
 ![Importing dialog](/GettingStarted/Images/URIBeacon/IDE_Import_Dialog.png)
+</span>
 
 4. Click *Import*. The program will be imported for the board you selected in the previous section. 
 
+<span style="text-align:center; display:block;">
 ![Program imported](/GettingStarted/Images/URIBeacon/IDE_New_URIBeacon.png)
+</span>
 
 You can now edit the beacon. We'll show you below how to do it, but first we'd like to explain the program a little. You can skip [ahead](#edituribeacon) if you feel like you're not quite ready for C++ yet.
 
@@ -180,11 +192,15 @@ Using one of the applications you installed on your phone during our *What You'l
 
 Discovering the beacon:
 
+<span style="text-align:center; display:block;">
 ![Program imported](/GettingStarted/Images/URIBeacon/Discover.png)
+</span>
 
 Viewing its details:
 
+<span style="text-align:center; display:block;">
 ![Program imported](/GettingStarted/Images/URIBeacon/Details.png)
+</span>
 
 Congratulations! You've created your first BLE device.
 

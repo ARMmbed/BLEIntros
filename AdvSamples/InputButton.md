@@ -82,7 +82,9 @@ Here's a basic template code to get you off the ground. We've thrown in a blinki
 
 This is what the app looks like (on the nRF Master Control Panel):
 
+<span style="text-align:center; display:block;">
 ![App discovery](/AdvSamples/Images/Button/ButtonDiscovery.png)
+</span>
 
 ##Assigning UUIDs
 
@@ -220,7 +222,9 @@ So, now we have the following code which defines a custom button service contain
 
 When you connect to the service, you can see the characteristic and enable notifications (note that you must manually enable them - the service doesn't force notifications on the client):
 
+<span style="text-align:center; display:block;">
 ![App notifications](/AdvSamples/Images/Button/Notifications.png)
+</span>
 
 ##Updating the Button’s State
 
@@ -319,7 +323,9 @@ Note that ``updateCharacteristicValue()`` identifies the ``buttonState`` charact
 
 With notifications active, you can see the button characteristic's value change when you press the button on the board:
 
+<span style="text-align:center; display:block;">
 ![Side by side - zero and one](/AdvSamples/Images/Button/SideBySide.png)
+</span>
 
 ##The ButtonService Class
 
