@@ -138,10 +138,8 @@ The above definition for the buttonState characteristic may be enhanced to allow
 
 
 	
-	ReadOnlyGattCharacteristic<bool> 
-	buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, &buttonPressed,
-	GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY);/
-	BLE_GATT_CHAR_PROPERTIES_NOTIFY gives us the option to add notifications
+	    ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, &buttonPressed, GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY);
+
 
 
 Notifications are a good way to establish asynchronous updates, so that the app doesn’t have to keep checking the BLE device; the device will let the app know if there’s anything new. This helps the BLE device keep its energy usage down.
