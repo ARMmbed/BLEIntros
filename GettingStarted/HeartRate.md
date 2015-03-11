@@ -64,9 +64,11 @@ The code we generated for this sample may seem long and complex, but when we bre
 
 We start with setting up the service:
 
+```c
 	 /* Setup primary service. */
 	uint8_t hrmCounter = 100;
 	HeartRateService hrService(ble, hrmCounter, HeartRateService::LOCATION_FINGER);
+```
 
 The first line is only a comment, telling us the general purpose of this section. 
 
@@ -187,7 +189,9 @@ Code in embedded applications is executed in two contexts:
 
 Event handlers are often preemptive, meaning they can interrupt the main program’s execution to force their own execution; the main program will resume when the interrupting event is fully handled. In the case of BLE, we expect the main program to be a sleep loop (``waitForEvent``), which means that the device will sleep unless it receives an interrupt - which is why BLE is a low energy technology.
 
-![events](/GettingStarted/Images/EventHandle.png)
+![events](/GettingStarted/Images/EventHandle.png "An event interrupts the main loop and triggers an event handler. The interrupt is handled, and the event handler then returns control to main()")
+>>><span style="color:green;">*An event interrupts the main loop and triggers an event handler. The interrupt is handled, and the event handler then returns control to main()*</span>
+
 
 The relationship between ``main()`` and event handlers - and especially the decision which code to move to an event handler and which to leave in ``main()`` - is all about timing. Handler execution time is often determined not by the size of the code but by how many times it must run - for example, how many iterations of a data-processing loop it performs - or by communication with external components such as sensors (also called polling). Communication delays can range from a few microseconds to milliseconds, depending on the sensor involved. Reading an accelerometer can take around a millisecond, and a temperature sensor can take up to a few hundred microseconds. A barometer, on the other hand, can take up to 10 milliseconds to yield a new sensor value. 
 
