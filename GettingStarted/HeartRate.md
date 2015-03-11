@@ -1,7 +1,9 @@
 #Tutorial 2: Heart Rate Monitor (BLE Services)
 
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **Note:** To complete tutorials, you'll need an account on 
 [mbed.org](https://developer.mbed.org/account/signup/?next=%2F). 
+</span>
 
 The heart rate service gathers the heart rate reading from a monitor and sends it to an app capable of working with the heart rate profile. That means that if you want to work with a heart rate monitor, you don't have to write your own code just to get the input from the device to your phone.
 
@@ -40,7 +42,9 @@ ____
 ##Understanding the Heart Rate Service
 </a>
 
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **If you don't want to get too deeply into the code - skip [ahead](#renamebeacon).**
+</span>
 
 The Heart Rate Service forms part of the Heart Rate Profile (together with the Device Information Service). It connects a heart rate monitor to an app that requires its input, for example a fitness app.
 
@@ -189,7 +193,7 @@ Code in embedded applications is executed in two contexts:
 Event handlers are often preemptive, meaning they can interrupt the main program’s execution to force their own execution; the main program will resume when the interrupting event is fully handled. In the case of BLE, we expect the main program to be a sleep loop (``waitForEvent``), which means that the device will sleep unless it receives an interrupt - which is why BLE is a low energy technology.
 
 ![events](/GettingStarted/Images/EventHandle.png "An event interrupts the main loop and triggers an event handler. The interrupt is handled, and the event handler then returns control to main()")
->><span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">An event interrupts the main loop and triggers an event handler. The interrupt is handled, and the event handler then returns control to main()</span>
+<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">An event interrupts the main loop and triggers an event handler. The interrupt is handled, and the event handler then returns control to main()</span>
 
 
 The relationship between ``main()`` and event handlers - and especially the decision which code to move to an event handler and which to leave in ``main()`` - is all about timing. Handler execution time is often determined not by the size of the code but by how many times it must run - for example, how many iterations of a data-processing loop it performs - or by communication with external components such as sensors (also called polling). Communication delays can range from a few microseconds to milliseconds, depending on the sensor involved. Reading an accelerometer can take around a millisecond, and a temperature sensor can take up to a few hundred microseconds. A barometer, on the other hand, can take up to 10 milliseconds to yield a new sensor value. 
@@ -240,8 +244,9 @@ The default name is "Nordic_HRM". You can change it to anything you like (but st
 
 	const static char     DEVICE_NAME[]        = "I_Renamed_This";
 
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **Tip**: iOS "sticks" to the name it first discovers for each beacon, so whatever name you choose now you'll have for a while. This is called *caching*, and is intended to save your phone some time and energy.
-
+</span>
 ____
 
 ##Viewing the Service Details

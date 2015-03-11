@@ -97,7 +97,9 @@ ___
 ##Understanding the Code
 </a>
 
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **If you don't want to get too deep into the code - skip [ahead](#edituribeacon).**
+</span>
 
 The URI Beacon program is a very small and simple one. The only part of it that you need to look at is the ``main.cpp`` file, which is - as the name suggests - the program's main file. The other files you can ignore for now - they're there to help the compiler do its job.
 
@@ -206,7 +208,8 @@ To get a URI Beacon:
 
 Along the way, you also learned a little about object oriented programming and the general principle of importing, compiling and installing programs. 
 
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **Tip:** You don't have to send a URL with the beacon. You could send a very simple text (remember that it can't exceed 18 characters, and don't forget to put it in quotes). For example, you could replace the URL with "Open Sundays!", just to let your shoppers know about your new hours.
-
+</span>
 _____
 
