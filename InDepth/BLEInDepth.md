@@ -96,5 +96,6 @@ More information about UUID assignments is available in our [service creation sa
 
 The full breakdown for a profile is, therefore: one or more services, each containing zero or more characteristic, with zero or more descriptors for every characteristic:
 
-![breakdown](/InDepth/Images/BLE_Profile_Breakdown.png "A single profile can contains several services, and each of the services can contain several characteristics")
+<span style="text-align:center;">
+![breakdown](/InDepth/Images/BLE_Profile_Breakdown.png "A single profile can contains several services, and each of the services can contain several characteristics")</span>
 >>><span style="color:green;">*A single profile can contains several services, and each of the services can contain several characteristics*</span>
