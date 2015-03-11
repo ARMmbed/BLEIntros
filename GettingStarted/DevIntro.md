@@ -14,9 +14,9 @@ This document is written for experienced BLE developers who are switching to mbe
 
 BLE requires an intermediary to be really useful: a website or app on your mobile or tablet. See the next section for options.
 
-<img align="center">![Connecting](/GettingStarted/Images/ConnectDiagram.png "A BLE device requires an app or website running on a phone")</img>
+![Connecting](/GettingStarted/Images/ConnectDiagram.png "A BLE device requires an app or website running on a phone")
 
-<span align="center" style="color:green">A BLE device requires an app or website running on a phone</span>
+<span style="color:green; text-align:center;">A BLE device requires an app or website running on a phone</span>
 
 ___
 
