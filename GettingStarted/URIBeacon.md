@@ -1,6 +1,6 @@
 #Tutorial 1: URI Beacon (and an Intro to the mbed Compiler)
 
-**Note:** To complete tutorials, you'll need an account on [mbed.org](https://developer.mbed.org/account/signup/?next=%2F). 
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">**Note:** To complete tutorials, you'll need an account on [mbed.org](https://developer.mbed.org/account/signup/?next=%2F).</span>
 
 We're starting with the URI Beacon because it's a quick, simple way to get a BLE device going. URI Beacons advertise a bit of information (usually a URL) to any nearby device.  They're really easy to set up, because the code is fully available on the mbed website, so all you'll need to do is tell the beacon what to broadcast. 
 

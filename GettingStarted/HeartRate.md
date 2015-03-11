@@ -100,9 +100,9 @@ When we create the instance of a type, we first give it a name (in this case ``h
 
 Once we create an instance of a type by giving it a name and its initial parameters, we can start using it. Objects have functions that are defined along with them (they're part of the type's blueprint), and can be accessed from every instance of an object. In this case, the functions are all in the ``HeartRateService.h`` file that we used to create the object.
 
-This is what we do with the `hrService` object:
+This is what we do with the ``hrService`` object:
 
-```c
+
 	while (true) {
 		if (triggerSensorPolling && ble.getGapState().connected) {
 			triggerSensorPolling = false;
@@ -119,7 +119,6 @@ This is what we do with the `hrService` object:
 		} else {
 			ble.waitForEvent();
 		}
-```
 
 Let's break that down.
 
@@ -190,7 +189,7 @@ Code in embedded applications is executed in two contexts:
 Event handlers are often preemptive, meaning they can interrupt the main program’s execution to force their own execution; the main program will resume when the interrupting event is fully handled. In the case of BLE, we expect the main program to be a sleep loop (``waitForEvent``), which means that the device will sleep unless it receives an interrupt - which is why BLE is a low energy technology.
 
 ![events](/GettingStarted/Images/EventHandle.png "An event interrupts the main loop and triggers an event handler. The interrupt is handled, and the event handler then returns control to main()")
->>><span style="color:green;">*An event interrupts the main loop and triggers an event handler. The interrupt is handled, and the event handler then returns control to main()*</span>
+>><span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">An event interrupts the main loop and triggers an event handler. The interrupt is handled, and the event handler then returns control to main()</span>
 
 
 The relationship between ``main()`` and event handlers - and especially the decision which code to move to an event handler and which to leave in ``main()`` - is all about timing. Handler execution time is often determined not by the size of the code but by how many times it must run - for example, how many iterations of a data-processing loop it performs - or by communication with external components such as sensors (also called polling). Communication delays can range from a few microseconds to milliseconds, depending on the sensor involved. Reading an accelerometer can take around a millisecond, and a temperature sensor can take up to a few hundred microseconds. A barometer, on the other hand, can take up to 10 milliseconds to yield a new sensor value. 
