@@ -8,7 +8,7 @@ When we connect devices over BLE, we think of them as being either a peripheral 
 
 Currently, mbed's BLE_API supports the creation of peripheral devices. We plan to extend this to central devices soon
 
-BLE uses two additional terms to describe the connecting entities: server and client:
+BLE uses two additional terms to describe the connecting entities - server and client:
 
 **Server**
 : 	the device that has information it wishes to share, and in BLE that 	is typically the peripheral (the mbed board).
