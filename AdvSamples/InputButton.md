@@ -10,6 +10,10 @@ But, we don’t expect you to settle for what’s already been done; we expect y
 
 Let's work our way towards creating a service for a trivial sensor: a button. We'll assume a use-case where a phone-app would like to connect to this mbed application and poll for button state; notifications could also be set up for asynchronous updates. In the non-connected state, the application simply advertises its capability of providing the button service.
 
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_Button/).
+</span>
+
 ##The Basic Template - Advertising and Connecting
 
 Here's a basic template code to get you off the ground. We've thrown in a blinking LED to indicate program stability. This code doesn't create any custom service; it advertises Button as the device name through the advertisement payload. The application is discoverable (``LE_GENERAL_DISCOVERABLE``) and connectable (``ADV_CONNECTABLE_UNDIRECTED``), and offers only the standard GAP and GATT services. The function ``disconnectionCallback`` re-starts advertisements if connection is lost.

@@ -10,6 +10,10 @@ In the [previous sample](/AdvSamples/InputButton/), we went over the process of 
 
 Let's work our way towards creating a service for a trivial actuator: an LED. We'll assume a use-case where a phone app would like to connect to this mbed application and set the LED state. In the non-connected state, the application simply advertises its capability to provide an LED service.
 
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+Get the code [here](https://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_LED/).
+</span>
+
 ##The Basic Template - Advertising and Connecting
 
 Here's a template to get you started with the very basics. We've thrown in a blinking LED to indicate program stability.
