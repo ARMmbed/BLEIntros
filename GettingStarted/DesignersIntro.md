@@ -62,7 +62,7 @@ The two most common sources of information that you might want to process are se
 
 2. *Remote processing* means that you send data to a different device to be handled there, and either wait for instructions from the remote device or simply go on gathering and sending data. For example, if you're trying to predict tomorrow's weather, the device will send data (temperature, barometric pressure etc) to a computer that can analyse it - the local device will simply not have the processing power to run a weather program. 
 
-BLE is intended for low power, battery-operated devices, and so typical applications will never perform complex processing on the device - processing burns through batteries. Applications will instead export the data, and wait for a response. 
+BLE is intended for low power, battery-operated devices, so typical applications will never perform complex processing on the device - processing burns through batteries. Applications will instead export the data, and wait for a response. 
 
 ##Sending or Storing Information
 
