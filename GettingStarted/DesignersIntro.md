@@ -10,9 +10,10 @@ You've probably met BLE in a fitness tracker or a smart TV, but the beauty of BL
 
 This two-way communication means that a single device can be used both to send information and to perform actions based on that information. You could [water your garden](http://www.hosepipeban.org.uk/hosepipe-ban-current-situation/) when the ground is dry, put a beacon with your details on your dog's collar, or flash a light when a car comes too close to your bicycle. You can do anything, so long as you have the right sensor with an appropriate BLE-enabled platform - like mbed.
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
-**Note:** BLE requires an intermediary to be really useful: a website or app on your mobile or tablet. We'll discuss this later.
+<span style="text-align:center; display:block;">
+![BLE layout](/GettingStarted/Images/BLEsample.png "A BLE setup requires a board with BLE support and a way to control it - for example a phone app or a local touchscreen")
 </span>
+<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">A BLE setup requires a board with BLE support and a way to control it - for example a phone app or a local touchscreen</span>
 
 ##mbed
 
@@ -23,6 +24,12 @@ The platforms are little boards with a processor, which have various capabilitie
 Because platforms are standard pieces of hardware, it’s up to you to tell them what to do. mbed has created APIs - Application Program Interface - that let you order off the menu. For example, if you want to send something over Bluetooth, you don't need to know the exact commands and sequence of events; you just need to tell the API that you want to send something - we've made sure the API knows how to do it. This is called *abstraction*, and you'll run into that word quite often on our website. BLE has its own API, called BLE_API.
 
 To tell the API what to do, you need a programming environment. BLE, like all other mbed capabilities, can be programmed using the [mbed Compiler](https://developer.mbed.org/compiler/). 
+
+<span style="text-align:center; display:block;">
+![BLE layout](/GettingStarted/Images/fullmbedprocess.png "The standard process is to get a board (and maybe a few extending components), write a bit of code and import it to the board. Simple.")
+</span>
+<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">The standard process is to get a board (and maybe a few extending components), write a bit of code and import it to the board. Simple.</span>
+
 
 ##The mbed Compiler
 
