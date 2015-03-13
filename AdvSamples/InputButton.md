@@ -114,7 +114,9 @@ We've chosen a custom UUID space for our button service: 0xA000 for the service,
 
 Adding the button service UUID to the advertising payload is purely optional. Having it is good practice, however, since it gives an early and cheap indication to interested client apps regarding the capabilities of the mbed application. 
 
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **Note:** interpreting non-standard service UUIDs has limited use, and may only work with custom phone apps.
+</span>
 
 ##The Button State Characteristic
 
@@ -133,8 +135,9 @@ The code only looks complicated; it is essentially a simple use of C++ templates
 	bool buttonPressed = false; //button initial state
 	ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, &buttonPressed);//read-only characteristic of type boolean, accepting the buttonState’s UUID and initial value
 
-
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **Tip:** there are several variants of ``GattCharacterisitc`` available to ease instantiation. Refer to template declarations at the bottom of [``GattCharacteristic.h``](https://github.com/mbedmicro/BLE_API/blob/master/public/GattCharacteristic.h).
+</span>
 
 ##Adding Notifications
 

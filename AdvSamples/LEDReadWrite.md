@@ -111,7 +111,9 @@ We've chosen a custom UUID space for our LED service: 0xA000 for the service, an
 
 Adding the LED service UUID to the advertising payload is purely optional. Having it is good practice, however, since it gives an early and cheap indication to interested client apps regarding the capabilities of the mbed application. 
 
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **Note:** interpreting non-standard UUID has limited use, and may only work with custom phone apps.
+</span>
 
 ##The LED State Characteristic
 
@@ -128,8 +130,9 @@ The code only looks complicated; it is essentially a simple use of C++ templates
 	bool initialValueForLEDCharacteristic = false;
 	WriteOnlyGattCharacteristic<bool> ledState(LED_STATE_CHARACTERISTIC_UUID, &initialValueForLEDCharacteristic);
 
-
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **Tip:** there are several variants of ``GattCharacterisitc`` available to ease instantiation. Refer to template declarations at the bottom of [GattCharacteristic.h](https://github.com/mbedmicro/BLE_API/blob/master/public/GattCharacteristic.h).
+</span>
 
 We can just as easily use a ``ReadWriteGattCharacterisitc<T>`` for the ``ledState``, to make it readable as well. This will allow a phone app to connect and probe the ``ledState``:
 

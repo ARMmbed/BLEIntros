@@ -47,7 +47,9 @@ ___
 
 ##Quick Samples
 
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **Tip:** The quick samples are written for experienced BLE developers with an understanding of the mbed IDE; if you want more information about the IDE, see the [tutorials](/GettingStarted/IntroSamples/), which offer extended versions of the same samples. 
+</span>
 
 The samples cover:
 
@@ -63,7 +65,9 @@ ____
 ###Quick Sample One: URI Beacon
 </a>
 
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **Tip:** If you don’t know how to register your board, or how to work with the mbed compiler, please see the [extended URI Beacon tutorial](/GettingStarted/URIBeacon/). 
+</span>
 
 To get this sample working, you'll need:
 
@@ -101,7 +105,9 @@ ____
 ###Quick Sample Two: Heart Rate
 </a>
 
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **Tip:** If you don’t know how to register your board, or how to work with the mbed compiler, please see the [extended URI Beacon tutorial](/GettingStarted/URIBeacon/). 
+</span>
 
 To see the heart rate information on your phone, download PanoBike for [iOS](https://itunes.apple.com/gb/app/panobike/id567403997?mt=8) or [Android](https://play.google.com/store/apps/details?id=com.topeak.panobike&hl=en). Then:
 
