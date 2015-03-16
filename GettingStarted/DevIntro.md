@@ -23,9 +23,9 @@ BLE requires an intermediary to be really useful: a website or app on your mobil
 ___
 
 
-##Fast Prototyping
+##Rapid Prototyping
 
-mbed comes from a heritage of fast prototyping, but implementing BLE brings with it a complication: the need to prototype interactivity. If you’re trying to showcase your project, you want to avoid the compatibility issues you may have with mobile apps and minimise the time you spend on polishing an app that may never be used.
+mbed comes from a heritage of rapid prototyping, but implementing BLE brings with it a complication: the need to prototype interactivity. If you’re trying to showcase your project, you want to avoid the compatibility issues you may have with mobile apps and minimise the time you spend on polishing an app that may never be used.
 
 So if you're in the prototyping phase, there are a number of quick ways to get a phone/client app going:
 
