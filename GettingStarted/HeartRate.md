@@ -35,6 +35,8 @@ If you're familiar with mbed and our compiler, you can get the heart rate monito
 
 5. Drag and drop the compiled file to your board.
 
+6. Restart the board.
+
 6. On the PanoBike application, watch the heart rate. It should go from 100 to 175 in increments of one, then reset.
 ____
 

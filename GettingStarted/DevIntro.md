@@ -82,7 +82,7 @@ To get this sample working, you'll need:
 
 + A BLE-enabled mbed board.
 
-+ A user on [developer.mbed.org](developer.mbed.org) to see the compiler.
++ A user on [developer.mbed.org](developer.mbed.org) to access the compiler.
 
 If you’re familiar with mbed and our compiler, you can get the beacon working in just a few minutes:
 
@@ -95,6 +95,8 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 5. Compile the code. It will be downloaded to your Downloads folder (on some browsers you may need to specify a download location).
 
 6. Drag and drop the compiled file to your board.
+
+7. Restart the board.
 
 7. On the app you installed on your phone, discover your beacon and check that the URL is correct.
 
@@ -120,6 +122,8 @@ To see the heart rate information on your phone, download PanoBike for [iOS](htt
 4. Compile the code. It will be downloaded to your Downloads folder (on some browsers you may need to specify a download location).
 
 5. Drag and drop the compiled file to your board.
+
+6. Restart the board.
 
 6. On the PanoBike application, watch the heart rate. It should go from 100 to 175 in increments of one, then reset.
 

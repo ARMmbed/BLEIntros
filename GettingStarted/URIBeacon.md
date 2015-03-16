@@ -25,7 +25,7 @@ To get this going, you'll need:
 
 + A BLE-enabled mbed board, but don't worry if you don't have one yet - we'll show you how it would have worked.
 
-+ A user account on [developer.mbed.org](developer.mbed.org) to see the compiler. We recommend you get access to the compiler even if you don't have a board yet, so that you can play along with the example.
++ A user account on [developer.mbed.org](developer.mbed.org) to access the compiler. We recommend you get access to the compiler even if you don't have a board yet, so that you can play along with the example.
 
 ##Quick Guide
 
@@ -40,6 +40,8 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 5. Compile the code. It will be downloaded to your Downloads folder (on some browsers you may need to specify a download location).
 
 6. Drag and drop the compiled file to your board.
+
+7. Restart the board.
 
 7. On the app you installed on your phone, discover your beacon and check that the URL is correct.
 
@@ -183,6 +185,8 @@ To compile and install your program:
 4. Drag and drop the HEX file to the board's entry in the file browser.
 
 5. As part of the installation process, the board is disconnected and reconnected. 
+
+6. Restart the board.
 
 6. Your board is now working as a URI beacon with the URL you gave it. If it has a battery, you can unplug it from the computer and walk around with it.
 
