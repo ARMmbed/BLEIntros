@@ -48,7 +48,7 @@ A central device must know that a peripheral device exists to be able to connect
 
 
 <span style="text-align:center; display:block;">
-![Connected and advertising](/GettingStarted/Images/adv_conn_modes.png)
+![Connected and advertising](/InDepth/Images/adv_conn_modes.png)
 </span>
 
 <span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">Advertising mode is one-to-many, whereas connected mode is one-to-one</span>
