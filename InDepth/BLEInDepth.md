@@ -58,7 +58,7 @@ For now, advertising and connected modes cannot co-exist; a BLE peripheral devic
 
 ##Services and Profiles (GATT)
 
-In addition to being able to broadcast small amounts of data in advertisements, a BLE peripheral is able to maintain a database of state variables, such as battery level, temperature and time, that can be accessed by clients. State variables can be grouped into services based on functionality. The Heart Rate Service, for instance, is a collection of state variables including *heart rate measurement and *body sensor location*. The technical term for these state variables is “Characteristics”. For the sake of interoperability, each characteristic also holds a description of the value’s type. This  allows clients to interpret the value even if they’ve not been specifically programmed to recognise it. 
+In order to make the conversation described above low power, the BLE specification imposes a specific structure on the way data is exchanged in connected mode. A BLE peripheral is able to maintain a database of state variables, such as battery level, temperature and time, that can be accessed by clients. State variables can be grouped into services based on functionality. The Heart Rate Service, for instance, is a collection of state variables including *heart rate measurement* and *body sensor location*. The technical term for these state variables is “Characteristics”. For the sake of interoperability, each characteristic also holds a description of the value’s type. This  allows clients to interpret the value even if they’ve not been specifically programmed to recognise it. 
 
 <span style="text-align:center; display:block;">
 ![breakdown](/InDepth/Images/Service.png "A single service can contain several characteristics")
@@ -81,6 +81,10 @@ Before you start working on a project, it's worthwhile to see if there's already
 ##Characteristics and Interactions
 
 Services break their data down into *characteristics*. Each characteristic is mapped onto a single data point - it tells you one thing, and one thing only. For example, the [Device Information Service](https://developer.bluetooth.org/TechnologyOverview/Pages/DIS.aspx) has the following characteristics:
+
+<span style="display:block; float:right;">
+![](/InDepth/Images/DeviceInformationService.png)
+</span>
 
 * Manufacturer name.
 
