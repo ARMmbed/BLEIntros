@@ -104,6 +104,19 @@ Services break their data down into *characteristics*. Each characteristic is ma
 
 Each of these characteristics should only contain the information its label says it contains. Together, they reveal the device's manufacturer information and make up a full Device Information Service, which as we saw is itself bundled into quite a few profiles.
 
+Creating a characteristic on mbed requires very little effort, because ``BLE_API`` offers C++ abstractions for entities involved in the definition of services. For example, here we create a simple characteristic that notifies the client of the state of a button (pressed/released):
+
+```c
+
+
+	bool buttonPressed = false; //button initial state
+	ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, &buttonPressed);//read-only characteristic of type boolean, accepting the buttonState’s UUID and initial value
+```
+
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+For a full walkthrough of characteristic creation on mbed, see our [input service template](AdvSamples/InputButton/#the-button-state-characteristic).
+</span>
+
 A characteristic is fully defined by its declaration, value and descriptor:
 
 1. The **declaration** contains data about the characteristic, such as its universally unique identifier (UUID).
@@ -114,13 +127,29 @@ A characteristic is fully defined by its declaration, value and descriptor:
 
 Characteristics can be either static (like your device's manufacturer name) or dynamic: your device can generate a new value for them as required. For example, in the Heart Rate Service, the current heart rate is a characteristic that gets a new value regularly.
 
-Some characteristics are two-way entities: the server (the BLE peripheral) can update them locally, but it can also receive new values for them from the client (the phone/tablet). This two-way traffic is how BLE becomes interactive: the user sends a new value to one or more characteristics and the device responds to these new values. For example, in the Heart Rate Service, the *Heart Rate Control Point* characteristic allow the client to write to it; changing the value of the characteristic tells the device to restart the Energy Expended measurement.
+Here's an example of creating a read/write characteristic (a characteristic that can receive new values and reveal its current value):
 
-It is up to the service to decide which characteristics can be modified; the service states, for each characteristic, whether or not clients have permission to write to that characteristic. This is done when setting up the GATT server on the peripheral. In our example, the service has stated that the client has permission to write to the Heart Rate Control Point characteristic. If it revoked the permission, the client would not be able to reset the Energy Expended measurement, because the Heart Rate Control Point would never accept a new value.
+```c
+
+	bool initialValueForLEDCharacteristic = false;
+	ReadWriteGattCharacteristic<bool> ledState(LED_STATE_CHARACTERISTIC_UUID, &initialValueForLEDCharacteristic);
+```
+
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+For information about creating a read/write characteristic on mbed, see our [actuator service template](AdvSamples/LEDReadWrite/#the-led-state-characteristic).
+</span>
+
+Some characteristics are two-way entities: the server (the BLE peripheral) can update them locally, but it can also receive new values for them from the client (the phone/tablet). This two-way traffic is how BLE becomes interactive: the user sends a new value to one or more characteristics and the device responds to these new values. For example, when a URI Beacon device is turned on, it goes into a temporary *configuration mode*, allowing the values of its characteristics (containing the data it will later advertise) to be modified. 
+
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+For information about the configuration mode, see the [URI Beacon Advanced Features page](AdvSamples/URIBeaconAdv/).
+</span>
+
+The service definition specifies which characteristics can be modified; the service states, for each characteristic, whether or not clients have permission to write to that characteristic. This is done when setting up the GATT server on the peripheral. In our example, the *configuration mode* states that the advertising information is read/write, and the *advertising mode* states that it is read-only. The same characteristic can, therefore, have two different permissions, depending on the device's mode. 
 
 ##UUIDs
 
-Each service and characteris requires a universally unique identifier (UUID). For official BLE entities the UUID is 16-bit, and a full list is available on the BLE site for [services](https://developer.bluetooth.org/gatt/services/Pages/ServicesHome.aspx) and [characteristics](https://developer.bluetooth.org/gatt/characteristics/Pages/CharacteristicsHome.aspx). For services and characteristics that you create yourself, you’ll need a 128-bit UUID; you can generate those on the [UTI website](http://www.itu.int/en/ITU-T/asn1/Pages/UUID/uuids.aspx).
+Each service and characteristic require a universally unique identifier (UUID), listed as part of their declaration (as we saw above). For official BLE entities the UUID is 16-bit, and a full list is available on the BLE site for [services](https://developer.bluetooth.org/gatt/services/Pages/ServicesHome.aspx) and [characteristics](https://developer.bluetooth.org/gatt/characteristics/Pages/CharacteristicsHome.aspx). For services and characteristics that you create yourself, you’ll need a 128-bit UUID; you can generate those on the [UTI website](http://www.itu.int/en/ITU-T/asn1/Pages/UUID/uuids.aspx).
 
 More information about UUID assignments is available in our [service creation samples](link here).
  

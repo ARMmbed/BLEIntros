@@ -8,8 +8,11 @@ The connection interval suggests to the central device how often to check whethe
 
 The connection interval has two parameters: *MIN_CONN_INTERVAL* (for the shortest interval) and *MAX_CONN_INTERVAL* (for the longest interval). The two together define the range of intervals. Note that the value they receive is in milliseconds. For example, the following code means that the shortest interval time is 250 milliseconds, and the longest is 350 millisecond:
 
+```c
+
 	#define MIN_CONN_INTERVAL 250
 	#define MAX_CONN_INTERVAL 350
+```
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **Tip:** Although the central device can ignore the peripheral’s suggestions for connection parameters, these parameters have an impact on energy consumption and you, as an application developer programming the peripheral, should always put some thought into them. For example, if your temperature sensor takes a reading every second, the connection interval shouldn't be much smaller than that, as it will not get new information on most requests; you should offer a connection interval that matches the rate at which you expect to generate new data. For applications where data updates occur non-periodically (such as mouse movements), the connection interval may determine the delay experienced by a client in receiving the updates; use shorter connection intervals when latency is worth more than energy.
