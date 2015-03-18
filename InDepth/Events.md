@@ -19,7 +19,8 @@ First, we see the ``triggerSensorPolling`` parameter and ``periodicCallback`` fu
 
 ```c
 	
-	// the parameter triggerSensorPolling begins as FALSE. It will be set to TRUE in the function periodicCallback
+	// the parameter triggerSensorPolling begins as FALSE. 
+	// It will be set to TRUE in the function periodicCallback
 	static volatile bool  triggerSensorPolling = false; 
 
 	[...]
@@ -28,7 +29,8 @@ First, we see the ``triggerSensorPolling`` parameter and ``periodicCallback`` fu
 	{
 		led1 = !led1; /* Do blinky on LED1 while we're waiting for BLE events */
 
-		/* Note that the periodicCallback() executes in interrupt context, so it is safer to do
+		/* Note that the periodicCallback() executes in interrupt context, 
+		* so it is safer to do
 		* heavy-weight sensor polling from the main thread. */
 		triggerSensorPolling = true; // changes the value to TRUE and returns to main()
 	}
@@ -58,9 +60,11 @@ Finally, we can see where ``triggerSensorPolling`` is used in an infinite loop i
         // check for trigger from periodicCallback()
         if (triggerSensorPolling && ble.getGapState().connected) { 
 
-	/* if periodicCallback set the value of triggerSensorPolling to TRUE, we execute the code block that follow. 
+	/* if periodicCallback set the value of triggerSensorPolling to TRUE, 
+	* we execute the code block that follow. 
 	* The first thing it does is reset triggerSensorPolling to FALSE. 
-	* Then it executes the interrupt action, which in our case is simply to change the heart rate */
+	* Then it executes the interrupt action, which in our case is 
+	* simply to change the heart rate */
 
             triggerSensorPolling = false; 
 
