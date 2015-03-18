@@ -1,10 +1,16 @@
 #BLE Modes and Profiles
 
-This document explores how BLE works, especially how you can use connected and advertising mode for different purposes. 
+This document explores how BLE works, especially how you can use the two BLE modes - connected and advertising - for different purposes. 
 
 ##Peripheral and Central Devices v Servers and Clients
 
-When we connect devices over BLE, we think of them as being either a peripheral (slave) device or a central (master) device. The Bluetooth standard established this division to match the resources available on the devices: the master will typically have more computing resources and available energy - a computer or a tablet, for example - while the slave - an mbed device - will be constrained in both respects. 
+When we connect devices over BLE, we think of them as being either a peripheral (slave) device or a central (master) device. The Bluetooth standard established this division to match the resources available on the devices: 
+
+**Master/central**
+:	will typically have more computing resources and available energy - a computer or a tablet, for example.
+
+**Slave/peripheral**
+:	an mbed device - will be constrained in both computing resources and energy. 
 
 Currently, mbed's BLE_API supports the creation of peripheral devices. We plan to extend this to central devices soon
 
@@ -19,36 +25,54 @@ BLE uses two additional terms to describe the connecting entities - server and c
 The terms *server* and *client* are used when discussing the exchange of information, whereas *central* and *peripheral* are used to denote the origin and target of a BLE connection. It is not uncommon for the central to be connecting as a client, and the peripheral to be acting as a server. 
 
 <span style="text-align:center; display:block;">
-![Server and client](/GettingStarted/Images/clientserver.png "The mbed board is the server or peripheral; the phones are the clients or centrals")
+![Server and client](/GettingStarted/Images/clientserver.png "The mbed board is the server or peripheral; the phones are the clients and central devices")
 </span>
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">The mbed board is the server or peripheral; the phones are the clients or centrals</span>
+<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">The mbed board is the server or peripheral; the phones are the clients and central devices</span>
 
 
 ##Initiating Connections
 
-The central initiates and controls the connection, in the sense that the peripheral (the BLE device) cannot force the central to scan for BLE devices, view their information, connect or maintain a connection with them and so on. The central is free to establish or terminate a connection and decides for itself how often to ask the peripheral for information. However, the peripheral can recommend some things to the central, and you'll see [later](connection_parameters) how that's done.
+The central initiates and controls the connection, in the sense that the peripheral (the BLE device) cannot force the central to scan for BLE devices, view their information, connect or maintain a connection with them and so on. The central is free to establish or terminate a connection and decides for itself how often to ask the peripheral for information. However, the peripheral can recommend some things to the central, and you'll see [later](connection_parameters) how that's done. It is worth mentioning that these decisions can significantly affect power consumption (and, therefore, battery life).
 
 ##Advertising and Connected Mode
 
-When you set up a BLE device, the first thing it does it advertise its presence (using the Generic Access Profile method, or GAP) - send out a bit of information at a steady rate. This is called *advertisement mode*. The advertisement is what other devices, like your phone, pick up. It tells them about the presence of a BLE device in the neighbourhood, and whether that device is willing to talk to them.
+The two modes BLE uses are: 
 
-Advertisements are limited to a maximum of about 31 bytes. For many applications, a peripheral may only want to periodically broadcast a small amount of information that can fit in an advertisement, and as long as this data can be shared insecurely you don't need to do anything beyond setting up advertisements. But sometimes you'll want to provide more information or a service, and for that you'll need to set up a "conversation" between your BLE device and a user's phone. This conversation is what's known as *connected mode*, and it describes a relationship between two devices: the peripheral BLE device and the central device.
+**Advertising mode**
+:	the peripheral sends out a bit of information that any device in the area can pick up; this is how central devices know that there are peripherals around. 
 
-For now, advertising and connected modes cannot co-exist; a BLE peripheral device (like a heart rate monitor) can only be connected to one central device (such as your mobile phone). The moment a connection is established, the BLE peripheral will stop advertising, and no other central device will be able to connect to it (since they can't discover that the device is there if it's not advertising). New connections can be established only after the original connection is terminated and the BLE peripheral starts advertising again. Please note that the latest Bluetooth standard allows advertisements to continue in parallel with connections, and this will become a part of mbed BLE_API before the end of 2015. 
+**Connected mode**
+:	the peripheral and a central device establish a one-to-one conversation. This is how they can exchange complex information. 
+
+A central device must know that a peripheral device exists to be able to connect with it. A peripheral will therefore advertise its presence using the BLE ***advertising mode***. In this mode, the device uses the *Generic Access Profile*, or GAP, to send out a bit of information (an advertisement) at a steady rate. This advertisement is what other devices, like your phone, pick up. It tells them about the presence of a BLE device in the neighbourhood, and whether that device is willing to talk to them.
+
+Advertisements are limited to a maximum of about 31 bytes. For many applications, a peripheral may only want to periodically broadcast a small amount of information that can fit in an advertisement, and as long as it is fine for this data to be available to any central device within range, regardless of authentication, then you don't need to do anything beyond setting up advertisements. But sometimes you'll want to provide more information or more complex interactions than one-way data transfer, and for that you'll need to set up a "conversation" between your BLE device and a user's phone, tablet or computer. The thing that enables this conversation is what's known as ***connected mode***, and it describes a relationship between two devices: the peripheral BLE device and the central device.
+
+For now, advertising and connected modes cannot co-exist; a BLE peripheral device (like a heart rate monitor) can only be connected to one central device at a time (such as your mobile phone). The moment a connection is established, the BLE peripheral will stop advertising, and no other central device will be able to connect to it (since they can't discover that the device is there if it's not advertising). New connections can be established only after the first connection is terminated and the BLE peripheral starts advertising again. Please note that the latest Bluetooth standard allows advertisements to continue in parallel with connections, and this will become a part of mbed's BLE_API before the end of 2015. 
 
 <span style="text-align:center; display:block;">
-![Connected and advertising](/GettingStarted/Images/adv_conn_modes.png "Advertising mode is one to many, whereas connected mode is one to one")
+![Connected and advertising](/GettingStarted/Images/adv_conn_modes.png "Advertising mode is one-to-many, whereas connected mode is one-to-one")
 </span>
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">Advertising mode is one to many, whereas connected mode is one to one</span>
+<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">Advertising mode is one-to-many, whereas connected mode is one-to-one</span>
 
 
 ##Services and Profiles (GATT)
 
-In addition to being able to broadcast small amounts of data in advertisements, a BLE peripheral is able to maintain a database of state variables, such as battery level, temperature and time, that can be accessed by clients. State variables can be grouped into services based on functionality. The Heart Rate Service, for instance, is a collection of state variables including *heart rate measurement and *body sensor location*.. The technical term for these state variables is “Characteristics”. For the sake of interoperability, each characteristic also holds a description of the value’s type. This  allows clients to interpret the value even if they’ve not been specifically programmed to recognize it. 
+In addition to being able to broadcast small amounts of data in advertisements, a BLE peripheral is able to maintain a database of state variables, such as battery level, temperature and time, that can be accessed by clients. State variables can be grouped into services based on functionality. The Heart Rate Service, for instance, is a collection of state variables including *heart rate measurement and *body sensor location*. The technical term for these state variables is “Characteristics”. For the sake of interoperability, each characteristic also holds a description of the value’s type. This  allows clients to interpret the value even if they’ve not been specifically programmed to recognise it. 
+
+<span style="text-align:center; display:block;">
+![breakdown](/InDepth/Images/Service.png "A single service can contain several characteristics")
+</span>
+<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">A single service can contain several characteristics</span>
 
 Services and characteristics (and their supporting attributes) are the fundamental entities that allow arbitrary BLE devices to communicate in connected mode. Services use the Generic Attribute Profile (GATT) to structure the information according to characteristics, and they're bundled together in various profiles. We'll explore characteristics in more detail below. 
 
 *Profile* may sound like a big concept, but it's simply a way of ensuring that services are combined correctly, as sometimes more than one service is needed to get a device working. For example, the Heart Rate *Profile* includes two services: the Heart Rate Service and the Device Information Service. The Blood Pressure Profile similarly includes the Blood Pressure and Device Information services.
+
+<span style="text-align:center; display:block;">
+![breakdown](/InDepth/Images/heart_rate_profile.png "An example profile with two services")
+</span>
+<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">An example profile with two services</span>
 
 BLE has been around for a while, so it has some standard services that you can tap into. Going back to our heart rate monitor example, the Heart Rate Service is well established and very easy to use; it can read information from a BLE heart rate monitor and send it to an app. You'll see that in a later [coding sample](/GettingStarted/HeartRate/).
 
