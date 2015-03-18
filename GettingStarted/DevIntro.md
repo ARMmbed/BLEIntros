@@ -10,32 +10,28 @@ This document is written for experienced BLE developers who are switching to mbe
 
 2. mbed has a BLE-specific API ([BLE_API](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_API/file/1956023d42fb/README.md)), a high level abstraction for using BLE on multiple platforms.
 	
-3. The mbed BLE tools are written in C++ and can be used from the online [mbed compiler](https://developer.mbed.org/compiler/).
+3. The mbed BLE tools are written in C++ and can be used from the online [mbed compiler](https://developer.mbed.org/compiler/) or used offline, for example with [GCC](http://developer.mbed.org/forum/team-63-Bluetooth-Low-Energy-community/topic/5257/).
 
-BLE requires an intermediary to be really useful: a website or app on your mobile or tablet. See the next section for options.
+BLE is most useful when used with a website or app on your mobile or tablet. See the next section for options.
 
 <span style="text-align:center; display:block;">
-![Connecting](/GettingStarted/Images/ConnectDiagram.png "A BLE device requires an app or website running on a phone")
+![Connecting](/GettingStarted/Images/ConnectDiagram.png "A BLE device currently requires an app or website running on a phone")
 </span>
 
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">A BLE device requires an app or website running on a phone</span>
+<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">A BLE device currently requires an app or website running on a phone</span>
 
 ___
 
 
 ##Rapid Prototyping
 
-mbed comes from a heritage of rapid prototyping, but implementing BLE brings with it a complication: the need to prototype interactivity. If you’re trying to showcase your project, you want to avoid the compatibility issues you may have with mobile apps and minimise the time you spend on polishing an app that may never be used.
+mbed comes from a heritage of rapid prototyping, and allows you to test code and ideas on BLE devices very easily. For a truly awesome BLE experience, though, you'll need to pair mbed with tools that allow you to rapidly prototype the app side of your solution, or use one of these tricks to work without an app for the early stages of development:
 
-So if you're in the prototyping phase, there are a number of quick ways to get a phone/client app going:
+* Hardware inputs directly to the BLE device, for example a [touchscreen](http://developer.mbed.org/components/cat/touchscreen/).
 
-1. Hardware inputs directly to the BLE device, for example a [touchscreen](http://developer.mbed.org/components/cat/touchscreen/).
+* [Evothings Studio](http://evothings.com/getting-started-with-evothings-studio-in-90-seconds/) lets you create simple apps that are run from the Evothings App on your phone, so Evothings does the compatibility work for you. It requires some learning of its own, but it may well be worth your time.
 
-2. Websites that provide a standard user interface and send commands back to the device. They require programming, but they usually work well on all phones and tablets.
-
-3. [Evothings Studio](http://evothings.com/getting-started-with-evothings-studio-in-90-seconds/) lets you create simple apps that are run from the Evothings App on your phone, so Evothings does the compatibility work for you. It requires some learning of its own, but it may well be worth your time.
-
-Once your prototype is approved, you can invest some more time in your user input. At this point, apps may become worthwhile. But, if you want to be part of the Physical Web, stick to a website - and use the BLE device just to advertise the site's URL.
+Once your prototype works as you wanted, you can invest some more time in your user input, including creating full-fledged apps. But, if you want to be part of the Physical Web, stick to a website - and use the BLE device just to advertise the site's URL.
 
 ___
 
