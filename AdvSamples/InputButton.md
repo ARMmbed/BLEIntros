@@ -23,34 +23,27 @@ Here's a basic template code to get you off the ground. We've thrown in a blinki
 	#include "mbed.h"
 	#include "BLEDevice.h"
 	
-	BLEDevice   ble;        /* Instantiation of a BLEDevice in 
-							/* global scope allows us to refer to
-							/* it anywhere in the program.
+	BLEDevice   ble;        	// Instantiation of a BLEDevice in global scope allows us to refer to it anywhere in the program.
+	
 	DigitalOut led1(LED1);
 	
-	const static char DEVICE_NAME[] = "Button"; 	/* setting up a device name helps with identifying
-													* your device; this is often very useful when
-													* there are several other BLE devices in the
-													* neighborhood. */
+	const static char DEVICE_NAME[] = "Button"; 	// setting up a device name helps with identifying your device; this is often very useful when there are several other BLE devices in the neighborhood.
 
 	void disconnectionCallback(Gap::Handle_t handle, Gap::DisconnectionReason_t reason)
 	{
-		ble.startAdvertising();  /* One needs to explicitly re-enable
-								* advertisements after a connection
-								* teardown. */
+		ble.startAdvertising();  // We need to explicitly re-enable advertisements after a connection teardown.
 	}
 
 	void periodicCallback(void)
 	{
-		led1 = !led1; /* Do blinky on LED1 to indicate system aliveness. */
+		led1 = !led1; /* Do blinky on LED1 to indicate the system is in operational status. */
 	}
 	
 	int main(void)
 	{
-		led1 = 1;                        		/* aliveness LED starts out with being off; doesn't really */
-												/* matter too much because we only toggle it. */
-		Ticker ticker;                   		/* A mechanism for periodic callbacks. */
-		ticker.attach(periodicCallback, 1); 	/* Setting up a callback to go at an interval of 1s. */
+		led1 = 1;                        		// System status LED starts out with being off; doesn't really  matter too much because we only toggle it.
+		Ticker ticker;                   		// A mechanism for periodic callbacks.
+		ticker.attach(periodicCallback, 1); 	// Setting up a callback to go at an interval of 1s.
 
 		ble.init();                      		/*  initialize the BLE stack and controller. */
 		ble.onDisconnection(disconnectionCallback);
