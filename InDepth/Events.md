@@ -19,7 +19,8 @@ First, we see the ``triggerSensorPolling`` parameter and ``periodicCallback`` fu
 
 ```c
 	
-	static volatile bool  triggerSensorPolling = false; // the parameters triggerSensorPolling begins as FALSE
+	// the parameter triggerSensorPolling begins as FALSE. It will be set to TRUE in the function periodicCallback
+	static volatile bool  triggerSensorPolling = false; 
 
 	[...]
 	
