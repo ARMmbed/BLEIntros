@@ -268,8 +268,12 @@ You should review the app's code to verify you understand the flow:
 
 3. If you click that button, it will change to red and LED1 on the board will light up. 
 
-<span style="text-align:center; display:block; width=100%;">
-![](/AdvSamples/Images/Evothings/EvothingsToggleButton.png)![](/AdvSamples/Images/Evothings/EvothingsLEDOn.png)
+<span style="text-align:center; display:block;">
+![](/AdvSamples/Images/Evothings/EvothingsToggleButton.png)
+</span>
+
+<span style="text-align:center; display:block; padding:20px;">
+![](/AdvSamples/Images/Evothings/EvothingsLEDOn.png)
 </span>
 
 This is the code snippet controlling the toggle function:
