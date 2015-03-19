@@ -27,7 +27,8 @@ The terms *server* and *client* are used when discussing the exchange of informa
 <span style="text-align:center; display:block;">
 ![Server and client](/GettingStarted/Images/clientserver.png "The mbed board is the server or peripheral; the phones are the clients and central devices")
 </span>
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">The mbed board is the server or peripheral; the phones are the clients and central devices</span>
+<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">The mbed board is the server or peripheral; the phones are the clients and central devices
+</span>
 
 
 ##Initiating Connections
@@ -46,7 +47,12 @@ The two modes BLE uses are:
 
 A central device must know that a peripheral device exists to be able to connect with it. A peripheral will therefore advertise its presence using the BLE ***advertising mode***. In this mode, the device uses the *Generic Access Profile*, or GAP, to send out a bit of information (an advertisement) at a steady rate. This advertisement is what other devices, like your phone, pick up. It tells them about the presence of a BLE device in the neighbourhood, and whether that device is willing to talk to them.
 
-![Connected and advertising](/InDepth/Images/adv_conn_modes.png)
+<span style="text-align:center; display:block;">
+![Connected and advertising](/GettingStarted/Images/ConnModes.png)
+</span>
+<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">Advertising mode is one-to-many, whereas connected mode is one-to-one
+</span>
+
 
 Advertisements are limited to a maximum of about 31 bytes. For many applications, a peripheral may only want to periodically broadcast a small amount of information that can fit in an advertisement, and as long as it is fine for this data to be available to any central device within range, regardless of authentication, then you don't need to do anything beyond setting up advertisements. But sometimes you'll want to provide more information or more complex interactions than one-way data transfer, and for that you'll need to set up a "conversation" between your BLE device and a user's phone, tablet or computer. The thing that enables this conversation is what's known as ***connected mode***, and it describes a relationship between two devices: the peripheral BLE device and the central device.
 
