@@ -62,8 +62,8 @@ Next, we'll need a few declarations: a BLE object, the LED we'll be toggling, th
 	uint16_t readCharUUID       = 0xA001; // read characteristic UUID
 	uint16_t writeCharUUID      = 0xA002; // write characteristic UUID
 
-	const static char     DEVICE_NAME[]        = "ChangeMe!!"; // change this
-	static const uint16_t uuid16_list[]        = {0xFFFF}; //Custom UUID, FFFF is reserved for development
+	const static char     DEVICE_NAME[]  = "ChangeMe!!"; // change this
+	static const uint16_t uuid16_list[] = {0xFFFF}; //Custom UUID, FFFF is reserved for development
 
 ```
 
@@ -89,10 +89,12 @@ This is what it looks like:
 
 	// Set Up custom Characteristics
 	static uint8_t readValue[10] = {0};
-	ReadOnlyArrayGattCharacteristic<uint8_t, sizeof(readValue)> readChar(readCharUUID, readValue);
+	ReadOnlyArrayGattCharacteristic<uint8_t, 
+		sizeof(readValue)> readChar(readCharUUID, readValue);
 	
 	static uint8_t writeValue[10] = {0};
-	WriteOnlyArrayGattCharacteristic<uint8_t, sizeof(writeValue)> writeChar(writeCharUUID, writeValue);
+	WriteOnlyArrayGattCharacteristic<uint8_t, 
+		sizeof(writeValue)> writeChar(writeCharUUID, writeValue);
 ```
 
 Now we can set up the custom service:
@@ -108,7 +110,9 @@ Now we can set up the custom service:
 
 	// Set up custom service
 	GattCharacteristic *characteristics[] = {&readChar, &writeChar};
-	GattService        customService(customServiceUUID, characteristics, sizeof(characteristics) / sizeof(GattCharacteristic *));
+	GattService        	customService(customServiceUUID, 
+						characteristics, 
+						sizeof(characteristics) / sizeof(GattCharacteristic *));
 ``` 
 
 We've established the service; we can now create other functions.
@@ -138,7 +142,8 @@ Next, we need to create the write callback function so it can be called when the
    	     // toggle LED if only 1 byte is written
    	     if(params->len == 1) {
     	        led = params->data[0];
-     	       (params->data[0] == 0x00) ? printf("\n\rled on ") : printf("\n\rled off "); // print led toggle
+     	       (params->data[0] == 0x00) ? printf("\n\rled on ") : 
+					printf("\n\rled off "); // print led toggle
     	    }
     	    // print the data if more than 1 byte is written
     	    else {
@@ -148,7 +153,8 @@ Next, we need to create the write callback function so it can be called when the
     	        }
    	     }
    	     // update the readChar with the value of writeChar
-   	     ble.updateCharacteristicValue(readChar.getValueHandle(),params->data,params->len);
+   	     ble.updateCharacteristicValue(readChar.getValueHandle(),
+										params->data,params->len);
   	  }
 	}
 
