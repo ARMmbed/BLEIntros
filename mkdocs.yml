@@ -15,6 +15,8 @@ pages:
 - ['AdvSamples/InputButton.md','Advanced Samples and Features', 'Sample 1: Input Service Template']
 - ['AdvSamples/LEDReadWrite.md','Advanced Samples and Features', 'Sample 2: Actuator Service Template']
 - ['AdvSamples/URIBeaconAdv.md','Advanced Samples and Features', 'Advanced Features of the URI Beacon']
+- ['AdvSamples/CustomGAP.md','Advanced Samples and Features', 'Custom GAP Advertising Packet']
+- ['AdvSamples/GATTEvo.md','Advanced Samples and Features', 'Custom GATT Service with Evothings']
 - ['Additional/BLE_FAQ.md','Additional Resources', 'FAQ']
 - ['Additional/Links.md','Additional Resources', 'Useful Links']
 - ['Additional/Blank.md','Additional Resources', '']
