@@ -15,12 +15,10 @@ You'll need:
 2. Install the [Evothings Workbench for your PC and the Evothings app for your phone](http://evothings.com/download/).
 
 3. Install the mbed Evothings [custom GATT app](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGATT) on your phone:
-	* Downloading the [code]((https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGATT)).
+	* Downloading the [code](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGATT).
 	* Drag-and-dropping the index.html file into the Evothings Workbench on your computer.
 	* Clicking RUN on the workbench.
 	* The code will run on your phone's Evothings client.
-
-4. The [LightBlue iOS](https://itunes.apple.com/us/app/lightblue-bluetooth-low-energy/id557428110?mt=8) app or the [nRF Master Control Panel Android](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en) app to view the results.
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 For more information about Evothings, see their [Quick Start Guide](http://evothings.com/getting-started-with-evothings-studio-in-90-seconds/), [tutorials](http://evothings.com/doc/studio/tutorials.html) and [BLE API reference](http://evothings.com/doc/plugins/com.evothings.ble/com.evothings.module_ble.html).
