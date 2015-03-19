@@ -14,7 +14,7 @@ You'll need:
 
 2. Install the [Evothings Workbench for your PC and the Evothings app for your phone](http://evothings.com/download/).
 
-3. Install the mbed Evothings [custom GATT app](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGATT) on your phone. You do this by:
+3. Install the mbed Evothings [custom GATT app](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGATT) on your phone:
 	* Downloading the [code]((https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGATT)).
 	* Drag-and-dropping the index.html file into the Evothings Workbench on your computer.
 	* Clicking RUN on the workbench.
