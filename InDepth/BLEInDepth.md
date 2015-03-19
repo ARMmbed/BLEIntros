@@ -24,9 +24,8 @@ BLE uses two additional terms to describe the connecting entities - server and c
 
 The terms *server* and *client* are used when discussing the exchange of information, whereas *central* and *peripheral* are used to denote the origin and target of a BLE connection. It is not uncommon for the central to be connecting as a client, and the peripheral to be acting as a server. 
 
-<span style="text-align:center; display:block;">
 ![Server and client](/GettingStarted/Images/clientserver.png "The mbed board is the server or peripheral; the phones are the clients and central devices")
-</span>
+
 <span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">The mbed board is the server or peripheral; the phones are the clients and central devices</span>
 
 
