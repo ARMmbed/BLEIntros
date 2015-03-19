@@ -21,7 +21,7 @@ For more information about Evothings, see their [Quick Start Guide](http://evoth
 
 ##GAP Data Review
 
-The general GAP connection's data breakdown is illustrated in this diagram:
+The general GAP broadcast's data breakdown is illustrated in this diagram:
 
 <span style="text-align:center; display:block;">
 ![](/AdvSamples/Images/GAP/GeneralStruct.png)
