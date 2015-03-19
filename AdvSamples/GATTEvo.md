@@ -63,8 +63,9 @@ Next, we'll need a few declarations: a BLE object, the LED we'll be toggling, th
 	uint16_t writeCharUUID      = 0xA002; // write characteristic UUID
 
 	const static char     DEVICE_NAME[]  = "ChangeMe!!"; // change this
-	static const uint16_t uuid16_list[] = {0xFFFF}; //Custom UUID, FFFF is reserved for development
-
+	//Custom UUID, FFFF is reserved for development
+	static const uint16_t uuid16_list[] = {0xFFFF}; 
+	
 ```
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
@@ -197,11 +198,19 @@ Now we set up the advertising parameters:
 ```c
 
     /* setup advertising */
-    ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED | GapAdvertisingData::LE_GENERAL_DISCOVERABLE); // BLE only, no classic BT
-    ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED); // advertising type
-    ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME, (uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME)); // add name
-    ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_16BIT_SERVICE_IDS, (uint8_t *)uuid16_list, sizeof(uuid16_list)); // UUID's broadcast in advertising packet
-    ble.setAdvertisingInterval(160); /* 100ms; in multiples of 0.625ms. */
+	// BLE only, no classic BT
+    ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED 
+		| GapAdvertisingData::LE_GENERAL_DISCOVERABLE); 
+	// advertising type
+    ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED); 
+    // add name
+	ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME, 
+		(uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME)); 
+	// UUID's broadcast in advertising packet
+    ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_16BIT_SERVICE_IDS, 
+		(uint8_t *)uuid16_list, sizeof(uuid16_list)); 
+	// 100ms; in multiples of 0.625ms.
+    ble.setAdvertisingInterval(160); 
 ```
 
 We add our custom service:
@@ -253,10 +262,6 @@ You need to change the variable ``MyDeviceName`` (in the ``app.js`` file you dow
 
 You should review the app's code to verify you understand the flow:
 
-<span style="display:block; float:right;">
-![](/AdvSamples/Images/Evothings/EvothingsToggleButton.png)
-</span>
-
 1. On start up, the application searches for the device with the name you set earlier. This may take a moment
 
 2. When it finds the devices and connects to it, the message changes from *connecting* to *connected* and the toggle button changes to green.
@@ -264,7 +269,7 @@ You should review the app's code to verify you understand the flow:
 3. If you click that button, it will change to red and LED1 on the board will light up. 
 
 <span style="text-align:center; display:block;">
-![](/AdvSamples/Images/Evothings/EvothingsLEDOn.png)
+![](/AdvSamples/Images/Evothings/EvothingsToggleButton.png)![](/AdvSamples/Images/Evothings/EvothingsLEDOn.png)
 </span>
 
 This is the code snippet controlling the toggle function:
