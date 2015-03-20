@@ -53,8 +53,28 @@ A central device must know that a peripheral device exists to be able to connect
 <span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">Advertising mode is one-to-many, whereas connected mode is one-to-one
 </span>
 
+Advertisements are very limited in size. The general GAP broadcast's data breakdown is illustrated in this diagram:
 
-Advertisements are limited to a maximum of about 31 bytes. For many applications, a peripheral may only want to periodically broadcast a small amount of information that can fit in an advertisement, and as long as it is fine for this data to be available to any central device within range, regardless of authentication, then you don't need to do anything beyond setting up advertisements. But sometimes you'll want to provide more information or more complex interactions than one-way data transfer, and for that you'll need to set up a "conversation" between your BLE device and a user's phone, tablet or computer. The thing that enables this conversation is what's known as ***connected mode***, and it describes a relationship between two devices: the peripheral BLE device and the central device.
+<span style="text-align:center; display:block;">
+![](/AdvSamples/Images/GAP/GeneralStruct.png)
+</span>
+<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">*The BLE stack eats part of our package's 47B, until only 26 bytes are available for our data*</span>
+
+Every BLE package can contain a maximum of 47 bytes (which isn't much), but:
+
+1. Right off the bat, the BLE stack require 8 for its own purposes.
+
+1. The advertising packet data unit (PDU) therefore has at maximum 39 bytes. But the BLE stack once again requires some overhead, taking up 8 bytes.
+
+2. The PDFU's advertising data field has 31 bytes left, divided into advertising data (AD) structures. Then:
+
+	* The GAP broadcast must contain flags that tell the device about the type of advertisement we're sending. The flag structure takes up three bytes in total (one for data length, one for data type and one for the data itself). The reason we use up these two bytes - the data length and type indications - is to help the parser work correctly with our information. We're down to 28 bytes.
+
+	* Now we're finally sending our data - but it, too, requires an indication of length and type (two bytes in total), so we're down to 26 bytes.
+
+All of which means that we have only 26B to use for the data we want to send over GAP.
+
+For many applications, a peripheral may only want to periodically broadcast a small amount of information that can fit in an advertisement, and as long as it is fine for this data to be available to any central device within range, regardless of authentication, then you don't need to do anything beyond setting up advertisements. But sometimes you'll want to provide more information or more complex interactions than one-way data transfer, and for that you'll need to set up a "conversation" between your BLE device and a user's phone, tablet or computer. The thing that enables this conversation is what's known as ***connected mode***, and it describes a relationship between two devices: the peripheral BLE device and the central device.
 
 For now, advertising and connected modes cannot co-exist; a BLE peripheral device (like a heart rate monitor) can only be connected to one central device at a time (such as your mobile phone). The moment a connection is established, the BLE peripheral will stop advertising, and no other central device will be able to connect to it (since they can't discover that the device is there if it's not advertising). New connections can be established only after the first connection is terminated and the BLE peripheral starts advertising again. Please note that the latest Bluetooth standard allows advertisements to continue in parallel with connections, and this will become a part of mbed's BLE_API before the end of 2015. 
 
