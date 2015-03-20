@@ -112,7 +112,8 @@ Creating a characteristic on mbed requires very little effort, because ``BLE_API
 
 	//button initial state
 	bool buttonPressed = false; 
-	//read-only characteristic of type boolean, accepting the buttonState’s UUID and initial value
+	//read-only characteristic of type boolean, 
+	//accepting the buttonState’s UUID and initial value
 	ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, 
 		&buttonPressed);
 ```

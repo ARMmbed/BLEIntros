@@ -24,7 +24,10 @@ Sometimes, devices move out of each other's transmission range, or lose the conn
 
 In our samples, this parameter is called CONN_SUP_TIMEOUT, and receives a value in milliseconds. For example, the following code means that the timeout is six seconds:
 
+```c
+
 	#define CONN_SUP_TIMEOUT 6000
+```
 
 ###Slave Latency
 
@@ -36,6 +39,9 @@ A peripheral may therefore choose to ignore a specified number of consecutive co
 
 The number of requests to ignore is specified in a parameter called SLAVE_LATENCY. For example, the following code means that the device can ignore four consecutive connection events, but must then respond to the fifth:
 
+```c
+
 	#define SLAVE_LATENCY 4
+```
 
 The difference between SLAVE_LATENCY and MIN_CONN_INTERVAL is that  MIN_CONN_INTERVAL is used even when there is new data to send, while SLAVE_LATENCY is used only when the BLE device has no data.
