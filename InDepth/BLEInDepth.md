@@ -110,9 +110,11 @@ Creating a characteristic on mbed requires very little effort, because ``BLE_API
 
 ```c
 
-
-	bool buttonPressed = false; //button initial state
-	ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, &buttonPressed);//read-only characteristic of type boolean, accepting the buttonState’s UUID and initial value
+	//button initial state
+	bool buttonPressed = false; 
+	//read-only characteristic of type boolean, accepting the buttonState’s UUID and initial value
+	ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, 
+		&buttonPressed);
 ```
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
@@ -134,7 +136,8 @@ Here's an example of creating a read/write characteristic (a characteristic that
 ```c
 
 	bool initialValueForLEDCharacteristic = false;
-	ReadWriteGattCharacteristic<bool> ledState(LED_STATE_CHARACTERISTIC_UUID, &initialValueForLEDCharacteristic);
+	ReadWriteGattCharacteristic<bool> ledState(LED_STATE_CHARACTERISTIC_UUID, 
+		&initialValueForLEDCharacteristic);
 ```
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">

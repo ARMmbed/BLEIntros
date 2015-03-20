@@ -32,7 +32,7 @@ First, we see the ``triggerSensorPolling`` parameter and ``periodicCallback`` fu
 		/* Note that the periodicCallback() executes in interrupt context, 
 		* so it is safer to do
 		* heavy-weight sensor polling from the main thread. */
-		triggerSensorPolling = true; // changes the value to TRUE and returns to main()
+		triggerSensorPolling = true; // sets TRUE and returns to main()
 	}
 
 ```
