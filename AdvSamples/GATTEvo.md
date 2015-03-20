@@ -12,11 +12,11 @@ You'll need:
 
 1. A BLE-enabled mbed board.
 
-2. Install the [Evothings Workbench for your PC and the Evothings app for your phone](http://evothings.com/download/).
+2. Install the [Evothings Workbench on your PC and the Evothings app on your phone](http://evothings.com/download/).
 
-3. Install the mbed Evothings [custom GATT app](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGATT) on your phone:
+3. Install the mbed Evothings [custom GATT app](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGATT) on your phone by:
 	* Downloading the [code](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGATT).
-	* Drag-and-dropping the index.html file into the Evothings Workbench on your computer.
+	* Drag-and-dropping the **index.html** file into the Evothings Workbench on your computer.
 	* Clicking RUN on the workbench.
 	* The code will run on your phone's Evothings client.
 
@@ -50,7 +50,7 @@ To get us started, we'll need to include a couple of headers:
 	#include "BLEDevice.h"
 ```
 
-Next, we'll need a few declarations: a BLE object, the LED we'll be toggling, the UUID for our custom service and a UUID for each of our characteristics (READ and WRITE). The UUIDs provide the name of the device that the application will be looking for, and the custom UUID for development. 
+Next, we'll need a few declarations: a BLE object, the LED we'll be toggling, the UUID for our custom service and a UUID for each of our characteristics (READ and WRITE). The UUIDs provide the name of the device that the application will be looking for and the custom UUID for development. 
 
 ```c
 
@@ -67,7 +67,7 @@ Next, we'll need a few declarations: a BLE object, the LED we'll be toggling, th
 ```
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
-**Note:** If you change the name here you will also need to change it in the subsequent Evothings application app.js (which will be covered [later]()).
+**Note:** If you change the name here you will also need to change it in the subsequent Evothings application **app.js** (which will be covered [later]()).
 </span>
 
 Now that we have the UUIDs, we can set up the characteristics:
@@ -100,9 +100,7 @@ Now we can set up the custom service:
 
 1. We initialise a GATT service by filling the characteristics array with references to the read and write characteristics. 
 
-2. Then, we declare the GATT service.
-
-3. The declaration includes the UUID, the characteristics array and the number of characteristics included.
+2. We declare the GATT service. The declaration includes the UUID, the characteristics array and the number of characteristics included.
 
 ```c
 
@@ -126,7 +124,7 @@ First, since GATT is connection-based, we need a disconnection callback function
 	}
 ```
 
-Next, we need to create the write callback function so it can be called when the BLE board is written to. This callback makes sure the write operation trigger the callback (``params ->charHandle``) is a write operation to the write characteristic (``writeChar.getValueHandle()``). This isn't necessary when you have only one write characteristic, but is absolutely necessary when you have multiple ones on a device. The remainder of the code will print out the data written to the write characteristic:
+Next, we need to create the write callback function so it can be called when the BLE board is written to. This callback makes sure the write operation triggering the callback (``params ->charHandle``) is a write operation to the correct write characteristic (``writeChar.getValueHandle()``). This isn't necessary when you have only one write characteristic, but is absolutely necessary when you have multiple ones on a device. The remainder of the code will print out the data written to the write characteristic:
 
 ```c
 
@@ -186,9 +184,9 @@ Now we set up the advertising parameters:
 
 1. First, we set the flag saying that this advertising message is BLE only. 
 
-2. You then set the advertising type as connectable and undirected. 
+2. We then set the advertising type as connectable and undirected. 
 
-3. The payload can now be given the device name you have chosen and the service's UUID list.
+3. The payload can now be given the device name we've chosen and the service's UUID list.
 
 4. Last, we establish the advertising interval, in multiples of 0.625ms (which is the standard interval size).
 
@@ -243,7 +241,7 @@ To run the app:
 
 1. Make sure you've installed the Evothings Workbench on your computer and the Evothings client on your phone.
 
-2. 	Drag-and-drop the **index.html** file into the Evothings Workbench on your computer.
+2. Drag-and-drop the **index.html** file into the Evothings Workbench on your computer.
 
 3. Click **RUN** on the workbench.
 
@@ -261,7 +259,7 @@ You need to change the variable ``MyDeviceName`` (in the ``app.js`` file you dow
 
 You should review the app's code to verify you understand the flow:
 
-1. On start up, the application searches for the device with the name you set earlier. This may take a moment
+1. On start up, the application searches for the device with the name you set earlier. This may take a moment.
 
 2. When it finds the devices and connects to it, the message changes from *connecting* to *connected* and the toggle button changes to green.
 

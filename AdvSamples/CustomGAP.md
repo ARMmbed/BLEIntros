@@ -12,11 +12,11 @@ You'll need:
 
 1. A BLE-enabled mbed board.
 
-2. Install the [Evothings Workbench for your PC and the Evothings app for your phone](http://evothings.com/download/).
+2. Install the [Evothings Workbench on your PC and the Evothings app on your phone](http://evothings.com/download/).
 
-3. Install the mbed Evothings [custom GAP app](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGAP) on your phone:
+3. Install the mbed Evothings [custom GAP app](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGAP) on your phone by:
 	* Downloading the [code](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGAP).
-	* Drag-and-dropping the index.html file into the Evothings Workbench on your computer.
+	* Drag-and-dropping the **index.html** file into the Evothings Workbench on your computer.
 	* Clicking RUN on the workbench.
 	* The code will run on your phone's Evothings client.
 
@@ -33,15 +33,15 @@ The general GAP broadcast's data breakdown is illustrated in this diagram:
 <span style="text-align:center; display:block;">
 ![](/AdvSamples/Images/GAP/GeneralStruct.png)
 </span>
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">*The BLE stack eats part of our package's 47B, until only 26 bytes are available for our data*</span>
+<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">*The BLE stack eats part of our package's 47B, until only 26B are available for our data*</span>
 
 Every BLE package can contain a maximum of 47 bytes (which isn't much), but:
 
-1. Right off the bat, the BLE stack require 8 for its own purposes.
+1. Right off the bat, the BLE stack require 8 bytes for its own purposes.
 
 1. The advertising packet data unit (PDU) therefore has at maximum 39 bytes. But the BLE stack once again requires some overhead, taking up 8 bytes.
 
-2. The PDFU's advertising data field has 31 bytes left, divided into advertising data (AD) structures. Then:
+2. The PDU's advertising data field has 31 bytes left, divided into advertising data (AD) structures. Then:
 
 	* The GAP broadcast must contain flags that tell the device about the type of advertisement we're sending. The flag structure takes up three bytes in total (one for data length, one for data type and one for the data itself). The reason we use up these two bytes - the data length and type indications - is to help the parser work correctly with our information. We're down to 28 bytes.
 
@@ -111,7 +111,7 @@ All of that was just setup. Now we need to do something with it. We start by cal
 ```
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
-**Note:** the ``ble.init()`` should always be performed before any other BLE set up.
+**Note:** the ``ble.init()`` should always be performed before any other BLE setup.
 </span>
 
 Next, we set up the advertising flags:
@@ -151,9 +151,9 @@ This will take care of the GAP advertising on the mbed side.
 
 ##Seeing Our Data
 
-###Generic Apps
+Compile your program and install it on your board (drag and drop it to the board). Then decide if you want to use generic apps or the custom-made Evothings app (or use both and compare results).
 
-Compile your program and install it on your board (drag and drop it to the board).
+###Generic Apps
 
 On your phone, start the BLE application ([nRF Master Control Panel](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en) for Android and [LightBlue](https://itunes.apple.com/us/app/lightblue-bluetooth-low-energy/id557428110?mt=8) for iOS). It will scan for BLE devices, and should show us ours:
 
@@ -165,8 +165,7 @@ We can see the name we set, the appropriate flags and the data we pushed into th
 
 ###Evothings Custom-Made App
 
-We're created a [custom-made app for Evothings](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGAP) to go with our advertising:
-
+We've created a [custom-made app for Evothings](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGAP) to go with our advertising.
 
 To run the app:
 

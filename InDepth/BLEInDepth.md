@@ -58,15 +58,15 @@ Advertisements are very limited in size. The general GAP broadcast's data breakd
 <span style="text-align:center; display:block;">
 ![](/AdvSamples/Images/GAP/GeneralStruct.png)
 </span>
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">*The BLE stack eats part of our package's 47B, until only 26 bytes are available for our data*</span>
+<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">*The BLE stack eats part of our package's 47B, until only 26B are available for our data*</span>
 
 Every BLE package can contain a maximum of 47 bytes (which isn't much), but:
 
-1. Right off the bat, the BLE stack require 8 for its own purposes.
+1. Right off the bat, the BLE stack require 8 bytes for its own purposes.
 
 1. The advertising packet data unit (PDU) therefore has at maximum 39 bytes. But the BLE stack once again requires some overhead, taking up 8 bytes.
 
-2. The PDFU's advertising data field has 31 bytes left, divided into advertising data (AD) structures. Then:
+2. The PDU's advertising data field has 31 bytes left, divided into advertising data (AD) structures. Then:
 
 	* The GAP broadcast must contain flags that tell the device about the type of advertisement we're sending. The flag structure takes up three bytes in total (one for data length, one for data type and one for the data itself). The reason we use up these two bytes - the data length and type indications - is to help the parser work correctly with our information. We're down to 28 bytes.
 
