@@ -70,21 +70,32 @@ The code we generated for this sample may seem long and complex, but when we bre
 
 We start with setting up the service:
 
-	 /* Setup primary service. */
+```c
+
+	 // Setup primary service.
 	uint8_t hrmCounter = 100;
-	HeartRateService hrService(ble, hrmCounter, HeartRateService::LOCATION_FINGER);
+	HeartRateService hrService(ble, 
+		hrmCounter, HeartRateService::LOCATION_FINGER);
+```
 
 The first line is only a comment, telling us the general purpose of this section. 
 
 The second line sets up a fake heart rate for the purpose of this sample:
 
+```c
+
 	uint8_t hrmCounter = 100;
+```
 
 It's a parameter that we call ``hrmCounter``, and we give it an initial value of 100 (in the context we'll be using it, it means 100 heart beats per minute). Because we're programming in C++, we used ``uint8_t`` to indicate to the compiler that the parameter ``hrmCounter`` is of a type called **unsigned integer**, and its length is 8 bits. We won't get into what that means now, but there's plenty of information on line if you're interested in parameter types.
 
 The third line of code is more interesting, as in it we set up the full service. Let's take a closer look at it:
 
-	HeartRateService hrService(ble, hrmCounter, HeartRateService::LOCATION_FINGER);
+```c
+
+	HeartRateService hrService(ble, 
+		hrmCounter, HeartRateService::LOCATION_FINGER);
+```
 
 In our [URI Beacon](/GettingStarted/URIBeacon/) sample we talked about objects and their instances. To get the heart rate measurement we want, we need to create an instance of a type called ``HeartRateService``. This is an object that's defined as part of ``BLE_API``, so you can find its ``.h`` file in your compiler by going to **BLE_HeartRate > BLE_API > services > HeartRateService.h**.
 
@@ -108,6 +119,7 @@ Once we create an instance of a type by giving it a name and its initial paramet
 
 This is what we do with the ``hrService`` object:
 
+```c
 
 	while (true) {
 		if (triggerSensorPolling && ble.getGapState().connected) {
@@ -125,6 +137,7 @@ This is what we do with the ``hrService`` object:
 		} else {
 			ble.waitForEvent();
 		}
+```
 
 Let's break that down.
 
@@ -134,7 +147,10 @@ Before saying what the program should do (the function), we tell it when to do i
 
 The condition we're checking for this loop has two parts:
 
+```c
+
 	if (triggerSensorPolling && ble.getGapState().connected)
+```
 
 1. ``triggerSensorPolling``: checks whether we need to read a new value from heart-rate sensor. This condition is set to TRUE periodically (see [below](#eventdriven)). 
 
@@ -149,7 +165,10 @@ Both parts of the condition - trigger to read a new value and connection status 
 
 While the loop is running, it updates the heart rate reading it sends our fitness app. Since we're faking a sensor, our code supplies fake values:
 
+```c
+
 	hrmCounter++;
+```
 
 C++ has several shorthands it uses for common mathematical actions. When we see ``hrmCounter++``, it means that ``hrmCounter's`` value grows by 1. It's the same as saying ``hrmCounter = hrmCounter + 1``. This is called an *increment operator*.
 
@@ -161,10 +180,13 @@ In our code, every time the loop runs we take the current value of ``hrmCounter`
 
 But we don't want the heart rate to grow indefinitely, so we created a condition:
 
+```c
+
 	if (hrmCounter == 175) {
 		hrmCounter = 100;
 	}
 	hrService.updateHeartRate(hrmCounter);
+```
 
 This condition is checked every time the loop runs: every time we're done adding 1 to our heart rate, we check its new value. When it reaches 175, we change it to 100 and start counting to 175 again. 
 
@@ -176,7 +198,10 @@ Note also that the IF is nested in the WHILE loop; it doesn't wait for the WHILE
 
 When we determine what the heart rate is (our incremented value or back to 100), we set that as the value of the heart rate in the service. We called our instance of the service ``hrService`` earlier, so that's what we call it now. As an object of type ``HeartRateService``, it has a function called ``updateHeartRate`` (defined in the ``HeartRateService.h`` file), and that function can accept as an input our ``hrmCounter``. So, let's say the current value of ``hrmCounter`` is 83. We say:
 
+```c
+
 	hrService.updateHeartRate(hrmCounter);
+```
 
 Which means, in plain English, "tell the object *hrService* to use its function *updateHeartRate*; that function will update the object's heart rate value to *hrmCounter's* value".
 
@@ -211,7 +236,10 @@ In these cases, the event handler is used not to perform functions but rather to
 
 The last bit of the WHILE loop is the ELSE section. ELSE tells the program what to do if the condition of the WHILE loop isn't met. Remember that our condition was to have a sensor that's providing information and an active GAP connection. If the program sees that we don't have one or the other of these, it will enter the ELSE clause. 
 
+```c
+
 	ble.waitForEvent();
+```
 
 When we created our object we said that it's a BLE device, and that gave it the ability to use the function ``waitForEvent`` that belongs to the ``BLE. waitForEvent`` lets the device sleep until something is needed of it, to reduce battery usage. When an event occurs, for example when the heart rate monitor starts sending values (which is a condition of the WHILE loop), the device will wake up and update the value in the service. 
 
@@ -243,11 +271,17 @@ Your device's name is part of the advertisement information, and you can (and sh
 
 To rename your beacon, find the following line of code:
 
+```c
+
 	const static char     DEVICE_NAME[]        = "Nordic_HRM";
+```
 
 The default name is "Nordic_HRM". You can change it to anything you like (but stay under 18 characters). Don't forget to leave it in quotes. 
 
+```c
+
 	const static char     DEVICE_NAME[]        = "I_Renamed_This";
+```
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **Tip**: iOS "sticks" to the name it first discovers for each beacon, so whatever name you choose now you'll have for a while. This is called *caching*, and is intended to save your phone some time and energy.
