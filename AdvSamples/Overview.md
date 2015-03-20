@@ -14,8 +14,10 @@ Creating a BLE service may sound daunting, but we've created two templates that 
 
 * The *actuator service* template demonstrates the use of a read-write characteristic to control an LED through a phone app. You can get the code [here](https://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_LED/) or read the full explanation [here](/AdvSamples/LEDReadWrite/).
 
+* We have two more service samples that include the use of Evothings custom apps. The first reviews [customising a GAP advertising packet](/AdvSamples/CustomGAP/), and the second creates a [GATT service for control of a LED](/AdvSamples/GATTEvo/).
+
 ##Advanced Features
 
-We offer some articles about advanced features of standard implementations:
+Reviewing advanced features of standard implementations:
 
-* The [URI Beacon](AdvSamples/URIBeaconAdv/).
+* The [URI Beacon](AdvSamples/URIBeaconAdv/): dynamic configuration of the URIBeacon on start up and configuration persistence. 

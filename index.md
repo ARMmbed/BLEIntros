@@ -6,8 +6,9 @@ If you're totally new check out our [starters documentation](/GettingStarted/Des
 
 Some other references are our:
 
+* Our [review](/InDepth/BLEInDepth/) of BLE concepts.
 * [Tutorials](/GettingStarted/IntroSamples/), which cover basic BLE and programming concepts.
 * [Code samples](/AdvSamples/Overview/), which cover service creation and advanced features.
-* Our [review](/InDepth/BLEInDepth/) of BLE concepts.
+
 
 If after reading through our documents you find that you still have questions, try our [FAQ](/Additional/BLE_FAQ/) or ask [the community](https://developer.mbed.org/teams/Bluetooth-Low-Energy/community/).
