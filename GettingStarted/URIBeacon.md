@@ -35,7 +35,7 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 
 2. Import the [``BLE_URIBeacon``](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_URIBeacon/) program.
 
-3. In ``main.cpp``, find the line ``uriBeaconConfig = new URIBeaconConfigService(ble, params, !fetchedFromPersistentStorage, "http://uribeacon.org", defaultAdvPowerLevels);`` and edit the URL. Note that it's limited to 18 characters, with “http://www.” (or “http://”, if there’s no “www” ) counting as one, and the suffix “.org” (or “.com”) counting as another.
+3. In ``main.cpp``, find the line <br />``uriBeaconConfig = new URIBeaconConfigService(ble,`` <br /> ``params, !fetchedFromPersistentStorage,`` <br /> ``"http://uribeacon.org", defaultAdvPowerLevels);``<br /> and edit the URL. Note that it's limited to 18 characters, with “http://www.” (or “http://”, if there’s no “www” ) counting as one, and the suffix “.org” (or “.com”) counting as another.
 
 5. Compile the code. It will be downloaded to your Downloads folder (on some browsers you may need to specify a download location).
 
@@ -129,12 +129,15 @@ The first thing you'll see is a bunch of green text, sitting between /* a  * /.
 ###Including Other Files
 </a>
 
+```c
+
 	#include "mbed.h"
 	#include "BLEDevice.h"
 	#include "URIBeaconConfigService.h"
 	#include "DFUService.h"
 	#include "DeviceInformationService.h"
 	#include "ConfigParamsPersistence.h"
+```
 
 The next bit of the program is the inclusions list. This tells the compiler which files other than the ``main.cpp`` file it needs to include when it compiles your program. You can see that the ``URI Beacon`` program has six files it includes. These all focus on different capabilities, such as working with the mbed board (``mbed.h``) or the BLE itself (``BLEDevice.h``).
 
@@ -148,7 +151,10 @@ Once you've created instances you can use each one independently of the others. 
 
 In our program, we have an object type called ``BLEDevice``. This is a blueprint that includes instructions for communicating with the ``BLE API`` (remember that the ``BLE API`` is a way of telling the BLE chip what to do without need to know how it does it). The first line of our program builds an instance of the object - builds an actual house - and gives it a name. We do this by first saying what we want to build, and then what to call it. So the line
 
+```c
+
 	BLEDevice ble;
+```
 
 Says "give me an instance of the object type BLEDevice, and call it ble", so now we have an object that knows how to talk to the ``BLE API``.
 
@@ -162,7 +168,12 @@ ___
 
 URI Beacons are used to send a URL (a website's address). The line of code in our program that does that is:
 
-	uriBeaconConfig = new URIBeaconConfigService(ble, params, !fetchedFromPersistentStorage, "http://uribeacon.org", defaultAdvPowerLevels);
+```c
+
+	uriBeaconConfig = new URIBeaconConfigService(ble, 
+		params, !fetchedFromPersistentStorage, 
+		"http://uribeacon.org", defaultAdvPowerLevels);
+```
 
 You can very easily spot the interesting bit - it's "http://www.mbed.org". You can replace that URL with a URL of your choosing (but make sure to leave the quotes and the *http://www.* bit).
 
