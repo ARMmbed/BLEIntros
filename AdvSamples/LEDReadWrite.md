@@ -77,7 +77,8 @@ This code doesn't create any custom service; it advertises LED as the device nam
 			BREDR_NOT_SUPPORTED | GapAdvertisingData::
 			LE_GENERAL_DISCOVERABLE);
 
-		/* This is where we're collecting the device name into the advertisement payload. */
+		/* This is where we're collecting the device 
+		* name into the advertisement payload. */
 		ble.accumulateAdvertisingPayload(GapAdvertisingData::
 			COMPLETE_LOCAL_NAME, 
 			(uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
@@ -355,7 +356,8 @@ Note that within the ``onDataWritten`` callback, we can identify the characteris
 	*/
 
 	void onDataWrittenCallback(const GattCharacteristicWriteCBParams *params) {
-		if ((params->charHandle == ledState.getValueHandle()) && (params->len == 1)) {
+		if ((params->charHandle == ledState.getValueHandle()) && 
+			(params->len == 1)) {
 		actuatedLED = *(params->data); 
 		/* we interpret the 1-byte data
 		* received from the
