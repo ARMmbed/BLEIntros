@@ -392,7 +392,8 @@ Note that within the ``onDataWritten`` callback, we can identify the characteris
 		ble.accumulateAdvertisingPayload(GapAdvertisingData::
 			COMPLETE_LIST_16BIT_SERVICE_IDS, 
 			(uint8_t *)uuid16_list, sizeof(uuid16_list));
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::			COMPLETE_LOCAL_NAME, 
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::
+			COMPLETE_LOCAL_NAME, 
 			(uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
 		ble.setAdvertisingType(GapAdvertisingParams::
 			ADV_CONNECTABLE_UNDIRECTED);
