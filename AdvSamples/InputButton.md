@@ -23,15 +23,21 @@ Here's a basic template code to get you off the ground. We've thrown in a blinki
 	#include "mbed.h"
 	#include "BLEDevice.h"
 	
-	BLEDevice   ble;        	// Instantiation of a BLEDevice in global scope allows us to refer to it anywhere in the program.
+	/* Instantiation of a BLEDevice in global scope 
+	* allows us to refer to it anywhere in the program. */
+	BLEDevice   ble;        	
 	
 	DigitalOut led1(LED1);
 	
-	const static char DEVICE_NAME[] = "Button"; 	// setting up a device name helps with identifying your device; this is often very useful when there are several other BLE devices in the neighborhood.
+	/* setting up a device name helps with identifying your device; 
+	* this is often very useful when there are several other 
+	* BLE devices in the neighborhood */
+	const static char DEVICE_NAME[] = "Button"; 	
 
 	void disconnectionCallback(Gap::Handle_t handle, Gap::DisconnectionReason_t reason)
 	{
-		ble.startAdvertising();  // We need to explicitly re-enable advertisements after a connection teardown.
+		// We need to explicitly re-enable advertisements after a connection teardown.
+		ble.startAdvertising();  
 	}
 
 	void periodicCallback(void)
@@ -41,7 +47,9 @@ Here's a basic template code to get you off the ground. We've thrown in a blinki
 	
 	int main(void)
 	{
-		led1 = 1;                        		// System status LED starts out with being off; doesn't really  matter too much because we only toggle it.
+		/* System status LED starts out with being off; doesn't really 
+		* matter too much because we only toggle it. */
+		led1 = 1;                        		
 		Ticker ticker;                   		// A mechanism for periodic callbacks.
 		ticker.attach(periodicCallback, 1); 	// Setting up a callback to go at an interval of 1s.
 
@@ -53,10 +61,12 @@ Here's a basic template code to get you off the ground. We've thrown in a blinki
 		/* BREDR_NOT_SUPPORTED means classic bluetooth not supported;
  		* LE_GENERAL_DISCOVERABLE means that this peripheral can be
  		* discovered by any BLE scanner--i.e. any phone. */
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED | GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED | 
+			GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
 
 		/* This is where we're collecting the device name into the advertisement payload. */
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME, (uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME,
+			 (uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
 
 		/* We'd like for this BLE peripheral to be connectable. */
 		ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
@@ -67,7 +77,9 @@ Here's a basic template code to get you off the ground. We've thrown in a blinki
  		* parameter which influences power is the TX power of the radio
  		* level--there is an API to adjust that. */
 		
-		ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); /* 1000ms. */
+		/* 1000ms. */
+		ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); 
+		
 
 		/* we are finally good to go with advertisements. */
 		ble.startAdvertising();
@@ -97,13 +109,15 @@ We've chosen a custom UUID space for our button service: 0xA000 for the service,
 	#define BUTTON_SERVICE_UUID              0xA000
 	#define BUTTON_STATE_CHARACTERISTIC_UUID 0xA001
 	 
-	...
+	[...]
 	 
 	static const uint16_t uuid16_list[] = {BUTTON_SERVICE_UUID};
 	 
-	...
- 	
-	ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_16BIT_SERVICE_IDS, (uint8_t *)uuid16_list, sizeof(uuid16_list));
+	[...]
+
+	ble.accumulateAdvertisingPayload(GapAdvertisingData::
+		COMPLETE_LIST_16BIT_SERVICE_IDS, 
+		(uint8_t *)uuid16_list, sizeof(uuid16_list));
 ```
 
 Adding the button service UUID to the advertising payload is purely optional. Having it is good practice, however, since it gives an early and cheap indication to interested client apps regarding the capabilities of the mbed application. 
@@ -127,7 +141,9 @@ The code only looks complicated; it is essentially a simple use of C++ templates
 ```c
 
 	bool buttonPressed = false; //button initial state
-	ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, &buttonPressed);//read-only characteristic of type boolean, accepting the buttonState’s UUID and initial value
+	/read-only characteristic of type boolean, accepting the buttonState’s UUID and initial value
+	ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, 
+		&buttonPressed);/
 ```
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
@@ -141,8 +157,8 @@ The above definition for the buttonState characteristic may be enhanced to allow
 
 ```c
 
-	    
-	ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, &buttonPressed, GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY);
+	ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, 
+		&buttonPressed, GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY);
 ```
 
 
@@ -156,10 +172,16 @@ This service can then be added to the BLE stack using ``BLEDevice::addService()`
 
 ```c
 
-	GattCharacteristic *charTable[] = {&buttonState};//the service’s characteristic will be the button’s state
-	GattService         buttonService(BUTTON_SERVICE_UUID, charTable, sizeof(charTable) / sizeof(GattCharacteristic *));//the service is given the UUID we set for it earlier, as well as the charTable we just built from the buttonState variable
-	ble.addService(buttonService);//the BLE object’s addService function now builds the buttonService
-```
+	//the service’s characteristic will be the button’s state
+	GattCharacteristic *charTable[] = {&buttonState};
+
+	/* the service is given the UUID we set for it earlier, as well as the charTable 
+	* we just built from the buttonState variable */
+	GattService         buttonService(BUTTON_SERVICE_UUID, 
+		charTable, sizeof(charTable) / sizeof(GattCharacteristic *));
+	
+	//the BLE object’s addService function now builds the buttonService
+	ble.addService(buttonService);```
 
 ##Putting it Together
 
@@ -179,7 +201,8 @@ So, now we have the following code which defines a custom button service contain
 	const static char     DEVICE_NAME[] = "Button";
 	static const uint16_t uuid16_list[] = {BUTTON_SERVICE_UUID}; 
 	
-	void disconnectionCallback(Gap::Handle_t handle, Gap::DisconnectionReason_t reason)
+	void disconnectionCallback(Gap::Handle_t handle, Gap::
+		DisconnectionReason_t reason)
 	{
 		ble.startAdvertising();
 	} 
@@ -208,15 +231,24 @@ So, now we have the following code which defines a custom button service contain
 		ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, &buttonPressed, 		GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY);
 
 		GattCharacteristic *charTable[] = {&buttonState};
-		GattService         buttonService(BUTTON_SERVICE_UUID, charTable, sizeof(charTable) / sizeof(GattCharacteristic *));
+		GattService         buttonService(BUTTON_SERVICE_UUID, 
+						charTable, sizeof(charTable) / sizeof(GattCharacteristic *));
 		ble.addService(buttonService);
 
 		/* setup advertising */
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED | GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_16BIT_SERVICE_IDS, (uint8_t *)uuid16_list, sizeof(uuid16_list));
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME, (uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
-		ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
-		ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); /* 1000ms. */
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED
+			 | GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::
+			COMPLETE_LIST_16BIT_SERVICE_IDS, 
+			(uint8_t *)uuid16_list, sizeof(uuid16_list));
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::
+			COMPLETE_LOCAL_NAME, (uint8_t *)DEVICE_NAME, 
+			sizeof(DEVICE_NAME));
+		ble.setAdvertisingType(GapAdvertisingParams::
+			ADV_CONNECTABLE_UNDIRECTED);
+		 /* 1000ms. */
+		ble.setAdvertisingInterval(Gap::
+			MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000));
 		ble.startAdvertising();
 
 		while (true) {
@@ -244,13 +276,17 @@ The following code sets up callbacks for when button1 is pressed or released:
 	void buttonPressedCallback(void)//reaction to falling edge
 	{
 		buttonPressed = true;
-		ble.updateCharacteristicValue(buttonState.getValueHandle(), (uint8_t *)&buttonPressed, sizeof(bool));//gives the buttonState characteristic the value TRUE
+		//gives the buttonState characteristic the value TRUE
+		ble.updateCharacteristicValue(buttonState.getValueHandle(), 
+			(uint8_t *)&buttonPressed, sizeof(bool));
 	}
 
 	void buttonReleasedCallback(void)//reaction to rising edge
 	{
 		buttonPressed = false;
-		ble.updateCharacteristicValue(buttonState.getValueHandle(), (uint8_t *)&buttonPressed, sizeof(bool));//gives the buttonState characteristic the value FALSE
+		//gives the buttonState characteristic the value FALSE
+		ble.updateCharacteristicValue(buttonState.getValueHandle(), 
+			(uint8_t *)&buttonPressed, sizeof(bool));
 	}
 	...
 	int main(void)
@@ -278,22 +314,27 @@ Note that ``updateCharacteristicValue()`` identifies the ``buttonState`` charact
 	static const uint16_t uuid16_list[] = {BUTTON_SERVICE_UUID};
 	
 	bool buttonPressed = false;
-	ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, &buttonPressed,
-	GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY);//buttonState is accessible to button callbacks
+	ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, 
+		&buttonPressed,
+	//buttonState is accessible to button callbacks
+	GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY);
 
 	void buttonPressedCallback(void)
 	{
 		buttonPressed = true;
-		ble.updateCharacteristicValue(buttonState.getValueHandle(), (uint8_t *)&buttonPressed, sizeof(bool));
+		ble.updateCharacteristicValue(buttonState.getValueHandle(), 
+			(uint8_t *)&buttonPressed, sizeof(bool));
 	}
 	
 	void buttonReleasedCallback(void)
 	{
 		buttonPressed = false;
-		ble.updateCharacteristicValue(buttonState.getValueHandle(), (uint8_t *)&buttonPressed, sizeof(bool));
+		ble.updateCharacteristicValue(buttonState.getValueHandle(), 
+			(uint8_t *)&buttonPressed, sizeof(bool));
 	}
 
-	void disconnectionCallback(Gap::Handle_t handle, Gap::DisconnectionReason_t reason)
+	void disconnectionCallback(Gap::Handle_t handle, 
+		Gap::DisconnectionReason_t reason)
 	{
 		ble.startAdvertising();
 	}
@@ -315,15 +356,24 @@ Note that ``updateCharacteristicValue()`` identifies the ``buttonState`` charact
 		ble.onDisconnection(disconnectionCallback);
 
 		GattCharacteristic *charTable[] = {&buttonState};
-		GattService         buttonService(BUTTON_SERVICE_UUID, charTable, sizeof(charTable) / sizeof(GattCharacteristic *));
+		GattService         buttonService(BUTTON_SERVICE_UUID, 
+			charTable, sizeof(charTable) / sizeof(GattCharacteristic *));
 		ble.addService(buttonService);
 
 		/* setup advertising */
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED | GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_16BIT_SERVICE_IDS, (uint8_t *)uuid16_list, sizeof(uuid16_list));
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME, (uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
-		ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
-		ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); /* 1000ms. */
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::
+			BREDR_NOT_SUPPORTED 
+			| GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::
+			COMPLETE_LIST_16BIT_SERVICE_IDS, 
+			(uint8_t *)uuid16_list, sizeof(uuid16_list));
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::
+			COMPLETE_LOCAL_NAME, 
+			(uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
+		ble.setAdvertisingType(GapAdvertisingParams::
+			ADV_CONNECTABLE_UNDIRECTED);
+		/* 1000ms. */
+		ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); 
 		ble.startAdvertising();
 
 		while (true) {
@@ -378,7 +428,9 @@ Nearly all ``BLE APIs`` require a reference to ``BLEDevice``, so we must require
 	* to initialize the member variables. */
 
 		ButtonService(BLEDevice &_ble, bool buttonPressedInitial) :
-			ble(_ble), buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, &buttonPressedInitial, GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY)
+			ble(_ble), buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, 
+				&buttonPressedInitial, 
+				GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY)
 		{
 			/* empty */
 		}
@@ -418,8 +470,11 @@ We can move more of the service’s setup into the constructor:
 	};
 
 	#endif /* #ifndef __BLE_BUTTON_SERVICE_H__ */
+```
 
 And here's a small extension with a helper API that updates the button’s state:
+
+```c
 
 	#ifndef __BLE_BUTTON_SERVICE_H__
 	#define __BLE_BUTTON_SERVICE_H__
@@ -429,15 +484,19 @@ And here's a small extension with a helper API that updates the button’s state
 		const static uint16_t BUTTON_SERVICE_UUID              = 0xA000;
 		const static uint16_t BUTTON_STATE_CHARACTERISTIC_UUID = 0xA000;
 		ButtonService(BLEDevice &_ble, bool buttonPressedInitial) :
-		ble(_ble), buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, &buttonPressedInitial, GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY)
+		ble(_ble), buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, 
+			&buttonPressedInitial, 
+			GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY)
 	{
 		GattCharacteristic *charTable[] = {&buttonState};
-		GattService         buttonService(ButtonService::BUTTON_SERVICE_UUID, charTable, sizeof(charTable) / sizeof(GattCharacteristic *));
+		GattService         buttonService(ButtonService::BUTTON_SERVICE_UUID, 
+			charTable, sizeof(charTable) / sizeof(GattCharacteristic *));
 		ble.addService(buttonService);
 	}
 	
 	void updateButtonState(bool newState) {
-		ble.updateCharacteristicValue(buttonState.getValueHandle(), (uint8_t *)&newState, sizeof(bool));
+		ble.updateCharacteristicValue(buttonState.getValueHandle(), 
+			(uint8_t *)&newState, sizeof(bool));
 	}
 	private:
 		BLEDevice                        &ble;
@@ -471,7 +530,8 @@ And now with this encapsulated away in the ``ButtonService``, the main applicati
 		buttonServicePtr->updateButtonState(false);
 	}
 
-	void disconnectionCallback(Gap::Handle_t handle, Gap::DisconnectionReason_t reason)
+	void disconnectionCallback(Gap::Handle_t handle, 
+		Gap::DisconnectionReason_t reason)
 	{
 		ble.startAdvertising();
 	}
@@ -497,11 +557,18 @@ And now with this encapsulated away in the ``ButtonService``, the main applicati
 		buttonServicePtr = &buttonService;
 
 		/* setup advertising */
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED | GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_16BIT_SERVICE_IDS, (uint8_t *)uuid16_list, sizeof(uuid16_list));
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME, (uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
-		ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
-		ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); /* 1000ms. */
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED
+			 | GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::
+			COMPLETE_LIST_16BIT_SERVICE_IDS, 
+			(uint8_t *)uuid16_list, sizeof(uuid16_list));
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::
+			COMPLETE_LOCAL_NAME, 
+			(uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
+		ble.setAdvertisingType(GapAdvertisingParams::
+			ADV_CONNECTABLE_UNDIRECTED);
+		/* 1000ms. */
+		ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); 
 		ble.startAdvertising();
 
 		while (true) {
