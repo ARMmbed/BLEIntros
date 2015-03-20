@@ -118,7 +118,8 @@ Next, we set up the advertising flags:
 
 ```c
 
-	    ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED | 
+	    ble.accumulateAdvertisingPayload(GapAdvertisingData::
+			BREDR_NOT_SUPPORTED | 
 			GapAdvertisingData::LE_GENERAL_DISCOVERABLE );
     	ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
 ```
@@ -131,7 +132,8 @@ We can then set up the payload. The header ``MANUFACTURER_SPECIFIC_DATA`` is the
 
 ```c
 
-	    ble.accumulateAdvertisingPayload(GapAdvertisingData::MANUFACTURER_SPECIFIC_DATA, 
+	    ble.accumulateAdvertisingPayload(GapAdvertisingData::
+			MANUFACTURER_SPECIFIC_DATA, 
 			AdvData, sizeof(AdvData));
 ```
 

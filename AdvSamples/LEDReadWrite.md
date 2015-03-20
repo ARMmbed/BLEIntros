@@ -573,7 +573,8 @@ And now with this encapsulated away in the ``LEDService``, the main application 
 	*/
 
 	void onDataWrittenCallback(const GattCharacteristicWriteCBParams *params) {
-		if ((params->charHandle == ledServicePtr->getValueHandle()) && (params->len == 1)) {
+		if ((params->charHandle == ledServicePtr->getValueHandle()) && 
+			(params->len == 1)) {
 		actuatedLED = *(params->data);
 		}
 	}
