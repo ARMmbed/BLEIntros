@@ -205,7 +205,8 @@ Now we set up the advertising parameters:
 	ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME, 
 		(uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME)); 
 	// UUID's broadcast in advertising packet
-    ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_16BIT_SERVICE_IDS, 
+    ble.accumulateAdvertisingPayload(GapAdvertisingData::
+		COMPLETE_LIST_16BIT_SERVICE_IDS, 
 		(uint8_t *)uuid16_list, sizeof(uuid16_list)); 
 	// 100ms; in multiples of 0.625ms.
     ble.setAdvertisingInterval(160); 
