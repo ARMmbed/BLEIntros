@@ -42,7 +42,8 @@ Here's a basic template code to get you off the ground. We've thrown in a blinki
 
 	void periodicCallback(void)
 	{
-		led1 = !led1; /* Do blinky on LED1 to indicate the system is in operational status. */
+		/* Do blinky on LED1 to indicate the system is in operational status. */
+		led1 = !led1; 
 	}
 	
 	int main(void)
@@ -50,10 +51,13 @@ Here's a basic template code to get you off the ground. We've thrown in a blinki
 		/* System status LED starts out with being off; doesn't really 
 		* matter too much because we only toggle it. */
 		led1 = 1;                        		
-		Ticker ticker;                   		// A mechanism for periodic callbacks.
-		ticker.attach(periodicCallback, 1); 	// Setting up a callback to go at an interval of 1s.
+		// A mechanism for periodic callbacks.
+		Ticker ticker;                   		
+		// Setting up a callback to go at an interval of 1s.
+		ticker.attach(periodicCallback, 1); 	
 
-		ble.init();                      		/*  initialize the BLE stack and controller. */
+		/*  initialize the BLE stack and controller. */
+		ble.init();                      		
 		ble.onDisconnection(disconnectionCallback);
 
 		/* setup advertising */
@@ -64,12 +68,15 @@ Here's a basic template code to get you off the ground. We've thrown in a blinki
 		ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED | 
 			GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
 
-		/* This is where we're collecting the device name into the advertisement payload. */
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME,
+		/* This is where we're collecting the device 
+		* name into the advertisement payload. */
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::
+			COMPLETE_LOCAL_NAME,
 			 (uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
 
 		/* We'd like for this BLE peripheral to be connectable. */
-		ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
+		ble.setAdvertisingType(GapAdvertisingParams::
+			ADV_CONNECTABLE_UNDIRECTED);
 
 		/* set the interval at which advertisements are sent out; this has
  		* an implication power consumption--radio activity being a
@@ -141,9 +148,10 @@ The code only looks complicated; it is essentially a simple use of C++ templates
 ```c
 
 	bool buttonPressed = false; //button initial state
-	/read-only characteristic of type boolean, accepting the buttonState’s UUID and initial value
+	/* read-only characteristic of type boolean, 
+	* accepting the buttonState’s UUID and initial value */
 	ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, 
-		&buttonPressed);/
+										&buttonPressed);/
 ```
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
@@ -182,6 +190,7 @@ This service can then be added to the BLE stack using ``BLEDevice::addService()`
 	
 	//the BLE object’s addService function now builds the buttonService
 	ble.addService(buttonService);```
+```
 
 ##Putting it Together
 
@@ -228,7 +237,9 @@ So, now we have the following code which defines a custom button service contain
 		*/
 
 		bool buttonPressed = false;
-		ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, &buttonPressed, 		GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY);
+		ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, 
+			&buttonPressed, 		
+			GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY);
 
 		GattCharacteristic *charTable[] = {&buttonState};
 		GattService         buttonService(BUTTON_SERVICE_UUID, 
@@ -457,10 +468,14 @@ We can move more of the service’s setup into the constructor:
 		const static uint16_t BUTTON_STATE_CHARACTERISTIC_UUID = 0xA001;
 
 	ButtonService(BLEDevice &_ble, bool buttonPressedInitial) :
-	ble(_ble), buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, &buttonPressedInitial, GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY)
+	ble(_ble), buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, 
+		&buttonPressedInitial, GattCharacteristic::
+		BLE_GATT_CHAR_PROPERTIES_NOTIFY)
 	{
 		GattCharacteristic *charTable[] = {&buttonState};
-		GattService         buttonService(ButtonService::BUTTON_SERVICE_UUID, charTable, sizeof(charTable) / sizeof(GattCharacteristic *));
+		GattService         buttonService(ButtonService::
+			BUTTON_SERVICE_UUID, 
+			charTable, sizeof(charTable) / sizeof(GattCharacteristic *));
 		ble.addService(buttonService);
 	}
 
@@ -504,8 +519,11 @@ And here's a small extension with a helper API that updates the button’s state
 	};
 	
 	#endif /* #ifndef __BLE_BUTTON_SERVICE_H__ */
+```
 
 And now with this encapsulated away in the ``ButtonService``, the main application is more readable:
+
+```c
 
 	#include "mbed.h"
 	#include "BLEDevice.h"
