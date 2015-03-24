@@ -94,20 +94,161 @@ You can view a [short video demonstrating this](https://www.youtube.com/watch?v=
 
 The following images show how to use Nordic's Master Control Panel to view a DFU-capable application.
 
-* The default app (DefaultApp), listed in the Master Control Panel. Tap the app to view more information:
+* The default app (DefaultApp), listed in the Master Control Panel. Tap the app to view more information.
 
 <span style="text-align:center; display:block;">
 ![](/FOTA/Images/Viewing1.png)
 </span>
 
-* General information for the default app. Note the Device Firmware Update Service section; tap the section to view more information:
+* General information for the default app. Note the Device Firmware Update Service section; tap the section to view more information.
 
 <span style="text-align:center; display:block;">
 ![](/FOTA/Images/Viewing2.png)
 </span>
 
-* Detailed information for the Device Firmware Update Service: 
+* Detailed information for the Device Firmware Update Service.
 
 <span style="text-align:center; display:block;">
 ![](/FOTA/Images/Viewing3.png)
 </span>
+
+###Triggering FOTA
+
+The following images show how Nordic's Master Control Panel can be used to cause a DFU-capable application to forward control to the boot loader. The boot loader then checks for firmware updates on the server and transfers them to the device:
+
+* We start at the detailed view of the app that we saw in the previous section. The DFU Control Point offers FOTA triggers.
+
+<span style="text-align:center; display:block;">
+![](/FOTA/Images/Trigger1.png)
+</span>
+
+* Tap the up arrow to view the write options. This is the FOTA’s control-point.
+
+<span style="text-align:center; display:block;">
+![](/FOTA/Images/Trigger2.png)
+</span>
+
+* The control-point options are:
+	* SoftDevice.
+	* Boot loader.
+	* Application.
+
+<span style="text-align:center; display:block;">
+![](/FOTA/Images/Trigger3.png)
+</span>
+
+* For this example, we select the third option: Application.
+
+<span style="text-align:center; display:block;">
+![](/FOTA/Images/Trigger4.png)
+</span>
+
+* The Master Control Panel now shows the default application under the name DfuTarg, indicating that the boot loader is running.
+
+<span style="text-align:center; display:block;">
+![](/FOTA/Images/Trigger5.png)
+</span>
+
+###Driving FOTA
+
+Finally, these images show the main FOTA sequence using the boot loader:
+
+* We start at the detailed view of the app that we saw in the first section. Since we already triggered FOTA in the previous section (meaning we transferred control of the application to the DFU-service), we can now update the application.
+
+<span style="text-align:center; display:block;">
+![](/FOTA/Images/Driving1.png)
+</span>
+
+* Tap the DFU button to select a file type.
+
+
+<span style="text-align:center; display:block;">
+![](/FOTA/Images/Driving2.png)
+</span>
+
+* The file type options are:
+	* SoftDevice.
+	* Boot loader.
+	* Application.
+	* Multiple files (in ZIP format).
+<br /><br />For this example, we select the Application file type.
+
+
+<span style="text-align:center; display:block;">
+![](/FOTA/Images/Driving3.png)
+</span>
+
+* We can now select a source for the file.
+
+
+<span style="text-align:center; display:block;">
+![](/FOTA/Images/Driving4.png)
+</span>
+
+* The update begins as soon as we select the file. We can see its progress, and the transfer speed.
+
+
+<span style="text-align:center; display:block;">
+![](/FOTA/Images/Driving5.png)
+</span>
+
+
+* When the update is finished, we return to the Master Control Panel. The application is no longer under the boot loader’s control. Instead, it is back under its own control, and is therefore no longer listed as DfuTarg (note that the update changed the application’s name, so that it is also no longer called DefaultApp). 
+
+
+<span style="text-align:center; display:block;">
+![](/FOTA/Images/Driving6.png)
+</span>
+
+###Attribute and Service Caching
+
+Note that a GATT client app often caches the results from a service discovery. However, after changing or updating an application – and especially after replacing it with a different application – your app may need to re-discover services. You may therefore want to restart the app or the Bluetooth service after a FOTA update.
+
+##UART Access over BLE
+###Overview
+
+If you want to receive console outputs from an updated app, it is possible to do so over the BLE UART Service. For instance, the default app that comes bundled with the boot loader generates regular pings on the RX characteristic of the UARTService. These pings can be received using several UART apps, such as Nordic's nRF UART.
+
+Please note:
+
+1.	At the moment, you cannot have more than one active connection to a BLE device. For example, if you're working with a heart-rate application and you've connected to it using nRF UART for console output, then you cannot simultaneously connect to it from another heart-rate phone app.
+
+2.	Console messages are sent in notification packets of up to 20 bytes; this limit is imposed by the Bluetooth standard. Longer messages need to be cropped into a sequence of 20-byte packets. 
+
+3.	Output buffers internal to the UARTService are flushed upon encountering a newline character; the receiving UART application should be able to stitch together cropped portions of longer messages.
+
+###Using the UART Service
+
+The following program illustrates the use of UARTService to redirect something like printf() to use the BLE transport.
+
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+[Import the BLE_UARTConsole program to your compiler](https://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_UARTConsole/).
+</span>
+
+```c
+
+	#if NEED_CONSOLE_OUTPUT
+	#define DEBUG(STR) { if (uart) uart->write(STR, strlen(STR)); }
+	#else
+	#define DEBUG(...) /* nothing */
+	#endif /* #if NEED_CONSOLE_OUTPUT */
+
+		uart = new UARTService(ble);
+		DEBUG("ping\r\n");
+```
+
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+**Note:** You will need to include ``UARTService.h.``
+</span>
+
+##Limitations of the Current Implementation
+
+* There is no security or safety built into the process yet; anyone with the right tools can update a FOTA-capable target. Resolving this is very high on our priorities.
+
+* Building FOTA binaries currently requires using a "shadow" build platform for every target. This process is cumbersome and should be simplified. 
+
+* FOTA requires installing an initial image containing the boot loader. For non-official mbed platforms, this means that a user would need to understand the internals well enough to be able to build an initial image, and also find a programming interface to transfer it to the target. We're working on releasing a USB->SWD adaptor that can target nRF51822 boards that don't have an mbed CMSIS-DAP interface.
+
+* The two-stage FOTA process is cumbersome and error-prone. We're working on creating a simple reference app to drive FOTA. Eventually we hope to release an SDK to allow users to create their own FOTA driver applications.
+
+
