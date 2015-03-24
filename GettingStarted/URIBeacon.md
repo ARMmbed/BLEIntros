@@ -51,6 +51,10 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 ##Getting Started With the Compiler
 </a>
 
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+Take a look at the [mbed quick start video](https://www.youtube.com/watch?v=L5TcmFFD0iw).
+</span>
+
 The mbed compiler can take the same program and compile it to match any mbed board that supports BLE. This means you're not constrained in your board selection, but it also means that you need to tell the compiler which board you're working with at any given time.
 
 To select a board for the program: 
