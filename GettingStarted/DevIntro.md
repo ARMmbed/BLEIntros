@@ -65,6 +65,8 @@ ____
 **Tip:** If you don’t know how to register your board, or how to work with the mbed compiler, please see the [extended URI Beacon tutorial](/GettingStarted/URIBeacon/). 
 </span>
 
+You might want to start with a short [video](https://www.youtube.com/watch?v=vZ-_fZlV2-w&feature=youtu.be).
+
 To get this sample working, you'll need:
 
 + To see BLE devices and their advertisement or beacon information, get *one* of the following installed on your phone: 

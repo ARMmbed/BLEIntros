@@ -10,6 +10,8 @@ This tutorial covers:
 
 2. Understanding [the code](#understanding), including [comments](#comments), [including other files](#include), an introduction to [objects](#objects), [editing the beacon](#edituribeacon) and [compiling and installing your program](#installing).
 
+You might want to start with a short [video](https://www.youtube.com/watch?v=vZ-_fZlV2-w&feature=youtu.be).
+
 ##What You'll Need
 
 To get this going, you'll need:
