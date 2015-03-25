@@ -93,8 +93,7 @@ This code doesn't create any custom service; it advertises LED as the device nam
  		* level--there is an API to adjust that. */
 		
 		/* 1000ms. */
-		ble.setAdvertisingInterval(Gap::
-			MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); 
+		ble.setAdvertisingInterval(1000);
 
 		/* we're finally good to go with advertisements. */
 		ble.startAdvertising();
@@ -266,8 +265,7 @@ So, now we have the following code which defines a custom led service containing
 		ble.setAdvertisingType(GapAdvertisingParams::
 			ADV_CONNECTABLE_UNDIRECTED);
 		/* 1000ms. */
-		ble.setAdvertisingInterval(Gap::
-			MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); 
+		ble.setAdvertisingInterval(1000);
 		ble.startAdvertising();
 
 		while (true) {
@@ -400,7 +398,7 @@ Note that within the ``onDataWritten`` callback, we can identify the characteris
 		ble.setAdvertisingType(GapAdvertisingParams::
 			ADV_CONNECTABLE_UNDIRECTED);
 		 /* 1000ms. */
-		ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000));
+		ble.setAdvertisingInterval(1000);
 		ble.startAdvertising();
 
 		while (true) {
@@ -606,8 +604,7 @@ And now with this encapsulated away in the ``LEDService``, the main application 
 			COMPLETE_LOCAL_NAME, 
 			(uint8_t *)DEVICE_NAME, sizeof(DEVICE_NAME));
 		ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
-		/* 1000ms. */
-		ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); 
+		ble.setAdvertisingInterval(1000); /* 1000ms. */
 		ble.startAdvertising();
 
 		while (true) {

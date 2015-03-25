@@ -85,8 +85,7 @@ Here's a basic template code to get you off the ground. We've thrown in a blinki
  		* level--there is an API to adjust that. */
 		
 		/* 1000ms. */
-		ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); 
-		
+		ble.setAdvertisingInterval(1000);
 
 		/* we are finally good to go with advertisements. */
 		ble.startAdvertising();
@@ -249,17 +248,13 @@ So, now we have the following code which defines a custom button service contain
 		/* setup advertising */
 		ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED
 			 | GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::
-			COMPLETE_LIST_16BIT_SERVICE_IDS, 
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_16BIT_SERVICE_IDS,
 			(uint8_t *)uuid16_list, sizeof(uuid16_list));
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::
-			COMPLETE_LOCAL_NAME, (uint8_t *)DEVICE_NAME, 
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME,
+			(uint8_t *)DEVICE_NAME,
 			sizeof(DEVICE_NAME));
-		ble.setAdvertisingType(GapAdvertisingParams::
-			ADV_CONNECTABLE_UNDIRECTED);
-		 /* 1000ms. */
-		ble.setAdvertisingInterval(Gap::
-			MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000));
+		ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
+		ble.setAdvertisingInterval(1000); /* 1000ms. */
 		ble.startAdvertising();
 
 		while (true) {
@@ -384,7 +379,7 @@ Note that ``updateCharacteristicValue()`` identifies the ``buttonState`` charact
 		ble.setAdvertisingType(GapAdvertisingParams::
 			ADV_CONNECTABLE_UNDIRECTED);
 		/* 1000ms. */
-		ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); 
+		ble.setAdvertisingInterval(1000);
 		ble.startAdvertising();
 
 		while (true) {
@@ -586,7 +581,7 @@ And now with this encapsulated away in the ``ButtonService``, the main applicati
 		ble.setAdvertisingType(GapAdvertisingParams::
 			ADV_CONNECTABLE_UNDIRECTED);
 		/* 1000ms. */
-		ble.setAdvertisingInterval(Gap::MSEC_TO_ADVERTISEMENT_DURATION_UNITS(1000)); 
+		ble.setAdvertisingInterval(1000);
 		ble.startAdvertising();
 
 		while (true) {
