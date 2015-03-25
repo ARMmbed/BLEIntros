@@ -90,6 +90,46 @@ This is the terminal output. Note that "waiting" is printed every time ``waitFor
 ![](/BLEIntros/InDepth/Images/TerminalOutput.png)
 </span>
 
+###Printf() Macros
+
+There are some nifty tricks you can do with pre-processor macros using printf()s:
+
+```c
+	
+	-- within some header file named like trace.h --
+	enum {
+		TRACE_LEVEL_DEBUG,
+		TRACE_LEVEL_WARNING
+	};
+
+	extern unsigned traceLevel;
+
+	...
+
+	// Trace output depends on traceLevel value
+	#define TRACE_DEBUG(...)      { if (traceLevel >= TRACE_LEVEL_DEBUG)   { printf("-D- " __VA_ARGS__); } }
+	#define TRACE_WARNING(...)    { if (traceLevel >= TRACE_LEVEL_WARNING) { printf("-W- " __VA_ARGS__); } }
+```
+
+Here's a contribution from a user:
+
+```c
+
+
+
+	#define LOG(x, ...)  
+		{ printf("\x1b[34m%12.12s: \x1b[39m"x"\x1b[39;49m\r\n", 
+		MODULE_NAME, ##__VA_ARGS__); fflush(stdout); }
+	#define WARN(x, ...) 
+		{ printf("\x1b[34m%12.12s: \x1b[33m"x"\x1b[39;49m\r\n", 
+		MODULE_NAME, ##__VA_ARGS__); fflush(stdout); }
+
+```
+
+Set ``#define MODULE_NAME "<YourModuleName>"`` before #including the above code, and enjoy colourised, formatted printf tagged with the module name that generated it.
+
+###Fast Circular Log-Buffers Based on printf()
+
 
 
 ##The UART Service

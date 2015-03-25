@@ -248,7 +248,8 @@ So, now we have the following code which defines a custom button service contain
 		/* setup advertising */
 		ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED
 			 | GapAdvertisingData::LE_GENERAL_DISCOVERABLE);
-		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LIST_16BIT_SERVICE_IDS,
+		ble.accumulateAdvertisingPayload(GapAdvertisingData::
+			COMPLETE_LIST_16BIT_SERVICE_IDS,
 			(uint8_t *)uuid16_list, sizeof(uuid16_list));
 		ble.accumulateAdvertisingPayload(GapAdvertisingData::COMPLETE_LOCAL_NAME,
 			(uint8_t *)DEVICE_NAME,
