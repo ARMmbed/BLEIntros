@@ -309,8 +309,6 @@ Now, we connect to the GDB server (for ease of reading, we've added line breaks 
 
 Now we can perform normal debugging using the GDB command console (or a GUI, if our heart desires).
 
-
-
 ##The UART Service
 
 BLE has a UART service that allows debugging over the BLE connection (by forwarding the output over BLE), rather than through the interface chip.
@@ -341,7 +339,12 @@ Note that:
 
 * Currently you can only have one BLE connection to the device at any one time, and the UART app used for debugging takes up that connection. For example, if you're monitoring a heart rate device and receiving output over the nRF UART app, you cannot simultaneously connect to the heart rate device with a standard heart rate app to view the heart rate.
 
-
 ##Sniffers
 
+Third-party sniffers can intercept the BLE communication itself and show us what's being sent how. For example, we could see if our [connection parameters](InDepth/ConnectionParameters/) are being honoured. 
 
+Sniffing radio activity can now be done with smart phone apps like [Bluetooth HCI Logger (for Android)](https://play.google.com/store/apps/details?id=com.android_rsap.logger&hl=en); these generate logs that can be analysed with tools like [Wireshark](https://www.wireshark.org/).
+
+**Tip:** to learn about the Android Bluetooth HCI snoop log, start [here](http://www.androidcentral.com/all-about-your-phones-developer-options).
+
+If you want to use a separate BLE device (not your phone) to sniff the BLE traffic, you can try [Nordic's nRF Sniffer](https://www.nordicsemi.com/eng/Products/Bluetooth-Smart-Bluetooth-low-energy/nRF-Sniffer) on a Nordic BLE board.
