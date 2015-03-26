@@ -29,7 +29,7 @@ If you're familiar with mbed and our compiler, you can get the heart rate monito
 
 2. Import the [``heart rate service``](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_HeartRate/).
 
-3. In ``main.cpp``, find the line ``const static char DEVICE_NAME[] = "Nordic_HRM";`` and change the beacon's name from Nordic_HRM. 
+3. In ``main.cpp``, find the line ``const static char DEVICE_NAME[] = "HRM1";`` and change the beacon's name from HRM1. 
 
 4. Compile the code. It will be downloaded to your Downloads folder (on some browsers you may need to specify a download location). <br />**Note:** make sure you've selected the correct platform as the compilation target. The platform is shown on the right-hand top corner of the compiler. If you're seeing the wrong platform, click it to open the Select Platform window.
 
@@ -273,10 +273,10 @@ To rename your beacon, find the following line of code in the ``main.cpp`` file:
 
 ```c
 
-	const static char     DEVICE_NAME[]        = "Nordic_HRM";
+	const static char     DEVICE_NAME[]        = "HRM1";
 ```
 
-The default name is "Nordic_HRM". You can change it to anything you like (but stay under 18 characters). Don't forget to leave it in quotes. 
+The default name is "HRM1". You can change it to anything you like (but stay under 18 characters). Don't forget to leave it in quotes. 
 
 ```c
 
