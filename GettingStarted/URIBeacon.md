@@ -50,6 +50,8 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 7. Restart the board.
 
 7. On the app you installed on your phone, discover your beacon and check that the URL is correct.
+<br />
+**Note:** the URIBeacon goes into [configuration mode](/AdvSamples/URIBeaconAdv/) for the first 60 seconds after it's turned on. It will appear with your information when that minute is up.
 
 <a name=”compiler”>
 ##Getting Started With the Compiler
@@ -214,10 +216,12 @@ To compile and install your program:
 6. Restart the board.
 
 6. Your board is now working as a URI beacon with the URL you gave it. If it has a battery, you can unplug it from the computer and walk around with it.
+<br />
+**Note:** the URIBeacon goes into [configuration mode](/AdvSamples/URIBeaconAdv/) for the first 60 seconds after it's turned on. It will appear with your information when that minute is up.
 
 ##Finding Your URI Beacon
 
-Using one of the applications you installed on your phone during our *What You'll Need* section, discover your beacon and check that the URL is correct.
+Using one of the applications you installed on your phone during our *What You'll Need* section, discover your beacon and check that the URL is correct (don't forget that the beacon will be in configuration mode for the first 60 seconds after it's turned on).
 
 Discovering the beacon:
 

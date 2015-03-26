@@ -101,6 +101,8 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 7. Restart the board.
 
 7. On the app you installed on your phone, discover your beacon and check that the URL is correct.
+<br />
+**Note:** the URIBeacon goes into [configuration mode](/AdvSamples/URIBeaconAdv/) for the first 60 seconds after it's turned on. It will appear with your information when that minute is up.
 
 You might be interested in some of the URI Beacon's [advanced features](/AdvSamples/URIBeaconAdv/).
 ____
