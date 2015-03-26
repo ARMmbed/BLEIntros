@@ -172,7 +172,7 @@ ___
 ##Editing the URI Beacon
 </a>
 
-URI Beacons are used to send a URL (a website's address). The line of code in our program that does that is:
+URI Beacons are used to send a URL (a website's address). The line of code in our program that does that is in the ``main.cpp`` file:
 
 ```c
 

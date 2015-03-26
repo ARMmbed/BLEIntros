@@ -269,7 +269,7 @@ ___
 
 Your device's name is part of the advertisement information, and you can (and should) change it from a standard name to something you'll easily recognise. 
 
-To rename your beacon, find the following line of code:
+To rename your beacon, find the following line of code in the ``main.cpp`` file:
 
 ```c
 
