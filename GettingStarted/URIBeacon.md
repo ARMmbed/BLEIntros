@@ -37,7 +37,7 @@ To get this going, you'll need:
 
 If you’re familiar with mbed and our compiler, you can get the beacon working in just a few minutes:
 
-1. Open the compiler and select or add your board.
+1. Open the compiler and select or add your board as the target platform.
 
 2. Import the [``BLE_URIBeacon``](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_URIBeacon/) program.
 

@@ -80,6 +80,10 @@ To get this sample working, you'll need:
 
 + A BLE-enabled mbed board.
 
+<span style="background-color:lightyellow; color:black; display:block; height:100%; padding:10px">
+**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
+</span>
+
 + A user on [developer.mbed.org](developer.mbed.org) to access the compiler.
 
 If you’re familiar with mbed and our compiler, you can get the beacon working in just a few minutes:
@@ -92,7 +96,7 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 
 5. Compile the code. It will be downloaded to your Downloads folder (on some browsers you may need to specify a download location).
 
-6. Drag and drop the compiled file to your board.
+6. Drag and drop the compiled file to your board as the target platform.
 
 7. Restart the board.
 
@@ -111,7 +115,7 @@ ____
 
 To see the heart rate information on your phone, download PanoBike for [iOS](https://itunes.apple.com/gb/app/panobike/id567403997?mt=8) or [Android](https://play.google.com/store/apps/details?id=com.topeak.panobike&hl=en). Then:
 
-1. Open the compiler and select or add your board.
+1. Open the compiler and select or add your board as the target platform.
 
 2. Import the [``heart rate service``](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_HeartRate/).
 

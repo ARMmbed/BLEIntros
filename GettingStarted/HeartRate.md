@@ -25,7 +25,7 @@ To see the heart rate information on your phone, download PanoBike for [iOS](htt
 
 If you're familiar with mbed and our compiler, you can get the heart rate monitor working in just a few minutes:
 
-1. Open the compiler and select or add your board.
+1. Open the compiler and select or add your board as the target platform.
 
 2. Import the [``heart rate service``](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_HeartRate/).
 
