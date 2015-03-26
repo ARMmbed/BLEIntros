@@ -27,6 +27,10 @@ To get this going, you'll need:
 
 + A BLE-enabled mbed board, but don't worry if you don't have one yet - we'll show you how it would have worked.
 
+<span style="background-color:lightyellow; color:black; display:block; height:100%; padding:10px">
+**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
+</span>
+
 + A user account on [developer.mbed.org](developer.mbed.org) to access the compiler. We recommend you get access to the compiler even if you don't have a board yet, so that you can play along with the example.
 
 ##Quick Guide
@@ -39,7 +43,7 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 
 3. In ``main.cpp``, find the line <br />``uriBeaconConfig = new URIBeaconConfigService(ble,`` <br /> ``params, !fetchedFromPersistentStorage,`` <br /> ``"http://uribeacon.org", defaultAdvPowerLevels);``<br /> and edit the URL. Note that it's limited to 18 characters, with “http://www.” (or “http://”, if there’s no “www” ) counting as one, and the suffix “.org” (or “.com”) counting as another.
 
-5. Compile the code. It will be downloaded to your Downloads folder (on some browsers you may need to specify a download location).
+5. Compile the code. It will be downloaded to your Downloads folder (on some browsers you may need to specify a download location). <br />**Note:** make sure you've selected the correct platform as the compilation target. The platform is shown on the right-hand top corner of the compiler. If you're seeing the wrong platform, click it to open the Select Platform window.
 
 6. Drag and drop the compiled file to your board.
 
@@ -59,25 +63,29 @@ The mbed compiler can take the same program and compile it to match any mbed boa
 
 To select a board for the program: 
 
-1. Log in to mbed [site](https://developer.mbed.org) with your mbed account.
+* Log in to mbed [site](https://developer.mbed.org) with your mbed account.
 
-2. Plug your board into your computer's USB port. The board will be displayed in your file browser as a removable storage (similar to plugging in your phone or a USB stick).
+* Plug your board into your computer's USB port. The board will be displayed in your file browser as a removable storage (similar to plugging in your phone or a USB stick).
 
 <span style="text-align:center; display:block;">
 ![Adding board](/GettingStarted/Images/URIBeacon/DeviceOnMac.png)
 </span>
 
-3. In your file browser, double-click the board to see its files. By default, every board has an HTML file. 
+<span style="background-color:lightyellow; color:black; display:block; height:100%; padding:10px">
+**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
+</spa[n>
 
-4. Double click the board's .HTML file to navigate to its page on the mbed site. 
+* In your file browser, double-click the board to see its files. By default, every board has an HTML file. 
 
-5. On the board's page, click *Add to your mbed Compiler*.
+* Double click the board's .HTML file to navigate to its page on the mbed site. 
+
+* On the board's page, click *Add to your mbed Compiler*.
 
 <span style="text-align:center; display:block;">
 ![Adding board](/GettingStarted/Images/URIBeacon/Adding_Platform.png)
 </span>
 
-6. The compiler will open with your board. You're ready to program. 
+* The compiler will open with your board. You're ready to program. 
 
 <span style="text-align:center; display:block;">
 ![Adding board](/GettingStarted/Images/URIBeacon/IDE_Empty.png)
@@ -89,21 +97,21 @@ To select a board for the program:
 
 URI Beacons have a basic structure that's fully available on the mbed website. All you need to do is import it to the compiler and replace the default information with your own. To do that:
 
-1. Go to the [BLE_URIBeacon](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_URIBeacon/) page.
+* Go to the [BLE_URIBeacon](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_URIBeacon/) page.
 
-2. On the right-hand side of the page, click *Import this program*.
+* On the right-hand side of the page, click *Import this program*.
 
 <span style="text-align:center; display:block;">
 ![Importing program](/GettingStarted/Images/URIBeacon/Import_URIBeacon.png)
 </span>
 
-3. The compiler will open with an import dialog box. You can give your program a name, or use the default (BLE_URIBeacon).
+* The compiler will open with an import dialog box. You can give your program a name, or use the default (BLE_URIBeacon).
 
 <span style="text-align:center; display:block;">
 ![Importing dialog](/GettingStarted/Images/URIBeacon/IDE_Import_Dialog.png)
 </span>
 
-4. Click *Import*. The program will be imported for the board you selected in the previous section. 
+* Click *Import*. The program will be imported for the board you selected in the previous section. 
 
 <span style="text-align:center; display:block;">
 ![Program imported](/GettingStarted/Images/URIBeacon/IDE_New_URIBeacon.png)
@@ -193,7 +201,7 @@ For your code to work on a board, it needs to be compiled: the compiler takes al
 
 To compile and install your program:
 
-1. In the compiler, click *Compile*.
+1. In the compiler, click *Compile*. <br />**Note:** make sure you've selected the correct platform as the compilation target. The platform is shown on the right-hand top corner of the compiler. If you're seeing the wrong platform, click it to open the Select Platform window.
 
 2. The compiled code is automatically sent to your *Downloads* folder as a single file of type HEX (on some browsers you may need to specify a download location).
 

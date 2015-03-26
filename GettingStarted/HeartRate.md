@@ -31,7 +31,7 @@ If you're familiar with mbed and our compiler, you can get the heart rate monito
 
 3. In ``main.cpp``, find the line ``const static char DEVICE_NAME[] = "Nordic_HRM";`` and change the beacon's name from Nordic_HRM. 
 
-4. Compile the code. It will be downloaded to your Downloads folder (on some browsers you may need to specify a download location).
+4. Compile the code. It will be downloaded to your Downloads folder (on some browsers you may need to specify a download location). <br />**Note:** make sure you've selected the correct platform as the compilation target. The platform is shown on the right-hand top corner of the compiler. If you're seeing the wrong platform, click it to open the Select Platform window.
 
 5. Drag and drop the compiled file to your board.
 
