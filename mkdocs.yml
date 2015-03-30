@@ -23,4 +23,4 @@ pages:
 - ['Additional/Links.md','Additional Resources', 'Useful Links']
 - ['Additional/Blank.md','Additional Resources', '']
 
-
+extra_css: ['FullCSS.css']
