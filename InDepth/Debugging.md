@@ -1,8 +1,3 @@
-<head>
-<link href="https://github.com/iriark01/BLEIntros/blob/master/FullCSS.css" type="text/css" rel="stylesheet"></link>
-</head>
-
-
 #Debugging on mbed BLE
 
 This is a review of some debugging techniques that you can use when writing applications with the BLE_API on mbed boards. We'll look at using the interface chip, LEDs and third-party sniffers to debug applications.
@@ -46,18 +41,16 @@ The mbed SDK includes a nice utility called ``error()``. It takes in printf()-st
 
 * Hardware that cannot be accessed because it is malfunctioning. 
 
-<div id="note">
-For more information about ``error()``, see the [handbook](http://developer.mbed.org/handbook/Debugging#runtime-errors).
-</div>
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">For more information about ``error()``, see the [handbook](http://developer.mbed.org/handbook/Debugging#runtime-errors).
+</span>
 
 
 ##Debugging with the mbed Interface Chip
 
 Most mbed platforms come with an interface chip placed between the target microcontroller (in our case, the BLE microcontroller) and the development host (our computer). This interface chip plays a key role in debugging: it is a USB bridge between the development host and the debugging capabilities available in ARM microcontrollers. This bridge functionality is encapsulated in a standard called [CMSIS-DAP](http://developer.mbed.org/handbook/CMSIS-DAP) that major toolchain vendors have started to support, so we can expect it to grow in popularity and availability over time. 
 
-<div id="note">
-**Note:** some smaller boards reduce size and cost by not carrying an interface chip. If you’re using one of those boards, you can skip to the [next sections](#uart).
-</div>
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">**Note:** some smaller boards reduce size and cost by not carrying an interface chip. If you’re using one of those boards, you can skip to the [next sections](#uart).
+</span>
 
 By using the interface chip we can debug with:
 
@@ -86,9 +79,8 @@ The functions in the printf() family produce output according to a format string
 
 These two costs require that we use ``printf()`` judiciously: there is limited code-space on the microcontroller's internal flash, and we expect interrupt handlers to terminate within a few microseconds; use of ``printf()`` may not match these requirements. Be particularly careful about using it in an event handler.
 
-<div id="note">
-**Note:** ``printf()`` doesn’t require that you tell it beforehand how many parameters it should expect; it can receive any number you throw at it. To do this, you need to provide a format string with format specifiers, followed by a matching number of arguments. For example, ``printf(“temp too high %d”, temp)`` the format string is “temp too high %d”, and the format specifier is %d. The last bit is the argument: temp. It matches the format specifier: %d specifies an integer. You can learn more on [Wikipedia](http://en.wikipedia.org/wiki/Printf_format_string).
-</div>
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">**Note:** ``printf()`` doesn’t require that you tell it beforehand how many parameters it should expect; it can receive any number you throw at it. To do this, you need to provide a format string with format specifiers, followed by a matching number of arguments. For example, ``printf(“temp too high %d”, temp)`` the format string is “temp too high %d”, and the format specifier is %d. The last bit is the argument: temp. It matches the format specifier: %d specifies an integer. You can learn more on [Wikipedia](http://en.wikipedia.org/wiki/Printf_format_string).
+</span>
 
 Using ``printf()`` on mbed requires including the ``stdio`` header:
 
