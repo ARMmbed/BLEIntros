@@ -334,8 +334,7 @@ Now, we connect to the GDB server (for ease of reading, we've added line breaks 
 	(gdb) target remote localhost:3333
 	Remote debugging using localhost:3333
 	warning: Loadable section "RW_IRAM1" outside of ELF segments
-	HardFault_Handler ()
-    	at 	/home/rgrover/play/mbed-src/libraries
+	HardFault_Handler () at 	/home/rgrover/play/mbed-src/libraries
 			/mbed/targets/cmsis/TARGET_NORDIC/TARGET_MCU_NRF51822
 			/TOOLCHAIN_ARM_STD/TARGET_MCU_NORDIC_16K
 			//startup_nRF51822.s:115
