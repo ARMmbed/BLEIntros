@@ -150,8 +150,10 @@ Here is an example:
 		TRACE_LEVEL_DEBUG,
 		TRACE_LEVEL_WARNING
 	};
-	/* each time we compile or run the program, we determine what the trace level is.
-	* this parameter is available to the macros without being explicitly passed to them*/
+	/* each time we compile or run the program, 
+	* we determine what the trace level is.
+	* this parameter is available to the macros 
+	* without being explicitly passed to them*/
 	
 	extern unsigned traceLevel; 
 
@@ -200,7 +202,7 @@ When trying to capture logs from events that occur in very rapid succession, usi
 
 To avoid pushing during the operation’s run, we use ``sprintf()`` to write the log messages into a ring buffer (we’ll explain what that is in the next paragraph). The buffer holds the debugging messages in memory until the system is idle, and only then will we perform the costly action of sending the information through the UART. In BLE, the system usually idles in ``main()`` while waiting for events, so we’ll use ``main()`` to transmit.
 
-Because ``sprintf()`` assumes a sequential buffer into which to write (meaning it doesn’t wrap strings around the end of the available memory), we have to prevent overflows ourselves. We can do this by deciding that we only append to the tail of the ring buffer if the buffer is at least half empty (in other words, that the information already held by the buffer doesn’t exceed the half-way mark). This is an arbitrary decision; you can decide to let the buffer get three-quarters full or only a tenth full. When we reach the half-way point, we wrap-around the excesssend the information to the beginning (rather than the tail) of the buffer - we wrap it around, creating the “ring” of a ring buffer.
+Because ``sprintf()`` assumes a sequential buffer into which to write (meaning it doesn’t wrap strings around the end of the available memory), we have to prevent overflows ourselves. We can do this by deciding that we only append to the tail of the ring buffer if the buffer is at least half empty (in other words, that the information already held by the buffer doesn’t exceed the half-way mark). This is an arbitrary decision; you can decide to let the buffer get three-quarters full or only a tenth full. When we reach the half-way point, we wrap-around the excess information to the beginning (rather than the tail) of the buffer, creating the “ring” of a ring buffer.
 
 Here is an example implementation of a ring buffer. We’ve created our own version of a wrapping ``printf()`` using a macro called ``xprintf()``.  Debug messages accumulated using xprintf() can be read out circularly starting from ``ringBufferTail`` and wrapping around (``ringBufferTail`` + ``HALF_BUFFER_SIZE``). The first message would most likely be garbled because of an overwrite by the most recently appended message:
 
@@ -210,7 +212,8 @@ Here is an example implementation of a ring buffer. We’ve created our own vers
 	#define BUFFER_SIZE 512 /* You need to choose a suitable value here. */
 	#define HALF_BUFFER_SIZE (BUFFER_SIZE >> 1)
 
-	char ringBuffer[BUFFER_SIZE]; /* This is just one way of allocating the ring buffer. */
+	/* Here's one way of allocating the ring buffer. */
+	char ringBuffer[BUFFER_SIZE]; 
 	char *ringBufferStart = ringBuffer;
 	char *ringBufferTail  = ringBuffer;
 
@@ -238,7 +241,7 @@ Here is an example implementation of a ring buffer. We’ve created our own vers
 		if (written > largestWritePossible) {
 			/* There are no easy solutions to tackle this. It may be easiest to enlarge
 			* your BUFFER_SIZE to avoid this. */
-			return; /* this is a poor short-cut; you may want to do something about it.*/
+			return; /* this is a poor short-cut; you may want to do something else.*/
 		}
 
 		ringBufferTail += written;
@@ -315,10 +318,12 @@ Here is an example of launching the GDB client:
 	This is free software: you are free to change and redistribute it.
 	There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
 	and "show warranty" for details.
-	This GDB was configured as "--host=x86_64-unknown-linux-gnu --target=arm-none-eabi".
+	This GDB was configured as "--host=x86_64-unknown-linux-gnu 
+		--target=arm-none-eabi".
 	For bug reporting instructions, please see:
 	<http://www.gnu.org/software/gdb/bugs/>...
-	Reading symbols from /home/rgrover/play/demo-apps/BLE_Beacon/Build/BLE_BEACON.elf...
+	Reading symbols from 
+		/home/rgrover/play/demo-apps/BLE_Beacon/Build/BLE_BEACON.elf...
 	warning: Loadable section "RW_IRAM1" outside of ELF segments
 	(gdb)
 
