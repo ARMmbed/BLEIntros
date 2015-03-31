@@ -6,7 +6,7 @@ This is a review of some debugging techniques that you can use when writing appl
 
 Most boards come with at least one LED that can be controlled using the standard mbed API. Turning the LED on or off, or flashing it, is a quick method of knowing that we’ve reached a certain state. For example:
 
-1.	We can turn on an LEDhave an LED turn on when the board starts up by making it the first action of ``main()``. This helps us know that our board is alive and running our program. You’ll find this function in some of the samples on our site.
+1.	We can turn on an LED when the board starts up by making it the first action of ``main()``. This helps us know that our board is alive and running our program. You’ll find this function in some of the samples on our site.
 
 2.	We can flash an LED when we enter an error handler. This tells us that we’re in trouble.
 
