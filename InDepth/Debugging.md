@@ -108,19 +108,6 @@ This is the terminal output. Note that "waiting" is printed every time ``waitFor
 </span>
 
 
-You can use ``assert()`` to improve error reporting. It will write an error and abort operations when a condition is evaluated as FALSE:
-
-```c
-
-	#define ASSERT(condition, ...)	{
-		if (!(condition))	{
-			error("Assert: " __VA_ARGS__);
-
-		}
-	}
-
-```
-
 ###Printf() Macros
 
 There are some nifty tricks you can do with ``printf()`` using macro-replacement by the pre-processor.
@@ -160,23 +147,17 @@ Here is an example:
 	...
 
 	// Our first macro is printed if the trace level we selected 
-	// is TRACE_LEVEL_DEBUG or above 
-	
-	#define TRACE_DEBUG(formatstring, parameter1, parameter2, ...)     
-
-	// the traceLevel is used in the condition
-	// the regular parameters are used in the action that follows the IF
-
-	// the IF determines if we print
-		{ if (traceLevel >= TRACE_LEVEL_DEBUG) 
-
-	// if the IF was evaluated as TRUE, we print: 
-			{ printf("-D- " formatstring, __VA_ARGS__); } } 
+	// is TRACE_LEVEL_DEBUG or above. 	
+	// The traceLevel is used in the condition                                            
+	// and the regular parameters are used in the action that follows the IF
+	#define TRACE_DEBUG(formatstring, parameter1, parameter2, ...) \
+		{ if (traceLevel >= TRACE_LEVEL_DEBUG) \
+				{ printf("-D- " formatstring, __VA_ARGS__); } } 
 	// this will include the parameters we passed above
 	
-	#define TRACE_WARNING(formatstring, parameter1, parameter2, ...) 
 	// we create a different macro for each trace level
-		{ if (traceLevel >= TRACE_LEVEL_WARNING) 
+	#define TRACE_WARNING(formatstring, parameter1, parameter2, ...) \
+		{ if (traceLevel >= TRACE_LEVEL_WARNING) \
 			{ printf("-W- " formatstring, __VA_ARGS__); } }
 ```
 
@@ -186,12 +167,23 @@ Here’s another example of macro-replacement that allows a formatted ``printf()
 
 
 
-	#define LOG(x, ...)  
-		{ printf("\x1b[34m%12.12s: \x1b[39m"x"\x1b[39;49m\r\n", 
+	#define LOG(x, ...) \
+		{ printf("\x1b[34m%12.12s: \x1b[39m"x"\x1b[39;49m\r\n", \
 		MODULE_NAME, ##__VA_ARGS__); fflush(stdout); }
-	#define WARN(x, ...) 
-		{ printf("\x1b[34m%12.12s: \x1b[33m"x"\x1b[39;49m\r\n", 
+	#define WARN(x, ...) \
+		{ printf("\x1b[34m%12.12s: \x1b[33m"x"\x1b[39;49m\r\n", \
 		MODULE_NAME, ##__VA_ARGS__); fflush(stdout); }
+
+```
+
+You can use ``ASSERT()`` to improve error reporting. It will use ``error()`` (a part of the mbed SDK that we reviewed earlier). ``error()`` not only flashes LEDs, it also puts the program into an infinite loop, preventing further operations. This will happen if the ``ASSERT()`` condition is evaluated as FALSE:
+
+```c
+
+	#define ASSERT(condition, ...)	{ \
+		if (!(condition))	{ \
+			error("Assert: " __VA_ARGS__); \
+		} }
 
 ```
 
@@ -390,7 +382,9 @@ Third-party sniffers can intercept the BLE communication itself and show us what
 
 Sniffing radio activity can now be done with smart phone apps like [Bluetooth HCI Logger (for Android)](https://play.google.com/store/apps/details?id=com.android_rsap.logger&hl=en). These generate logs that can be analysed with tools like [Wireshark](https://www.wireshark.org/).
 
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **Tip:** to learn about the Android Bluetooth HCI snoop log, start [here](http://www.androidcentral.com/all-about-your-phones-developer-options).
+</span>
 
 If you want to use a separate BLE device (not your phone) to sniff the BLE traffic, you can try [Nordic's nRF Sniffer](https://www.nordicsemi.com/eng/Products/Bluetooth-Smart-Bluetooth-low-energy/nRF-Sniffer) on a Nordic BLE board.
 
