@@ -59,7 +59,7 @@ By using the interface chip we can debug with:
 * pyOCD.
 
 <span style="text-align:center; display:block;">
-![](/BLEIntros/InDepth/Images/DebugviaUSB.png)
+![](/BLEIntros/InDepth/Images/DebugviaUSB1.png)
 </span>
 <span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">*The development host uses a USB connection with the interface chip to debug the microcontroller. Some of the terms in this image will be clarified later in the document.*</span>
 
@@ -104,7 +104,7 @@ Here's a very basic example. In the [URI Beacon program](/GettingStarted/URIBeac
 This is the terminal output. Note that "waiting" is printed every time ``waitForEvent`` is triggered:
 
 <span style="text-align:center; display:block;">
-![](/BLEIntros/InDepth/Images/TerminalOutput.png)
+![](/BLEIntros/InDepth/Images/TerminalOutput1.png)
 </span>
 
 
@@ -269,7 +269,7 @@ So far, we've seen the UART connection between the interface chip and the target
 The interface chip implements CMSIS-DAP. On the development host, you'll need the [pyOCD Python library](https://github.com/mbedmicro/pyOCD) to drive the CMSIS-DAP interface chip over USB.
 
 <span style="text-align:center; display:block;">
-![](/BLEIntros/InDepth/Images/PyOCD.png)
+![](/BLEIntros/InDepth/Images/PyOCD1.png)
 </span>
 
 
