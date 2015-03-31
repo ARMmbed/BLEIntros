@@ -4,6 +4,8 @@ This section covers some BLE and mbed concepts in greater detailed than our Gett
 
 1. [Event Driven Programming](/InDepth/Events/): the event-driven nature of mbed programming and specifically its use in BLE.
 
+2. [Debugging BLE on mbed](/InDepth/Debugging/): some techniques for debugging BLE.
+
 2. [Modes and Profiles](/InDepth/BLEInDepth/): some BLE concepts such as GATT, GAP, advertising and connected modes and profiles.
 
 3. [Connection Parameters](/InDepth/ConnectionParameters/): parameters that affect BLE's operation and specifically power use.

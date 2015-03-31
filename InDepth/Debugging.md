@@ -334,7 +334,7 @@ Notice that we pass the .``elf`` file as an argument. We could also have used th
 
 Now, we connect to the GDB server (for ease of reading, we've added line breaks in the path);
 
-````
+```
 
 	(gdb) target remote localhost:3333
 	Remote debugging using localhost:3333
@@ -345,7 +345,6 @@ Now, we connect to the GDB server (for ease of reading, we've added line breaks 
 			//startup_nRF51822.s:115
 	115                 B       .
 	(gdb)
-
 
 ```
 
