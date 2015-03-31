@@ -41,7 +41,7 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 
 2. Import the [``BLE_URIBeacon``](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_URIBeacon/) program.
 
-3. In ``main.cpp``, find the line <br />``uriBeaconConfig = new URIBeaconConfigService(ble,`` <br /> ``params, !fetchedFromPersistentStorage,`` <br /> ``"http://uribeacon.org", defaultAdvPowerLevels);``<br /> and edit the URL. Note that it's limited to 18 characters, with “http://www.” (or “http://”, if there’s no “www” ) counting as one, and the suffix “.org” (or “.com”) counting as another.
+3. In ``main.cpp``, find the line <br />``uriBeaconConfig = new URIBeaconConfigService(ble,`` <br /> ``params, !fetchedFromPersistentStorage,`` <br /> ``"http://www.uribeacon.org", defaultAdvPowerLevels);``<br /> and edit the URL. Note that it's limited to 18 characters, with “http://www.” (or “http://”, if there’s no “www” ) counting as one, and the suffix “.org” (or “.com”) counting as another.
 
 5. Compile the code. It will be downloaded to your Downloads folder (on some browsers you may need to specify a download location). <br />**Note:** make sure you've selected the correct platform as the compilation target. The platform is shown on the right-hand top corner of the compiler. If you're seeing the wrong platform, click it to open the Select Platform window.
 
@@ -188,7 +188,7 @@ URI Beacons are used to send a URL (a website's address). The line of code in ou
 
 	uriBeaconConfig = new URIBeaconConfigService(ble, 
 		params, !fetchedFromPersistentStorage, 
-		"http://uribeacon.org", defaultAdvPowerLevels);
+		"http://www.uribeacon.org", defaultAdvPowerLevels);
 ```
 
 You can very easily spot the interesting bit - it's "http://www.mbed.org". You can replace that URL with a URL of your choosing (but make sure to leave the quotes and the *http://www.* bit).
