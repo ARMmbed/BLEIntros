@@ -8,7 +8,10 @@ When the peripheral device is in advertising mode it sends advertising packets a
 
 The interval is set using ``setAdvertisingInterval``: a function in the BLE_API's ``BLEDevice`` class that accepts a value in milliseconds. The advertising interval is completely under the peripheral device's control (as opposed to the other connection parameters, as you'll see below, which are suggestions that the central device can ignore).
 
+```c
+
 	 ble.setAdvertisingInterval(1000); // one second
+```
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **Note:**
@@ -31,7 +34,7 @@ The interval parameters  receive values in milliseconds. For example, the follo
 	#define MAX_CONN_INTERVAL 350 //350 milliseconds
 ```
 
-The connection interval cannot be shorter than 7.5 milliseconds or longer than four seconds.
+The connection interval cannot be shorter than 7.5 milliseconds or longer than four seconds. The central will pick a value between the min and max suggested by the peripheral, or enforce its own value. It's important to understand that while the peripheral can suggest a range (two values), in the end only one value can be used. The synchronisation itself must always happen at a fixed interval, not a random point on a range. The two parameters are used only when the peripheral is suggesting a range to the central; when the central picks a value, it's stored in a new variable and the connection refers only to that variable.
 
 Connection interval is a misleading name; it is not the case that a new connection is re-attempted at each connection event. Rather, within the context of an ongoing connection, a connection event allows the two sides to synchronize with one another and send and receive basic communication. Specifically, the server (BLE device) has the opportunity to send notifications to the client if there is any new state-change to report. 
 
@@ -54,6 +57,14 @@ The difference between SLAVE_LATENCY and MIN_CONN_INTERVAL is that  MIN_CONN_IN
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **Note:** the maximum value of SLAVE_LATENCY depends on the stack you're using. Check your vendor's specifications.</span>
+
+##Putting it Together
+
+Here's a diagram describing an interaction between a peripheral and a central. Note that in this case, we've named the variable holding the connection interval ``connectionInterval``, but this is not a universal name:
+
+<span style="text-align:center; display:block;">
+![](/InDepth/Images/Connection_parameters.png)
+</span>
 
 ##Connection Supervision Timeout
 
