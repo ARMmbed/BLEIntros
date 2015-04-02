@@ -60,7 +60,7 @@ The difference between SLAVE_LATENCY and MIN_CONN_INTERVAL is that  MIN_CONN_IN
 
 ##Putting it Together
 
-Here's a diagram describing an interaction between a peripheral and a central. Note that in this case, we've named the variable holding the connection interval ``connectionInterval``, but this is not a universal name:
+Here's a diagram describing an interaction between a peripheral and a central. Note that in this example we've named the variable holding the connection interval ``connectionInterval``:
 
 <span style="text-align:center; display:block;">
 ![](/InDepth/Images/Connection_parameters.png)
