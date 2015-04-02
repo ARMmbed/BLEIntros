@@ -6,7 +6,7 @@ pages:
 - ['GettingStarted/DesignersIntro.md', 'Getting Started', 'BLE: the Long Version']
 - ['GettingStarted/BLE_API.md', 'Getting Started', 'The mbed BLE API']
 - ['InDepth/Intro.md','In Depth', 'mbed and BLE in Depth']
-- ['InDepth/Events.md','In Depth', 'Event-Driven Programming']
+- ['InDepth/Events.md','In Depth', 'Event-Driven Programming on mbed']
 - ['InDepth/Debugging.md','In Depth', 'Debugging BLE on mbed']
 - ['InDepth/BLEInDepth.md','In Depth', 'Modes and Profiles']
 - ['InDepth/ConnectionParameters.md','In Depth', 'Connection Parameters']

@@ -62,17 +62,21 @@ Advertisements are very limited in size. The general GAP broadcast's data breakd
 
 Every BLE package can contain a maximum of 47 bytes (which isn't much), but:
 
-1. Right off the bat, the BLE stack require 8 bytes for its own purposes.
+1. Right off the bat, the BLE stack require 8 bytes (1 + 4 + 3) for its own purposes.
 
-1. The advertising packet data unit (PDU) therefore has at maximum 39 bytes. But the BLE stack once again requires some overhead, taking up 8 bytes.
+1. The advertising packet data unit (PDU) therefore has at maximum 39 bytes. But the BLE stack once again requires some overhead, taking up 8 bytes (2 + 6).
 
 2. The PDU's advertising data field has 31 bytes left, divided into advertising data (AD) structures. Then:
 
-	* The GAP broadcast must contain flags that tell the device about the type of advertisement we're sending. The flag structure takes up three bytes in total (one for data length, one for data type and one for the data itself). The reason we use up these two bytes - the data length and type indications - is to help the parser work correctly with our information. We're down to 28 bytes.
+	* The GAP broadcast must contain flags that tell the device about the type of advertisement we're sending. The flag structure uses three bytes in total (one for data length, one for data type and one for the data itself). The reason we need the first two bytes - the data length and type indications - is to help the parser work correctly with our flag information. We have 28 bytes left.
 
-	* Now we're finally sending our data - but it, too, requires an indication of length and type (two bytes in total), so we're down to 26 bytes.
+	* Now we're finally sending our own data in its own data structure - but it, too, requires an indication of length and type (two bytes in total), so we have 26 bytes left.
 
 All of which means that we have only 26B to use for the data we want to send over GAP.
+
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+If you want to see an example of ADs, see our extended explanation in the [Custom GAP Advertising section](/AdvSamples/CustomGAP/).
+</span>
 
 For many applications, a peripheral may only want to periodically broadcast a small amount of information that can fit in an advertisement, and as long as it is fine for this data to be available to any central device within range, regardless of authentication, then you don't need to do anything beyond setting up advertisements. But sometimes you'll want to provide more information or more complex interactions than one-way data transfer, and for that you'll need to set up a "conversation" between your BLE device and a user's phone, tablet or computer. The thing that enables this conversation is what's known as ***connected mode***, and it describes a relationship between two devices: the peripheral BLE device and the central device.
 

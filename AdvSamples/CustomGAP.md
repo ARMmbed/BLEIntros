@@ -37,15 +37,15 @@ The general GAP broadcast's data breakdown is illustrated in this diagram:
 
 Every BLE package can contain a maximum of 47 bytes (which isn't much), but:
 
-1. Right off the bat, the BLE stack require 8 bytes for its own purposes.
+1. Right off the bat, the BLE stack require 8 bytes (1 + 4 + 3) for its own purposes.
 
-1. The advertising packet data unit (PDU) therefore has at maximum 39 bytes. But the BLE stack once again requires some overhead, taking up 8 bytes.
+1. The advertising packet data unit (PDU) therefore has at maximum 39 bytes. But the BLE stack once again requires some overhead, taking up 8 bytes (2 + 6).
 
 2. The PDU's advertising data field has 31 bytes left, divided into advertising data (AD) structures. Then:
 
-	* The GAP broadcast must contain flags that tell the device about the type of advertisement we're sending. The flag structure takes up three bytes in total (one for data length, one for data type and one for the data itself). The reason we use up these two bytes - the data length and type indications - is to help the parser work correctly with our information. We're down to 28 bytes.
+	* The GAP broadcast must contain flags that tell the device about the type of advertisement we're sending. The flag structure uses three bytes in total (one for data length, one for data type and one for the data itself). The reason we need the first two bytes - the data length and type indications - is to help the parser work correctly with our flag information. We have 28 bytes left.
 
-	* Now we're finally sending our data - but it, too, requires an indication of length and type (two bytes in total), so we're down to 26 bytes.
+	* Now we're finally sending our own data in its own data structure - but it, too, requires an indication of length and type (two bytes in total), so we have 26 bytes left.
 
 All of which means that we have only 26B to use for the data we want to send over GAP.
 
