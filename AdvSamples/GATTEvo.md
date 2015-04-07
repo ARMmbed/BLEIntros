@@ -3,7 +3,7 @@
 We're going to create a custom GATT service to blink the LED on an mbed board, and demonstrate using Evothing to create a custom app that communicates with our GATT service.
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
-Get the code [here](http://developer.mbed.org/users/mbedAustin/code/BLE_EvothingsExample_GATT/).
+Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_GATT_Example/).
 </span>
 
 ##Prerequisites

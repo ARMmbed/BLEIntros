@@ -3,7 +3,7 @@
 The GAP advertising packet is modifiable, allowing us to send information to any BLE scanner without waiting for it to establish a connection. We're going to modify advertising data step by step, then receive the result with a custom-built Evothings app.
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
-Get the code [here](http://developer.mbed.org/users/mbedAustin/code/BLE_EvothingsExample_GAP/).
+Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_GAP_Example/).
 </span>
 
 ##Prerequisites
