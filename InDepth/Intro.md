@@ -6,7 +6,7 @@ This section covers some BLE and mbed concepts in greater detailed than our Gett
 
 2. [Debugging BLE on mbed](/InDepth/Debugging/): some techniques for debugging BLE.
 
-3. [Rapid prototyping on mbed BLE](/InDepth/Prototyping.md/): how to rapidly prototype your product's app side.
+3. [Rapid prototyping on mbed BLE](/InDepth/Prototyping/): how to rapidly prototype your product's app side.
 
 2. [Modes and Profiles](/InDepth/BLEInDepth/): some BLE concepts such as GATT, GAP, advertising and connected modes and profiles.
 
