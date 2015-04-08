@@ -25,8 +25,8 @@ For sending data from the client to the server, the _Write Without Response_ pro
 ```c
     
 	GattCharacteristic writeTo(uuid, valuePtr, initialLen, maxLen,
-                                        GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_WRITE |
-                                        GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_WRITE_WITHOUT_RESPONSE);
+		GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_WRITE |
+		GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_WRITE_WITHOUT_RESPONSE);
 
 ```
 
@@ -47,8 +47,8 @@ Using ``BLE_API``, the first step is to set up a read characteristic with the ``
 ```c
 
 	GattCharacteristic readFrom(uuid, valuePtr, initialLen, maxLen,
-                                        GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_READ |
-                                        GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY);
+		GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_READ |
+		GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY);
 
 ```
 
@@ -83,7 +83,7 @@ The server can now send a stream of low latency messages to the client by callin
 			// Update payload pointer and payload size or break loop
 			...
 
-			didSendValue = ble.updateCharacteristicValue(readFrom, payload, payloadSize);
+			didSendValue = ble.updateCharacteristicValue(readFrom, payload,payloadSize);
 		}
 
 		if (didSendValue != BLE_ERROR_NONE)
