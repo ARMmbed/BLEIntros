@@ -7,7 +7,7 @@ For low data rate applications, the typical way to interact with characteristics
 There are two orthogonal approaches to overcome these limitations: [transfer quickly](#fast) - decreasing the time between packets - or [transfer often](#often) - reducing the interval between connection events.
 
 <a name=”fast”>
-##Transfer Fast
+##Transfer Quickly
 </a>
 
 To decrease the time between successive packets, the BLE standard defines a command and message pair for sending and receiving data between a client and server - without waiting for a response after each message:
