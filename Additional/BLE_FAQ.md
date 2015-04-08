@@ -1,5 +1,3 @@
-#BLE FAQ
-
 Read through our documentation and didn't find the answer you were looking for? Try our FAQ.
 
 ##Q: How can I make my BLE device interactive?
