@@ -6,7 +6,7 @@ For low data rate applications, the typical way to interact with characteristics
 
 There are two orthogonal approaches to overcome these limitations: [transfer quickly](#fast) - decreasing the time between packets - or [transfer often](#often) - reducing the interval between connection events.
 
-<a name=”fast”>
+<a name="fast">
 ##Transfer Quickly
 </a>
 
@@ -16,7 +16,7 @@ To decrease the time between successive packets, the BLE standard defines a comm
 
 2. The **_Handle Value Notification_** message for sending data from the [server to the client](#handle).
 
-<a name=”write”>
+<a name="write">
 ###Client to Server
 </a>
 
@@ -34,7 +34,7 @@ Where ``uuid`` is the UUID for the write characteristic; ``valuePtr`` and ``init
 
 Any connected client can now send data with minimal overhead by issuing a _Write Without Response_ to this characteristic. 
 
-<a name=”handle”>
+<a name="handle">
 ###Server to Client
 </a>
 
@@ -93,7 +93,7 @@ The server can now send a stream of low latency messages to the client by callin
 
 The function ``sendData`` is responsible for keeping track of what data to send and has to be called first to initiate the transfer. Once one or more messages have been sent, the callback function ``onDataSent`` will call ``sendData`` again, thereby ensuring the BLE stack is kept busy as long as there is data to send.
 
-<a name=”often”>
+<a name="often">
 ##Transfer Often
 </a>
 

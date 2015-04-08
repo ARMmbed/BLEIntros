@@ -48,19 +48,19 @@ These apps scan for nearby BLE devices and display the information received from
 
 Debugging isn’t a prototyping technique, but since you can use it to show that your code works, it can be used as a first step or even as a proof of concept.
 
-<a name=”chip”>
+<a name="chip">
 ###Using the mbed Interface Chip
 </a>
 
 You can use the mbed Interface Chip to receive messages from either ``printf()`` or ``pyOCD``. These are reviewed as part of our [debugging with the interface chip section](/InDepth/Debugging/#debugging-with-the-mbed-interface-chip).
 
-<a name=”uart”>
+<a name="uart">
 ###Using the UART Service
 </a>
 
 The UART Service can be used to debug directly over the BLE connection (with the aid of an app). For more information, see our [debugging with the UART service section](/InDepth/Debugging/#the-uart-service). 
 
-<a name=sniffers”>
+<a name="sniffers">
 ###Third-Party Sniffers
 </a>
 
