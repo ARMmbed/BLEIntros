@@ -83,7 +83,7 @@ The server can now send a stream of low latency messages to the client by callin
 			// Update payload pointer and payload size or break loop
 			...
 
-			didSendValue = ble.updateCharacteristicValue(readFrom, payload,payloadSize);
+			didSendValue = ble.updateCharacteristicValue(readFrom,payload,payloadSize);
 		}
 
 		if (didSendValue != BLE_ERROR_NONE)
