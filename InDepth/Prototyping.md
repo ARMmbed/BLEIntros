@@ -13,7 +13,7 @@ mbed comes from a heritage of rapid prototyping and allows you to test code and 
 Once your prototype works as you wanted, you can invest some more time in your user input, including creating full-fledged apps. 
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
-**Tip:** If you want to be part of the Physical Web stick to a website; use the BLE device only to advertise the site's URL.
+**Tip:** If you want to be part of the Physical Web stick to a website, use the BLE device only to advertise the site's URL.
 </span>
 
 <a name="hardware">
