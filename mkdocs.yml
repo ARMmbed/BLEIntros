@@ -8,6 +8,7 @@ pages:
 - ['InDepth/Intro.md','In Depth', 'mbed and BLE in Depth']
 - ['InDepth/Events.md','In Depth', 'Event-Driven Programming on mbed']
 - ['InDepth/Debugging.md','In Depth', 'Debugging BLE on mbed']
+- ['InDepth/Prototyping.md', 'In Depth', 'Rapid Prototyping on mbed BLE']
 - ['InDepth/BLEInDepth.md','In Depth', 'Modes and Profiles']
 - ['InDepth/ConnectionParameters.md','In Depth', 'Connection Parameters and Battery Life']
 - ['InDepth/Limitations.md','In Depth', 'BLE Limitations']

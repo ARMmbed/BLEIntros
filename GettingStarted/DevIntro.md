@@ -25,13 +25,11 @@ ___
 
 ##Rapid Prototyping
 
-mbed comes from a heritage of rapid prototyping, and allows you to test code and ideas on BLE devices very easily. For a truly awesome BLE experience, though, you'll need to pair mbed with tools that allow you to rapidly prototype the app side of your solution, or use one of these tricks to work without an app for the early stages of development:
+mbed comes from a heritage of rapid prototyping, and allows you to test code and ideas on BLE devices very easily. 
 
-* Hardware inputs directly to the BLE device, for example a [touchscreen](http://developer.mbed.org/components/cat/touchscreen/).
-
-* [Evothings Studio](http://evothings.com/getting-started-with-evothings-studio-in-90-seconds/) lets you create simple apps that are run from the Evothings App on your phone, so Evothings does the compatibility work for you. It requires some learning of its own, but it may well be worth your time.
-
-Once your prototype works as you wanted, you can invest some more time in your user input, including creating full-fledged apps. But, if you want to be part of the Physical Web, stick to a website - and use the BLE device just to advertise the site's URL.
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+For information about rapid prototyping with mbed BLE, see [here](/InDepth/Prototyping/).
+</span>
 
 ___
 

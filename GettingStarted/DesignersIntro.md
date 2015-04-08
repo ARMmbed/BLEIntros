@@ -30,7 +30,6 @@ To tell the API what to do, you need a programming environment. BLE, like all ot
 </span>
 <span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">The standard process is to get a board (and maybe a few extending components), write a bit of code and import it to the board. Simple.</span>
 
-
 ##The mbed Compiler
 
 The compiler fulfils two main purposes: it gives you a programming environment (a place in which to write your code), and it can turn (compile) that code into something that can be executed on the mbed platforms. The compiler can take the same code and compile it for different mbed platforms, meaning you can try out your project on different boards and pick the one that suits you best, without having to re-write your program. 
@@ -41,6 +40,14 @@ We'll walk you through using the compiler as we get started on our [coding sampl
 #What Does it all Do?
 
 The combination of an mbed board, extra components and BLE capabilities give you lots of possibilities for prototyping and production. Let's look at a few of those now (we'll discuss the limitations [later](/InDepth/Limitations/)).
+
+##Rapid Prototyping
+
+mbed comes from a heritage of rapid prototyping, and allows you to test code and ideas on BLE devices very easily. 
+
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+For information about rapid prototyping with mbed BLE, see [here](/InDepth/Prototyping/).
+</span>
 
 ##Gathering Information
 
