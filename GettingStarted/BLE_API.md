@@ -1,6 +1,6 @@
 #mbed's BLE_API
 
-<span style="float:right; display:block;">
+<span style="float:right; display:block; padding:5px;">
 ![](/GettingStarted/Images/API/BLEDiagram.png)
 </span>
 
