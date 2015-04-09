@@ -23,6 +23,7 @@ A BLE application is composed of mbed OS (which currently takes the form of the 
 <span style="float:right; display:block;">
 ![](/GettingStarted/Images/API/Inside_API.png)
 </span>
+</br>
 
 BLE_API offers building blocks to help construct applications. These fall into three broad categories: 
 
