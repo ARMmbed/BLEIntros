@@ -4,10 +4,10 @@ As mentioned in the [previous sections](/GettingStarted/DesignersIntro/), BLE is
 
 For low data rate applications, the typical way to interact with characteristics is through the read, write, and indication commands that send a packet of data and subsequently wait for a response from the server. But waiting for a response can add significantly to the latency and increase the delay before sending the next packet, increasing the overall transmission time when sending large amounts of data, so it’s less suitable for low latency applications, or applications that need to exchange a large amount of data as quickly as possible. Worse, the central might decide to terminate the current connection after each read or write command, exacerbating the problem by delaying the next operation to the following connection.
 
-There are two orthogonal approaches to overcome these limitations: [transfer without waiting for response](#fast) - reducing the protocol overhead - or [transfer often](#often) - reducing the interval between connection events.
+There are two orthogonal approaches to overcome these limitations: [transfer without waiting for a response](#fast) - reducing the protocol overhead - or [transfer often](#often) - reducing the interval between connection events.
 
 <a name="fast">
-##Transfer Without Waiting for Response
+##Transfer Without Waiting for a Response
 </a>
 
 To decrease the time between successive packets, the BLE standard defines a command and message pair for sending and receiving data between a client and server - without waiting for a response after each message:
@@ -25,10 +25,11 @@ For sending data from the client to the server, the _Write Without Response_ pro
 ```c
     
 	WriteOnlyGattCharacteristic<uint32_t> writeTo(uuid, valuePtr,
-		GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_WRITE_WITHOUT_RESPONSE);
+			GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_WRITE_WITHOUT_RESPONSE);
+
 ```
 
-The above defines a writable characteristic encapsulating a 32-bit unsigned integer value where ``uuid`` is the UUID for the characteristic, ``valuePtr`` holds the initial value for the characteristic that will be copied into the BLE stack, and WRITE_WITHOUT_RESPONSE is passed in as an optional property. Note that some clients require the ``GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_WRITE`` to be set as well.
+The above defines a writable characteristic encapsulating a 32-bit unsigned integer value where ``uuid`` is the UUID for the characteristic, ``valuePtr`` holds the initial value for the characteristic that will be copied into the BLE stack, and WRITE_WITHOUT_RESPONSE is passed in as an optional property. 
 
 Any connected client can now send data with minimal overhead by issuing a _Write Without Response_ to this characteristic.
 
@@ -57,7 +58,7 @@ Using ``BLE_API``, the first step is to set up a read characteristic with the ``
 
 This defines a readable characteristic encapsulating a 32-bit unsigned integer value where ``uuid`` and ``valuePtr`` are the same as above, and NOTIFY is passed in as an optional property. The corresponding declaration using ReadOnlyArrayGattCharacteristic<Type, NUM_BYTES> is also available.
 
-The second step is to register a callback function to the ``BLEDevice::onDataSent`` method. This method is called whenever the BLE radio has transmitted some data (i.e. sent back a notification) and is ready to transmit again. The callback function is responsible for setting up the data to be transmitted next. This loop will keep the radio busy as long as there is data to be sent.
+The second step is to register a callback function to the ``BLEDevice::onDataSent`` method. This method is called whenever the BLE radio has transmitted some data (that is, sent back a notification) and is ready to transmit again. The callback function is responsible for setting up the data to be transmitted next. This loop will keep the radio busy as long as there is data to be sent.
 
 The third step is for the client to subscribe to the read characteristic and be ready to receive _Handle Value Notifications_.
 
@@ -100,7 +101,7 @@ The function ``sendData`` is responsible for keeping track of what data to send 
 ##Transfer Often
 </a>
 
-Another way to reduce latency is to increase the number of potential connections by updating the connection interval. Note that connections are established completely at the central’s discretion and any connection preferences or connection requests issued by the peripheral are only recommendations which can be ignored by the central.
+Another way to reduce latency is to increase the number of potential connections by updating the connection interval. Note that connections are established completely at the central’s discretion and any connection preferences or connection requests issued by the peripheral are only recommendations that can be ignored by the central.
 
 Nevertheless, setting a smaller connection interval can have a significant impact on the latency. However, care should be taken to ensure that the low power profile is maintained by dynamically switching connection parameters based on the latency requirements.
 
