@@ -2,12 +2,12 @@
 
 As mentioned in the [previous sections](/GettingStarted/DesignersIntro/), BLE is primarily designed for low data rate applications where only a few bytes are transmitted every second. However, you may find yourself in need of transferring a large amount of data, so in this section we'll show you how to build a high data rate, low latency application using mbed’s ``BLE_API`` while still keeping a low power profile.
 
-For low data rate applications, the typical way to interact with characteristics is through the read, write, and indication commands that send a packet of data and subsequently wait for a response. But waiting for a response can add significantly to the latency and increase the delay before sending the next packet, increasing the overall transmission time when sending large amounts of data, so it’s less suitable for low latency applications, or applications that need to exchange a large amount of data as quickly as possible. Worse, the central might decide to terminate the current connection after each read and write command, exacerbating the problem by delaying the next operation to the following connection.
+For low data rate applications, the typical way to interact with characteristics is through the read, write, and indication commands that send a packet of data and subsequently wait for a response from the server. But waiting for a response can add significantly to the latency and increase the delay before sending the next packet, increasing the overall transmission time when sending large amounts of data, so it’s less suitable for low latency applications, or applications that need to exchange a large amount of data as quickly as possible. Worse, the central might decide to terminate the current connection after each read or write command, exacerbating the problem by delaying the next operation to the following connection.
 
-There are two orthogonal approaches to overcome these limitations: [transfer quickly](#fast) - decreasing the time between packets - or [transfer often](#often) - reducing the interval between connection events.
+There are two orthogonal approaches to overcome these limitations: [transfer without waiting for response](#fast) - reducing the protocol overhead - or [transfer often](#often) - reducing the interval between connection events.
 
 <a name="fast">
-##Transfer Quickly
+##Transfer Without Waiting for Response
 </a>
 
 To decrease the time between successive packets, the BLE standard defines a command and message pair for sending and receiving data between a client and server - without waiting for a response after each message:
@@ -24,15 +24,20 @@ For sending data from the client to the server, the _Write Without Response_ pro
 
 ```c
     
-	GattCharacteristic writeTo(uuid, valuePtr, initialLen, maxLen,
-		GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_WRITE |
+	WriteOnlyGattCharacteristic<uint32_t> writeTo(uuid, valuePtr,
 		GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_WRITE_WITHOUT_RESPONSE);
-
 ```
 
-Where ``uuid`` is the UUID for the write characteristic; ``valuePtr`` and ``initialLen`` hold the initial value for the characteristic and will be copied into the BLE stack; and ``maxLen`` is the maximum size of the attribute. Note that some clients require the ``GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_WRITE`` to be set as well.
+The above defines a writable characteristic encapsulating a 32-bit unsigned integer value where ``uuid`` is the UUID for the characteristic, ``valuePtr`` holds the initial value for the characteristic that will be copied into the BLE stack, and WRITE_WITHOUT_RESPONSE is passed in as an optional property. Note that some clients require the ``GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_WRITE`` to be set as well.
 
-Any connected client can now send data with minimal overhead by issuing a _Write Without Response_ to this characteristic. 
+Any connected client can now send data with minimal overhead by issuing a _Write Without Response_ to this characteristic.
+
+Note that when writing large amounts of data, you might want to have your characteristics encapsulate larger data-types than the uint32_t in the above example. You can do something like the following to encapsulate NUM_BYTES worth of octets:
+
+```c
+	WriteOnlyArrayGattCharacteristic<uint8_t, NUM_BYTES> writeTo(uuid, valuePtr,
+		GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_WRITE_WITHOUT_RESPONSE);
+```
 
 <a name="handle">
 ###Server to Client
@@ -40,23 +45,21 @@ Any connected client can now send data with minimal overhead by issuing a _Write
 
 Sending data in the opposite direction, from the server to the client, is slightly different because servers are not supposed to "write" to clients. However, this behaviour can be emulated by repurposing _Handle Value Notifications_.
 
-Usually, _Handle Value Notifications/Indications_ are used by the server to send updated values to a subscribed client or for signalling a client that a subscribed read attribute has been updated. Because _Handle Value Notifications_ can carry the same payload as any other BLE message, is sent at the server’s discretion, and doesn't generate a response from the client, _Handle Value Notifications_ can be repurposed for transmitting low latency data from server to client. 
+Usually, _Handle Value Notifications/Indications_ are used by the server to send updated values to a subscribed client or for signalling a client that a subscribed read attribute has been updated. Because _Handle Value Notifications_ can carry the same payload as any other BLE message, is sent at the server’s discretion, and doesn't generate a response from the client, _Handle Value Notifications_ can be repurposed for transmitting low latency data from server to client.
 
 Using ``BLE_API``, the first step is to set up a read characteristic with the ``GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY`` property enabled:
 
 ```c
-
-	GattCharacteristic readFrom(uuid, valuePtr, initialLen, maxLen,
-		GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_READ |
+	ReadOnlyGattCharacteristic<uint32_t> readFrom(uuid, valuePtr,
 		GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY);
 
 ```
 
-Where ``uuid``, ``valuePtr``, ``initialLen``, and ``maxLen`` are the same as above. The ``GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_READ`` property is mandatory, since only read characteristics can have value updates.
+This defines a readable characteristic encapsulating a 32-bit unsigned integer value where ``uuid`` and ``valuePtr`` are the same as above, and NOTIFY is passed in as an optional property. The corresponding declaration using ReadOnlyArrayGattCharacteristic<Type, NUM_BYTES> is also available.
 
-The second step is to register a callback function to the ``BLEDevice::onDataSent`` method. This method is called whenever the BLE radio has transmitted some data and is ready to transmit again. The callback function is responsible for setting up the data to be transmitted next. This loop will keep the radio busy as long as there is data to be sent. 
+The second step is to register a callback function to the ``BLEDevice::onDataSent`` method. This method is called whenever the BLE radio has transmitted some data (i.e. sent back a notification) and is ready to transmit again. The callback function is responsible for setting up the data to be transmitted next. This loop will keep the radio busy as long as there is data to be sent.
 
-The third step is for the client to subscribe to the read characteristic and be ready to receive _Handle Value Notifications_. 
+The third step is for the client to subscribe to the read characteristic and be ready to receive _Handle Value Notifications_.
 
 The server can now send a stream of low latency messages to the client by calling the ``BLEDevice::updateCharacteristicValue`` method. If the return value is ``BLE_ERROR_NONE``, the message will be sent without interruption. If the value is not ``BLE_ERROR_NONE``, this indicates that the last call did not succeed (because the buffer is full) and the message will have to be sent again. By calling ``BLEDevice::updateCharacteristicValue`` repeatedly we take advantage of all the available transmit buffers in the radio, and by keeping the radio busy as much as possible we can reduce the inter-packet latency. This is illustrated in the code below:
 
@@ -97,9 +100,9 @@ The function ``sendData`` is responsible for keeping track of what data to send 
 ##Transfer Often
 </a>
 
-Another way to reduce latency is to increase the number of potential connections by updating the minimum and maximum connection interval. Note that connections are established completely at the central’s discretion and any connection preferences or connection requests issued by the peripheral are only optional and can be ignored by the central. 
+Another way to reduce latency is to increase the number of potential connections by updating the connection interval. Note that connections are established completely at the central’s discretion and any connection preferences or connection requests issued by the peripheral are only recommendations which can be ignored by the central.
 
-Nevertheless, successfully setting a small connection interval can have a significant impact on the latency. However, care should be taken to ensure that the low power profile is maintained by dynamically switching connection parameters based on the latency requirements.
+Nevertheless, setting a smaller connection interval can have a significant impact on the latency. However, care should be taken to ensure that the low power profile is maintained by dynamically switching connection parameters based on the latency requirements.
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **Tip**: more information about the connection parameters is available [here](/InDepth/ConnectionParameters/).
@@ -114,9 +117,9 @@ The following code example shows how ``BLE_API`` can be used for updating the co
 
 	...
 
-	void whenConnected(Gap::Handle_t handle, 
-							Gap::addr_type_t peerAddrType, 
-							const Gap::address_t peerAddr, 
+	void whenConnected(Gap::Handle_t handle,
+							Gap::addr_type_t peerAddrType,
+							const Gap::address_t peerAddr,
 							const Gap::ConnectionParams_t *params)
 	{
 		// Option 1:
@@ -146,6 +149,6 @@ The following code example shows how ``BLE_API`` can be used for updating the co
 	}
 ```
 
-Where ``minConnectionInterval`` and ``maxConnectionInterval`` suggest to the central how often connections should be attempted and ``slaveLatency`` suggests how many of these connection attempts the slave is allowed to miss before the central may consider the peripheral disconnected. 
+Where ``minConnectionInterval`` and ``maxConnectionInterval`` suggest to the central how often connections should be attempted and ``slaveLatency`` suggests how many of these connection attempts the slave is allowed to miss before the central may consider the peripheral disconnected.
 
 
