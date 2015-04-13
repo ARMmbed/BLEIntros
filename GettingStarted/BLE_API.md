@@ -30,7 +30,7 @@ BLE_API offers building blocks to help construct applications. These fall into t
 
 2. Code under **'common/'** encapsulates headers that need to be shared between the public interfaces and underlying bridge code.
 
-3. Classes under **'services/'** to offer reference implementations for many of the commonly used GATT profiles. The code under 'services/' isn't essential, but it’s a useful starting point for prototyping. We continue to implement the standard GATT profiles, so these classes are updated from time to time.
+3. Classes under **'services/'** to offer reference implementations for many of the commonly used GATT profiles. The code under 'services/' isn't essential, but it’s a useful starting point for prototyping. We continue to implement the standard GATT profiles, so these classes are updated from time to time. For a full list, see the [folder](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_API/file/tip/services).
 
 ##The BLEDevice Class and Header
 
