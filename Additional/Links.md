@@ -12,7 +12,8 @@ The fun doesn't stop here. You may be interested in:
 
 And on other sites:
 
-1.[Bluetooth Core Specifications 4.2](https://www.bluetooth.org/en-us/specification/adopted-specifications).
+
+1. [Bluetooth Core Specifications 4.2](https://www.bluetooth.org/en-us/specification/adopted-specifications).
 
 2. [Bluetooth on Apple devices](https://developer.apple.com/bluetooth/).
 
