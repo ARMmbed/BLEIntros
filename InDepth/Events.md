@@ -101,12 +101,15 @@ The first use of the callback function is to allow the program not to stall when
 
 ````c
 
-InterruptIn button(BUTTON1); // Instantiating an object of the InterruptIn class for receiving interrupts
+	// Instantiating an object of the InterruptIn class for receiving interrupts
+	InterruptIn button(BUTTON1); 
 	…
 	
-	// the callback functions are not part of main(); they’re associated with their triggers  from main
+	// the callback functions are not part of main(); 
+	// they’re associated with their triggers  from main
 
-	// reaction to falling edge - a button press changes the current received from the button
+	// reaction to falling edge - a button press changes 
+	// the current received from the button
 
 	void buttonPressedCallback(void) 	{
 		buttonPressed = true;
@@ -115,7 +118,8 @@ InterruptIn button(BUTTON1); // Instantiating an object of the InterruptIn class
 			(uint8_t *)&buttonPressed, sizeof(bool));
 	}
 
-	void buttonReleasedCallback(void) // reaction to rising edge - releasing the button changes the current again
+	// reaction to rising edge - releasing the button changes the current again
+	void buttonReleasedCallback(void) 
 	{
 		buttonPressed = false;
 		// gives the buttonState characteristic the value FALSE
@@ -128,9 +132,9 @@ InterruptIn button(BUTTON1); // Instantiating an object of the InterruptIn class
 	…
 		// these lines tell the program to set up the functions and move on; 
 		// mbed OS will ensure that the functions are called when the events occur. 
-		// If these lines were the function code, rather than a call to the functions, we’d stay 
-		// on the first line until the button was pressed and then on the second line until 
-		// the button was released
+		// If these lines were the function code, rather than a call to the functions, 
+		// we’d stay on the first line until the button was pressed and then
+		// on the second line until the button was released
 		
 button.fall(buttonPressedCallback);// falling edge
 		button.rise(buttonReleasedCallback);// rising edge
@@ -185,12 +189,16 @@ So here’s a plain-language example:
 
 ```
 
-	function 1 { receive input from some blocking source like a sensor and create new output; }
-	function 2 { receive input from function 1 and process it; }
+	function 1 { 
+		receive input from some blocking source like a sensor and create new output; }
+	function 2 { 
+		receive input from function 1 and process it; }
 
 	main()
 	{
-	call function1(using function 2); // this will trigger function 1 and then call function 2 at the tail end
+	// this will trigger function 1 and then call function 2 at the tail end
+
+	call function1(using function 2); 	
 	}
 
 ```
