@@ -107,8 +107,6 @@ Now we can set up the custom service:
 2. We declare the GATT service. The declaration includes the UUID, the characteristics array and the number of characteristics included.
 
 ```c
-
-
 	// Set up custom service
 	GattCharacteristic *characteristics[] = {&readChar, &writeChar};
 	GattService        	customService(customServiceUUID, 
@@ -121,7 +119,6 @@ We've established the service; we can now create other functions.
 First, since GATT is connection-based, we need a disconnection callback function. This functions restarts advertising after a disconnect occurs, so a device can find and reconnect to a lost board. If we don't include this function, we'll have to restart the board to be able to reconnect to it:
 
 ```c
-
 	void disconnectionCallback(Gap::Handle_t handle, Gap::DisconnectionReason_t reason)
 	{
  	   ble.startAdvertising(); 
@@ -131,8 +128,6 @@ First, since GATT is connection-based, we need a disconnection callback function
 Next, we need to create the write callback function so it can be called when the BLE board is written to. This callback makes sure the write operation triggering the callback (``params ->charHandle``) is a write operation to the correct write characteristic (``writeChar.getValueHandle()``). This isn't necessary when you have only one write characteristic, but is absolutely necessary when you have multiple ones on a device. The remainder of the code will print out the data written to the write characteristic:
 
 ```c
-
-
 	/* 
 	 *  handle writes to writeCharacteristic
 	*/
@@ -164,7 +159,6 @@ Next, we need to create the write callback function so it can be called when the
 Now, we start the main loop and initialise the BLE base layer:
 
 ```c
-
 	/*
  	*  main loop
 	*/ 
@@ -178,8 +172,6 @@ Now, we start the main loop and initialise the BLE base layer:
 When that's done, we set up the disconnection callback (to be used if we're disconnected) and the write character callback (to be used when data is written):
 
 ```c
-
-
     ble.onDisconnection(disconnectionCallback);
     ble.onDataWritten(writeCharCallback);
 ```
@@ -196,7 +188,6 @@ Now we set up the advertising parameters:
 
 
 ```c
-
     /* setup advertising */
 	// BLE only, no classic BT
     ble.accumulateAdvertisingPayload(GapAdvertisingData::BREDR_NOT_SUPPORTED 
@@ -217,14 +208,12 @@ Now we set up the advertising parameters:
 We add our custom service:
 
 ```c
-
 	ble.addService(customService);
 ```
 
 And now that everything is set up, we can start advertising the connection:
 
 ```c
-
  	   // start advertising
     	ble.startAdvertising(); 
    	 
@@ -257,9 +246,16 @@ To run the app:
 
 You need to change the variable ``MyDeviceName`` (in the ``app.js`` file you downloaded from GitHub) to match the device name you gave to your mbed board:
 
-<span style="text-align:center; display:block;">
-![](/AdvSamples/Images/Evothings/EvothingsChangeName.png)
-</span>
+```javascript
+// JavaScript code for the mbed ble scan app
+
+// Short name for EasyBLE library.
+var easyble = evothings.easyble;
+
+// Name of device to connect to, 
+// Change this name in the mbed code and the evothings code to match.
+var MyDeviceName = "ChangeMe!!" 
+```
 
 You should review the app's code to verify you understand the flow:
 
@@ -267,7 +263,7 @@ You should review the app's code to verify you understand the flow:
 
 2. When it finds the devices and connects to it, the message changes from *connecting* to *connected* and the toggle button changes to green.
 
-3. If you click that button, it will change to red and LED1 on the board will light up. 
+3. If you click that button, it will change to red and LED1 on the board will light up. See the .gif below for an example of the LED blinking when the toggle button is pressed.
 
 <span style="text-align:center; display:block;">
 ![](/AdvSamples/Images/Evothings/EvothingsToggleButton.png)
@@ -277,8 +273,37 @@ You should review the app's code to verify you understand the flow:
 ![](/AdvSamples/Images/Evothings/EvothingsLEDOn.png)
 </span>
 
-This is the code snippet controlling the toggle function:
+This is the Evothings code snippet that is run on the smartphone to  control the toggle function:
 
-<span style="text-align:center; display:block;">
-![](/AdvSamples/Images/Evothings/EvothingsToggleCode.png)
-</span>
+```javascript
+app.toggle = function()
+{    
+    // console.log(GDevice.__services[2].__characteristics[0]['uuid'])
+    GDevice.readCharacteristic( 
+        "0000a001-0000-1000-8000-00805f9b34fb",
+        function(win){
+            var view = new Uint8Array(win)
+            var led = new Uint8Array(1)
+            if(view[0] == ledON){
+                $('#toggle').removeClass('green')
+                $('#toggle').addClass('red')
+                led[0] = ledOFF;
+            }
+            else if (view[0] == ledOFF){
+                $('#toggle').removeClass('red')
+                $('#toggle').addClass('green')
+                led[0] = ledON;
+            }
+            GDevice.writeCharacteristic(
+                '0000a002-0000-1000-8000-00805f9b34fb',
+                led,
+                function(win){console.log("led toggled successfully!")},
+                function(fail){console.log("led toggle failed: "+fail)})
+            
+        },
+        function(fail){
+            console.log("read char fail: "+fail);
+            }
+        );
+}
+```
