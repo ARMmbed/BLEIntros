@@ -30,6 +30,10 @@ Unlike GAP, which operates on broadcasting one-to-many, GATT uses a one-to-one c
 
 To demonstrate this we will create a service with two characteristics and assign custom UUIDs to both the service and the characteristics. 
 
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+You can see an example of setting up an input service on our [YouTube channel](https://www.youtube.com/watch?v=YaLG-6pDFrw).
+</span>
+
 ##Review of Services
 
 <span style="display:block; float:right;">
