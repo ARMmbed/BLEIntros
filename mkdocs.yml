@@ -1,5 +1,7 @@
 site_name: Introduction to mbed BLE
 
+docs_dir: Docs
+
 pages:
 - ['index.md','Introduction to mbed BLE']
 - ['GettingStarted/DevIntro.md', 'Getting Started', 'BLE: the Short Version']
