@@ -146,7 +146,7 @@ The initial image to be programmed onto a device needs to contain the SoftDevice
 
 The following is a complete command to combine all the above components:
 
-```text
+```bat
 srec_cat ${MBED_SRC_PATH}/targets/hal/TARGET_NORDIC \
 TARGET_MCU_NRF51822/Lib/s110_nrf51822_7_0_0/ \
 s110_nrf51822_7.0.0_softdevice.hex -intel BLE_Default_APP.hex -intel \
