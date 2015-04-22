@@ -133,11 +133,10 @@ The following settings need to be installed (listed alongside the corresponding 
 The above can be accomplished by amending the command line options to ``srec_cat`` with the following sequence placed *after* ``${PROJECT_NAME}.hex -intel``:
 
 ```cmake
--exclude 0x3FC00 0x3FC20 -generate 0x3FC00 \
-0x3FC04 -l-e-constant 0x01 4 -generate 0x3FC04 \
-0x3FC08 -l-e-constant 0x00 4 -generate 0x3FC08 \
-0x3FC0C -l-e-constant 0xFE 4 -generate 0x3FC0C \
-0x3FC20 -constant 0x00
+-exclude 0x3FC00 0x3FC20 -generate 0x3FC00 0x3FC04 \
+-l-e-constant 0x01 4 -generate 0x3FC04 0x3FC08 \
+-l-e-constant 0x00 4 -generate 0x3FC08 0x3FC0C \
+-l-e-constant 0xFE 4 -generate 0x3FC0C 0x3FC20 -constant 0x00
 ```
 
 ##Combining the SoftDevice and an Initial Application
