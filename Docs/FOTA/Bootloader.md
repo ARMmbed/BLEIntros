@@ -62,7 +62,9 @@ You can build the boot loader with the following steps:
 	/BLE_BootLoader$ cd Build/
 	/BLE_BootLoader/Build$ cmake ..
 	/BLE_BootLoader/Build$ make -j all
+
 ###Size Limitations
+
 Please note that we expect to fit the boot loader within 16K of internal flash (at the upper end of the code space); this includes nearly 1K of configuration space (for boot loader settings), so the actual available code size is a little less than 15K. 
 
 Depending on your toolchain, it may be a challenge to fit the boot loader within these constraints. Doing this with ARM-CC requires the use of the linker feedback files, involving two rounds of compilation in which the first round generates the feedback file. Please refer to the command line compiler option called 'feedback' under [infocenter.arm.com](http://infocenter.arm.com/help/index.jsp) or search for "Minimizing code size by eliminating unused functions during compilation" in the context of ARM-CC.
@@ -70,6 +72,7 @@ Depending on your toolchain, it may be a challenge to fit the boot loader within
 If you are unable to fit the boot loader within 16K, then increase the value of the constant ``BOOTLOADER_REGION_START``; you'll then also need to make a corresponding change in the boot loader's linker script to place the vector table at the new START address.
 
 ##The UICR
+
 The UICR is a collection of memory-mapped configuration registers starting from the address ``0x10000000``; they can be programmed like any other part of the internal flash, and determine who gets control when a device starts up: the application or the bootloader.
 The following snippet within ``bootloader_settings_arm.c`` sets up the update for UICR by setting up the UICR.BOOTADDR to point to the boot loader’s vector table:
 
@@ -90,6 +93,7 @@ They specify the programming of the 4-byte value ``0x0003C000`` at address ``0x1
 Please also refer to the datasheet for the nRF51822 for the layout of registers within the UICR region.
 
 ##Receiving Control at Startup
+
 At reset, the SoftDevice checks the UICR.BOOTADDR register. Two things can happen:
 
 1. If the register is blank (meaning it is set to ``0xFFFFFFFF``), the SoftDevice assumes that no boot loader is present. It then forwards interrupts to the application and executes the application as usual. 
@@ -97,28 +101,38 @@ At reset, the SoftDevice checks the UICR.BOOTADDR register. Two things can happe
 2. If the BOOTADDR register is set to an address different from ``0xFFFFFFFF``, the SoftDevice assumes that the boot loader vector table is located at this address. Interrupts are then forwarded to the boot loader at this address and execution will be started at the boot loader reset handler.
 
 ##Setup to Forward Control to the Application
+
 After being handed control, the boot loader looks for an application at the end of the SoftDevice (if it fails to find one, it sets up the DFUService and waits for a new firmware).
 
 In the normal case, where there is an application, you'd want the boot loader to forward control to it. You must update the boot loader’s settings to instruct it to look for a valid application; this can either be done statically or by manually writing to the 'settings' region . Settings reside within the page starting at the address ``0x003FC00``.
+
 The following settings need to be installed (listed alongside the corresponding addresses):
+
+```c
 
 	0x3FC00: 0x00000001
 	0x3FC04: 0x00000000
 	0x3FC08: 0x000000FE
 	0x3FC0C-0x3FC20: 0x00000000
+```
 
 The above can be accomplished by amending the command line options to ``srec_cat`` with the following sequence placed *after* ``${PROJECT_NAME}.hex -intel``:
+
+```c
 
 	-exclude 0x3FC00 0x3FC20 -generate 0x3FC00
 	0x3FC04 -l-e-constant 0x01 4 -generate 0x3FC04
 	0x3FC08 -l-e-constant 0x00 4 -generate 0x3FC08
 	0x3FC0C -l-e-constant 0xFE 4 -generate 0x3FC0C
 	0x3FC20 -constant 0x00
+```
 
 ##Combining the SoftDevice and an Initial Application
 The initial image to be programmed onto a device needs to contain the SoftDevice with the DFU-boot loader and (optionally) an initial application. If there is no initial application, the bootloader will wait for FOTA.
 
 The following is a complete command to combine all the above components:
+
+```c
 
 	srec_cat ${MBED_SRC_PATH}/targets/hal/TARGET_NORDIC \
 	TARGET_MCU_NRF51822/Lib/s110_nrf51822_7_0_0/ \
@@ -128,6 +142,7 @@ The following is a complete command to combine all the above components:
 	0x3FC04 0x3FC08 -l-e-constant 0x00 4 -generate 0x3FC08 0x3FC0C \
 	-l-e-constant 0xFE 4 -generate 0x3FC0C 0x3FC20 -constant 0x00 -o \
 	combined.hex -intel
+```
 
 Et voila, the above produces a ``combined.hex`` that is ready to be flashed onto the target following a mass-erase; you've got your DFU boot loader all set up.
 
