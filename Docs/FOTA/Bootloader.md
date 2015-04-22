@@ -70,7 +70,7 @@ The following variables may need to be updated:
 
 You can build the boot loader with the following steps:
 
-```c
+```
 	
 	/BLE_BootLoader$ mkdir Build
 	/BLE_BootLoader$ cd Build/
@@ -92,7 +92,7 @@ The UICR is a collection of memory-mapped configuration registers starting from 
 
 The following snippet within ``bootloader_settings_arm.c`` sets up the update for UICR by setting up the UICR.BOOTADDR to point to the boot loader’s vector table:
 
-```c
+```
 
 	uint32_t m_uicr_bootloader_start_address
 	__attribute__((at(NRF_UICR_BOOT_START_ADDRESS))) 
@@ -101,7 +101,7 @@ The following snippet within ``bootloader_settings_arm.c`` sets up the update fo
 
 You should be able to verify that the .hex file generated for the boot loader contains the update to UICR.BOOTADDR. The following lines at the end of the generated .hex file do the trick:
 
-```c
+```
 
 	:020000041000EA
 	:0410140000C0030015
@@ -127,7 +127,7 @@ In the normal case, where there is an application, you'd want the boot loader to
 
 The following settings need to be installed (listed alongside the corresponding addresses):
 
-```c
+```
 
 	0x3FC00: 0x00000001
 	0x3FC04: 0x00000000
@@ -137,7 +137,7 @@ The following settings need to be installed (listed alongside the corresponding 
 
 The above can be accomplished by amending the command line options to ``srec_cat`` with the following sequence placed *after* ``${PROJECT_NAME}.hex -intel``:
 
-```c
+```
 
 	-exclude 0x3FC00 0x3FC20 -generate 0x3FC00 \
 	0x3FC04 -l-e-constant 0x01 4 -generate 0x3FC04 \
@@ -152,7 +152,7 @@ The initial image to be programmed onto a device needs to contain the SoftDevice
 
 The following is a complete command to combine all the above components:
 
-```c
+```
 
 	srec_cat ${MBED_SRC_PATH}/targets/hal/TARGET_NORDIC \
 	TARGET_MCU_NRF51822/Lib/s110_nrf51822_7_0_0/ \
@@ -172,7 +172,10 @@ The boot loader receives control in one of two possible cases: either from the S
 
 When DFU is triggered by writing into the control characteristic of the DFU service, a DFU- enabled application executes the following code, which sets GPREGRET that can then be read back by the boot loader:
 
+```
+	
 	sd_power_gpregret_set(BOOTLOADER_DFU_START);
+```
 
 ``BOOTLOADER_DFU_START`` is a constant that the boot loader sees as indication that control flowed into it from an application (instead of the SoftDevice).
 
