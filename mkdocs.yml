@@ -24,6 +24,7 @@ pages:
 - ['AdvSamples/GATTEvo.md','Advanced Samples and Features', 'Custom GATT Service with Evothings']
 - ['AdvSamples/URIBeaconAdv.md','Advanced Samples and Features', 'Advanced Features of the URI Beacon']
 - ['AdvSamples/HighData.md','Advanced Samples and Features', 'High Data Rate, Low Latency Transfers']
+- ['FOTA/Bootloader.md','Firmware Over the Air', 'Internals of the Nordic DFU Boot Loader']
 - ['Additional/BLE_FAQ.md','Additional Resources', 'FAQ']
 - ['Additional/Links.md','Additional Resources', 'Useful Links']
 - ['Additional/Blank.md','Additional Resources', '']
