@@ -70,6 +70,7 @@ The following variables may need to be updated:
 
 You can build the boot loader with the following steps:
 
+<!-- language: lang-none -->
 
 	/BLE_BootLoader$ mkdir Build
 	/BLE_BootLoader$ cd Build/
@@ -91,12 +92,16 @@ The UICR is a collection of memory-mapped configuration registers starting from 
 
 The following snippet within ``bootloader_settings_arm.c`` sets up the update for UICR by setting up the UICR.BOOTADDR to point to the boot loader’s vector table:
 
+<!-- language: lang-none -->
+
 	uint32_t m_uicr_bootloader_start_address
 	__attribute__((at(NRF_UICR_BOOT_START_ADDRESS))) 
 		= BOOTLOADER_REGION_START;
 
 
 You should be able to verify that the .hex file generated for the boot loader contains the update to UICR.BOOTADDR. The following lines at the end of the generated .hex file do the trick:
+
+<!-- language: lang-none -->
 
 	:020000041000EA
 	:0410140000C0030015
@@ -122,6 +127,8 @@ In the normal case, where there is an application, you'd want the boot loader to
 
 The following settings need to be installed (listed alongside the corresponding addresses):
 
+<!-- language: lang-none -->
+
 	0x3FC00: 0x00000001
 	0x3FC04: 0x00000000
 	0x3FC08: 0x000000FE
@@ -129,6 +136,8 @@ The following settings need to be installed (listed alongside the corresponding 
 
 
 The above can be accomplished by amending the command line options to ``srec_cat`` with the following sequence placed *after* ``${PROJECT_NAME}.hex -intel``:
+
+<!-- language: lang-none -->
 
 	-exclude 0x3FC00 0x3FC20 -generate 0x3FC00 \
 	0x3FC04 -l-e-constant 0x01 4 -generate 0x3FC04 \
@@ -142,6 +151,8 @@ The above can be accomplished by amending the command line options to ``srec_cat
 The initial image to be programmed onto a device needs to contain the SoftDevice with the DFU-boot loader and (optionally) an initial application. If there is no initial application, the bootloader will wait for FOTA.
 
 The following is a complete command to combine all the above components:
+
+<!-- language: lang-none -->
 
 	srec_cat ${MBED_SRC_PATH}/targets/hal/TARGET_NORDIC \
 	TARGET_MCU_NRF51822/Lib/s110_nrf51822_7_0_0/ \
@@ -160,6 +171,8 @@ Et voila, the above produces a ``combined.hex`` that is ready to be flashed onto
 The boot loader receives control in one of two possible cases: either from the SoftDevice during system startup (as we saw above), or from an application for which FOTA has been triggered. In the second case, the boot loader should always enter DFU mode and wait for a new firmware. It is important for the boot loader to be able to distinguish between the two possibilities. This is done through one of the registers in the power-domain - the GPREGRET - which is the general purpose retention register.
 
 When DFU is triggered by writing into the control characteristic of the DFU service, a DFU- enabled application executes the following code, which sets GPREGRET that can then be read back by the boot loader:
+
+<!-- language: lang-none -->
 	
 	sd_power_gpregret_set(BOOTLOADER_DFU_START);
 
