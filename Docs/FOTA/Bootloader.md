@@ -70,11 +70,11 @@ The following variables may need to be updated:
 
 You can build the boot loader with the following steps:
 
-```
-	/BLE_BootLoader$ mkdir Build
-	/BLE_BootLoader$ cd Build/
-	/BLE_BootLoader/Build$ cmake ..
-	/BLE_BootLoader/Build$ make -j all
+```bat
+/BLE_BootLoader$ mkdir Build
+/BLE_BootLoader$ cd Build/
+/BLE_BootLoader/Build$ cmake ..
+/BLE_BootLoader/Build$ make -j all
 ```
 
 ###Size Limitations
@@ -91,16 +91,16 @@ The UICR is a collection of memory-mapped configuration registers starting from 
 
 The following snippet within ``bootloader_settings_arm.c`` sets up the update for UICR by setting up the UICR.BOOTADDR to point to the boot loader’s vector table:
 
-```
-	uint32_t m_uicr_bootloader_start_address
-	__attribute__((at(NRF_UICR_BOOT_START_ADDRESS))) = BOOTLOADER_REGION_START;
+```bat
+uint32_t m_uicr_bootloader_start_address
+__attribute__((at(NRF_UICR_BOOT_START_ADDRESS))) = BOOTLOADER_REGION_START;
 ```
 
 You should be able to verify that the .hex file generated for the boot loader contains the update to UICR.BOOTADDR. The following lines at the end of the generated .hex file do the trick:
 
-```
-	:020000041000EA
-	:0410140000C0030015
+```bat
+:020000041000EA
+:0410140000C0030015
 ```
 
 They specify the programming of the 4-byte value ``0x0003C000`` at address ``0x10001014``, which is the address of UICR.BOOTADDR. Please [refer](http://en.wikipedia.org/wiki/Intel_HEX) to the format for Intel HEX files. 
@@ -123,21 +123,21 @@ In the normal case, where there is an application, you'd want the boot loader to
 
 The following settings need to be installed (listed alongside the corresponding addresses):
 
-```
-	0x3FC00: 0x00000001
-	0x3FC04: 0x00000000
-	0x3FC08: 0x000000FE
-	0x3FC0C-0x3FC20: 0x00000000
+```bat
+0x3FC00: 0x00000001
+0x3FC04: 0x00000000
+0x3FC08: 0x000000FE
+0x3FC0C-0x3FC20: 0x00000000
 ```
 
 The above can be accomplished by amending the command line options to ``srec_cat`` with the following sequence placed *after* ``${PROJECT_NAME}.hex -intel``:
 
-```
-	-exclude 0x3FC00 0x3FC20 -generate 0x3FC00 \
-	0x3FC04 -l-e-constant 0x01 4 -generate 0x3FC04 \
-	0x3FC08 -l-e-constant 0x00 4 -generate 0x3FC08 \
-	0x3FC0C -l-e-constant 0xFE 4 -generate 0x3FC0C \
-	0x3FC20 -constant 0x00
+```bat
+-exclude 0x3FC00 0x3FC20 -generate 0x3FC00 \
+0x3FC04 -l-e-constant 0x01 4 -generate 0x3FC04 \
+0x3FC08 -l-e-constant 0x00 4 -generate 0x3FC08 \
+0x3FC0C -l-e-constant 0xFE 4 -generate 0x3FC0C \
+0x3FC20 -constant 0x00
 ```
 
 ##Combining the SoftDevice and an Initial Application
@@ -146,7 +146,7 @@ The initial image to be programmed onto a device needs to contain the SoftDevice
 
 The following is a complete command to combine all the above components:
 
-```bat
+```bash
 srec_cat ${MBED_SRC_PATH}/targets/hal/TARGET_NORDIC \
 TARGET_MCU_NRF51822/Lib/s110_nrf51822_7_0_0/ \
 s110_nrf51822_7.0.0_softdevice.hex -intel BLE_Default_APP.hex -intel \
@@ -165,8 +165,8 @@ The boot loader receives control in one of two possible cases: either from the S
 
 When DFU is triggered by writing into the control characteristic of the DFU service, a DFU- enabled application executes the following code, which sets GPREGRET that can then be read back by the boot loader:
 
-```	
-	sd_power_gpregret_set(BOOTLOADER_DFU_START);
+```bat	
+sd_power_gpregret_set(BOOTLOADER_DFU_START);
 ```
 
 ``BOOTLOADER_DFU_START`` is a constant that the boot loader sees as indication that control flowed into it from an application (instead of the SoftDevice).
