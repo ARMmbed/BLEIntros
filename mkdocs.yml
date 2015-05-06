@@ -5,7 +5,7 @@ docs_dir: Docs
 pages:
 - ['index.md','Introduction to mbed BLE']
 - ['GettingStarted/DevIntro.md', 'Getting Started', 'BLE: the Short Version']
-- ['GettingStarted/DesignersIntro.md', 'Getting Started', 'BLE: the Long Version']
+- ['GettingStarted/BeginnersIntro.md', 'Getting Started', 'BLE: the Long Version']
 - ['GettingStarted/BLE_API.md', 'Getting Started', 'The mbed BLE API']
 - ['InDepth/Intro.md','In Depth', 'mbed and BLE in Depth']
 - ['InDepth/Events.md','In Depth', 'Event-Driven Programming on mbed']
