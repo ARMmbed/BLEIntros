@@ -27,6 +27,7 @@ pages:
 - ['FOTA/Bootloader.md','Firmware Over the Air', 'Internals of the Nordic DFU Boot Loader']
 - ['Additional/BLE_FAQ.md','Additional Resources', 'FAQ']
 - ['Additional/Links.md','Additional Resources', 'Useful Links']
+- ['Additional/Abbr.md','Additional Resources', 'List of Abbreviations']
 - ['Additional/Blank.md','Additional Resources', '']
 
 extra_css: ['FullCSS.css']
