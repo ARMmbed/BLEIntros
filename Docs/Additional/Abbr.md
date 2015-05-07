@@ -2,42 +2,42 @@
 
 Below is a list of commonly used abbreviations. 
 
-AD: Advertising Date. 
+**AD**: *a*dvertising *d*ata. 
 
-AD Struct: Advertising Data structure. 
+**AD Struct**: *a*dvertising *d*ata *struct*ure. 
 
-API: Application Program Interface.
+**API**: *a*pplication *p*rogram *i*nterface.
 
-BLE SIG: Bluetooth Special Interest Group.
+**BLE SIG**: Bluetooth Special Interest Group.
 
-DFU: Device Firmware Update.
+**DFU**: *d*evice *f*irmware *u*pdate.
 
-FOTA: Firmware Over the Air.
+**FOTA**: *f*irmware *o*ver *t*he *a*ir.
 
-GAP: Generic Access Profile.
+**GAP**: *g*eneric *a*ccess *p*rofile.
 
-GATT: Generic ATTribute profile.
+**GATT**: *g*eneric *att*ribute *p*rofile.
 
-GCC: GNU Compiler Collection. 
+**GCC**: *GNU* *c*ompiler *c*ollection. 
 
-HRM: Heart Rate Monitor. 
+**HRM**: *h*eart *r*ate *m*onitor. 
 
-IDE: Integrated Development Environment.
+**IDE**: *i*ntegrated *d*evelopment *e*nvironment.
 
-I/O: Input and Output.
+**I/O**: *i*nput and *o*utput.
 
-MCU: Microcontroller. 
+**MCU**: *m*icrocontroller. 
 
-PDU: Packet Data Unit.
+**PDU**: *p*acket *d*ata *u*nit.
 
-SDK: Software Development Kit.
+**SDK**: *s*oftware *d*evelopment *k*it.
 
-UART: Universal Asynchronous Receiver/Transmitter. 
+**UART**: *u*niversal *a*synchronous *r*eceiver/*t*ransmitter. 
 
-UICR: User Information Configuration Registers.
+**UICR**: *u*ser *i*nformation *c*onfiguration *r*egisters.
 
-URI: Uniform Resource Identifier.
+**URI**: *u*niform *r*esource *i*dentifier.
 
-URL: Uniform Resource Locator. A type of URI.
+**URL**: *u*niform *r*esource *l*ocator. 
 
-UUID: Universally Unique IDentifier. 
+**UUID**: *u*niversally *u*nique *id*entifier. 
