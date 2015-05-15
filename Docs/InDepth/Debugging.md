@@ -1,6 +1,6 @@
 #Debugging on mbed BLE
 
-This is a review of some debugging techniques that you can use when writing applications with the BLE_API on mbed boards. We'll look at using the interface chip, LEDs and third-party sniffers to debug applications.
+This article reviews a few of the debugging techniques that you can use when writing applications with the BLE API on mbed boards. We'll look at using LEDs, the interface chip and third-party sniffers to debug applications.
 
 ##The Quick Method: LEDs
 
@@ -10,7 +10,7 @@ Most boards come with at least one LED that can be controlled using the standard
 
 2.	We can flash an LED when we enter an error handler. This tells us that we’re in trouble.
 
-3.	We can turn on an LED when running the background activity of the program in ``main()``, for example with ``waitForEvent()``, and then turn it off whenever an interrupt handler preempts ``main()``; if the LED never turns on again, it means that ``main()`` never got back control and we are trapped in the interrupt handler. For more information about handlers, see our discussion on [event driven programming](/InDepth/Events/).
+3.	We can turn on an LED when running the background activity of the program in ``main()``, for example with ``waitForEvent()``. We'll turn it off whenever an interrupt handler pre-empts ``main()``. If the LED never turns on again, it means that ``main()`` never got back control and we are trapped in the interrupt handler. For more information about handlers, see our discussion on [event driven programming](/InDepth/Events/).
 
 LEDs require almost no coding and processing, giving them near-zero overhead. Here’s an example of creating an LED object and turning it on and off:
 
@@ -44,12 +44,11 @@ The mbed SDK includes a nice utility called ``error()``. It takes in printf()-st
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">For more information about ``error()``, see the [handbook](http://developer.mbed.org/handbook/Debugging#runtime-errors).
 </span>
 
-
 ##Debugging with the mbed Interface Chip
 
-Most mbed platforms come with an interface chip placed between the target microcontroller (in our case, the BLE microcontroller) and the development host (our computer). This interface chip plays a key role in debugging: it is a USB bridge between the development host and the debugging capabilities available in ARM microcontrollers. This bridge functionality is encapsulated in a standard called [CMSIS-DAP](http://developer.mbed.org/handbook/CMSIS-DAP) that major toolchain vendors have started to support, so we can expect it to grow in popularity and availability over time. 
+Most mbed platforms come with an interface chip placed between the target microcontroller (in our case, the BLE microcontroller) and the development host (our computer). This interface chip plays a key role in debugging: it is a USB bridge between the development host and the debugging capabilities available in ARM microcontrollers. This bridge functionality is encapsulated in a standard called [CMSIS-DAP](http://developer.mbed.org/handbook/CMSIS-DAP). Major toolchain vendors have started supporting this standard, so we expect it to grow in popularity and availability over time. 
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">**Note:** some smaller boards reduce size and cost by not carrying an interface chip. If you’re using one of those boards, you can skip to the [next sections](#uart).
+<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">**Note:** some smaller boards reduce size and cost by not carrying an interface chip. If you’re using one of those boards, you can skip to the [next section](#uart).
 </span>
 
 By using the interface chip we can debug with:

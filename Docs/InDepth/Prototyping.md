@@ -1,8 +1,8 @@
 #Rapid Prototyping on mbed BLE
 
-mbed comes from a heritage of rapid prototyping and allows you to test code and ideas on BLE devices very easily. For a truly awesome BLE experience, though, you'll need to pair mbed with tools for rapidly prototyping the app side of your solution. In the early stages of development, you might find the following useful:
+mbed comes from a heritage of rapid prototyping and allows you to test code and ideas on BLE devices very easily. For a truly awesome BLE experience, however, you'll need to pair mbed with tools for rapidly prototyping the app side of your solution. This article reviews tools that you might find useful in the early stages of development:
 
-* Feed user interaction directly to the BLE device via [hardware inputs](#hardware), for example a touchscreen.
+* Feed user interaction directly to the BLE device using [hardware inputs](#hardware), for example a touchscreen.
 
 * Create simple apps on [Evothings Studio](http://www.evothings.com) and run them on the Evothings App on your phone. It requires some learning of its own, but it [may well be worth your time](#evothings).
 
@@ -20,13 +20,13 @@ Once your prototype works as you wanted, you can invest some more time in your u
 ##Hardware Inputs
 </a>
 
-mbed supports a wide range of components, some of which can be used to prototype user interaction. For example, [touch screens](http://developer.mbed.org/components/cat/display/), [wirless controllers](http://developer.mbed.org/components/cat/robotics/) or the buttons on the mbed board itself can be used for simple inputs.
+mbed supports a wide range of components, and many of them can be used to prototype user interaction. For example, [touch screens](http://developer.mbed.org/components/cat/display/), [wireless controllers](http://developer.mbed.org/components/cat/robotics/) or the buttons on the mbed board itself can be used for simple inputs.
 
 <a name="evothings">
 ##Evothings
 </a>
 
-[Evothings](http://evothings.com/) isn’t an mbed tool, but since it’s designed for the Internet of Things it works quite well with our BLE-enabled boards. It gives you the Evothings Studio on which to build your prototyping app, and an enveloping Evothings App that lets you run your app on your smartphone without custom-building it for each OS. You’ll see Evothings from time to time in our own samples, such as the [custom GAPP service sample](/AdvSamples/GATTEvo/).
+[Evothings](http://evothings.com/) isn’t an mbed tool, but since it’s designed for the Internet of Things it works quite well with our BLE-enabled boards. It gives you the Evothings Studio on which to build your prototyping app, and an enveloping Evothings App that lets you run the app you built on your smartphone without custom-building it for each OS. You’ll see Evothings from time to time in our own samples, such as the [custom GAPP service sample](/AdvSamples/GATTEvo/).
 
 <a name="apps">
 ##Generic BLE Apps
@@ -38,7 +38,7 @@ You can use a generic BLE app to see information sent by your device. In our sam
 
 * For iPhone: [LightBlue](https://itunes.apple.com/gb/app/lightblue-bluetooth-low-energy/id557428110?mt=8).
 
-These apps scan for nearby BLE devices and display the information received from their advertising mode; they can also establish a connection (connected mode), receive notifications and send user input to the device. You can see a good example of this in our [actuator service template](/AdvSamples/LEDReadWrite/#controlling-the-led), where we use the nRF Master Control Panel to send a new value to a read/write characteristic:
+These apps scan for nearby BLE devices and display the information received from their advertising mode. They can also establish a connection (connected mode), receive notifications and send user input to the device. You can see an example of this in our [actuator service template](/AdvSamples/LEDReadWrite/#controlling-the-led), where we use the nRF Master Control Panel to send a new value to a read/write characteristic:
 
 <span style="text-align:center; display:block;">
 ![Read write](/AdvSamples/Images/LED/WriteValue.png)
