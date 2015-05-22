@@ -10,7 +10,7 @@ This document is written for experienced BLE developers who are switching to mbe
 
 2. mbed has a BLE-specific API ([BLE_API](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_API/file/1956023d42fb/README.md)), a high level abstraction for using BLE on multiple platforms.
 	
-3. The mbed BLE tools are written in C++ and can be used from the online [mbed compiler](https://developer.mbed.org/compiler/) or used offline, for example with [GCC](http://developer.mbed.org/forum/team-63-Bluetooth-Low-Energy-community/topic/5257/).
+3. The mbed BLE tools are written in C++ and can be used from the online [mbed compiler](https://developer.mbed.org/compiler/) or offline, for example with [GCC](http://developer.mbed.org/forum/team-63-Bluetooth-Low-Energy-community/topic/5257/).
 
 BLE is most useful when used with a website or app on your mobile or tablet. See the next section for options.
 
@@ -25,7 +25,7 @@ ___
 
 ##Rapid Prototyping
 
-mbed comes from a heritage of rapid prototyping, and allows you to test code and ideas on BLE devices very easily. 
+mbed comes from a heritage of rapid prototyping and allows you to test code and ideas on BLE devices very easily. 
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 For information about rapid prototyping with mbed BLE, see [here](/InDepth/Prototyping/).
@@ -42,7 +42,7 @@ ___
 ##Quick Samples
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
-**Tip:** The quick samples are written for experienced BLE developers with an understanding of the mbed IDE; if you want more information about the IDE, see the [tutorials](/GettingStarted/IntroSamples/), which offer extended versions of the same samples. 
+**Tip:** The quick samples are written for experienced BLE developers with an understanding of the mbed IDE. If you want more information about the IDE, see the [tutorials](/GettingStarted/IntroSamples/), which offer extended versions of the same samples. 
 </span>
 
 The samples cover:

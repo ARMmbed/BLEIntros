@@ -2,7 +2,7 @@
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">**Note:** To complete tutorials, you'll need an account on [mbed.org](https://developer.mbed.org/account/signup/?next=%2F).</span>
 
-We're starting with the URI Beacon because it's a quick, simple way to get a BLE device going. URI Beacons advertise a bit of information (usually a URL) to any nearby device.  They're really easy to set up, because the code is fully available on the mbed website, so all you'll need to do is tell the beacon what to broadcast. 
+We're starting with the URI Beacon because it's a quick, simple way to get a BLE device going. URI Beacons advertise a bit of information (usually a URL) to any nearby device. They're really easy to set up: the code is fully available on the mbed website, so all you'll need to do is tell the beacon what to broadcast. 
 
 This tutorial covers:
 
@@ -45,7 +45,8 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 
 5. Compile the code. It will be downloaded to your Downloads folder (on some browsers you may need to specify a download location). <br />**Note:** make sure you've selected the correct platform as the compilation target. The platform is shown on the right-hand top corner of the compiler. If you're seeing the wrong platform, click it to open the Select Platform window.
 
-6. Drag and drop the compiled file to your board.
+6. Drag and drop the compiled file to your board as it appears in the file explorer. 
+</br>**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
 
 7. Restart the board.
 
@@ -97,7 +98,7 @@ To select a board for the program:
 ##Getting a URI Beacon Program
 </a>
 
-URI Beacons have a basic structure that's fully available on the mbed website. All you need to do is import it to the compiler and replace the default information with your own. To do that:
+URI Beacons have a basic structure that's available on the mbed website. All you need to do is import it to the compiler and replace the default information with your own. To do that:
 
 * Go to the [BLE_URIBeacon](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_URIBeacon/) page.
 
@@ -131,7 +132,7 @@ ___
 **If you don't want to get too deep into the code - skip [ahead](#edituribeacon).**
 </span>
 
-The URI Beacon program is a very small and simple one. The only part of it that you need to look at is the ``main.cpp`` file, which is - as the name suggests - the program's main file. The other files you can ignore for now - they're there to help the compiler do its job.
+The URI Beacon program is a very small and simple one. The only part of it that you need to look at is the ``main.cpp`` file, which is - as the name suggests - the program's main file. The other files are there to help the compiler do its job, and you can ignore them for now.
 
 Click ``main.cpp`` to see its code.
 
@@ -139,7 +140,7 @@ Click ``main.cpp`` to see its code.
 ###Comments
 </a>
 
-The first thing you'll see is a bunch of green text, sitting between /* a  * /. This text is comment text, meaning the compiler doesn't read it - it's intended for humans. Any text you see between /* and */ is always comment, and some might help you understand the code.
+The first thing you'll see is a bunch of green text, sitting between /* and */. Text between /* and */ is always *comments*, meaning the compiler doesn't read it - it's intended for humans. Comments are supposed to help you understand the code, but they sometimes fall a bit short of that.
 
 <a name=”include”>
 ###Including Other Files
@@ -155,7 +156,7 @@ The first thing you'll see is a bunch of green text, sitting between /* a  * /.
 	#include "ConfigParamsPersistence.h"
 ```
 
-The next bit of the program is the inclusions list. This tells the compiler which files other than the ``main.cpp`` file it needs to include when it compiles your program. You can see that the ``URI Beacon`` program has six files it includes. These all focus on different capabilities, such as working with the mbed board (``mbed.h``) or the BLE itself (``BLEDevice.h``).
+The next bit of the program is the *inclusions list*. This tells the compiler which files other than the ``main.cpp`` file it needs to include when it compiles your program. You can see that the ``URI Beacon`` program includes six files. These all focus on different capabilities, such as working with the mbed board (``mbed.h``) or the BLE itself (``BLEDevice.h``).
 
 <a name=”objects”>
 ###Objects
@@ -163,16 +164,16 @@ The next bit of the program is the inclusions list. This tells the compiler whic
 
 You may have heard the phrase "object oriented programming". It's a big concept, but it's easy to understand (in a simplified way) using an analogy. If you think of houses as an object type, it's easy to understand that *your* house is an instance, or occurrence, of that type of object. Your house has a blueprint that was used to construct it, and a set of characteristics such as number of rooms and colour of window frames. You can use the same blueprint to create many houses, and they'll all be separate instances of the same object type. 
 
-Once you've created instances you can use each one independently of the others. So you could, for example, create a hundred houses and then re-paint the window frames on just one of them. Manipulating the object or using the object to affect others is done using functions. It's important to understand that if you have the definition of an object, but don't have an instance of the object (in other words, if you only have a blueprint, but haven't actually built the house) you can't get anything done with your house; you cannot hang up pictures before you've built the walls.
+Once you've created instances you can use each one independently of the others. So you could, for example, create a hundred houses and then re-paint the window frames on just one of them. Manipulating the object or using the object to affect others is done using *functions*. It's important to understand that if you have the definition of an object, but don't have an instance of the object (in other words, if you only have a blueprint, but haven't actually built the house) you can't get anything done with your house; you cannot hang up pictures before you've built the walls.
 
-In our program, we have an object type called ``BLEDevice``. This is a blueprint that includes instructions for communicating with the ``BLE API`` (remember that the ``BLE API`` is a way of telling the BLE chip what to do without need to know how it does it). The first line of our program builds an instance of the object - builds an actual house - and gives it a name. We do this by first saying what we want to build, and then what to call it. So the line
+In our program, we have an object type called ``BLEDevice``. This is a blueprint that includes instructions for communicating with ``BLE_API`` (remember that ``BLE_API`` is a way of telling the BLE chip what to do). The first line of our program builds an instance of the object - builds an actual house - and gives it a name. We do this by first saying what we want to build, and then what to call it. So the line
 
 ```c
 
 	BLEDevice ble;
 ```
 
-Says "give me an instance of the object type BLEDevice, and call it ble", so now we have an object that knows how to talk to the ``BLE API``.
+Says "give me an instance of the object type BLEDevice, and call it ble", so now we have an object that knows how to talk to ``BLE_API``.
 
 There's a lot more code in the program, but we'll ignore it for now. You'll learn about it in later samples. Let's just see how to set up the beacon to advertise what we want it to.
 
@@ -182,7 +183,7 @@ ___
 ##Editing the URI Beacon
 </a>
 
-URI Beacons are used to send a URL (a website's address). The line of code in our program that does that is in the ``main.cpp`` file:
+URI Beacons are usually used to send a URL (a website's address). The line of code in our program that does that is in the ``main.cpp`` file:
 
 ```c
 
@@ -191,7 +192,7 @@ URI Beacons are used to send a URL (a website's address). The line of code in ou
 		"http://www.uribeacon.org", defaultAdvPowerLevels);
 ```
 
-You can very easily spot the interesting bit - it's "http://www.mbed.org". You can replace that URL with a URL of your choosing (but make sure to leave the quotes and the *http://www.* bit).
+You can very easily spot the interesting bit - it's "http://www.mbed.org". You can replace that URL with a URL of your choosing, but make sure to leave the quotes and the *http://www.* bit: "http://www.myurl.com".
 
 The URI Beacon isn't limitless in size. It can only accept 18 characters, with “HTTP://www” counting as one, and the suffix “.org” (or “.com”) counting as another. If your URL is very long, you'll have to use services like [bit.ly](https://bitly.com) and [tinyurl.com](http://tinyurl.com) to get a short version.
 
@@ -199,11 +200,11 @@ The URI Beacon isn't limitless in size. It can only accept 18 characters, with �
 ##Compiling and Installing Your Program
 </a>
 
-For your code to work on a board, it needs to be compiled: the compiler takes all of the files it needs and turns them into a single file, in our case HEX. That file can then be installed on your board. 
+For your code to work on a board, it needs to be compiled: the compiler takes all of the files it needs and turns them into a single file, in our case a file of type *HEX*. That file can then be installed on your board. 
 
 To compile and install your program:
 
-1. In the compiler, click *Compile*. <br />**Note:** make sure you've selected the correct platform as the compilation target. The platform is shown on the right-hand top corner of the compiler. If you're seeing the wrong platform, click it to open the Select Platform window.
+1. In the compiler, click *Compile*. <br />**Note:** make sure you've selected the correct platform as the compilation target. The platform is shown as an icon on the right-hand top corner of the compiler. If you're seeing the wrong platform, click its icon to open the Select Platform window.
 
 2. The compiled code is automatically sent to your *Downloads* folder as a single file of type HEX (on some browsers you may need to specify a download location).
 
@@ -255,6 +256,4 @@ To get a URI Beacon:
 
 7. You had a nice cup of tea to celebrate. 
 
-Along the way, you also learned a little about object oriented programming and the general principle of importing, compiling and installing programs. 
-
-
+Along the way, you also learned a little about object oriented programming and the general principle of importing, compiling and installing programs. Try our [Heart Rate Monitor Tutorial](/GettingStarted/HeartRate/) next.
