@@ -1,8 +1,8 @@
 #Internals of the Nordic DFU Boot Loader
 
-The Device Firmware Update (DFU) service, when added to a BLE application, enables Firmware Over the Air (FOTA). As we’re working with Nordic’s nRF51822 Bluetooth system, we require a Nordic-specific DFU boot loader.
+The Device Firmware Update (DFU) service, when added to a BLE application, enables Firmware Over the Air (FOTA). As we’re working with Nordic’s nRF51822 Bluetooth system, we need a Nordic-specific DFU boot loader.
 
-To update or modify the boot loader, you’ll need to understand how it works. We’ll start with reviewing the components, then the sources the boot loader requires, and finally see how to set up the boot loader and combine it with an initial application.
+To update or modify the boot loader, you’ll need to understand how it works. We’ll start with reviewing the components, then the sources the boot loader needs, and finally see how to set up the boot loader and combine it with an initial application.
 
 ##Overview of Components
 
@@ -20,15 +20,15 @@ FOTA requires the following components:
 
 ## Overview of the System Startup Process
 
-Here’s a summary of the boot process. We present it early on in this document to prepare the reader for the concepts that follow. Many of the details will be presented later on.
+Here’s a summary of the boot process. We present it early on in this document to prepare for the ideas that follow. Many of the details will be explained later.
 
-The system starts up with the SoftDevice gaining control by virtue of its vector table being placed at the start of the internal flash. After some basic initialization, it forwards control to the address taken from the UICR register (described below). If the UICR contains any value other than the default of ``0xFFFFFFFF``, this is taken to be the start of the receiving vector table. We program the UICR to contain the start of the bootloader. As a result, the bootloader gains control following the initialization of the soft-device.
+The system starts up with the SoftDevice gaining control. It can do that because its vector table is placed at the start of the internal flash. After some basic initialisation, the SoftDevice forwards control to the address taken from the UICR register (described below). If the UICR doesn't contain the default value (``0xFFFFFFFF``), whatever value it does contain is assumed to be the start of the receiving vector table. So we program the UICR to contain the start of the boot loader. As a result, the boot loader gains control following the initialisation of the SoftDevice.
 
-The bootloader checks the GPREGRET register to determine if it has received control from the softdevice or an application which has triggered FOTA.
+The boot loader checks the GPREGRET register to determine if it has received control from the SoftDevice or an application that has triggered FOTA.
 
-If the bootloader receives control from the softdevice, it refers to the values in its settings page to determine what it needs to do next. We’ve programmed the settings to forward control to any user application if one is found to exist. The application is expected to begin at the end of the softdevice, which is known to have a fixed size. The bootloader can inspect the flash memory following the tail end of the soft-device to determine a valid application header. If a seemingly valid header is discovered, control forwards to the application. If no useful application exists, then the bootloader enters the FOTA process where it awaits a new firmware over BLE.
+If the boot loader receives control from the SoftDevice, it refers to the values in its settings page to determine what it needs to do next. We’ve programmed the settings to forward control to any user application if one is found to exist. The application is expected to begin at the end of the SoftDevice, which is known to have a fixed size. The boot loader therefore inspects the flash memory after the tail end of the SoftDevice, looking for a valid application header. If a valid header is discovered, control forwards to the application. If no useful application exists, then the boot loader enters the FOTA process where it awaits a new firmware over BLE.
 
-If the bootloader receives control from an app which has triggered FOTA, it awaits a new firmware over BLE. Once new firmware has arrived over BLE, it is verified and forwarded control rightaway.
+If the boot loader receives control from an app that has triggered FOTA, it waits for a new firmware over BLE. Once new firmware has arrived, it is verified and receives control right away.
 
 ###Updating Firmware with USB
 
@@ -45,15 +45,16 @@ When updating over FOTA, you’ll need to include only the application in the pa
 1. You need an application that already supports FOTA (that is, if the application was not programmed to allow FOTA, no amount of configurations on the device or server can force it to accept FOTA). This includes the DFUService call and a boot loader. We have [instructions for adding FOTA support to your application](http://developer.mbed.org/forum/team-63-Bluetooth-Low-Energy-community/topic/5169/).
 
 2. You need platforms matching FOTA. You can find these in the [Platforms page](http://developer.mbed.org/platforms/).
-In other words, if you need FOTA you must first get the SoftDevice and boot loader, with initialized UICR, onto the device. You can use [srec_cat](http://srecord.sourceforge.net/) to combine things and initialize the UICR and boot loader settings.
+
+In other words, if you need FOTA you must first get the SoftDevice and boot loader, with initialised UICR, onto the device. You can use [srec_cat](http://srecord.sourceforge.net/) to combine things and initialise the UICR and boot loader settings.
 
 ##Sources and Build Instructions for the Boot Loader
 
-The [sources](https://github.com/mbedmicro/dfu-bootloader) are available publicly on GitHub. They are derived from Nordic's SDK V6.1.0 with very minor modifications. The bootloader cannot yet be built using the online toolchain on mbed.org because unlike regular mbed applications it needs to be located at a non-standard starting address at the upper end of the internal flash. Bootloader builds can be accomplished using a separate offline build system based on CMake. 
+The [sources](https://github.com/mbedmicro/dfu-bootloader) are available publicly on GitHub. They are derived from Nordic's SDK V6.1.0 with very minor modifications. The boot loader cannot yet be built using the online toolchain on mbed.org because unlike regular mbed applications it needs to be located at a non-standard starting address at the upper end of the internal flash. Boot loader builds can be accomplished using a separate offline build system based on CMake. 
 
 ###Building with CMake
 
-The sources include a CMakeLists.txt file. This is a build configuration file that contains variables that point to some headers and resources (from mbed-SRC and the nRF51822 libraries) that the boot loader build depends on.
+The sources include a CMakeLists.txt file. This is a build configuration file that contains variables that point to some headers and resources (from mbed-SRC and the nRF51822 libraries). The boot loader build depends on these headers and sources.
 
 The following variables may need to be updated:
 
@@ -67,7 +68,6 @@ The following variables may need to be updated:
 
 * ``SIZE_COMMAND`` and ``OBJCOPY_COMMAND`` to point to arm-none-eabi-size and objcopy (as appropriate).Git Sources in CMakeLists.txt
 
-
 You can build the boot loader with the following steps:
 
 ```cmake
@@ -79,17 +79,17 @@ You can build the boot loader with the following steps:
 
 ###Size Limitations
 
-Please note that we expect to fit the boot loader within 16K of internal flash (at the upper end of the code space); this includes nearly 1K of configuration space (for boot loader settings), so the actual available code size is a little less than 15K. 
+We expect to fit the boot loader within 16K of internal flash (at the upper end of the code space). This includes nearly 1K of configuration space (for boot loader settings), so the actual available code size is a little less than 15K. 
 
-Depending on your toolchain, it may be a challenge to fit the boot loader within these constraints. Doing this with ARM-CC requires the use of the linker feedback files, involving two rounds of compilation in which the first round generates the feedback file. Please refer to the command line compiler option called 'feedback' under [infocenter.arm.com](http://infocenter.arm.com/help/index.jsp) or search for "Minimizing code size by eliminating unused functions during compilation" in the context of ARM-CC.
+Depending on your toolchain, it may be a challenge to fit the boot loader within these constraints. Doing this with ARM-CC requires the use of the linker feedback files, involving two rounds of compilation: the first round generates the feedback file for use during the second round. Please refer to the command line compiler option called 'feedback' under [infocenter.arm.com](http://infocenter.arm.com/help/index.jsp) or search for "Minimizing code size by eliminating unused functions during compilation" in the context of ARM-CC.
 
-If you are unable to fit the boot loader within 16K, then increase the value of the constant ``BOOTLOADER_REGION_START``; you'll then also need to make a corresponding change in the boot loader's linker script to place the vector table at the new START address.
+If you are unable to fit the boot loader within 16K, then increase the value of the constant ``BOOTLOADER_REGION_START``. If you do this, you'll also need to make a corresponding change in the boot loader's linker script to place the vector table at the new START address.
 
 ##The UICR
 
-The UICR is a collection of memory-mapped configuration registers starting from the address ``0x10000000``; they can be programmed like any other part of the internal flash, and determine who gets control when a device starts up: the application or the bootloader.
+The UICR is a collection of memory-mapped configuration registers starting from the address ``0x10000000``. They can be programmed like any other part of the internal flash, and they determine who gets control when a device starts up: the application or the boot loader.
 
-The following snippet within ``bootloader_settings_arm.c`` sets up the update for UICR by setting up the UICR.BOOTADDR to point to the boot loader’s vector table:
+The following snippet within ``bootloader_settings_arm.c`` sets up the update for UICR. It does this by setting up the UICR.BOOTADDR to point to the boot loader’s vector table:
 
 ```cmake
 uint32_t m_uicr_bootloader_start_address
@@ -119,7 +119,7 @@ At reset, the SoftDevice checks the UICR.BOOTADDR register. Two things can happe
 
 After being handed control, the boot loader looks for an application at the end of the SoftDevice (if it fails to find one, it sets up the DFUService and waits for a new firmware).
 
-In the normal case, where there is an application, you'd want the boot loader to forward control to it. You must update the boot loader’s settings to instruct it to look for a valid application; this can either be done statically or by manually writing to the 'settings' region . Settings reside within the page starting at the address ``0x003FC00``.
+In the normal case, where there is an application, you'd want the boot loader to forward control to it. You must update the boot loader’s settings to instruct it to look for a valid application. You can do this either statically or by manually writing to the 'settings' region. Settings reside within the page starting at the address ``0x003FC00``.
 
 The following settings need to be installed (listed alongside the corresponding addresses):
 
@@ -130,7 +130,7 @@ The following settings need to be installed (listed alongside the corresponding 
 0x3FC0C-0x3FC20: 0x00000000
 ```
 
-The above can be accomplished by amending the command line options to ``srec_cat`` with the following sequence placed *after* ``${PROJECT_NAME}.hex -intel``:
+You can do that by amending the command line options to ``srec_cat`` with the following sequence placed *after* ``${PROJECT_NAME}.hex -intel``:
 
 ```cmake
 -exclude 0x3FC00 0x3FC20 -generate 0x3FC00 0x3FC04 \
@@ -141,7 +141,7 @@ The above can be accomplished by amending the command line options to ``srec_cat
 
 ##Combining the SoftDevice and an Initial Application
 
-The initial image to be programmed onto a device needs to contain the SoftDevice with the DFU-boot loader and (optionally) an initial application. If there is no initial application, the bootloader will wait for FOTA.
+The initial image to be programmed onto a device needs to contain the SoftDevice with the DFU-boot loader and (optionally) an initial application. If there is no initial application, the boot loader will wait for FOTA.
 
 The following is a complete command to combine all the above components:
 
@@ -156,13 +156,13 @@ s110_nrf51822_7.0.0_softdevice.hex -intel BLE_Default_APP.hex -intel \
 combined.hex -intel
 ```
 
-Et voila, the above produces a ``combined.hex`` that is ready to be flashed onto the target following a mass-erase; you've got your DFU boot loader all set up.
+Et voila, the above produces a ``combined.hex`` that is ready to be flashed onto the target following a mass-erase, and you've got your DFU boot loader all set up.
 
 ##Receiving Control from an Application when FOTA Is Triggered
 
-The boot loader receives control in one of two possible cases: either from the SoftDevice during system startup (as we saw above), or from an application for which FOTA has been triggered. In the second case, the boot loader should always enter DFU mode and wait for a new firmware. It is important for the boot loader to be able to distinguish between the two possibilities. This is done through one of the registers in the power-domain - the GPREGRET - which is the general purpose retention register.
+The boot loader receives control in one of two possible cases: either from the SoftDevice during system startup (as we saw above), or from an application for which FOTA has been triggered. In the second case, the boot loader should always enter DFU mode and wait for a new firmware. It is important for the boot loader to be able to distinguish between the two possibilities. This is done through one of the registers in the power domain: the GPREGRET (general purpose retention register).
 
-When DFU is triggered by writing into the control characteristic of the DFU service, a DFU- enabled application executes the following code, which sets GPREGRET that can then be read back by the boot loader:
+When DFU is triggered by writing into the control characteristic of the DFU service, a DFU-enabled application executes the following code, which sets GPREGRET (that can then be read back by the boot loader):
 
 ```cmake	
 sd_power_gpregret_set(BOOTLOADER_DFU_START);

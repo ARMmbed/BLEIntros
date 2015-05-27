@@ -1,6 +1,6 @@
 #Custom GATT Service with Evothings
 
-We're going to create a custom GATT service to blink the LED on an mbed board, and demonstrate using Evothing to create a custom app that communicates with our GATT service.
+We're going to create a custom [generic attribute profile (GATT) service](/InDepth/BLEInDepth/#services-and-profiles-gatt) to blink the LED on an mbed board, and demonstrate using Evothing to create a custom app that communicates with our GATT service.
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_GATT_Example/).
@@ -26,7 +26,7 @@ For more information about Evothings, see their [Quick Start Guide](http://evoth
 
 ##Intro
 
-Unlike GAP, which operates on broadcasting one-to-many, GATT uses a one-to-one connection between the board and the phone. GATT does not send all the data at connection; it sends only a description of available services, and then - if requested - it will provide details about a service, like the characteristics each service has and the values of these characteristics. All information must be explicitly requested from the server by the client. 
+Unlike GAP, which broadcasts one-to-many, GATT uses a one-to-one connection between the board (server) and the phone (client). When the server connects with GATT it doesn't send all the data it has. Instead, it sends only a description of available services. Then, if the client requests details about a service, like the characteristics the service has and their values, GATT sends those details. In other words, all information must be explicitly requested from the server by the client. 
 
 To demonstrate this we will create a service with two characteristics and assign custom UUIDs to both the service and the characteristics. 
 
@@ -40,9 +40,9 @@ You can see an example of setting up an input service on our [YouTube channel](h
 ![](/InDepth/Images/BLE_Profile_Breakdown.png)
 </span>
 
-A GATT server can have multiple services. Each service contains one or more characteristics, each with its own properties such as whether it can be read, written into or send a notification. Each characteristic has a single value of 512 bytes (although it's not mandatory to use them all) and can have zero or more descriptors.
+A GATT server can have multiple services. Each service contains one or more characteristics. Each characteristic has its own properties such as whether it can be read, send a notification or be written in to. Each characteristic has a single value of 512 bytes (although it's not mandatory to use them all) and can have zero or more descriptors.
 
-We are going to create a custom GATT service by providing two characteristics, one for reading and one for writing, detailing their properties accordingly, and then putting both into the one service.
+We are going to create a custom GATT service by providing two characteristics: one for reading and one for writing. We'll detail their properties to match read and write abilities, and then put both characteristics into a single service.
 
 ##Using the mbed BLE API
 
@@ -54,7 +54,12 @@ To get us started, we'll need to include a couple of headers:
 	#include "BLEDevice.h"
 ```
 
-Next, we'll need a few declarations: a BLE object, the LED we'll be toggling, the UUID for our custom service and a UUID for each of our characteristics (READ and WRITE). The UUIDs provide the name of the device that the application will be looking for and the custom UUID for development. 
+Next, we'll need a few declarations: 
+
+* A BLE object.
+* The LED we'll be toggling.
+* The UUID for our custom service.
+* A UUID for each of our characteristics (READ and WRITE). The UUIDs provide the name of the device that the application will be looking for and the custom UUID for development. 
 
 ```c
 
@@ -71,7 +76,7 @@ Next, we'll need a few declarations: a BLE object, the LED we'll be toggling, th
 ```
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
-**Note:** If you change the name here you will also need to change it in the subsequent Evothings application **app.js** (which will be covered [later]()).
+**Note:** If you change ``DEVICE_NAME`` here you will also need to change it in the subsequent Evothings application **app.js** (which will be covered [later](/AdvSamples/GATTEvo/#interacting-with-the-gatt-service-evothings)).
 </span>
 
 Now that we have the UUIDs, we can set up the characteristics:
@@ -82,7 +87,9 @@ Now that we have the UUIDs, we can set up the characteristics:
 
 3. We provide the initialiser describing the type of the array and the number of elements in the array ``<uint8_t, sizeof(readValue)>``.  
 
-4. The characteristic will be called ``readChar`` and initialised with the UUID variable for the read characteristic ``readCharUUID``, and the pointer to the array that was just created (``readValue``) . 
+4. The characteristic will be called ``readChar`` and initialised with:
+	* The UUID variable for the read characteristic ``readCharUUID``.
+	* The pointer to the array that was just created (``readValue``) . 
 
 5. The same is done for the write characteristic, ``writeValue``.
 
@@ -116,7 +123,7 @@ Now we can set up the custom service:
 
 We've established the service; we can now create other functions.
 
-First, since GATT is connection-based, we need a disconnection callback function. This functions restarts advertising after a disconnect occurs, so a device can find and reconnect to a lost board. If we don't include this function, we'll have to restart the board to be able to reconnect to it:
+First, since GATT is connection-based, we need a disconnection callback function. This functions restarts advertising after a disconnect occurs, so a phone can find and reconnect to a lost board. If we don't include this function, we'll have to restart the board to be able to reconnect to it:
 
 ```c
 	void disconnectionCallback(Gap::Handle_t handle, Gap::DisconnectionReason_t reason)
@@ -224,7 +231,7 @@ And now that everything is set up, we can start advertising the connection:
 	}
 ```
 
-Compile your program and install it on your board (drag and drop it to the board).
+Compile your program and [install it on your board](/GettingStarted/URIBeacon/#compiling-and-installing-your-program) (drag and drop it to the board).
 
 ##Interacting with the GATT Service - Evothings
 
@@ -234,7 +241,9 @@ To run the app:
 
 1. Make sure you've installed the Evothings Workbench on your computer and the Evothings client on your phone.
 
-2. Drag-and-drop the **index.html** file into the Evothings Workbench on your computer.
+2. Download [the application](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGATT).
+
+2. Drag-and-drop the **index.html** file from the application's directory into the Evothings Workbench on your computer.
 
 3. Click **RUN** on the workbench.
 
@@ -244,7 +253,7 @@ To run the app:
 ![](/AdvSamples/Images/Evothings/EvothingsRun.png)
 </span>
 
-You need to change the variable ``MyDeviceName`` (in the ``app.js`` file you downloaded from GitHub) to match the device name you gave to your mbed board:
+You need to change the variable ``MyDeviceName`` (in the ``app.js`` file you downloaded from GitHub) to match the [device name you gave to your mbed board](/AdvSamples/GATTEvo/#using-the-mbed-ble-api):
 
 ```javascript
 // JavaScript code for the mbed ble scan app
@@ -261,7 +270,7 @@ You should review the app's code to verify you understand the flow:
 
 1. On start up, the application searches for the device with the name you set earlier. This may take a moment.
 
-2. When it finds the devices and connects to it, the message changes from *connecting* to *connected* and the toggle button changes to green.
+2. When it finds the device and connects to it, the message changes from *connecting* to *connected* and the toggle button changes to green.
 
 3. If you click that button, it will change to red and LED1 on the board will light up. See the .gif below for an example of the LED blinking when the toggle button is pressed.
 

@@ -1,14 +1,14 @@
 #Creating an Input Service
 
-With mbed BLE, we offer a growing set of SIG-defined BLE services implemented as C++ headers to ease application development. These can be found under [our services respository](https://github.com/mbedmicro/BLE_API/tree/master/services).
+With mbed BLE, we offer a growing set of SIG-defined BLE services implemented as C++ headers to ease application development. These can be found under [our services repository](https://github.com/mbedmicro/BLE_API/tree/master/services).
 
-If, for instance, you needed to develop a heart-rate application for an mbed platform, you could get started with the [BLE heart rate demo](/GettingStarted/HeartRate/). This demo instantiates the [heart rate service](https://github.com/mbedmicro/BLE_API/blob/master/services/HeartRateService.h), which takes care of the majority of the BLE plumbing and offers high-level APIs to work with service configuration and sensor values. You'd need to add custom code to your application to poll sensor data periodically (from some safe, non-interrupt context if polling takes a while), and the HeartRateService takes care of the rest..
+If, for instance, you needed to develop a heart-rate application for an mbed platform, you could get started with the [BLE heart rate demo](/GettingStarted/HeartRate/). This demo instantiates the [heart rate service](https://github.com/mbedmicro/BLE_API/blob/master/services/HeartRateService.h). The services takes care of the majority of the BLE plumbing, and offers high-level APIs to work with service configuration and sensor values. You'd need to add custom code to your application to poll sensor data periodically, and the HeartRateService takes care of the rest.
 
-But, we don’t expect you to settle for what’s already been done; we expect you to develop applications for custom sensors and actuators, often outside the scope of the standard Bluetooth services or the service templates offered by mbed BLE. In this case, you could use the ``BLE_API``. You may also find that you benefit from modeling your custom services as C++ classes for ease of use (and reuse). Here, we'd like to capture the process of creating a BLE service.
+But, we don’t expect you to settle for what’s already been done; we expect you to develop applications for custom sensors and actuators,. These will often fall outside the scope of the standard Bluetooth services or the service templates offered by mbed BLE. In this case, you could use the ``BLE_API``. You may also find that you benefit from modelling your custom services as C++ classes for ease of use (and reuse). Here, we'd like to capture the process of creating a BLE service.
 
 #Button Service
 
-Let's work our way towards creating a service for a trivial sensor: a button. We'll assume a use-case where a phone-app would like to connect to this mbed application and poll for button state; notifications could also be set up for asynchronous updates. In the non-connected state, the application simply advertises its capability of providing the button service.
+Let's create a service for a trivial sensor: a button. We'll assume a use-case where a phone-app would like to connect to this mbed application and poll for button state (that is, check whether the button is pressed or not). We could also set up notifications for asynchronous updates. In the non-connected state, the application simply advertises its ability to provide the button service.
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_Button/).
@@ -16,7 +16,12 @@ Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BL
 
 ##The Basic Template - Advertising and Connecting
 
-Here's a basic template code to get you off the ground. We've thrown in a blinking LED to indicate program stability. This code doesn't create any custom service; it advertises Button as the device name through the advertisement payload. The application is discoverable (``LE_GENERAL_DISCOVERABLE``) and connectable (``ADV_CONNECTABLE_UNDIRECTED``), and offers only the standard GAP and GATT services. The function ``disconnectionCallback`` re-starts advertisements if connection is lost.
+Here's a basic template code to get you off the ground. We've thrown in a blinking LED to indicate program stability. This code doesn't create a custom service. It sets up:
+
+* An advertisement payload with Button as the device name. 
+* An application that is both discoverable (``LE_GENERAL_DISCOVERABLE``) and connectable (``ADV_CONNECTABLE_UNDIRECTED``)/
+* Offers only the standard GAP and GATT services. 
+* The function ``disconnectionCallback`` re-starts advertisements if connection is lost.
 
 ```c
 
@@ -104,7 +109,7 @@ This is what the app looks like (on the nRF Master Control Panel):
 
 ##Assigning UUIDs
 
-Now, let's get down to the business of creating a BLE service for a button. This service will have a single read-only characteristic holding a boolean value for the button’s state.
+Now, let's create a BLE service for a button. This service will have a single read-only characteristic with a boolean value indicating the button’s state.
 
 Bluetooth Smart requires the use of UUIDs to identify types for all involved entities. We'll need two UUIDs - one each - for the button service and the encapsulated characteristic. If we had been creating one of the standard SIG-defined services, we'd have followed the standard [UUID definitions](https://developer.bluetooth.org/gatt/services/Pages/ServicesHome.aspx).
 
@@ -126,7 +131,7 @@ We've chosen a custom UUID space for our button service: 0xA000 for the service,
 		(uint8_t *)uuid16_list, sizeof(uuid16_list));
 ```
 
-Adding the button service UUID to the advertising payload is purely optional. Having it is good practice, however, since it gives an early and cheap indication to interested client apps regarding the capabilities of the mbed application. 
+Adding the button service UUID to the advertising payload is purely optional. But having it is good practice, since it gives interested client apps an early and cheap indication of the mbed application's capabilities. 
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 **Note:** interpreting non-standard service UUIDs has limited use, and may only work with custom phone apps.
@@ -134,15 +139,13 @@ Adding the button service UUID to the advertising payload is purely optional. Ha
 
 ##The Button State Characteristic
 
-``BLE_API`` offers C++ abstractions for entities involved in the definition of services. A ``GattService`` class is composed of one or more ``GattCharacteristics`` (representing state variables exposed by the service). Every ``GattCharacteristic``, in turn, implicitly contains at least a ``GattAttribute`` to hold the value; it may be embellished with further ``GattAttributes`` if needed, but that is uncommon.
+``BLE_API`` offers C++ abstractions for entities involved in service definition. A ``GattService`` class contains one or more ``GattCharacteristics``. The ``GattCharacteristics`` represents state variables exposed by the service. Every ``GattCharacteristic`` implicitly contains at least one ``GattAttribute`` to hold the value. It may be have more than one``GattAttribute``, but that is uncommon.
 
-The application, therefore, needs to set up one or more ``GattCharacteristics`` and compose them into a ``GattService``. There could be more than one services.
+So the application needs to set up one or more ``GattCharacteristics`` and compose them into a ``GattService``. There could be more than one service.
 
-In C++, class objects are instantiated when variables are defined in some scope, or when they’re allocated dynamically using ``new()``. We usually avoid dynamic allocation, but in all cases one needs to take care of scope and aliveness of variables.
+In C++, class objects are instantiated when variables are defined in some scope, or when they’re allocated dynamically using ``new()``. We usually avoid dynamic allocation, but in all cases we need to take care of scope and aliveness of variables. We can define the button state characteristic wherever memory allocations remain persistent throughout the application’s lifetime, for example ``main()``. 
 
-The button state characteristic can be defined wherever memory allocations remain persistent throughout the application’s lifetime, for example the ``main()`` function. 
-
-The code only looks complicated; it is essentially a simple use of C++ templates to instantiate a read-only characteristic encapsulating a boolean state. The constructor for ``buttonState`` takes in the UUID and a pointer to the initial value of the characteristic:
+The code only looks complicated; it is in reality a simple use of C++ templates to instantiate a read-only characteristic encapsulating a boolean state. The constructor for ``buttonState`` takes in the UUID and a pointer to the initial value of the characteristic:
 
 ```c
 
@@ -159,8 +162,7 @@ The code only looks complicated; it is essentially a simple use of C++ templates
 
 ##Adding Notifications
 
-The above definition for the buttonState characteristic may be enhanced to allow notifications, using the optional parameters to specify additional properties.
-
+We can add to the buttonState characteristic definition to allow notifications. We'll use the optional parameters to specify additional properties:
 
 ```c
 
@@ -168,14 +170,13 @@ The above definition for the buttonState characteristic may be enhanced to allow
 		&buttonPressed, GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY);
 ```
 
-
-Notifications are a good way to establish asynchronous updates, so that the app doesn’t have to keep checking the BLE device; the device will let the app know if there’s anything new. This helps the BLE device keep its energy usage down.
+Notifications are a good way to establish asynchronous updates. With these updates, the app doesn’t have to keep checking the BLE device. Instead, the device will let the app know if there’s anything new. This helps the BLE device keep its energy usage down.
 
 ##Constructing the Button Service
 
-The ``buttonState`` characteristic can be used to construct a ``GattService`` called ``buttonService``. We use a bit of C/C++ syntax to create a one-element array, using an initializer list of pointers to ``GattCharacteristics``. 
+We can use the ``buttonState``to construct a ``GattService`` called ``buttonService``. We use a bit of C/C++ syntax to create a one-element array, using an initialiser list of pointers to ``GattCharacteristics``.
 
-This service can then be added to the BLE stack using ``BLEDevice::addService()``.
+We can then add the service to the BLE stack using ``BLEDevice::addService()``.
 
 ```c
 
@@ -193,7 +194,7 @@ This service can then be added to the BLE stack using ``BLEDevice::addService()`
 
 ##Putting it Together
 
-So, now we have the following code which defines a custom button service containing a read-only characteristic:
+So, now we have code that defines a custom button service containing a read-only characteristic:
 
 ```c
 
@@ -272,7 +273,7 @@ When you connect to the service, you can see the characteristic and enable notif
 
 ##Updating the Button’s State
 
-So far, the buttonState characteristic within the service has been static. We can now add some code to update the characteristic when the button is pressed or released, using the ``BLEDevice::updateCharacteristicValue() API``.
+So far, the buttonState characteristic within the service has been static. But we can  use the ``BLEDevice::updateCharacteristicValue() API`` to update the characteristic when the button is pressed or released.
 
 The following code sets up callbacks for when button1 is pressed or released:
 
@@ -397,7 +398,7 @@ With notifications active, you can see the button characteristic's value change 
 
 ##The ButtonService Class
 
-The above application is fully functional, but has grown to be a bit messy. In particular, all the plumbing creating the button service could be encapsulated within a ``ButtonService`` class. In other words, it should be possible to substitute most of the above code with a simple initialization of a ``ButtonService`` class, while retaining the functionality.
+The above application is fully functional, but has grown to be a bit messy. In particular, all the plumbing creating the button service could be encapsulated within a ``ButtonService`` class. In other words, it should be possible to substitute most of the above code with a simple initialisation of a ``ButtonService`` class.
 
 Here's something to get you started with the ``ButtonService`` class:
 
@@ -418,7 +419,7 @@ Here's something to get you started with the ``ButtonService`` class:
 	#endif /* #ifndef __BLE_BUTTON_SERVICE_H__ */
 ```
 
-Nearly all ``BLE APIs`` require a reference to ``BLEDevice``, so we must require this in the constructor. The ``buttonState`` characteristic should be encapsulated as well:
+Nearly all BLE APIs need a reference to ``BLEDevice``, so we must require this in the constructor. The ``buttonState`` characteristic should be encapsulated as well:
 
 ```c
 
@@ -449,7 +450,6 @@ Nearly all ``BLE APIs`` require a reference to ``BLEDevice``, so we must require
 	
 	#endif /* #ifndef __BLE_BUTTON_SERVICE_H__ */
 ```
-
 
 We can move more of the service’s setup into the constructor:
 
@@ -591,4 +591,4 @@ And now with this encapsulated away in the ``ButtonService``, the main applicati
 	}
 ```
 
-One final note: notice that we've  set up a ``buttonServicePTR``. This was necessary because ``onDataWritten`` callback needs to refer to the ``buttonService`` object. One reasonable way to achieve this would have been to move the definition of the ``buttonService`` object in the global scope, but constructing a ``buttonService`` object requires the use of ``BLE_API`` calls such as ``ble.addService()``, which can only be safely used after a call to ``ble.init()``. Unfortunately, ``ble.init()`` is called only within ``main()``, delaying the instantiation of ``buttonService``. This leads us to making a reference available to the ``buttonService`` object through a pointer. This is a bit roundabout.
+One final note: notice that we've set up ``buttonServicePTR``. This was necessary because ``onDataWritten`` callback needs to refer to the ``buttonService`` object. One reasonable solution would have been to move the definition of the ``buttonService`` object in the global scope. But, constructing a ``buttonService`` object requires the use of ``BLE_API`` calls such as ``ble.addService()``. These can only be used after a call to ``ble.init()``. Unfortunately, ``ble.init()`` is called only within ``main()``, delaying the instantiation of ``buttonService``. This leads us to making a reference available to the ``buttonService`` object through a pointer. This is a bit roundabout.
