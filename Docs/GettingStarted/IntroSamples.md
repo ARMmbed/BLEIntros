@@ -4,6 +4,10 @@ Our tutorials are here to help you learn how to use BLE on mbed boards, and with
 
 The tutorials are numbered. You can work through them in any order you want, but if you're new to C++, you should probably go by the order we've suggested.
 
+1. The [URI Beacon](/GettingStarted/URIBeacon/) tutorial introduces the IDE, some C++ concepts and a working URI Beacon.
+
+2. The [Hear Rate](/GettingStarted/HeartRate/) tutorial introduces loops and conditions, and a simulated heart rate monitor reading.
+
 For all of these, you should have:
 
 1. A BLE-enabled mbed board. But don't worry if you don't have one yet - we'll show you how it would have worked.
