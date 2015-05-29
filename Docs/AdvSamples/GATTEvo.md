@@ -10,15 +10,11 @@ Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BL
 
 You'll need:
 
-1. A BLE-enabled mbed board.
+1. A BLE-enabled mbed board. [Any of these will work](https://developer.mbed.org/platforms/?connectivity=3).
 
-2. Install the [Evothings Workbench on your PC and the Evothings app on your phone](http://evothings.com/download/).
+2. A BLE-capable smartphone or tablet.
 
-3. Install the mbed Evothings [custom GATT app](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGATT) on your phone by:
-	* Downloading the [code](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGATT).
-	* Drag-and-dropping the **index.html** file into the Evothings Workbench on your computer.
-	* Clicking RUN on the workbench.
-	* The code will run on your phone's Evothings client.
+2. Install the [Evothings Workbench on your PC](http://evothings.com/download/) and the app on your phone. See here for [Android](https://play.google.com/store/apps/details?id=com.evothings.evothingsclient) or [iOS](https://itunes.apple.com/nz/app/evothings-client/id848974292?mt=8).
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 For more information about Evothings, see their [Quick Start Guide](http://evothings.com/getting-started-with-evothings-studio-in-90-seconds/), [tutorials](http://evothings.com/doc/studio/tutorials.html) and [BLE API reference](http://evothings.com/doc/plugins/com.evothings.ble/com.evothings.module_ble.html).
@@ -235,7 +231,7 @@ Compile your program and [install it on your board](/GettingStarted/URIBeacon/#c
 
 ##Interacting with the GATT Service - Evothings
 
-The service we created and put on our board is interactive: we can read the LED's status and change it. We do that using a [custom-built app](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGATT) designed to work on the Evothings client you installed earlier.
+The service we created and put on our board is interactive: we can read the LED's status and change it. We do that using the "mbed Evothings GATT" example code. This example comes pre-packaged with the Evothings Workbench.
 
 To run the app:
 
@@ -243,9 +239,9 @@ To run the app:
 
 2. Download [the application](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGATT).
 
-2. Drag-and-drop the **index.html** file from the application's directory into the Evothings Workbench on your computer.
+2. Connect the workbench on your computer to the client on your smartphone (it will ask for your computer's IP address).
 
-3. Click **RUN** on the workbench.
+3. Click **RUN** on the "mbed Evothings GATT" program on the workbench.
 
 4. The code will run on your phone's Evothings client.
 
