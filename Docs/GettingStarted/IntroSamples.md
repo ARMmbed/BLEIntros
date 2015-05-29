@@ -6,7 +6,7 @@ The tutorials are numbered. You can work through them in any order you want, but
 
 1. The [URI Beacon](/GettingStarted/URIBeacon/) tutorial introduces the IDE, some C++ concepts and a working URI Beacon.
 
-2. The [Hear Rate](/GettingStarted/HeartRate/) tutorial introduces loops and conditions, and a simulated heart rate monitor reading.
+2. The [Heart Rate](/GettingStarted/HeartRate/) tutorial introduces loops and conditions, and a simulated heart rate monitor reading.
 
 For all of these, you should have:
 
