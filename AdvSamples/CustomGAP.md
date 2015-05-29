@@ -10,17 +10,15 @@ Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BL
 
 You'll need:
 
-1. A BLE-enabled mbed board.
+1. A BLE-enabled mbed board ([Any of these will work](https://developer.mbed.org/platforms/?connectivity=3)).
 
 2. Install the [Evothings Workbench on your PC and the Evothings app on your phone](http://evothings.com/download/).
 
-3. Install the mbed Evothings [custom GAP app](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGAP) on your phone by:
-	* Downloading the [code](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGAP).
-	* Drag-and-dropping the **index.html** file into the Evothings Workbench on your computer.
-	* Clicking RUN on the workbench.
-	* The code will run on your phone's Evothings client.
+3. A Tablet / SmartPhone with BLE. 
 
-3. The [LightBlue iOS](https://itunes.apple.com/us/app/lightblue-bluetooth-low-energy/id557428110?mt=8) app or the [nRF Master Control Panel Android](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en) app to view the results.
+4. The [LightBlue iOS](https://itunes.apple.com/us/app/lightblue-bluetooth-low-energy/id557428110?mt=8) app or the [nRF Master Control Panel Android](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en) app to view the results.
+
+5. The Evothings Client Smartphone App. See here for [Android](https://play.google.com/store/apps/details?id=com.evothings.evothingsclient) or [iOS](https://itunes.apple.com/nz/app/evothings-client/id848974292?mt=8). 
 
 <span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
 For more information about Evothings, see their [Quick Start Guide](http://evothings.com/getting-started-with-evothings-studio-in-90-seconds/), [tutorials](http://evothings.com/doc/studio/tutorials.html) and [BLE API reference](http://evothings.com/doc/plugins/com.evothings.ble/com.evothings.module_ble.html).
@@ -165,15 +163,15 @@ We can see the name we set, the appropriate flags and the data we pushed into th
 
 ###Evothings Custom-Made App
 
-We've created a [custom-made app for Evothings](https://github.com/BlackstoneEngineering/evothings-examples/tree/development/experiments/mbed-Evothings-CustomGAP) to go with our advertising.
+We've created an Evothings GAP smartphone example that works with the embedded mbed example above. 
 
 To run the app:
 
 1. Make sure you've installed the Evothings Workbench on your computer and the Evothings client on your phone.
 
-2. Drag-and-drop the **index.html** file into the Evothings Workbench on your computer.
+2. Connect the Workbench on your computer to the Client on your smartphone (point it at the right IP Address)
 
-3. Click **RUN** on the workbench.
+3. Click **RUN** on the "mbed Evothings GAP" program on the workbench.
 
 4. The code will run on your phone's Evothings client.
 
