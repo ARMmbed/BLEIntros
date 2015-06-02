@@ -2,7 +2,7 @@
 
 We can change the content of the [generic access profile (GAP)](/InDepth/BLEInDepth/#advertising-and-connected-mode) advertising packet (AP) to contain the information we want it to contain. If we have only a small amount of data we want to communicate to the world, then we can use the modified GAP AP to send that information to any BLE scanner, without waiting for it to establish a connection. In this article, we're going to modify advertising data step by step, then receive the result with a custom-built Evothings app.
 
-<span style="background-color:#E3E3E3; border:1px solid #000;display:block; height:100%; padding:10px">
+<span style="background-color:#F0F0F5; border:1px solid #000;display:block; height:100%; padding:10px">
 Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_GAP_Example/).
 </span>
 
@@ -18,7 +18,7 @@ You'll need:
 
 3. The [LightBlue iOS](https://itunes.apple.com/us/app/lightblue-bluetooth-low-energy/id557428110?mt=8) app or the [nRF Master Control Panel Android](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en) app to view the results.
 
-<span style="background-color:#E3E3E3; border:1px solid #000;display:block; height:100%; padding:10px">For more information about Evothings, see their [Quick Start Guide](http://evothings.com/getting-started-with-evothings-studio-in-90-seconds/), [tutorials](http://evothings.com/doc/studio/tutorials.html) and [BLE API reference](http://evothings.com/doc/plugins/com.evothings.ble/com.evothings.module_ble.html).
+<span style="background-color:#F0F0F5; border:1px solid #000;display:block; height:100%; padding:10px">For more information about Evothings, see their [Quick Start Guide](http://evothings.com/getting-started-with-evothings-studio-in-90-seconds/), [tutorials](http://evothings.com/doc/studio/tutorials.html) and [BLE API reference](http://evothings.com/doc/plugins/com.evothings.ble/com.evothings.module_ble.html).
 </span>
 
 ##GAP Data Review
@@ -28,7 +28,7 @@ The general GAP broadcast's data breakdown is illustrated in this diagram:
 <span style="text-align:center; display:block;">
 ![](/AdvSamples/Images/GAP/GeneralStruct.png)
 </span>
-<span style="background-color: #E3E3E3; display:block; height:100%; padding:10px;">*The BLE stack eats part of our package's 47B, so only 26B are available for our data*</span>
+<span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">*The BLE stack eats part of our package's 47B, so only 26B are available for our data*</span>
 
 Every BLE package can contain a maximum of 47 bytes (which isn't much), but:
 
@@ -49,7 +49,7 @@ And here's what the bottom two layers of structure look like for our particular 
 <span style="text-align:center; display:block;">
 ![](/AdvSamples/Images/GAP/ExampleStruct.png)
 </span>
-<span style="background-color: #E3E3E3;; display:block; height:100%; padding:10px;">*The example we use here only requires two data structures, one of 3B, one of 28B (of which two are used for data length and type indications)*</span>
+<span style="background-color: #F0F0F5;; display:block; height:100%; padding:10px;">*The example we use here only requires two data structures, one of 3B, one of 28B (of which two are used for data length and type indications)*</span>
 
 ##Using the mbed BLE API
 
@@ -92,7 +92,7 @@ We can use character data instead of hex:
 	const static uint8_t AdvData[] = {"ChangeThisData"};         
 ```
 
-<span style="background-color:#E3E3E3; border:1px solid #000;display:block; height:100%; padding:10px">**Note:** most BLE scanner programs will only display the hex representation, so you may see the characters displayed as the numbers that represent them.
+<span style="background-color:#F0F0F5; border:1px solid #000;display:block; height:100%; padding:10px">**Note:** most BLE scanner programs will only display the hex representation, so you may see the characters displayed as the numbers that represent them.
 </span>
 
 All of that was just setup. Now we need to do something with it. We start by calling the initialiser for the BLE base layer:
@@ -104,7 +104,7 @@ All of that was just setup. Now we need to do something with it. We start by cal
 		ble.init();
 ```
 
-<span style="background-color:#E3E3E3; border:1px solid #000;display:block; height:100%; padding:10px">**Note:** the ``ble.init()`` should always be performed before any other BLE setup.
+<span style="background-color:#F0F0F5; border:1px solid #000;display:block; height:100%; padding:10px">**Note:** the ``ble.init()`` should always be performed before any other BLE setup.
 </span>
 
 Next, we set up the advertising flags:
