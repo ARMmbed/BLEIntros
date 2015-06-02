@@ -9,7 +9,8 @@ Event handlers are able to pre-empt the main program, that is - interrupt its ex
 <span style="text-align:center; display:block;">
 ![events](/GettingStarted/Images/EventHandle.png "An event interrupts the main loop and triggers an action. The interrupt is handled, and the event handler then returns control to main()")
 </span>
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">An event interrupts the main loop and triggers an action. The interrupt is handled, and the event handler then returns control to main()</span>
+<span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
+An event interrupts the main loop and triggers an action. The interrupt is handled, and the event handler then returns control to main()</span>
 
 The relationship between ``main()`` and event handlers is all about timing, especially the decision about which code to move to an event handler and which to leave in ``main()``. Handler execution time is often not determined by the size of the code. It can instead be determined by how many times it must run - for example, how many iterations of a data-processing loop it performs. It can also be determined by communication with external components such as sensors (also called *polling*). Communication delays can range from a few microseconds to milliseconds, depending on the sensor involved. Reading an accelerometer can take around a millisecond, and a temperature sensor can take up to a few hundred microseconds. A barometer, on the other hand, can take up to 10 milliseconds to yield a new sensor value. 
 

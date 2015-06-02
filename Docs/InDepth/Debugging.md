@@ -41,14 +41,16 @@ The mbed SDK includes a utility called ``error()``. It takes in printf()-style p
 
 * Hardware that cannot be accessed because it is malfunctioning. 
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">For more information about ``error()``, see the [handbook](http://developer.mbed.org/handbook/Debugging#runtime-errors).
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
+For more information about ``error()``, see the [handbook](http://developer.mbed.org/handbook/Debugging#runtime-errors).
 </span>
 
 ##Debugging with the mbed Interface Chip
 
 Most mbed platforms come with an interface chip placed between the target microcontroller (in our case: the BLE microcontroller) and the development host (our computer). It is a USB bridge from the development host to the debugging capabilities available in ARM microcontrollers. This bridge functionality is encapsulated in a standard called [CMSIS-DAP](http://developer.mbed.org/handbook/CMSIS-DAP). Major toolchain vendors have started supporting this standard, so we expect it to grow in popularity and availability over time. 
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">**Note:** some smaller boards reduce size and cost by not carrying an interface chip. If you’re using one of those boards, you can skip to the [next section](#uart).
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
+**Note:** some smaller boards reduce size and cost by not carrying an interface chip. If you’re using one of those boards, you can skip to the [next section](#uart).
 </span>
 
 By using the interface chip we can debug with:
@@ -60,7 +62,8 @@ By using the interface chip we can debug with:
 <span style="text-align:center; display:block;">
 ![](/InDepth/Images/DebugviaUSB1.png)
 </span>
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">*The development host uses a USB connection with the interface chip to debug the microcontroller. Some of the terms in this image will be clarified later in the document.*</span>
+<span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
+*The development host uses a USB connection with the interface chip to debug the microcontroller. Some of the terms in this image will be clarified later in the document.*</span>
 
 ###Printf()
 
@@ -71,7 +74,7 @@ Programs typically use the printf() family to communicate something readable bac
 3. The chip forwards the feed to the development host. 
 4. This printf() traffic can be viewed with a terminal program running on the host. 
 
-<span style="background-color:#D8F6CE; color:#886A08; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Tip:** The following examples use the CoolTerm serial port application to read the ``printf()`` output, but you can use any terminal program you want and expect similar results.
 </br>
 **Tip:** The UART protocol requires that the sender and receiver each maintain their own clocks and know the baud rate. mbed interface chips use the 9,600 baud rate and your terminal program should be set to that baud rate to intercept the communication.
@@ -85,7 +88,8 @@ Programs typically use the printf() family to communicate something readable bac
 
 These two costs require that we use ``printf()`` judiciously. First, because there is limited code-space on the microcontroller's internal flash. Second, because it delays the program so much. Be particularly careful about using it in an event handler, which we expect to terminate within a few microseconds.
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">**Note:** ``printf()`` doesn’t require that you tell it beforehand how many parameters it should expect; it can receive any number you throw at it. To do this, you need to provide a format string with format specifiers, followed by a matching number of arguments. For example, ``printf(“temp too high %d”, temp)``: the format string is “temp too high %d”, and the format specifier is %d. The last bit is the argument: temp. It matches the format specifier %d, which specifies an integer. You can learn more on [Wikipedia](http://en.wikipedia.org/wiki/Printf_format_string).
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
+*Note:** ``printf()`` doesn’t require that you tell it beforehand how many parameters it should expect; it can receive any number you throw at it. To do this, you need to provide a format string with format specifiers, followed by a matching number of arguments. For example, ``printf(“temp too high %d”, temp)``: the format string is “temp too high %d”, and the format specifier is %d. The last bit is the argument: temp. It matches the format specifier %d, which specifies an integer. You can learn more on [Wikipedia](http://en.wikipedia.org/wiki/Printf_format_string).
 </span>
 
 Using ``printf()`` on mbed requires including the ``stdio`` header:
@@ -257,13 +261,13 @@ Here is an example implementation of a ring buffer. We’ve created our own vers
 
 ###pyOCD-Based Debugging (GDB Server)
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Note:** using GDB (or any other debugger) to connect to the GDB server is useful only if we have access to the program symbols and their addresses. This is currently *not* exported when building ``.hex`` files using the mbed online IDE. We therefore need to export our project to an offline toolchain to be able to generate either an ``.elf`` file that holds symbols alongside the program, or a ``.map`` file for symbols. In the following section, we're assuming an ``.elf`` file.
 </span>
 
 So far, we've connected the interface chip and the target microcontroller using UART. But there is another connection between the two: serial wire debug (SWD). This protocol offers debugging capabilities for stack trace analysis, register dumps and inspection of program execution (breakpoints, watchpoints etc). When combined with a source-level debugger on the development host, such as the GNU Project Debugger (GDB), SWD offers a very rich debugging experience - much more powerful than ``printf()``. 
 
-<span style="background-color:#D8F6CE; color:#886A08; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Tip:** GDB is often "too rich" - don't forget the fast efficiency of ``printf()`` and the LEDs.
 </span>
 
@@ -273,7 +277,7 @@ The interface chip implements CMSIS-DAP. To drive the CMSIS-DAP interface chip o
 ![](/InDepth/Images/PyOCD1.png)
 </span>
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 To install pyOCD, follow the [instructions](https://github.com/mbedmicro/pyOCD/blob/master/README.md#installation) to get the external USB libraries pyOCD relies on.
 <br /><br />
 **Notes:**
@@ -353,7 +357,7 @@ Now we can perform normal debugging using the GDB command console (or a GUI, if 
 
 BLE has a UART service that allows debugging over the BLE connection (by forwarding the output over BLE), rather than through the interface chip.
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Note:** you'll need an app that can receive the service's output (the logs). There are many of these; you could try [Nordic's nRF UART](http://www.nordicsemi.com/eng/Products/nRFready-Demo-Apps/nRF-UART-App).
 </span>
 
@@ -387,7 +391,7 @@ Third-party sniffers can intercept the BLE communication itself and show us what
 
 Sniffing radio activity can now be done with smart phone apps like [Bluetooth HCI Logger (for Android)](https://play.google.com/store/apps/details?id=com.android_rsap.logger&hl=en). These generate logs that can be analysed with tools like [Wireshark](https://www.wireshark.org/).
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Tip:** to learn about the Android Bluetooth HCI snoop log, start [here](http://www.androidcentral.com/all-about-your-phones-developer-options).
 </span>
 

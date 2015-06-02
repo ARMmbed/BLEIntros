@@ -1,6 +1,7 @@
 #Tutorial 1: URI Beacon (and an Intro to the mbed Compiler)
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">**Note:** To complete tutorials, you'll need an account on [mbed.org](https://developer.mbed.org/account/signup/?next=%2F).</span>
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
+**Note:** To complete tutorials, you'll need an account on [mbed.org](https://developer.mbed.org/account/signup/?next=%2F).</span>
 
 We're starting with the URI Beacon because it's a quick, simple way to get a BLE device going. URI Beacons advertise a bit of information (usually a URL) to any nearby device. They're really easy to set up: the code is fully available on the mbed website, so all you'll need to do is tell the beacon what to broadcast. 
 
@@ -27,7 +28,7 @@ To get this going, you'll need:
 
 + A BLE-enabled mbed board, but don't worry if you don't have one yet - we'll show you how it would have worked.
 
-<span style="background-color:lightyellow; color:black; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
 </span>
 
@@ -58,7 +59,7 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 ##Getting Started With the Compiler
 </a>
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 Take a look at the [mbed quick start video](https://www.youtube.com/watch?v=L5TcmFFD0iw).
 </span>
 
@@ -74,7 +75,7 @@ To select a board for the program:
 ![Adding board](/GettingStarted/Images/URIBeacon/DeviceOnMac.png)
 </span>
 
-<span style="background-color:lightyellow; color:black; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
 </spa[n>
 
@@ -128,7 +129,7 @@ ___
 ##Understanding the Code
 </a>
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **If you don't want to get too deep into the code - skip [ahead](#edituribeacon).**
 </span>
 

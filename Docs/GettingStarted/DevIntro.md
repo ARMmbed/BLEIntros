@@ -18,7 +18,8 @@ BLE is most useful when used with a website or app on your mobile or tablet. See
 ![Connecting](/GettingStarted/Images/ConnectDiagram.png "A BLE device currently requires an app or website running on a phone")
 </span>
 
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">A BLE device currently requires an app or website running on a phone</span>
+<span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
+A BLE device currently requires an app or website running on a phone</span>
 
 ___
 
@@ -27,7 +28,7 @@ ___
 
 mbed comes from a heritage of rapid prototyping and allows you to test code and ideas on BLE devices very easily. 
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 For information about rapid prototyping with mbed BLE, see [here](/InDepth/Prototyping/).
 </span>
 
@@ -41,7 +42,7 @@ ___
 
 ##Quick Samples
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Tip:** The quick samples are written for experienced BLE developers with an understanding of the mbed IDE. If you want more information about the IDE, see the [tutorials](/GettingStarted/IntroSamples/), which offer extended versions of the same samples. 
 </span>
 
@@ -59,7 +60,7 @@ ____
 ###Quick Sample One: URI Beacon
 </a>
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Tip:** If you don’t know how to register your board, or how to work with the mbed compiler, please see the [extended URI Beacon tutorial](/GettingStarted/URIBeacon/). 
 </span>
 
@@ -78,7 +79,7 @@ To get this sample working, you'll need:
 
 + A BLE-enabled mbed board.
 
-<span style="background-color:lightyellow; color:black; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
 </span>
 
@@ -109,7 +110,7 @@ ____
 ###Quick Sample Two: Heart Rate
 </a>
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Tip:** If you don’t know how to register your board, or how to work with the mbed compiler, please see the [extended URI Beacon tutorial](/GettingStarted/URIBeacon/). 
 </span>
 

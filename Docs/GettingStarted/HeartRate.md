@@ -1,6 +1,6 @@
 #Tutorial 2: Heart Rate Monitor (BLE Services)
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Note:** To complete tutorials, you'll need an account on 
 [mbed.org](https://developer.mbed.org/account/signup/?next=%2F). 
 </span>
@@ -46,7 +46,7 @@ ____
 ##Understanding the Heart Rate Service
 </a>
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **If you don't want to get too deeply into the code - skip [ahead](#renamebeacon).**
 </span>
 
@@ -225,7 +225,8 @@ Event handlers are often preemptive, meaning they can interrupt the main program
 ![events](/GettingStarted/Images/EventHandle.png "An event interrupts the main loop and triggers an event handler. The interrupt is handled, and the event handler then returns control to main()")
 </span>
 
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">An event interrupts the main loop and triggers an event handler. The interrupt is handled, and the event handler then returns control to main()</span>
+<span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
+An event interrupts the main loop and triggers an event handler. The interrupt is handled, and the event handler then returns control to main()</span>
 
 The relationship between ``main()`` and event handlers is all about timing, especially the decision about which code to move to an event handler and which to leave in ``main()``. Handler execution time is often not determined by the size of the code. It can instead be determined by how many times it must run - for example, how many iterations of a data-processing loop it performs. It can also be determined by communication with external components such as sensors (also called *polling*). Communication delays can range from a few microseconds to milliseconds, depending on the sensor involved. Reading an accelerometer can take around a millisecond, and a temperature sensor can take up to a few hundred microseconds. A barometer, on the other hand, can take up to 10 milliseconds to yield a new sensor value. 
 
@@ -284,7 +285,7 @@ The default name is "HRM1". You can change it to anything you like (but stay und
 	const static char     DEVICE_NAME[]        = "I_Renamed_This";
 ```
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Tip**: iOS "sticks" to the name it first discovers for each beacon, so whatever name you choose now you'll have for a while. This is called *caching*, and is intended to save your phone some time and energy.
 </span>
 ____

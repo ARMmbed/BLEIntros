@@ -13,7 +13,8 @@ This two-way communication means that a single device can be used both to send i
 <span style="text-align:center; display:block;">
 ![BLE layout](/GettingStarted/Images/BLEsample.png "A BLE setup requires a board with BLE support and a way to control it - for example a phone app or a local touchscreen")
 </span>
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">A BLE setup requires a board with BLE support and a way to control it - for example a phone app or a local touchscreen</span>
+<span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
+A BLE setup requires a board with BLE support and a way to control it - for example a phone app or a local touchscreen</span>
 
 ##mbed
 
@@ -28,7 +29,8 @@ To tell the API what to do, you need a programming environment. BLE, like all ot
 <span style="text-align:center; display:block;">
 ![BLE layout](/GettingStarted/Images/fullmbedprocess.png "The standard process is to get a board (and maybe a few extending components), write a bit of code and import it to the board. Simple.")
 </span>
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">The standard process is to get a board (and maybe a few extending components), write a bit of code and import it to the board. Simple.</span>
+<span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
+The standard process is to get a board (and maybe a few extending components), write a bit of code and import it to the board. Simple.</span>
 
 ##The mbed Compiler
 
@@ -46,7 +48,7 @@ The combination of an mbed board, extra components and BLE capabilities give you
 
 mbed comes from a heritage of rapid prototyping, and allows you to test code and ideas on BLE devices very easily. 
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 For information about rapid prototyping with mbed BLE, see [here](/InDepth/Prototyping/).
 </span>
 

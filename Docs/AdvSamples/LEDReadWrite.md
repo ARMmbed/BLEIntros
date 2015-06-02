@@ -10,7 +10,7 @@ In the [previous sample](/AdvSamples/InputButton/) we went over the process of s
 
 Let's create a service for a trivial actuator: an LED. We'll assume a use-case where a phone app would like to connect to this mbed application and set the LED state. In the non-connected state, the application simply advertises its ability to provide an LED service.
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 Get the code [here](https://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_LED/).
 </span>
 
@@ -136,7 +136,7 @@ We've chosen a custom UUID space for our LED service: 0xA000 for the service, an
 
 Adding the LED service UUID to the advertising payload is purely optional. But having it is good practice, since it gives interested client apps an early and cheap indication of the mbed application's capabilities. 
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Note:** interpreting non-standard UUID has limited use, and may only work with custom phone apps.
 </span>
 
@@ -158,7 +158,7 @@ The code only looks complicated; it is in reality a simple use of C++ templates 
 		&initialValueForLEDCharacteristic);
 ```
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Tip:** there are several variants of ``GattCharacterisitc`` available to ease instantiation. Refer to template declarations at the bottom of [GattCharacteristic.h](https://github.com/mbedmicro/BLE_API/blob/master/public/GattCharacteristic.h).
 </span>
 

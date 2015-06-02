@@ -27,7 +27,8 @@ We use the terms *server* and *client* when discussing the exchange of informati
 <span style="text-align:center; display:block;">
 ![Server and client](/GettingStarted/Images/clientserver.png "The mbed board is the server or peripheral; the phones are the clients and central devices")
 </span>
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">The mbed board is the server or peripheral; the phones are the clients and central devices
+<span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
+The mbed board is the server or peripheral; the phones are the clients and central devices
 </span>
 
 
@@ -50,7 +51,8 @@ A central device must know that a peripheral device exists to be able to connect
 <span style="text-align:center; display:block;">
 ![Connected and advertising](/GettingStarted/Images/ConnModes.png)
 </span>
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">Advertising mode is one-to-many, whereas connected mode is one-to-one
+<span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
+Advertising mode is one-to-many, whereas connected mode is one-to-one
 </span>
 
 Advertisements are very limited in size. The general GAP broadcast's data breakdown is illustrated in this diagram:
@@ -58,7 +60,8 @@ Advertisements are very limited in size. The general GAP broadcast's data breakd
 <span style="text-align:center; display:block;">
 ![](/AdvSamples/Images/GAP/GeneralStruct.png)
 </span>
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">*The BLE stack eats part of our package's 47B, until only 26B are available for our data*</span>
+<span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
+The BLE stack eats part of our package's 47B, until only 26B are available for our data</span>
 
 Every BLE package can contain a maximum of 47 bytes (which isn't much), and we don't get to use all of it:
 
@@ -74,7 +77,7 @@ Every BLE package can contain a maximum of 47 bytes (which isn't much), and we d
 
 All of which means that we have only 26B to use for the data we want to send over GAP.
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 If you want to see an example of ADs, see our extended explanation in the [Custom GAP Advertising section](/AdvSamples/CustomGAP/).
 </span>
 
@@ -87,7 +90,7 @@ But sometimes you'll want to provide more information or more complex interactio
 
 For now, advertising and connected modes cannot co-exist. This is because a BLE peripheral device can only be connected to one central device (like a mobile phone) at a time. The moment a connection is established, the BLE peripheral will stop advertising. At that point, no other central device will be able to connect to it, since they can't discover that the device is there if it's not advertising. New connections can be established only after the first connection is terminated and the BLE peripheral starts advertising again. 
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Note:** the latest Bluetooth standard allows advertisements to continue in parallel with connections, and this will become a part of mbed's BLE_API before the end of 2015. 
 </span>
 
@@ -98,7 +101,8 @@ To make the conversation described above low power, the BLE specification impose
 <span style="text-align:center; display:block;">
 ![breakdown](/InDepth/Images/Service.png "A single service can contain several characteristics")
 </span>
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">A single service can contain several characteristics</span>
+<span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
+A single service can contain several characteristics</span>
 
 Services, characteristics and their supporting attributes are the fundamental entities of connected mode. Services use the Generic Attribute Profile (GATT) to structure information according to characteristics. We'll explore characteristics in more detail below. 
 
@@ -107,7 +111,8 @@ We bundle services into a *profile*. For example, the Heart Rate *Profile* inclu
 <span style="text-align:center; display:block;">
 ![breakdown](/InDepth/Images/heart_rate_profile.png "An example profile with two services")
 </span>
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">An example profile with two services</span>
+<span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
+An example profile with two services</span>
 
 BLE has been around for a while, so it has some standard services that you can tap into. Going back to our heart rate monitor example, the Heart Rate Service is well established and easy to use. It can read information from a BLE heart rate monitor and send it to an app. You'll see that in a later [coding sample](/GettingStarted/HeartRate/).
 
@@ -151,7 +156,7 @@ Creating a characteristic on mbed is very easy, because ``BLE_API`` offers C++ a
 		&buttonPressed);
 ```
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 For a full walkthrough of characteristic creation on mbed, see our [input service template](AdvSamples/InputButton/#the-button-state-characteristic).
 </span>
 
@@ -174,13 +179,13 @@ Here's an example of creating a read/write characteristic (a characteristic that
 		&initialValueForLEDCharacteristic);
 ```
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 For information about creating a read/write characteristic on mbed, see our [actuator service template](AdvSamples/LEDReadWrite/#the-led-state-characteristic).
 </span>
 
 Some characteristics are two-way entities. That means the server (BLE peripheral) can both update them itself and receive new values for them from the client (phone). This two-way traffic makes BLE interactive: the user sends a new value to one or more characteristics and the device responds to these new values. For example, when a URI Beacon device is turned on, it goes into a temporary *configuration mode*, giving us a chance to update the values of its characteristics (containing the data it will later advertise). 
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 For information about the configuration mode, see the [URI Beacon Advanced Features page](AdvSamples/URIBeaconAdv/).
 </span>
 
@@ -199,4 +204,5 @@ The full breakdown for a profile is, therefore: one or more services, each conta
 <span style="text-align:center; display:block;">
 ![breakdown](/InDepth/Images/BLE_Profile_Breakdown.png "A single profile can contains several services, and each of the services can contain several characteristics")
 </span>
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">A single profile can contains several services, and each of the services can contain several characteristics</span>
+<span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
+A single profile can contains several services, and each of the services can contain several characteristics</span>

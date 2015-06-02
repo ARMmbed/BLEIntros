@@ -6,7 +6,7 @@ You can view a [short video about FOTA](https://www.youtube.com/watch?v=54V2_4TR
 
 Note that this functionality requires the use of a (Nordic-specific) DFU boot loader on the device, to provide the basic functionality of firmware download and reprogramming. Instructions for the boot loader’s installation are available below.
 
-<span style="background-color:lightyellow; color:black; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Warning:** at the moment, the firmware-update protocol has very little security; we're working on this.
 </span>
 
@@ -25,7 +25,8 @@ The following figure shows the layout of the main software components of a FOTA-
 <span style="text-align:center; display:block;">
 ![](/FOTA/Images/FOTASystem.png)
 </span>
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">*Main software components in a FOTA-dapable system*</span>
+<span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
+*Main software components in a FOTA-dapable system*</span>
 
 ###How FOTA Updates Work
 
@@ -47,7 +48,8 @@ We'll soon be releasing our own reference apps for iOS and Android, together wit
 <span style="text-align:center; display:block;">
 ![](/FOTA/Images/Sequence.png)
 </span>
-<span style="background-color:lightblue; color:gray; display:block; height:100%; padding:10px;">*FOTA sequence diagram*</span>
+<span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
+*FOTA sequence diagram*</span>
 
 ###The Default Boot Loader
 
@@ -221,7 +223,7 @@ Please note:
 
 The following program illustrates the use of UARTService to redirect something like printf() to use the BLE transport.
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 [Import the BLE_UARTConsole program to your compiler](https://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_UARTConsole/).
 </span>
 
@@ -237,7 +239,7 @@ The following program illustrates the use of UARTService to redirect something l
 		DEBUG("ping\r\n");
 ```
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Note:** You will need to include ``UARTService.h.``
 </span>
 

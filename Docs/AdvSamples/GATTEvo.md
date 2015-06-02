@@ -2,7 +2,7 @@
 
 We're going to create a custom [generic attribute profile (GATT) service](/InDepth/BLEInDepth/#services-and-profiles-gatt) to blink the LED on an mbed board, and demonstrate using Evothing to create a custom app that communicates with our GATT service.
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_GATT_Example/).
 </span>
 
@@ -16,7 +16,7 @@ You'll need:
 
 2. Install the [Evothings Workbench on your PC](http://evothings.com/download/) and the app on your phone. See here for [Android](https://play.google.com/store/apps/details?id=com.evothings.evothingsclient) or [iOS](https://itunes.apple.com/nz/app/evothings-client/id848974292?mt=8).
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 For more information about Evothings, see their [Quick Start Guide](http://evothings.com/getting-started-with-evothings-studio-in-90-seconds/), [tutorials](http://evothings.com/doc/studio/tutorials.html) and [BLE API reference](http://evothings.com/doc/plugins/com.evothings.ble/com.evothings.module_ble.html).
 </span>
 
@@ -26,7 +26,7 @@ Unlike GAP, which broadcasts one-to-many, GATT uses a one-to-one connection betw
 
 To demonstrate this we will create a service with two characteristics and assign custom UUIDs to both the service and the characteristics. 
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 You can see an example of setting up an input service on our [YouTube channel](https://www.youtube.com/watch?v=YaLG-6pDFrw).
 </span>
 
@@ -71,7 +71,7 @@ Next, we'll need a few declarations:
 	
 ```
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Note:** If you change ``DEVICE_NAME`` here you will also need to change it in the subsequent Evothings application **app.js** (which will be covered [later](/AdvSamples/GATTEvo/#interacting-with-the-gatt-service-evothings)).
 </span>
 

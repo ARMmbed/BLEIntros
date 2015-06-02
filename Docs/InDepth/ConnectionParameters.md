@@ -15,7 +15,7 @@ The interval is set using ``setAdvertisingInterval``: a function in the ``BLEDev
 	 ble.setAdvertisingInterval(1000); // one second
 ```
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Note:**
 <br />1. If you set 0, advertising will be disabled.
 <br />2. It should be set to 0 (that is, disabled) when the connection mode is ``ADV_CONNECTABLE_DIRECTED`` (meaning that only connections from a pre-defined central device will be accepted).
@@ -65,7 +65,7 @@ The slave latency parameter accepts an integer specifying the number of connecti
 
 The difference between SLAVE_LATENCY and MIN_CONN_INTERVAL is state-dependence. MIN_CONN_INTERVAL is state *independent*: it's used even when there is new data to send. SLAVE_LATENCY is state *dependent*: it's used only when the peripheral device has no data. The combination of these parameters allows us conditional control of our radio usage: we’ll communicate often when there is new information, but rarely when there is no information. A good example is a BLE mouse. To save energy, we don’t want to use the radio often when the user isn’t moving the mouse. But for ease of use, we don’t want slow communication when the user is using the mouse (slow communication will make the mouse lag behind the user’s actions). We’ll therefore set a high latency but low minimum connection interval.
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Note:** the maximum value of SLAVE_LATENCY depends on the stack you're using. Check your vendor's specifications.</span>
 
 ##Putting it Together
@@ -89,7 +89,8 @@ In our samples, this parameter is called CONN_SUP_TIMEOUT, and receives a value 
 
 The connection supervision timeout is a suggestion that the central device is free to ignore. This limits our ability to use the other parameters to create a long gap between data transfers, because long gaps require coupling the other parameters with a long supervision timeout. If the central rejects our supervision timeout while accepting the other parameters, it could set a long gap but a short timeout. It will then assume we disconnected.
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">**Note:** the maximum value of CONN_SUP_TIMEOUT depends on the stack you're using. Check your vendor's specifications.
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
+**Note:** the maximum value of CONN_SUP_TIMEOUT depends on the stack you're using. Check your vendor's specifications.
 </span>
 
 ##Maximising Battery Life

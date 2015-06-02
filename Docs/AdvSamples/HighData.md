@@ -116,7 +116,7 @@ Another way to reduce latency is to increase the number of potential connections
 
 Nevertheless, setting a smaller connection interval can have a significant impact on the latency. However, care should be taken to ensure that the low power profile is maintained. We do this by dynamically switching connection parameters based on the latency requirements.
 
-<span style="background-color:lightgray; color:purple; display:block; height:100%; padding:10px">
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Tip**: more information about the connection parameters is available [here](/InDepth/ConnectionParameters/).
 </span>
 
