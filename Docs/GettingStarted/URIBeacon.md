@@ -29,10 +29,10 @@ To get this going, you'll need:
 + A BLE-enabled mbed board, but don't worry if you don't have one yet - we'll show you how it would have worked.
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
+**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](http://developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
 </span>
 
-+ A user account on [developer.mbed.org](developer.mbed.org) to access the compiler. We recommend you get access to the compiler even if you don't have a board yet, so that you can play along with the example.
++ A user account on [developer.mbed.org](http://developer.mbed.org) to access the compiler. We recommend you get access to the compiler even if you don't have a board yet, so that you can play along with the example.
 
 ##Quick Guide
 
@@ -47,7 +47,7 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 5. Compile the code. It will be downloaded to your Downloads folder (on some browsers you may need to specify a download location). <br />**Note:** make sure you've selected the correct platform as the compilation target. The platform is shown on the right-hand top corner of the compiler. If you're seeing the wrong platform, click it to open the Select Platform window.
 
 6. Drag and drop the compiled file to your board as it appears in the file explorer. 
-</br>**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
+</br>**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](http://developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
 
 7. Restart the board.
 
@@ -76,7 +76,7 @@ To select a board for the program:
 </span>
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
+**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](http://developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
 </spa[n>
 
 * In your file browser, double-click the board to see its files. By default, every board has an HTML file. 

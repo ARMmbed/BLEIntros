@@ -80,10 +80,10 @@ To get this sample working, you'll need:
 + A BLE-enabled mbed board.
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
+**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](http://developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
 </span>
 
-+ A user on [developer.mbed.org](developer.mbed.org) to access the compiler.
++ A user on [developer.mbed.org](http://developer.mbed.org) to access the compiler.
 
 If you’re familiar with mbed and our compiler, you can get the beacon working in just a few minutes:
 
