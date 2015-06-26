@@ -12,7 +12,7 @@ For all of these, you should have:
 
 1. A BLE-enabled mbed board. But don't worry if you don't have one yet - we'll show you how it would have worked.
 
-2. A user account on [developer.mbed.org](developer.mbed.org) to see the compiler. We recommend you get access to the compiler even if you don't have a board yet, so that you can play along with the example.
+2. A user account on [developer.mbed.org](http://developer.mbed.org) to see the compiler. We recommend you get access to the compiler even if you don't have a board yet, so that you can play along with the example.
 
 Some tutorials will have additional requirements, such as phone apps or additional hardware. These will be listed for each tutorial as needed.
 

@@ -60,7 +60,7 @@ The service has [three characteristics](https://developer.bluetooth.org/Technolo
 
 * **Heart Rate Control Point**: receives a value from the user when the user wants to reset the *Energy Expanded* measurement.
 
-It is important to understand that this demo fakes a heart rate value; it does not interact with a physical heart rate sensor to fetch real data. To work with a real heart rate application, we would have had to create a very specific example, which would have been harder to learn from. You should be able to modify the general demo to fit any app that you want to work with if you have a real heart rate sensor. Please check [mbed.org](developer.mbed.org) before you start working - there may already be code available for your heart rate sensor.
+It is important to understand that this demo fakes a heart rate value; it does not interact with a physical heart rate sensor to fetch real data. To work with a real heart rate application, we would have had to create a very specific example, which would have been harder to learn from. You should be able to modify the general demo to fit any app that you want to work with if you have a real heart rate sensor. Please check [mbed.org](http://developer.mbed.org) before you start working - there may already be code available for your heart rate sensor.
 
 ##Understanding the Code
 
