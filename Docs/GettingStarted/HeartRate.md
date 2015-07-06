@@ -275,14 +275,14 @@ To rename your beacon, find the following line of code in the ``main.cpp`` file:
 
 ```c
 
-	const static char     DEVICE_NAME[]        = "HRM1";
+	const static char DEVICE_NAME[] = "HRM1";
 ```
 
 The default name is "HRM1". You can change it to anything you like (but stay under 18 characters). Don't forget to leave it in quotes:
 
 ```c
 
-	const static char     DEVICE_NAME[]        = "I_Renamed_This";
+	const static char DEVICE_NAME[] = "I_Renamed_This";
 ```
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
