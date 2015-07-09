@@ -12,3 +12,5 @@ Technology always has limitations. For mbed BLE, the most important ones are:
 
 5. **Bluetooth 4 doesn't work on older mobile phones**, but as phones are upgraded quite often, in a year or two you can expect the majority of phones in the west to be able to communicate with our devices.
 
+______
+Copyright © 2015 ARM Ltd. All rights reserved.

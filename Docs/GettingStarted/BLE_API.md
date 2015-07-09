@@ -61,3 +61,6 @@ We have examples of the [BLE apps, along with documentation](http://developer.mb
 ##Full BLE_API Documentation
 
 The current BLE_API documentation is on the [developer site](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_API/).
+
+______
+Copyright © 2015 ARM Ltd. All rights reserved.

@@ -397,3 +397,5 @@ Sniffing radio activity can now be done with smart phone apps like [Bluetooth HC
 
 If you want to use a separate BLE device (not your phone) to sniff the BLE traffic, you can try [Nordic's nRF Sniffer](https://www.nordicsemi.com/eng/Products/Bluetooth-Smart-Bluetooth-low-energy/nRF-Sniffer) on a Nordic BLE board.
 
+______
+Copyright © 2015 ARM Ltd. All rights reserved.

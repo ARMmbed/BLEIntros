@@ -41,3 +41,6 @@ Below is a list of commonly used abbreviations.
 **URL**: *u*niform *r*esource *l*ocator. 
 
 **UUID**: *u*niversally *u*nique *id*entifier. 
+
+______
+Copyright © 2015 ARM Ltd. All rights reserved.

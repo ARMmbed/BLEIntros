@@ -23,3 +23,6 @@ Reviewing advanced features of standard implementations:
 * The [URI Beacon](/AdvSamples/URIBeaconAdv/): dynamic configuration of the URIBeacon on start up and configuration persistence. 
 
 * Creating an app for [high data rate, low latency transfers](/AdvSamples/HighData/), if you need to transfer large amounts of data.
+
+______
+Copyright © 2015 ARM Ltd. All rights reserved.

@@ -204,5 +204,7 @@ So here’s a plain-language example:
 
 ```
 
+______
+Copyright © 2015 ARM Ltd. All rights reserved.
 
 

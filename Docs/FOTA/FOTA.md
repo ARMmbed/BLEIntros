@@ -253,4 +253,6 @@ The following program illustrates the use of UARTService to redirect something l
 
 * The two-stage FOTA process is cumbersome and error-prone. We're working on creating a simple reference app to drive FOTA. Eventually we hope to release an SDK to allow users to create their own FOTA driver applications.
 
+______
+Copyright © 2015 ARM Ltd. All rights reserved.
 

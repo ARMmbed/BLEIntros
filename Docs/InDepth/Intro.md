@@ -13,3 +13,6 @@ This section covers some BLE and mbed concepts in greater detailed than our Gett
 3. [Connection Parameters](/InDepth/ConnectionParameters/): parameters that affect BLE's operation and specifically power use.
 
 4. [BLE Limitations](/InDepth/Limitations/): current limitations of the BLE technology. 
+
+______
+Copyright © 2015 ARM Ltd. All rights reserved.

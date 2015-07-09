@@ -206,3 +206,6 @@ The full breakdown for a profile is, therefore: one or more services, each conta
 </span>
 <span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
 A single profile can contains several services, and each of the services can contain several characteristics</span>
+
+______
+Copyright © 2015 ARM Ltd. All rights reserved.

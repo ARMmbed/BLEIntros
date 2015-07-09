@@ -13,3 +13,5 @@ If this dynamic configurability is unnecessary, it can be bypassed by calling ``
 An implementation of the URIBeacon that wants to be compliant with Google’s URIBeacon specification needs persistence of configuration parameters. This means being able to use configuration parameters stored on non-volatile storage. This storage is often internal to the microcontroller, so access to it requires hardware-specific APIs. This makes a URIBeacon application platform-specific and breaks the otherwise portable application development environment offered by mbed. mbed will soon offer a generic API to access persistent storage, to remedy this situation.
 
 Currently, there are a couple of APIs defined in the URIBeacon demo to abstract access to storage: ``loadURIBeaconConfigParams()`` and ``storeURIBeaconConfigParams()`` (under ``nrfConfigParamsPersistence.cpp``). Porting this demo to another platform will require providing alternative implementations for these.
+______
+Copyright © 2015 ARM Ltd. All rights reserved.

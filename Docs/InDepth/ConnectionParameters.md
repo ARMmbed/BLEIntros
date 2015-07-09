@@ -103,4 +103,6 @@ For battery life, the less we use the radio the better. All of our parameters to
 
 2. In *connected* mode, we can set a max connection interval of four seconds, but while we're not generating new data the longest duration without radio activity could be as long as [(max interval) * (slave latency)]. However, do remember that we're limited by the supervision timeout; if our intervals are too large, the central device may assume a disconnect (remember that we cannot force the central device to accept our setting of supervision timeout, so there may be a mismatch).
 
+______
+Copyright © 2015 ARM Ltd. All rights reserved.
 

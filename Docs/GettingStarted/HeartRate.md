@@ -145,7 +145,19 @@ Let's break that down.
 
 ####While
 
-Before saying what the program should do (the function), we tell it when to do it. We can create a WHILE loop, which is a way of saying "perform this function while a certain condition is met". In other words, a WHILE loop will keep a function going so long as the condition the loop is checking returns the value TRUE. If the condition becomes FALSE, the loop will stop (this is called "exiting the loop") and the function won't run any more.
+Before saying what the program should do (the function), we tell it when to do it. We use two tools to determine this: 
+
+* A condition that determines when to start the function, for example "when you get a new value from the thermometer". 
+
+* A definition of how many times to run when the starting condition is met. We can tell a function to run once, twice, to infinity or until the condition suddenly fails.
+
+In this example, we use the condition both to determine when to start running and to determine when to stop. To do this:
+
+* We created a WHILE loop, which is a way of saying "start this function when this condition is met, and don't stop until the condition is false". 
+
+* We said that the condition is that the value of ``triggerSensorPolling`` is TRUE rather than FALSE. That value is determined inside the loop. 
+
+If the value of ``triggerSensorPolling`` becomes FALSE, the condition will fail and the function won't run any more. This is called "exiting the loop".
 
 The condition we're checking for this loop has two parts:
 
@@ -325,3 +337,6 @@ The server will notify our phone with each new value:
 </span>
 
 And that's it!
+
+______
+Copyright © 2015 ARM Ltd. All rights reserved.

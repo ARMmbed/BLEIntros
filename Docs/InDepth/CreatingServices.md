@@ -10,3 +10,5 @@ Creating a BLE service may sound daunting, but we've created two templates that 
 
 2. The *actuator service* template demonstrates the use of a read-write characteristic to control an LED through a phone app. You can get the code [here](https://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_LED/) or read the full explanation [here](/AdvSamples/LEDReadWrite/).
 
+______
+Copyright © 2015 ARM Ltd. All rights reserved.

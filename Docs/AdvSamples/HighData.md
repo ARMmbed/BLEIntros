@@ -167,3 +167,5 @@ Where:
 * ``slaveLatency`` suggests how many connection attempts the slave is allowed to miss before the central may consider the peripheral disconnected.
 
 
+______
+Copyright © 2015 ARM Ltd. All rights reserved.

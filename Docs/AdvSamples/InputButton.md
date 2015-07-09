@@ -592,3 +592,6 @@ And now with this encapsulated away in the ``ButtonService``, the main applicati
 ```
 
 One final note: notice that we've set up ``buttonServicePTR``. This was necessary because ``onDataWritten`` callback needs to refer to the ``buttonService`` object. One reasonable solution would have been to move the definition of the ``buttonService`` object in the global scope. But, constructing a ``buttonService`` object requires the use of ``BLE_API`` calls such as ``ble.addService()``. These can only be used after a call to ``ble.init()``. Unfortunately, ``ble.init()`` is called only within ``main()``, delaying the instantiation of ``buttonService``. This leads us to making a reference available to the ``buttonService`` object through a pointer. This is a bit roundabout.
+
+______
+Copyright © 2015 ARM Ltd. All rights reserved.

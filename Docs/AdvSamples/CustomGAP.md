@@ -184,3 +184,6 @@ The code for the application is in the **app.js** file. It is written in JavaScr
 
 This demo is very simple but provides a starting point for more advanced programming. 
 
+______
+Copyright © 2015 ARM Ltd. All rights reserved.
+

@@ -65,3 +65,6 @@ The UART Service can be used to debug directly over the BLE connection (with the
 </a>
 
 Third party sniffers can intercept BLE communication on your phone or on dedicated hardware. For more information, see our [debugging with sniffers section](InDepth/Debugging/#sniffers).
+
+______
+Copyright © 2015 ARM Ltd. All rights reserved.
