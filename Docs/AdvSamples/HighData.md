@@ -1,6 +1,6 @@
 #High Data Rate, Low Latency Transfers
 
-As mentioned in the [previous sections](/GettingStarted/BeginnersIntro/), BLE is primarily designed for low data rate applications (where only a few bytes are transmitted every second). However, you may find yourself in need of transferring a large amount of data. So in this section we'll show you how to build a high data rate, low latency application using mbed’s ``BLE_API`` while still keeping a low power profile.
+As mentioned in the [previous sections](../GettingStarted/BeginnersIntro.md), BLE is primarily designed for low data rate applications (where only a few bytes are transmitted every second). However, you may find yourself in need of transferring a large amount of data. So in this section we'll show you how to build a high data rate, low latency application using mbed’s ``BLE_API`` while still keeping a low power profile.
 
 For low data rate applications, the typical way to interact with characteristics is through the read, write, and indication commands. These send a packet of data and subsequently wait for a response from the server. But waiting for a response can add significantly to the latency and increase the delay before sending the next packet. This, in turn, increases the overall transmission time when sending large amounts of data. This makes the method less suitable for low latency applications and applications that need to exchange a large amount of data as quickly as possible. Worse, the central might decide to terminate the current connection after each read or write command, which delays the next operation to the following connection.
 
@@ -117,7 +117,7 @@ Another way to reduce latency is to increase the number of potential connections
 Nevertheless, setting a smaller connection interval can have a significant impact on the latency. However, care should be taken to ensure that the low power profile is maintained. We do this by dynamically switching connection parameters based on the latency requirements.
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-**Tip**: more information about the connection parameters is available [here](/InDepth/ConnectionParameters/).
+**Tip**: more information about the connection parameters is available [here](../InDepth/ConnectionParameters.md).
 </span>
 
 The following code example shows how we can use ``BLE_API`` to update the connection parameters:

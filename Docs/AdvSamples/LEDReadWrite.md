@@ -4,7 +4,7 @@ With mbed BLE, we offer a growing set of SIG-defined BLE services implemented as
 
 But, we don’t expect you to settle for what’s already been done; we expect you to develop applications for custom sensors and actuators,. These will often fall outside the scope of the standard Bluetooth services or the service templates offered by mbed BLE. In this case, you could use the ``BLE_API``. You may also find that you benefit from modelling your custom services as C++ classes for ease of use (and reuse). Here, we'd like to capture the process of creating a BLE service.
 
-In the [previous sample](/AdvSamples/InputButton/) we went over the process of setting up a custom BLE service encapsulating a read-only characteristic. In this example, we'd like to review the creation of a service with a read-write characteristic. Together, these will form the basis of most BLE services.
+In the [previous sample](../AdvSamples/InputButton.md) we went over the process of setting up a custom BLE service encapsulating a read-only characteristic. In this example, we'd like to review the creation of a service with a read-write characteristic. Together, these will form the basis of most BLE services.
 
 #LED Service
 

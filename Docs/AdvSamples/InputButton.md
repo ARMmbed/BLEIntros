@@ -2,7 +2,7 @@
 
 With mbed BLE, we offer a growing set of SIG-defined BLE services implemented as C++ headers to ease application development. These can be found under [our services repository](https://github.com/mbedmicro/BLE_API/tree/master/services).
 
-If, for instance, you needed to develop a heart-rate application for an mbed platform, you could get started with the [BLE heart rate demo](/GettingStarted/HeartRate/). This demo instantiates the [heart rate service](https://github.com/mbedmicro/BLE_API/blob/master/services/HeartRateService.h). The services takes care of the majority of the BLE plumbing, and offers high-level APIs to work with service configuration and sensor values. You'd need to add custom code to your application to poll sensor data periodically, and the HeartRateService takes care of the rest.
+If, for instance, you needed to develop a heart-rate application for an mbed platform, you could get started with the [BLE heart rate demo](../GettingStarted/HeartRate.md). This demo instantiates the [heart rate service](https://github.com/mbedmicro/BLE_API/blob/master/services/HeartRateService.h). The services takes care of the majority of the BLE plumbing, and offers high-level APIs to work with service configuration and sensor values. You'd need to add custom code to your application to poll sensor data periodically, and the HeartRateService takes care of the rest.
 
 But, we don’t expect you to settle for what’s already been done; we expect you to develop applications for custom sensors and actuators,. These will often fall outside the scope of the standard Bluetooth services or the service templates offered by mbed BLE. In this case, you could use the ``BLE_API``. You may also find that you benefit from modelling your custom services as C++ classes for ease of use (and reuse). Here, we'd like to capture the process of creating a BLE service.
 
@@ -104,7 +104,7 @@ Here's a basic template code to get you off the ground. We've thrown in a blinki
 This is what the app looks like (on the nRF Master Control Panel):
 
 <span style="text-align:center; display:block;">
-![App discovery](/AdvSamples/Images/Button/ButtonDiscovery.png)
+![App discovery](../AdvSamples/Images/Button/ButtonDiscovery.png)
 </span>
 
 ##Assigning UUIDs
@@ -268,7 +268,7 @@ So, now we have code that defines a custom button service containing a read-only
 When you connect to the service, you can see the characteristic and enable notifications (note that you must manually enable them - the service doesn't force notifications on the client):
 
 <span style="text-align:center; display:block;">
-![App notifications](/AdvSamples/Images/Button/Notifications.png)
+![App notifications](../AdvSamples/Images/Button/Notifications.png)
 </span>
 
 ##Updating the Button’s State
@@ -393,7 +393,7 @@ Note that ``updateCharacteristicValue()`` identifies the ``buttonState`` charact
 With notifications active, you can see the button characteristic's value change when you press the button on the board:
 
 <span style="text-align:center; display:block;">
-![Side by side - zero and one](/AdvSamples/Images/Button/SideBySide.png)
+![Side by side - zero and one](../AdvSamples/Images/Button/SideBySide.png)
 </span>
 
 ##The ButtonService Class
