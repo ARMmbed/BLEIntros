@@ -1,6 +1,6 @@
 #Custom GATT Service with Evothings
 
-We're going to create a custom [generic attribute profile (GATT) service](/InDepth/BLEInDepth/#services-and-profiles-gatt) to blink the LED on an mbed board, and demonstrate using Evothing to create a custom app that communicates with our GATT service.
+We're going to create a custom [generic attribute profile (GATT) service](../InDepth/BLEInDepth.md#services-and-profiles-gatt) to blink the LED on an mbed board, and demonstrate using Evothing to create a custom app that communicates with our GATT service.
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_GATT_Example/).
@@ -33,7 +33,7 @@ You can see an example of setting up an input service on our [YouTube channel](h
 ##Review of Services
 
 <span style="display:block; float:right;">
-![](/InDepth/Images/BLE_Profile_Breakdown.png)
+![](../InDepth/Images/BLE_Profile_Breakdown.png)
 </span>
 
 A GATT server can have multiple services. Each service contains one or more characteristics. Each characteristic has its own properties such as whether it can be read, send a notification or be written in to. Each characteristic has a single value of 512 bytes (although it's not mandatory to use them all) and can have zero or more descriptors.
@@ -72,7 +72,7 @@ Next, we'll need a few declarations:
 ```
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-**Note:** If you change ``DEVICE_NAME`` here you will also need to change it in the subsequent Evothings application **app.js** (which will be covered [later](/AdvSamples/GATTEvo/#interacting-with-the-gatt-service-evothings)).
+**Note:** If you change ``DEVICE_NAME`` here you will also need to change it in the subsequent Evothings application **app.js** (which will be covered [later](../AdvSamples/GATTEvo.md#interacting-with-the-gatt-service-evothings)).
 </span>
 
 Now that we have the UUIDs, we can set up the characteristics:
@@ -227,7 +227,7 @@ And now that everything is set up, we can start advertising the connection:
 	}
 ```
 
-Compile your program and [install it on your board](/GettingStarted/URIBeacon/#compiling-and-installing-your-program) (drag and drop it to the board).
+Compile your program and [install it on your board](../GettingStarted/URIBeacon.md#compiling-and-installing-your-program) (drag and drop it to the board).
 
 ##Interacting with the GATT Service - Evothings
 
@@ -246,10 +246,10 @@ To run the app:
 4. The code will run on your phone's Evothings client.
 
 <span style="text-align:center; display:block;">
-![](/AdvSamples/Images/Evothings/EvothingsRun.png)
+![](../AdvSamples/Images/Evothings/EvothingsRun.png)
 </span>
 
-You need to change the variable ``MyDeviceName`` (in the ``app.js`` file you downloaded from GitHub) to match the [device name you gave to your mbed board](/AdvSamples/GATTEvo/#using-the-mbed-ble-api):
+You need to change the variable ``MyDeviceName`` (in the ``app.js`` file you downloaded from GitHub) to match the [device name you gave to your mbed board](../AdvSamples/GATTEvo.md#using-the-mbed-ble-api):
 
 ```javascript
 // JavaScript code for the mbed ble scan app
@@ -271,11 +271,11 @@ You should review the app's code to verify you understand the flow:
 3. If you click that button, it will change to red and LED1 on the board will light up. See the .gif below for an example of the LED blinking when the toggle button is pressed.
 
 <span style="text-align:center; display:block;">
-![](/AdvSamples/Images/Evothings/EvothingsToggleButton.png)
+![](../AdvSamples/Images/Evothings/EvothingsToggleButton.png)
 </span>
 
 <span style="text-align:center; display:block; padding:20px;">
-![](/AdvSamples/Images/Evothings/EvothingsLEDOn.png)
+![](../AdvSamples/Images/Evothings/EvothingsLEDOn.png)
 </span>
 
 This is the Evothings code snippet that is run on the smartphone to  control the toggle function:
