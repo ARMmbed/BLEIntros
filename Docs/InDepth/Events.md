@@ -7,7 +7,7 @@ mbed programming is event-driven, meaning it responds to interrupts coming from 
 Event handlers are able to pre-empt the main program, that is - interrupt its execution in order to do their work. The main program will resume when the interrupting event is fully handled. In the case of BLE, we expect the main program to be a sleep loop (``waitForEvent()``), which means that the device will sleep unless it receives an interrupt. Programming like this is necessary to take advantage of the low power nature of BLE.
 
 <span style="text-align:center; display:block;">
-![events](/GettingStarted/Images/EventHandle.png "An event interrupts the main loop and triggers an action. The interrupt is handled, and the event handler then returns control to main()")
+![events](../GettingStarted/Images/EventHandle.png "An event interrupts the main loop and triggers an action. The interrupt is handled, and the event handler then returns control to main()")
 </span>
 <span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
 An event interrupts the main loop and triggers an action. The interrupt is handled, and the event handler then returns control to main()</span>
@@ -98,7 +98,7 @@ Associating an activity with a resources is done using **callback functions**. A
 
 ###Waiting for Events
 
-The first use of the callback function is to allow the program not to stall when it reaches an event that hasn’t happened yet. Instead, it will continue running and eventually allow the device to sleep. A good example is waiting for an input button to be pressed, as can be seen in our [input service templates](/AdvSamples/InputButton/):
+The first use of the callback function is to allow the program not to stall when it reaches an event that hasn’t happened yet. Instead, it will continue running and eventually allow the device to sleep. A good example is waiting for an input button to be pressed, as can be seen in our [input service templates](../AdvSamples/InputButton.md):
 
 ````c
 

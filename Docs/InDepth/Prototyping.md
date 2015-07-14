@@ -26,7 +26,7 @@ mbed supports a wide range of components, and many of them can be used to protot
 ##Evothings
 </a>
 
-[Evothings](http://evothings.com/) isn’t an mbed tool, but since it’s designed for the Internet of Things it works quite well with our BLE-enabled boards. It gives you the Evothings Studio on which to build your prototyping app, and an enveloping Evothings App that lets you run the app you built on your smartphone without custom-building it for each OS. You’ll see Evothings from time to time in our own samples, such as the [custom GAPP service sample](/AdvSamples/GATTEvo/).
+[Evothings](http://evothings.com/) isn’t an mbed tool, but since it’s designed for the Internet of Things it works quite well with our BLE-enabled boards. It gives you the Evothings Studio on which to build your prototyping app, and an enveloping Evothings App that lets you run the app you built on your smartphone without custom-building it for each OS. You’ll see Evothings from time to time in our own samples, such as the [custom GAPP service sample](../AdvSamples/GATTEvo.md).
 
 <a name="apps">
 ##Generic BLE Apps
@@ -38,10 +38,10 @@ You can use a generic BLE app to see information sent by your device. In our sam
 
 * For iPhone: [LightBlue](https://itunes.apple.com/gb/app/lightblue-bluetooth-low-energy/id557428110?mt=8).
 
-These apps scan for nearby BLE devices and display the information received from their advertising mode. They can also establish a connection (connected mode), receive notifications and send user input to the device. You can see an example of this in our [actuator service template](/AdvSamples/LEDReadWrite/#controlling-the-led), where we use the nRF Master Control Panel to send a new value to a read/write characteristic:
+These apps scan for nearby BLE devices and display the information received from their advertising mode. They can also establish a connection (connected mode), receive notifications and send user input to the device. You can see an example of this in our [actuator service template](../AdvSamples/LEDReadWrite.md#controlling-the-led), where we use the nRF Master Control Panel to send a new value to a read/write characteristic:
 
 <span style="text-align:center; display:block;">
-![Read write](/AdvSamples/Images/LED/WriteValue.png)
+![Read write](../AdvSamples/Images/LED/WriteValue.png)
 </span>
 
 ##Debugging Techniques
@@ -52,19 +52,19 @@ Debugging isn’t a prototyping technique, but since you can use it to show that
 ###Using the mbed Interface Chip
 </a>
 
-You can use the mbed Interface Chip to receive messages from either ``printf()`` or ``pyOCD``. These are reviewed as part of our [debugging with the interface chip section](/InDepth/Debugging/#debugging-with-the-mbed-interface-chip).
+You can use the mbed Interface Chip to receive messages from either ``printf()`` or ``pyOCD``. These are reviewed as part of our [debugging with the interface chip section](../InDepth/Debugging.md#debugging-with-the-mbed-interface-chip).
 
 <a name="uart">
 ###Using the UART Service
 </a>
 
-The UART Service can be used to debug directly over the BLE connection (with the aid of an app). For more information, see our [debugging with the UART service section](/InDepth/Debugging/#the-uart-service). 
+The UART Service can be used to debug directly over the BLE connection (with the aid of an app). For more information, see our [debugging with the UART service section](../InDepth/Debugging.md#the-uart-service). 
 
 <a name="sniffers">
 ###Third-Party Sniffers
 </a>
 
-Third party sniffers can intercept BLE communication on your phone or on dedicated hardware. For more information, see our [debugging with sniffers section](InDepth/Debugging/#sniffers).
+Third party sniffers can intercept BLE communication on your phone or on dedicated hardware. For more information, see our [debugging with sniffers section](../InDepth/Debugging.md#sniffers).
 
 ______
 Copyright © 2015 ARM Ltd. All rights reserved.

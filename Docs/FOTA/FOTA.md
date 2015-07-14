@@ -23,7 +23,7 @@ The following figure shows the layout of the main software components of a FOTA-
 3.	**Boot loader:** responsible for firmware updates.
 
 <span style="text-align:center; display:block;">
-![](/FOTA/Images/FOTASystem.png)
+![](../FOTA/Images/FOTASystem.png)
 </span>
 <span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
 *Main software components in a FOTA-dapable system*</span>
@@ -46,7 +46,7 @@ The FOTA process can currently be driven from an external BLE agent, such as an 
 We'll soon be releasing our own reference apps for iOS and Android, together with SDKs to build custom apps for FOTA. 
 
 <span style="text-align:center; display:block;">
-![](/FOTA/Images/Sequence.png)
+![](../FOTA/Images/Sequence.png)
 </span>
 <span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
 *FOTA sequence diagram*</span>
@@ -99,19 +99,19 @@ The following images show how to use Nordic's Master Control Panel to view a DFU
 * The default app (DefaultApp), listed in the Master Control Panel. Tap the app to view more information.
 
 <span style="text-align:center; display:block;">
-![](/FOTA/Images/Viewing1.png)
+![](../FOTA/Images/Viewing1.png)
 </span>
 
 * General information for the default app. Note the Device Firmware Update Service section; tap the section to view more information.
 
 <span style="text-align:center; display:block;">
-![](/FOTA/Images/Viewing2.png)
+![](../FOTA/Images/Viewing2.png)
 </span>
 
 * Detailed information for the Device Firmware Update Service.
 
 <span style="text-align:center; display:block;">
-![](/FOTA/Images/Viewing3.png)
+![](../FOTA/Images/Viewing3.png)
 </span>
 
 ###Triggering FOTA
@@ -121,13 +121,13 @@ The following images show how Nordic's Master Control Panel can be used to cause
 * We start at the detailed view of the app that we saw in the previous section. The DFU Control Point offers FOTA triggers.
 
 <span style="text-align:center; display:block;">
-![](/FOTA/Images/Trigger1.png)
+![](../FOTA/Images/Trigger1.png)
 </span>
 
 * Tap the up arrow to view the write options. This is the FOTA’s control-point.
 
 <span style="text-align:center; display:block;">
-![](/FOTA/Images/Trigger2.png)
+![](../FOTA/Images/Trigger2.png)
 </span>
 
 * The control-point options are:
@@ -136,19 +136,19 @@ The following images show how Nordic's Master Control Panel can be used to cause
 	* Application.
 
 <span style="text-align:center; display:block;">
-![](/FOTA/Images/Trigger3.png)
+![](../FOTA/Images/Trigger3.png)
 </span>
 
 * For this example, we select the third option: Application.
 
 <span style="text-align:center; display:block;">
-![](/FOTA/Images/Trigger4.png)
+![](../FOTA/Images/Trigger4.png)
 </span>
 
 * The Master Control Panel now shows the default application under the name DfuTarg, indicating that the boot loader is running.
 
 <span style="text-align:center; display:block;">
-![](/FOTA/Images/Trigger5.png)
+![](../FOTA/Images/Trigger5.png)
 </span>
 
 ###Driving FOTA
@@ -158,14 +158,14 @@ Finally, these images show the main FOTA sequence using the boot loader:
 * We start at the detailed view of the app that we saw in the first section. Since we already triggered FOTA in the previous section (meaning we transferred control of the application to the DFU-service), we can now update the application.
 
 <span style="text-align:center; display:block;">
-![](/FOTA/Images/Driving1.png)
+![](../FOTA/Images/Driving1.png)
 </span>
 
 * Tap the DFU button to select a file type.
 
 
 <span style="text-align:center; display:block;">
-![](/FOTA/Images/Driving2.png)
+![](../FOTA/Images/Driving2.png)
 </span>
 
 * The file type options are:
@@ -177,21 +177,21 @@ Finally, these images show the main FOTA sequence using the boot loader:
 
 
 <span style="text-align:center; display:block;">
-![](/FOTA/Images/Driving3.png)
+![](../FOTA/Images/Driving3.png)
 </span>
 
 * We can now select a source for the file.
 
 
 <span style="text-align:center; display:block;">
-![](/FOTA/Images/Driving4.png)
+![](../FOTA/Images/Driving4.png)
 </span>
 
 * The update begins as soon as we select the file. We can see its progress, and the transfer speed.
 
 
 <span style="text-align:center; display:block;">
-![](/FOTA/Images/Driving5.png)
+![](../FOTA/Images/Driving5.png)
 </span>
 
 
@@ -199,7 +199,7 @@ Finally, these images show the main FOTA sequence using the boot loader:
 
 
 <span style="text-align:center; display:block;">
-![](/FOTA/Images/Driving6.png)
+![](../FOTA/Images/Driving6.png)
 </span>
 
 ###Attribute and Service Caching

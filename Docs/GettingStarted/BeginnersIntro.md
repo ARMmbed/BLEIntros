@@ -11,7 +11,7 @@ You've probably met BLE in a fitness tracker or a smart TV, but the beauty of BL
 This two-way communication means that a single device can be used both to send information and to perform actions based on that information. You could [water your garden](http://www.hosepipeban.org.uk/hosepipe-ban-current-situation/) when the ground is dry, put a beacon with your details on your dog's collar, or flash a light when a car comes too close to your bicycle. You can do anything, so long as you have the right sensor with an appropriate BLE-enabled platform - like mbed.
 
 <span style="text-align:center; display:block;">
-![BLE layout](/GettingStarted/Images/BLEsample.png "A BLE setup requires a board with BLE support and a way to control it - for example a phone app or a local touchscreen")
+![BLE layout](../GettingStarted/Images/BLEsample.png "A BLE setup requires a board with BLE support and a way to control it - for example a phone app or a local touchscreen")
 </span>
 <span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
 A BLE setup requires a board with BLE support and a way to control it - for example a phone app or a local touchscreen</span>
@@ -27,7 +27,7 @@ Because platforms are standard pieces of hardware, it’s up to you to tell them
 To tell the API what to do, you need a programming environment. BLE, like all other mbed capabilities, can be programmed using the [mbed Compiler](https://developer.mbed.org/compiler/). 
 
 <span style="text-align:center; display:block;">
-![BLE layout](/GettingStarted/Images/fullmbedprocess.png "The standard process is to get a board (and maybe a few extending components), write a bit of code and import it to the board. Simple.")
+![BLE layout](../GettingStarted/Images/fullmbedprocess.png "The standard process is to get a board (and maybe a few extending components), write a bit of code and import it to the board. Simple.")
 </span>
 <span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
 The standard process is to get a board (and maybe a few extending components), write a bit of code and import it to the board. Simple.</span>
@@ -38,18 +38,18 @@ The compiler fulfils two main purposes: it gives you a programming environment (
 
 Programming for mbed is done in *C++*. Don’t let C++ put you off; you can get quite a lot done with BLE without learning C++ in great detail, as many of its advanced features are not normally required.
 
-We'll walk you through using the compiler as we get started on our [coding samples](/GettingStarted/IntroSamples/).
+We'll walk you through using the compiler as we get started on our [coding samples](../GettingStarted/IntroSamples.md).
 
 #What Does it all Do?
 
-The combination of an mbed board, extra components and BLE capabilities give you lots of possibilities for prototyping and production. Let's look at a few of those now (we'll discuss the limitations [later](/InDepth/Limitations/)).
+The combination of an mbed board, extra components and BLE capabilities give you lots of possibilities for prototyping and production. Let's look at a few of those now (we'll discuss the limitations [later](../InDepth/Limitations.md)).
 
 ##Rapid Prototyping
 
 mbed comes from a heritage of rapid prototyping, and allows you to test code and ideas on BLE devices very easily. 
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-For information about rapid prototyping with mbed BLE, see [here](/InDepth/Prototyping/).
+For information about rapid prototyping with mbed BLE, see [here](../InDepth/Prototyping.md).
 </span>
 
 ##Gathering Information
@@ -92,7 +92,7 @@ If an advertisement-only solution isn’t enough, you can have a transactional i
 
 Physical Web brings devices to the internet via websites (rather than device-specific applications), by using BLE as a business card that includes a link to the website. Interactions with the device are then performed via the website. Using websites rather than apps means that users don't have to install a new app for every device they want to interact with; the interaction is easier and more immediate.
 
-The method used to provide the link is called [URI Beacon](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_URIBeacon/), and it will be the first example we'll [show you](/GettingStarted/URIBeacon/) when we get to programming our BLE devices. A URI Beacon can be attached to anything that you might want to provide information about, or that you can provide any sort of interface for.
+The method used to provide the link is called [URI Beacon](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_URIBeacon/), and it will be the first example we'll [show you](../GettingStarted/URIBeacon.md) when we get to programming our BLE devices. A URI Beacon can be attached to anything that you might want to provide information about, or that you can provide any sort of interface for.
 
 For example, the beacon can be attached to a vending machine. It will send you to a web interface that gives you control of the machine. It can let you make a large purchase (providing sodas for several people in one transaction) by letting you select several options and pay for them all at once.
 

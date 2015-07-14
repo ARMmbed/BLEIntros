@@ -6,7 +6,7 @@ Technology always has limitations. For mbed BLE, the most important ones are:
 
 2. **The BLE device doesn't have independent access to the internet.** It requires either additional hardware or constant access to a BLE-enabled device with its own internet access, such as a mobile phone. Bluetooth IP support is part of the latest standard, and it will be supported in mbed BLE before the end of 2015.
 
-3. **For BLE to truly be low-energy, it has to work as little as possible.** That means, for example, limiting the frequency of its broadcasts and letting it sleep whenever there is no new data to handle,. We'll discuss how to work with these requirements in other sections, such as the [discussion about connection parameters](/InDepth/ConnectionParameters/) and some of our coding samples.
+3. **For BLE to truly be low-energy, it has to work as little as possible.** That means, for example, limiting the frequency of its broadcasts and letting it sleep whenever there is no new data to handle,. We'll discuss how to work with these requirements in other sections, such as the [discussion about connection parameters](../InDepth/ConnectionParameters.md) and some of our coding samples.
 
 4. **Bluetooth signals have a limited range, with Class 2 devices limited to about ten meters (33 feet)**; this can be extended with an antenna. Signals can be blocked by concrete and metal, so they don't always travel through walls. 
 

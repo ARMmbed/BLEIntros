@@ -1,6 +1,6 @@
 #BLE for Developers
 
-This document is written for experienced BLE developers who are switching to mbed platforms. If you feel that you need more information than this document provides, please refer to our [extended documentation](/GettingStarted/BeginnersIntro/).
+This document is written for experienced BLE developers who are switching to mbed platforms. If you feel that you need more information than this document provides, please refer to our [extended documentation](../GettingStarted/BeginnersIntro.md).
 
 ##BLE on mbed
 
@@ -15,7 +15,7 @@ This document is written for experienced BLE developers who are switching to mbe
 BLE is most useful when used with a website or app on your mobile or tablet. See the next section for options.
 
 <span style="text-align:center; display:block;">
-![Connecting](/GettingStarted/Images/ConnectDiagram.png "A BLE device currently requires an app or website running on a phone")
+![Connecting](../GettingStarted/Images/ConnectDiagram.png "A BLE device currently requires an app or website running on a phone")
 </span>
 
 <span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
@@ -29,21 +29,21 @@ ___
 mbed comes from a heritage of rapid prototyping and allows you to test code and ideas on BLE devices very easily. 
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-For information about rapid prototyping with mbed BLE, see [here](/InDepth/Prototyping/).
+For information about rapid prototyping with mbed BLE, see [here](../InDepth/Prototyping.md).
 </span>
 
 ___
 
 ##BLE in Depth
 
-If you want more information about how BLE works, see our [BLE in Depth document](/InDepth/BLEInDepth/). 
+If you want more information about how BLE works, see our [BLE in Depth document](../InDepth/BLEInDepth.md). 
 
 ___
 
 ##Quick Samples
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-**Tip:** The quick samples are written for experienced BLE developers with an understanding of the mbed IDE. If you want more information about the IDE, see the [tutorials](/GettingStarted/IntroSamples/), which offer extended versions of the same samples. 
+**Tip:** The quick samples are written for experienced BLE developers with an understanding of the mbed IDE. If you want more information about the IDE, see the [tutorials](../GettingStarted/IntroSamples.md), which offer extended versions of the same samples. 
 </span>
 
 The samples cover:
@@ -52,7 +52,7 @@ The samples cover:
 	
 2. A [heart rate monitor](#hearratesample).
 	
-3. [Service creation](/AdvSamples/Overview/): for a read-only characteristic and for a read/write characteristic.
+3. [Service creation](../AdvSamples/Overview.md): for a read-only characteristic and for a read/write characteristic.
 
 ____
 
@@ -61,7 +61,7 @@ ____
 </a>
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-**Tip:** If you don’t know how to register your board, or how to work with the mbed compiler, please see the [extended URI Beacon tutorial](/GettingStarted/URIBeacon/). 
+**Tip:** If you don’t know how to register your board, or how to work with the mbed compiler, please see the [extended URI Beacon tutorial](../GettingStarted/URIBeacon.md). 
 </span>
 
 You might want to start with a short [video](https://www.youtube.com/watch?v=vZ-_fZlV2-w&feature=youtu.be).
@@ -80,7 +80,7 @@ To get this sample working, you'll need:
 + A BLE-enabled mbed board.
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
+**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](http://developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
 </span>
 
 + A user on [developer.mbed.org](developer.mbed.org) to access the compiler.
@@ -101,9 +101,9 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 
 7. On the app you installed on your phone, discover your beacon and check that the URL is correct.
 <br />
-**Note:** the URIBeacon goes into [configuration mode](/AdvSamples/URIBeaconAdv/) for the first 60 seconds after it's turned on. It will appear with your information when that minute is up.
+**Note:** the URIBeacon goes into [configuration mode](../AdvSamples/URIBeaconAdv.md) for the first 60 seconds after it's turned on. It will appear with your information when that minute is up.
 
-You might be interested in some of the URI Beacon's [advanced features](/AdvSamples/URIBeaconAdv/).
+You might be interested in some of the URI Beacon's [advanced features](../AdvSamples/URIBeaconAdv.md).
 ____
 
 <a name="hearratesample">
@@ -111,7 +111,7 @@ ____
 </a>
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-**Tip:** If you don’t know how to register your board, or how to work with the mbed compiler, please see the [extended URI Beacon tutorial](/GettingStarted/URIBeacon/). 
+**Tip:** If you don’t know how to register your board, or how to work with the mbed compiler, please see the [extended URI Beacon tutorial](../GettingStarted/URIBeacon.md). 
 </span>
 
 To see the heart rate information on your phone, download PanoBike for [iOS](https://itunes.apple.com/gb/app/panobike/id567403997?mt=8) or [Android](https://play.google.com/store/apps/details?id=com.topeak.panobike&hl=en). Then:
@@ -132,7 +132,7 @@ To see the heart rate information on your phone, download PanoBike for [iOS](htt
 
 ____
 
-For service creation, see our [advanced samples](/AdvSamples/Overview/).
+For service creation, see our [advanced samples](../AdvSamples/Overview.md).
 
 ______
 Copyright © 2015 ARM Ltd. All rights reserved.

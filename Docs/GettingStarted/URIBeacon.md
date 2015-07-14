@@ -29,10 +29,10 @@ To get this going, you'll need:
 + A BLE-enabled mbed board, but don't worry if you don't have one yet - we'll show you how it would have worked.
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
+**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](http://developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
 </span>
 
-+ A user account on [developer.mbed.org](developer.mbed.org) to access the compiler. We recommend you get access to the compiler even if you don't have a board yet, so that you can play along with the example.
++ A user account on [developer.mbed.org](http://developer.mbed.org) to access the compiler. We recommend you get access to the compiler even if you don't have a board yet, so that you can play along with the example.
 
 ##Quick Guide
 
@@ -47,13 +47,13 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 5. Compile the code. It will be downloaded to your Downloads folder (on some browsers you may need to specify a download location). <br />**Note:** make sure you've selected the correct platform as the compilation target. The platform is shown on the right-hand top corner of the compiler. If you're seeing the wrong platform, click it to open the Select Platform window.
 
 6. Drag and drop the compiled file to your board as it appears in the file explorer. 
-</br>**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
+</br>**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](http://developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
 
 7. Restart the board.
 
 7. On the app you installed on your phone, discover your beacon and check that the URL is correct.
 <br />
-**Note:** the URIBeacon goes into [configuration mode](/AdvSamples/URIBeaconAdv/) for the first 60 seconds after it's turned on. It will appear with your information when that minute is up.
+**Note:** the URIBeacon goes into [configuration mode](../AdvSamples/URIBeaconAdv.md) for the first 60 seconds after it's turned on. It will appear with your information when that minute is up.
 
 <a name=”compiler”>
 ##Getting Started With the Compiler
@@ -72,11 +72,11 @@ To select a board for the program:
 * Plug your board into your computer's USB port. The board will be displayed in your file browser as a removable storage (similar to plugging in your phone or a USB stick).
 
 <span style="text-align:center; display:block;">
-![Adding board](/GettingStarted/Images/URIBeacon/DeviceOnMac.png)
+![Adding board](../GettingStarted/Images/URIBeacon/DeviceOnMac.png)
 </span>
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
+**Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](http://developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
 </spa[n>
 
 * In your file browser, double-click the board to see its files. By default, every board has an HTML file. 
@@ -86,13 +86,13 @@ To select a board for the program:
 * On the board's page, click *Add to your mbed Compiler*.
 
 <span style="text-align:center; display:block;">
-![Adding board](/GettingStarted/Images/URIBeacon/Adding_Platform.png)
+![Adding board](../GettingStarted/Images/URIBeacon/Adding_Platform.png)
 </span>
 
 * The compiler will open with your board. You're ready to program. 
 
 <span style="text-align:center; display:block;">
-![Adding board](/GettingStarted/Images/URIBeacon/IDE_Empty.png)
+![Adding board](../GettingStarted/Images/URIBeacon/IDE_Empty.png)
 </span>
 
 <a name=”import”>
@@ -106,19 +106,19 @@ URI Beacons have a basic structure that's available on the mbed website. All you
 * On the right-hand side of the page, click *Import this program*.
 
 <span style="text-align:center; display:block;">
-![Importing program](/GettingStarted/Images/URIBeacon/Import_URIBeacon.png)
+![Importing program](../GettingStarted/Images/URIBeacon/Import_URIBeacon.png)
 </span>
 
 * The compiler will open with an import dialog box. You can give your program a name, or use the default (BLE_URIBeacon).
 
 <span style="text-align:center; display:block;">
-![Importing dialog](/GettingStarted/Images/URIBeacon/IDE_Import_Dialog.png)
+![Importing dialog](../GettingStarted/Images/URIBeacon/IDE_Import_Dialog.png)
 </span>
 
 * Click *Import*. The program will be imported for the board you selected in the previous section. 
 
 <span style="text-align:center; display:block;">
-![Program imported](/GettingStarted/Images/URIBeacon/IDE_New_URIBeacon.png)
+![Program imported](../GettingStarted/Images/URIBeacon/IDE_New_URIBeacon.png)
 </span>
 
 You can now edit the beacon. We'll show you below how to do it, but first we'd like to explain the program a little. You can skip [ahead](#edituribeacon) if you feel like you're not quite ready for C++ yet.
@@ -219,7 +219,7 @@ To compile and install your program:
 
 6. Your board is now working as a URI beacon with the URL you gave it. If it has a battery, you can unplug it from the computer and walk around with it.
 <br />
-**Note:** the URIBeacon goes into [configuration mode](/AdvSamples/URIBeaconAdv/) for the first 60 seconds after it's turned on. It will appear with your information when that minute is up.
+**Note:** the URIBeacon goes into [configuration mode](../AdvSamples/URIBeaconAdv.md) for the first 60 seconds after it's turned on. It will appear with your information when that minute is up.
 
 ##Finding Your URI Beacon
 
@@ -228,13 +228,13 @@ Using one of the applications you installed on your phone during our *What You'l
 Discovering the beacon:
 
 <span style="text-align:center; display:block;">
-![Program imported](/GettingStarted/Images/URIBeacon/Discover.png)
+![Program imported](../GettingStarted/Images/URIBeacon/Discover.png)
 </span>
 
 Viewing its details:
 
 <span style="text-align:center; display:block;">
-![Program imported](/GettingStarted/Images/URIBeacon/Details.png)
+![Program imported](../GettingStarted/Images/URIBeacon/Details.png)
 </span>
 
 Congratulations! You've created your first BLE device.
@@ -257,7 +257,7 @@ To get a URI Beacon:
 
 7. You had a nice cup of tea to celebrate. 
 
-Along the way, you also learned a little about object oriented programming and the general principle of importing, compiling and installing programs. Try our [Heart Rate Monitor Tutorial](/GettingStarted/HeartRate/) next.
+Along the way, you also learned a little about object oriented programming and the general principle of importing, compiling and installing programs. Try our [Heart Rate Monitor Tutorial](../GettingStarted/HeartRate.md) next.
 
 ______
 Copyright © 2015 ARM Ltd. All rights reserved.

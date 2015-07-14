@@ -2,12 +2,12 @@
 
 mbed development relies on APIs to do the grunt work of controlling the platforms, freeing developers to focus on their programs. And because the API takes responsibility for platform compatibility, developers can reuse their code on any supported platform.
 
-While the mbed OS interfaces with the platform itself, mbed’s BLE_API interfaces with the BLE controller on the platform. It's designed to hide the BLE stack’s complexity behind C++ abstractions and is compatible with all BLE-enabled mbed platforms. mbed OS and the BLE_API together let developers implicitly benefit from all the low-power optimisations the hardware offers by automatically configuring the clocks, timers and other hardware peripherals to work at their lowest power consumption. All that developers have to do is remember to yield to the BLE_API ``waitForEvent()`` function whenever the system needs to idle (for more information about ``waitForEvent()``, see our [event-driven programming section](/InDepth/Events/).
+While the mbed OS interfaces with the platform itself, mbed’s BLE_API interfaces with the BLE controller on the platform. It's designed to hide the BLE stack’s complexity behind C++ abstractions and is compatible with all BLE-enabled mbed platforms. mbed OS and the BLE_API together let developers implicitly benefit from all the low-power optimisations the hardware offers by automatically configuring the clocks, timers and other hardware peripherals to work at their lowest power consumption. All that developers have to do is remember to yield to the BLE_API ``waitForEvent()`` function whenever the system needs to idle (for more information about ``waitForEvent()``, see our [event-driven programming section](../InDepth/Events.md).
 
 ##BLE_API, Bridges and Stacks
 
 <span style="float:right; display:block; padding:5px;">
-![](/GettingStarted/Images/API/BLEDiagram.png)
+![](../GettingStarted/Images/API/BLEDiagram.png)
 </span>
 
 A BLE application is built using mbed OS (which currently takes the form of the mbed SDK), BLE_API, and a controller-specific Bluetooth stack together with some bridge software to adapt it to BLE_API:
@@ -21,7 +21,7 @@ A BLE application is built using mbed OS (which currently takes the form of the 
 ##Inside BLE_API
 
 <span style="text-align:center; display:block; padding: 10px;">
-![](/GettingStarted/Images/API/Inside_API.png)
+![](../GettingStarted/Images/API/Inside_API.png)
 </span>
 
 BLE_API offers building blocks to help construct applications. These fall into three broad categories: 

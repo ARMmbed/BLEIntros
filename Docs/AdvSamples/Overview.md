@@ -10,19 +10,19 @@ But, we don’t expect you to settle for what’s already been done; we expect y
 
 Creating a BLE service may sound scary, but we've created two templates that you can easily adapt to your needs:
 
-* The *input service* template demonstrates the use of a simple input (boolean values) from a read-only characteristic. You can get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_Button/) or read the full explanation [here](/AdvSamples/InputButton/).
+* The *input service* template demonstrates the use of a simple input (boolean values) from a read-only characteristic. You can get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_Button/) or read the full explanation [here](../AdvSamples/InputButton.md).
 
-* The *actuator service* template demonstrates the use of a read-write characteristic to control an LED through a phone app. You can get the code [here](https://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_LED/) or read the full explanation [here](/AdvSamples/LEDReadWrite/).
+* The *actuator service* template demonstrates the use of a read-write characteristic to control an LED through a phone app. You can get the code [here](https://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_LED/) or read the full explanation [here](../AdvSamples/LEDReadWrite.md).
 
-* We have two more service samples that include the use of Evothings custom apps. The first reviews [customising a GAP advertising packet](/AdvSamples/CustomGAP/), and the second creates a [GATT service for control of a LED](/AdvSamples/GATTEvo/).
+* We have two more service samples that include the use of Evothings custom apps. The first reviews [customising a GAP advertising packet](../AdvSamples/CustomGAP.md), and the second creates a [GATT service for control of a LED](../AdvSamples/GATTEvo.md).
 
 ##Advanced Features
 
 Reviewing advanced features of standard implementations:
 
-* The [URI Beacon](/AdvSamples/URIBeaconAdv/): dynamic configuration of the URIBeacon on start up and configuration persistence. 
+* The [URI Beacon](../AdvSamples/URIBeaconAdv.md): dynamic configuration of the URIBeacon on start up and configuration persistence. 
 
-* Creating an app for [high data rate, low latency transfers](/AdvSamples/HighData/), if you need to transfer large amounts of data.
+* Creating an app for [high data rate, low latency transfers](../AdvSamples/HighData.md), if you need to transfer large amounts of data.
 
 ______
 Copyright © 2015 ARM Ltd. All rights reserved.

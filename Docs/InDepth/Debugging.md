@@ -10,7 +10,7 @@ Most boards come with at least one LED that can be controlled using the standard
 
 2.	We can flash an LED when we enter an error handler. This tells us that we’re in trouble.
 
-3.	We can turn on an LED when running the background activity of the program in ``main()``, for example with ``waitForEvent()``. We'll turn it off whenever an interrupt handler pre-empts ``main()``. If the LED never turns on again, it means that ``main()`` never got back control and we are trapped in the interrupt handler. For more information about handlers, see our discussion on [event driven programming](/InDepth/Events/).
+3.	We can turn on an LED when running the background activity of the program in ``main()``, for example with ``waitForEvent()``. We'll turn it off whenever an interrupt handler pre-empts ``main()``. If the LED never turns on again, it means that ``main()`` never got back control and we are trapped in the interrupt handler. For more information about handlers, see our discussion on [event driven programming](../InDepth/Events.md).
 
 LEDs require almost no coding and processing, giving them near-zero overhead. Here’s an example of creating an LED object and turning it on and off:
 
@@ -60,7 +60,7 @@ By using the interface chip we can debug with:
 * pyOCD.
 
 <span style="text-align:center; display:block;">
-![](/InDepth/Images/DebugviaUSB1.png)
+![](../InDepth/Images/DebugviaUSB1.png)
 </span>
 <span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
 *The development host uses a USB connection with the interface chip to debug the microcontroller. Some of the terms in this image will be clarified later in the document.*</span>
@@ -103,7 +103,7 @@ Using ``printf()`` on mbed requires including the ``stdio`` header:
 		printf("debug value %x\r\n", value);
 ```
 
-Here's a very basic example. In the [URI Beacon program](/GettingStarted/URIBeacon/), we've added ``printf()`` in three places (this is too much for a real-life program):
+Here's a very basic example. In the [URI Beacon program](../GettingStarted/URIBeacon.md), we've added ``printf()`` in three places (this is too much for a real-life program):
 
 * After setting ``DEVICE_NAME``, we've added ``printf("Device name is %s\r\n", DEVICE_NAME);``
 
@@ -114,7 +114,7 @@ Here's a very basic example. In the [URI Beacon program](/GettingStarted/URIBeac
 This is the terminal output. Note that "waiting" is printed every time ``waitForEvent`` is triggered:
 
 <span style="text-align:center; display:block;">
-![](/InDepth/Images/TerminalOutput1.png)
+![](../InDepth/Images/TerminalOutput1.png)
 </span>
 
 
@@ -274,7 +274,7 @@ So far, we've connected the interface chip and the target microcontroller using 
 The interface chip implements CMSIS-DAP. To drive the CMSIS-DAP interface chip over USB, you'll need to install the [pyOCD Python library](https://github.com/mbedmicro/pyOCD) on the development host.
 
 <span style="text-align:center; display:block;">
-![](/InDepth/Images/PyOCD1.png)
+![](../InDepth/Images/PyOCD1.png)
 </span>
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
@@ -387,7 +387,7 @@ Note that:
 
 ##Sniffers
 
-Third-party sniffers can intercept the BLE communication itself and show us what's being sent (and how). For example, we could see if our [connection parameters](InDepth/ConnectionParameters/) are being honoured. 
+Third-party sniffers can intercept the BLE communication itself and show us what's being sent (and how). For example, we could see if our [connection parameters](../InDepth/ConnectionParameters.md) are being honoured. 
 
 Sniffing radio activity can now be done with smart phone apps like [Bluetooth HCI Logger (for Android)](https://play.google.com/store/apps/details?id=com.android_rsap.logger&hl=en). These generate logs that can be analysed with tools like [Wireshark](https://www.wireshark.org/).
 

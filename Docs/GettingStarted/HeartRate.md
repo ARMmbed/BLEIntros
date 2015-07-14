@@ -17,7 +17,7 @@ This tutorial covers a lot, and you may need to read it more than once:
 ##What You'll Need
 </a>
 
-If you don't already know how to import your board and a program into the compiler, please see the [URI Beacon](/GettingStarted/URIBeacon/) sample.
+If you don't already know how to import your board and a program into the compiler, please see the [URI Beacon](../GettingStarted/URIBeacon.md) sample.
 
 To see the heart rate information on your phone, download Panobike for [iOS](https://itunes.apple.com/gb/app/panobike/id567403997?mt=8) or [Android](https://play.google.com/store/apps/details?id=com.topeak.panobike&hl=en).
 
@@ -99,7 +99,7 @@ The third line of code is more interesting, as in it we set up the full service.
 		hrmCounter, HeartRateService::LOCATION_FINGER);
 ```
 
-In our [URI Beacon](/GettingStarted/URIBeacon/) sample we talked about objects and their instances. To get the heart rate measurement we want, we need to create an instance of a type called ``HeartRateService``. This is an object that's defined as part of ``BLE_API``, so you can find its ``.h`` file in your compiler by going to **BLE_HeartRate > BLE_API > services > HeartRateService.h**. You don't need to look at that file if you don't want to, but you might find it interesting.
+In our [URI Beacon](../GettingStarted/URIBeacon.md) sample we talked about objects and their instances. To get the heart rate measurement we want, we need to create an instance of a type called ``HeartRateService``. This is an object that's defined as part of ``BLE_API``, so you can find its ``.h`` file in your compiler by going to **BLE_HeartRate > BLE_API > services > HeartRateService.h**. You don't need to look at that file if you don't want to, but you might find it interesting.
 
 When we create the instance of a type, we first give it a name (in this case ``hrService``), and then provide it with information it needs to be set up correctly:
 
@@ -234,7 +234,7 @@ Code in embedded applications is executed in two contexts:
 Event handlers are often preemptive, meaning they can interrupt the main program’s execution to force their own execution. The main program will only resume when the interrupting event is fully handled. In the case of BLE, we expect the main program to be a sleep loop (``waitForEvent``). This way the device will sleep unless it receives an interrupt - which is why BLE is a low energy technology.
 
 <span style="text-align:center; display:block;">
-![events](/GettingStarted/Images/EventHandle.png "An event interrupts the main loop and triggers an event handler. The interrupt is handled, and the event handler then returns control to main()")
+![events](../GettingStarted/Images/EventHandle.png "An event interrupts the main loop and triggers an event handler. The interrupt is handled, and the event handler then returns control to main()")
 </span>
 
 <span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
@@ -309,31 +309,31 @@ Panobike and other fitness apps show you the heart rate, but you can use [nRF Ma
 Here is our app, discovered on nRF:
 
 <span style="text-align:center; display:block;">
-![Discover](/GettingStarted/Images/HeartRate/Discover.png)
+![Discover](../GettingStarted/Images/HeartRate/Discover.png)
 </soan>
 
 By clicking the HRM entry, we can see some more information about it:
 
 <span style="text-align:center; display:block;">
-![Information](/GettingStarted/Images/HeartRate/Connect.png)
+![Information](../GettingStarted/Images/HeartRate/Connect.png)
 </span>
 
 We can click **Connect** to see the full details:
 
 <span style="text-align:center; display:block;">
-![Full info](/GettingStarted/Images/HeartRate/StartNoti.png)
+![Full info](../GettingStarted/Images/HeartRate/StartNoti.png)
 </span>
 
 If we click the **notifications** button, we'll be asking the service to notify our device of updates. In our case, that will be new heart rate values:
 
 <span style="text-align:center; display:block;">
-![Heart rate](/GettingStarted/Images/HeartRate/ShowRate1.png)
+![Heart rate](../GettingStarted/Images/HeartRate/ShowRate1.png)
 </span>
 
 The server will notify our phone with each new value:
 
 <span style="text-align:center; display:block;">
-![Updated heart rate](/GettingStarted/Images/HeartRate/ShowRate2.png)
+![Updated heart rate](../GettingStarted/Images/HeartRate/ShowRate2.png)
 </span>
 
 And that's it!
