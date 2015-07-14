@@ -132,7 +132,7 @@ We can then set up the payload. The header ``MANUFACTURER_SPECIFIC_DATA`` is whe
 
 Notice that the ``AdvData`` variable is added to the BLE device at this point.
 
-Now we set the [advertising interval](/InDepth/ConnectionParameters/#setadvertisinginterval) and start advertising:
+Now we set the [advertising interval](../InDepth/ConnectionParameters.md#setadvertisinginterval) and start advertising:
 
 ```c
 
@@ -144,14 +144,14 @@ This will take care of the GAP advertising on the mbed side.
 
 ##Seeing Our Data
 
-Compile your program and install it on your board ([drag and drop it to the board](/GettingStarted/URIBeacon/#compiling-and-installing-your-program)). Then decide if you want to use generic apps or the custom-made Evothings app (or use both and compare results).
+Compile your program and install it on your board ([drag and drop it to the board](../GettingStarted/URIBeacon.md#compiling-and-installing-your-program)). Then decide if you want to use generic apps or the custom-made Evothings app (or use both and compare results).
 
 ###Generic Apps
 
 On your phone, start the BLE application ([nRF Master Control Panel](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en) for Android and [LightBlue](https://itunes.apple.com/us/app/lightblue-bluetooth-low-energy/id557428110?mt=8) for iOS). It will scan for BLE devices, and should show us ours:
 
 <span style="text-align:center; display:block;">
-![](/AdvSamples/Images/GAP/SeeingAdvData.png)
+![](../AdvSamples/Images/GAP/SeeingAdvData.png)
 </span>
 
 We can see the name we set, the appropriate flags and the data we pushed into the manufacturer data field.
@@ -171,13 +171,13 @@ To run the app:
 4. The code will run on your phone's Evothings client.
 
 <span style="text-align:center; display:block;">
-![](/AdvSamples/Images/GAP/EvothingsBench.png)
+![](../AdvSamples/Images/GAP/EvothingsBench.png)
 </span>
 
 The phone app will show:
 
 <span style="text-align:center; display:block;">
-![](/AdvSamples/Images/GAP/EvothingsApp.png)
+![](../AdvSamples/Images/GAP/EvothingsApp.png)
 </span>
 
 The code for the application is in the **app.js** file. It is written in JavaScript and can be modified in real time. Try making a modification, save the changes, and watch them load to the Evothings client on your phone.
