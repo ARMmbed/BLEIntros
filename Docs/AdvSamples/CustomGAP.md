@@ -26,7 +26,7 @@ You'll need:
 The general GAP broadcast's data breakdown is illustrated in this diagram:
 
 <span style="text-align:center; display:block;">
-![](/AdvSamples/Images/GAP/GeneralStruct.png)
+![](../AdvSamples/Images/GAP/GeneralStruct.png)
 </span>
 <span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">*The BLE stack eats part of our package's 47B, so only 26B are available for our data*</span>
 
@@ -47,7 +47,7 @@ All of which means that we have only 26B to use for the data we want to send ove
 And here's what the bottom two layers of structure look like for our particular example - sending manufacturer data:
 
 <span style="text-align:center; display:block;">
-![](/AdvSamples/Images/GAP/ExampleStruct.png)
+![](../AdvSamples/Images/GAP/ExampleStruct.png)
 </span>
 <span style="background-color: #F0F0F5;; display:block; height:100%; padding:10px;">*The example we use here only requires two data structures, one of 3B, one of 28B (of which two are used for data length and type indications)*</span>
 
