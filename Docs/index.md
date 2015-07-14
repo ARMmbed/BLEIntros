@@ -7,7 +7,7 @@ If you're totally new check out our [starters documentation](../Docs/GettingStar
 Some other references are our:
 
 * Our [review](../Docs/InDepth/BLEInDepth.md) of BLE concepts.
-* [Tutorials](../GettingStarted/IntroSamples.md), which cover basic BLE and programming concepts.
+* [Tutorials](../Docs/GettingStarted/IntroSamples.md), which cover basic BLE and programming concepts.
 * [Code samples](../Docs/AdvSamples/Overview.md), which cover service creation and advanced features.
 * If you're overwhelmed by abbreviations, try our [abbreviation list](../Docs/Additional/Abbr.md).
 
