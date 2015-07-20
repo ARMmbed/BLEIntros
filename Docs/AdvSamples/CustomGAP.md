@@ -2,8 +2,7 @@
 
 We can change the content of the [generic access profile (GAP)](../InDepth/BLEInDepth.md#advertising-and-connected-mode) advertising packet (AP) to contain the information we want it to contain. If we have only a small amount of data we want to communicate to the world, then we can use the modified GAP AP to send that information to any BLE scanner, without waiting for it to establish a connection. In this article, we're going to modify advertising data step by step, then receive the result with a custom-built Evothings app.
 
-<span style="background-color:#F0F0F5; border:1px solid #000;display:block; height:100%; padding:10px">
-Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_GAP_Example/).
+<span style="background-color:#F0F0F5; border:1px solid #000;display:block; height:100%; padding:10px">Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_GAP_Example/).
 </span>
 
 ##Prerequisites
