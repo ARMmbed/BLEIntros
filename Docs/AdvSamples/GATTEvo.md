@@ -2,8 +2,7 @@
 
 We're going to create a custom [generic attribute profile (GATT) service](../InDepth/BLEInDepth.md#services-and-profiles-gatt) to blink the LED on an mbed board, and demonstrate using Evothing to create a custom app that communicates with our GATT service.
 
-<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_GATT_Example/).
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_GATT_Example/).
 </span>
 
 ##Prerequisites
@@ -32,15 +31,19 @@ You can see an example of setting up an input service on our [YouTube channel](h
 
 ##Review of Services
 
+A GATT server can have multiple services. Each service contains one or more characteristics. Each characteristic has its own properties such as whether it can be read, send a notification or be written in to. Each characteristic has a single value of 512 bytes (although it's not mandatory to use them all) and can have zero or more descriptors.
+
+
 <span style="display:block; float:right;">
 ![](../InDepth/Images/BLE_Profile_Breakdown.png)
 </span>
 
-A GATT server can have multiple services. Each service contains one or more characteristics. Each characteristic has its own properties such as whether it can be read, send a notification or be written in to. Each characteristic has a single value of 512 bytes (although it's not mandatory to use them all) and can have zero or more descriptors.
-
 We are going to create a custom GATT service by providing two characteristics: one for reading and one for writing. We'll detail their properties to match read and write abilities, and then put both characteristics into a single service.
 
 ##Using the mbed BLE API
+
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_GATT_Example/).
+</span>
 
 To get us started, we'll need to include a couple of headers:
 
