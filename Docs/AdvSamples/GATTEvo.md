@@ -34,7 +34,7 @@ You can see an example of setting up an input service on our [YouTube channel](h
 A GATT server can have multiple services. Each service contains one or more characteristics. Each characteristic has its own properties such as whether it can be read, send a notification or be written in to. Each characteristic has a single value of 512 bytes (although it's not mandatory to use them all) and can have zero or more descriptors.
 
 
-<span style="display:block; float:right;">
+<span style="text-align:center; display:block;">
 ![](../InDepth/Images/BLE_Profile_Breakdown.png)
 </span>
 
