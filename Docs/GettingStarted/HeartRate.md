@@ -1,5 +1,7 @@
 #Tutorial 2: Heart Rate Monitor (BLE Services)
 
+Please note: the code in these examples is for mbed Classic. If you want to see the code adjusted for mbed OS, please see our [BLE samples on GitHub](https://github.com/ARMmbed/ble-examples)
+
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Note:** To complete tutorials, you'll need an account on 
 [mbed.org](https://developer.mbed.org/account/signup/?next=%2F). 
