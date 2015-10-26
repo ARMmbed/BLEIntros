@@ -2,9 +2,7 @@
 
 Please note: the code in these examples is for mbed Classic. If you want to see the code adjusted for mbed OS, please see our [BLE samples on GitHub](https://github.com/ARMmbed/ble-examples)
 
-<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-**Note:** To complete tutorials, you'll need an account on 
-[mbed.org](https://developer.mbed.org/account/signup/?next=%2F). 
+<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">**Note:** To complete tutorials, you'll need an account on [mbed.org](https://developer.mbed.org/account/signup/?next=%2F). 
 </span>
 
 The heart rate service gathers the heart rate reading from a monitor and sends it to an app. This app must be capable of working with the heart rate profile. Both the profile and the service are predefined and [publicly available](https://developer.bluetooth.org/TechnologyOverview/Pages/HRP.aspx). That means that if you want to get a heart rate monitor's input to your phone, you don't have to write your own code.
