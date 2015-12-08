@@ -4,11 +4,11 @@ This document is written for experienced BLE developers who are switching to mbe
 
 ##BLE on mbed
 
-[mbed](http://developer.mbed.org) gives you three things: a well defined hardware platform, APIs to abstract this platform (including some specifically for BLE) and an online compiler integrated with these tools:
+[mbed](https://www.mbed.com/) gives you three things: a well defined hardware platform, APIs to abstract this platform (including some specifically for BLE) and an online compiler integrated with these tools:
 
 1. Some platforms require an external [BLE component](http://developer.mbed.org/components/cat/bluetooth/), and [some](http://developer.mbed.org/platforms/mbed-HRM1017/) [have it](http://developer.mbed.org/platforms/RedBearLab-BLE-Nano/) [built-in](http://developer.mbed.org/platforms/Nordic-nRF51-Dongle/).
 
-2. mbed has a BLE-specific API ([BLE_API](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_API/file/1956023d42fb/README.md)), a high level abstraction for using BLE on multiple platforms.
+2. mbed has a BLE-specific API ([BLE_API](https://github.com/ARMmbed/ble)), a high level abstraction for using BLE on multiple platforms. You can [see the Doxygen here](https://docs.mbed.com/docs/ble-api/en/latest/api/index.html).
 	
 3. The mbed BLE tools are written in C++ and can be used from the online [mbed compiler](https://developer.mbed.org/compiler/) or offline, for example with [GCC](http://developer.mbed.org/forum/team-63-Bluetooth-Low-Energy-community/topic/5257/).
 
@@ -29,7 +29,7 @@ ___
 mbed comes from a heritage of rapid prototyping and allows you to test code and ideas on BLE devices very easily. 
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-For information about rapid prototyping with mbed BLE, see [here](../Advanced/Prototyping.md).
+For information about rapid prototyping with mbed BLE, see [here](../Introduction/Prototyping.md).
 </span>
 
 ___
@@ -43,7 +43,7 @@ ___
 ##Quick Samples
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-**Tip:** The quick samples are written for experienced BLE developers with an understanding of the mbed IDE. If you want more information about the IDE, see the [tutorials](../mbed_Classic/IntroSamples.md), which offer extended versions of the same samples. 
+**Tip:** The quick samples are written for experienced BLE developers with an understanding of the mbed IDE. If you want more information about the IDE, see the [tutorials](../mbed_Classic/Overview.md), which offer extended versions of the same samples. 
 </span>
 
 The samples cover:
@@ -83,7 +83,7 @@ To get this sample working, you'll need:
 **Note:** if your board appears as JLINK instead of mbed, please go to the [platform page](http://developer.mbed.org/platforms/) for your board and follow the firmware update instructions.
 </span>
 
-+ A user on [developer.mbed.org](developer.mbed.org) to access the compiler.
++ A user on [developer.mbed.org](https://developer.mbed.org) to access the compiler.
 
 If you’re familiar with mbed and our compiler, you can get the beacon working in just a few minutes:
 
