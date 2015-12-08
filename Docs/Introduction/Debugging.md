@@ -103,7 +103,7 @@ Using ``printf()`` on mbed requires including the ``stdio`` header:
 		printf("debug value %x\r\n", value);
 ```
 
-Here's a very basic example. In the [URI Beacon program](../mbed_Classic/URIBeacon.md), we've added ``printf()`` in three places (this is too much for a real-life program):
+Here's a very basic example. In the [UriBeacon program](../mbed_Classic/URIBeacon.md), we've added ``printf()`` in three places (this is too much for a real-life program):
 
 * After setting ``DEVICE_NAME``, we've added ``printf("Device name is %s\r\n", DEVICE_NAME);``
 
