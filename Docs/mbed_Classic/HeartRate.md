@@ -1,4 +1,4 @@
-#Tutorial 2: Heart Rate Monitor (BLE Services)
+#Tutorial 2: heart rate monitor (BLE services)
 
 Please note: the code in these examples is for mbed Classic. If you want to see the code adjusted for mbed OS, please see our [BLE samples on GitHub](https://github.com/ARMmbed/ble-examples)
 
@@ -14,7 +14,7 @@ This tutorial covers a lot, and you may need to read it more than once:
 2. If you want a deeper understanding of the code, go to [Understanding the Heart Rate Service](#understanding). It covers [objects](#objects), [loops](#loops), [parameters](#parameters), [conditions](#conditions) and [events](#eventdriven).
 
 <a name="need">
-##What You'll Need
+##What you'll need
 </a>
 
 If you don't already know how to import your board and a program into the compiler, please see the [URI Beacon](../mbed_Classic/URIBeacon.md) sample.
@@ -22,7 +22,7 @@ If you don't already know how to import your board and a program into the compil
 To see the heart rate information on your phone, download Panobike for [iOS](https://itunes.apple.com/gb/app/panobike/id567403997?mt=8) or [Android](https://play.google.com/store/apps/details?id=com.topeak.panobike&hl=en).
 
 <a name="quickguide">
-##Quick Guide
+##Quick guide
 </a>
 
 If you're familiar with mbed and our compiler, you can get the heart rate monitor working in just a few minutes:
@@ -43,7 +43,7 @@ If you're familiar with mbed and our compiler, you can get the heart rate monito
 ____
 
 <a name="understanding">
-##Understanding the Heart Rate Service
+##Understanding the heart rate service
 </a>
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
@@ -62,12 +62,12 @@ The service has [three characteristics](https://developer.bluetooth.org/Technolo
 
 It is important to understand that this demo fakes a heart rate value; it does not interact with a physical heart rate sensor to fetch real data. To work with a real heart rate application, we would have had to create a very specific example, which would have been harder to learn from. You should be able to modify the general demo to fit any app that you want to work with if you have a real heart rate sensor. Please check [mbed.org](http://developer.mbed.org) before you start working - there may already be code available for your heart rate sensor.
 
-##Understanding the Code
+##Understanding the code
 
 The code we generated for this sample may seem long and complex, but when we break it down to components, it becomes clear that the heart rate portion is quite simple.
 
 <a name=”objects”>
-###Setting Up the Service (Creating an Instance of the Object)
+###Setting up the service (creating an instance of the object)
 </a>
 
 We start with setting up the service:
@@ -112,10 +112,10 @@ When we create the instance of a type, we first give it a name (in this case ``h
 **Tip:** The information an object requires to be initialised correctly is part of the overall definition of the object, and in this case can be found in the ``HeartRateService.h`` file.
 
 <a name=”loops”>
-###Using the Service (While and If loops)
+###Using the service (WHILE and IF loops)
 </a>
 
-####Objects and Functions
+####Objects and functions
 
 Once we create an instance of a type by giving it a name and its initial parameters, we can start using it. Objects have functions that are defined along with them (they're part of the type's blueprint), and can be accessed from every instance of an object. In this case, the functions are all in the ``HeartRateService.h`` file that we used to create the object.
 
@@ -143,7 +143,7 @@ This is what we do with the ``hrService`` object:
 
 Let's break that down.
 
-####While
+####WHILE
 
 Before saying what the program should do (the function), we tell it when to do it. We use two tools to determine this: 
 
@@ -174,7 +174,7 @@ The condition we're checking for this loop has two parts:
 For the condition as a whole to be considered true, both of its parts (trigger to read a new value and connection status) must be true. In other words, the loop will not run if it’s not time to read information from the sensor, or if the GAP status is not "connected". 
 
 <a name=”parameters”>
-####Manipulating Parameters - Increments
+####Manipulating parameters - increments
 </a>
 
 While the loop is running, it updates the heart rate reading it sends our fitness app. Since we're faking a sensor, our code supplies fake values:
@@ -189,7 +189,7 @@ C++ has several shorthands it uses for common mathematical actions. When we see 
 `hrmCounter`` starts with a value of 100, because that's the value we gave it when we set up our service earlier. Every time the loop runs we take the current value of ``hrmCounter`` and add 1. So our app will show 100, 101, 102, 103...
 
 <a name=”conditions”>
-####If
+####IF
 </a>
 
 But we don't want the heart rate to grow indefinitely, so we created a condition:
@@ -208,7 +208,7 @@ Note that we use two equal signs (==) to check the condition, not one. This is b
 
 Note also that the IF is *nested* in the WHILE loop. That means it doesn't wait for the WHILE loop to finish running, but rather runs as part of it.
 
-####Updating Objects
+####Updating objects
 
 When we determine what the heart rate is (our incremented value or back to 100), we set that as the value of the heart rate in the service. We called our instance of the service ``hrService`` earlier, so that's what we call it now. As an object of type ``HeartRateService``, it has a function called ``updateHeartRate`` (defined in the ``HeartRateService.h`` file). That function can accept as an input our ``hrmCounter`` parameter. So, let's say the current value of ``hrmCounter`` is 83. We say:
 
@@ -220,7 +220,7 @@ When we determine what the heart rate is (our incremented value or back to 100),
 Which means, in plain English, "tell the object *hrService* to use its function *updateHeartRate*; that function will update the object's heart rate value to *hrmCounter's* value".
 
 <a name="eventdriven">
-####Event-Driven Programming
+####Event-driven programming
 </a>
 
 mbed programming is event-driven. In normal programming logic is expressed in small functions that get executed sequentially. In event-driven programming we break away from the sequence and move to *event handlers*. These are bits of code that get invoked by the operating system (mbed OS) in response to system interrupts or other events. In the world of electronics, interrupts come from the hardware: they are generated by changes in electrical signals or system activity (such as radio communication). In other words, event-driven programming means writing code to execute in response to interrupts. 
@@ -246,7 +246,7 @@ An event, such as a sensor reading, wants to trigger an event handler that will 
 
 In these cases, the event handler is used not to perform functions but rather to enqueue work for the main loop. In the [heart rate demo](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_HeartRate/), the work of polling for heart rate data is communicated to the main loop through the variable ``triggerSensorPolling``, which gets set periodically from an event handler called ``periodicCallback()``. 
 
-####Waiting for Events
+####Waiting for events
 
 The last bit of the WHILE loop is the ELSE section. ELSE tells the program what to do if the condition of the WHILE loop isn't met. Remember that our condition was to have a sensor that's providing information and an active GAP connection. If the program sees that we don't have one or the other of these, it will enter the ELSE clause. 
 
@@ -257,7 +257,7 @@ The last bit of the WHILE loop is the ELSE section. ELSE tells the program what 
 
 When we created our object we said that it's a BLE device, and that gave it the ability to use the function ``waitForEvent`` that belongs to ``BLE_API``. ``waitForEvent`` lets the device sleep until something is needed of it. This reduces battery usage. When an event occurs, for example when the heart rate monitor starts sending values (which is a condition of the WHILE loop), the device will wake up and update the value in the service. 
 
-##Recap: the Heart Rate Service
+##Recap: the heart rate service
 
 To summarise, this is how we used the Heart Rate service:
 
@@ -278,7 +278,7 @@ To summarise, this is how we used the Heart Rate service:
 ___
 
 <a name="renamebeacon">
-##Renaming Your Beacon
+##Renaming your beacon
 </a>
 
 Your device's name is part of the advertisement information, and you can (and should) change it from a standard name to something you'll easily recognise. 
@@ -302,7 +302,7 @@ The default name is "HRM1". You can change it to anything you like (but stay und
 </span>
 ____
 
-##Viewing the Service Details
+##Viewing the service details
 
 Panobike and other fitness apps show you the heart rate, but you can use [nRF Master Control Panel](http://www.nordicsemi.com/eng/Products/nRFready-Demo-APPS/nRF-Master-Control-Panel-for-Android-4.3), [LightBlue](https://itunes.apple.com/gb/app/lightblue-bluetooth-low-energy/id557428110?mt=8) and similar products to see more details.
 
@@ -337,6 +337,3 @@ The server will notify our phone with each new value:
 </span>
 
 And that's it!
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
