@@ -6,7 +6,7 @@ While the mbed OS interfaces with the platform itself, mbed’s BLE_API interfac
 
 <span style="background-color:#E6E6E6;  border:1px solid #000;display:block; height:100%; padding:10px">**Note:** the API is shared between mbed Classic and mbed OS.</span>
 
-##BLE_API, Bridges and Stacks
+##BLE_API, bridges and stacks
 
 <span style="float:right; display:block; padding:5px;">
 ![](../Introduction/Images/API/BLEDiagram.png)
@@ -34,7 +34,7 @@ BLE_API offers building blocks to help construct applications. These fall into t
 
 3. Classes under **'services/'** to offer reference implementations for many of the commonly used GATT profiles. The code under 'services/' isn't essential, but it’s a useful starting point for prototyping. We continue to implement the standard GATT profiles, so these classes are updated from time to time. For a full list, see the [folder](https://github.com/ARMmbed/ble/tree/master/ble/services).
 
-##The BLEDevice Class and Header
+##The BLEDevice class and header
 
 The heart of mbed's BLE_API is the`` BLEDevice`` class, accessible in the IDE via the header ``BLEDevice.h``. This class allows us to create a BLE object that includes the basic attributes of a spec-compatible BLE device and can work with any BLE radio:
 
@@ -56,11 +56,11 @@ The class's member functions can be divided by purpose:
 
 4. Event-driven programming controls, such as methods to set up various callbacks to be invoked in response to system events. 
 
-##Sample mbed BLE Apps
+##Sample mbed BLE apps
 
 We have examples of [mbed OS BLE apps, along with documentation](https://github.com/ARMmbed/ble-examples).
 
-##Full BLE_API Documentation
+##Full BLE_API documentation
 
 [You can read](https://docs.mbed.com/docs/ble-api/en/master/api/index.html) the current API documentation.
 
