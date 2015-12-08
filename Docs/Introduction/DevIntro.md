@@ -48,7 +48,7 @@ ___
 
 The samples cover:
 
-1. A [URI Beacon](#uribeaconsample).
+1. A [UriBeacon](#uribeaconsample).
 	
 2. A [heart rate monitor](#hearratesample).
 	
@@ -57,11 +57,11 @@ The samples cover:
 ____
 
 <a name="uribeaconsample">
-###Quick sample one: URI Beacon
+###Quick sample one: UriBeacon
 </a>
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-**Tip:** If you don’t know how to register your board, or how to work with the mbed compiler, please see the [extended URI Beacon tutorial](../mbed_Classic/URIBeacon.md). 
+**Tip:** If you don’t know how to register your board, or how to work with the mbed compiler, please see the [extended UriBeacon tutorial](../mbed_Classic/URIBeacon.md). 
 </span>
 
 You might want to start with a short [video](https://www.youtube.com/watch?v=vZ-_fZlV2-w&feature=youtu.be).
@@ -101,9 +101,9 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 
 7. On the app you installed on your phone, discover your beacon and check that the URL is correct.
 <br />
-**Note:** the URIBeacon goes into [configuration mode](../Advanced/URIBeaconAdv.md) for the first 60 seconds after it's turned on. It will appear with your information when that minute is up.
+**Note:** the UriBeacon goes into [configuration mode](../Advanced/URIBeaconAdv.md) for the first 60 seconds after it's turned on. It will appear with your information when that minute is up.
 
-You might be interested in some of the URI Beacon's [advanced features](../Advanced/URIBeaconAdv.md).
+You might be interested in some of the UriBeacon's [advanced features](../Advanced/URIBeaconAdv.md).
 ____
 
 <a name="hearratesample">
@@ -111,7 +111,7 @@ ____
 </a>
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-**Tip:** If you don’t know how to register your board, or how to work with the mbed compiler, please see the [extended URI Beacon tutorial](../mbed_Classic/URIBeacon.md). 
+**Tip:** If you don’t know how to register your board, or how to work with the mbed compiler, please see the [extended UriBeacon tutorial](../mbed_Classic/URIBeacon.md). 
 </span>
 
 To see the heart rate information on your phone, download PanoBike for [iOS](https://itunes.apple.com/gb/app/panobike/id567403997?mt=8) or [Android](https://play.google.com/store/apps/details?id=com.topeak.panobike&hl=en). Then:
