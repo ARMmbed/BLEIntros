@@ -1,11 +1,11 @@
-#Tutorial 1: URI Beacon (and an intro to the mbed Compiler)
+#Tutorial 1: UriBeacon (and an intro to the mbed Compiler)
 
 Please note: the code in these examples is for mbed Classic. If you want to see the code adjusted for mbed OS, please see our [BLE samples on GitHub](https://github.com/ARMmbed/ble-examples)
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Note:** To complete tutorials, you'll need an account on [mbed.org](https://developer.mbed.org/account/signup/?next=%2F).</span>
 
-We're starting with the URI Beacon because it's a quick, simple way to get a BLE device going. URI Beacons advertise a bit of information (usually a URL) to any nearby device. They're really easy to set up: the code is fully available on the mbed website, so all you'll need to do is tell the beacon what to broadcast. 
+We're starting with the UriBeacon because it's a quick, simple way to get a BLE device going. UriBeacons advertise a bit of information (usually a URL) to any nearby device. They're really easy to set up: the code is fully available on the mbed website, so all you'll need to do is tell the beacon what to broadcast. 
 
 This tutorial covers:
 
@@ -55,7 +55,7 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 
 7. On the app you installed on your phone, discover your beacon and check that the URL is correct.
 <br />
-**Note:** the URIBeacon goes into [configuration mode](../Advanced/URIBeaconAdv.md) for the first 60 seconds after it's turned on. It will appear with your information when that minute is up.
+**Note:** the UriBeacon goes into [configuration mode](../Advanced/URIBeaconAdv.md) for the first 60 seconds after it's turned on. It will appear with your information when that minute is up.
 
 <a name=”compiler”>
 ##Getting started with the compiler
@@ -98,10 +98,10 @@ To select a board for the program:
 </span>
 
 <a name=”import”>
-##Getting a URI Beacon program
+##Getting a UriBeacon program
 </a>
 
-URI Beacons have a basic structure that's available on the mbed website. All you need to do is import it to the compiler and replace the default information with your own. To do that:
+UriBeacons have a basic structure that's available on the mbed website. All you need to do is import it to the compiler and replace the default information with your own. To do that:
 
 * Go to the [BLE_URIBeacon](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_URIBeacon/) page.
 
@@ -135,7 +135,7 @@ ___
 **If you don't want to get too deep into the code - skip [ahead](#edituribeacon).**
 </span>
 
-The URI Beacon program is a very small and simple one. The only part of it that you need to look at is the ``main.cpp`` file, which is - as the name suggests - the program's main file. The other files are there to help the compiler do its job, and you can ignore them for now.
+The UriBeacon program is a very small and simple one. The only part of it that you need to look at is the ``main.cpp`` file, which is - as the name suggests - the program's main file. The other files are there to help the compiler do its job, and you can ignore them for now.
 
 Click ``main.cpp`` to see its code.
 
@@ -183,10 +183,10 @@ There's a lot more code in the program, but we'll ignore it for now. You'll lear
 ___
 
 <a name="edituribeacon">
-##Editing the URI Beacon
+##Editing the UriBeacon
 </a>
 
-URI Beacons are usually used to send a URL (a website's address). The line of code in our program that does that is in the ``main.cpp`` file:
+UriBeacons are usually used to send a URL (a website's address). The line of code in our program that does that is in the ``main.cpp`` file:
 
 ```c
 
@@ -197,7 +197,7 @@ URI Beacons are usually used to send a URL (a website's address). The line of co
 
 You can very easily spot the interesting bit - it's "http://www.mbed.org". You can replace that URL with a URL of your choosing, but make sure to leave the quotes and the *http://www.* bit: "http://www.myurl.com".
 
-The URI Beacon isn't limitless in size. It can only accept 18 characters, with “HTTP://www” counting as one, and the suffix “.org” (or “.com”) counting as another. If your URL is very long, you'll have to use services like [bit.ly](https://bitly.com) and [tinyurl.com](http://tinyurl.com) to get a short version.
+The UriBeacon isn't limitless in size. It can only accept 18 characters, with “HTTP://www” counting as one, and the suffix “.org” (or “.com”) counting as another. If your URL is very long, you'll have to use services like [bit.ly](https://bitly.com) and [tinyurl.com](http://tinyurl.com) to get a short version.
 
 <a name=”installing”>
 ##Compiling and installing your program
@@ -219,11 +219,11 @@ To compile and install your program:
 
 6. Restart the board.
 
-6. Your board is now working as a URI beacon with the URL you gave it. If it has a battery, you can unplug it from the computer and walk around with it.
+6. Your board is now working as a UriBeacon with the URL you gave it. If it has a battery, you can unplug it from the computer and walk around with it.
 <br />
-**Note:** the URIBeacon goes into [configuration mode](../Advanced/URIBeaconAdv.md) for the first 60 seconds after it's turned on. It will appear with your information when that minute is up.
+**Note:** the UriBeacon goes into [configuration mode](../Advanced/URIBeaconAdv.md) for the first 60 seconds after it's turned on. It will appear with your information when that minute is up.
 
-##Finding your URI Beacon
+##Finding your UriBeacon
 
 Using one of the applications you installed on your phone during our *What You'll Need* section, discover your beacon and check that the URL is correct (don't forget that the beacon will be in configuration mode for the first 60 seconds after it's turned on).
 
@@ -241,9 +241,9 @@ Viewing its details:
 
 Congratulations! You've created your first BLE device.
 
-##Recap: the URI Beacon
+##Recap: the UriBeacon
 
-To get a URI Beacon:
+To get a UriBeacon:
 
 1. You gave your phone the ability to discover BLE devices using a BLE application. 
 
