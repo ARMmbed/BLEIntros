@@ -183,10 +183,10 @@ Here's an example of creating a read/write characteristic (a characteristic that
 For information about creating a read/write characteristic on mbed, see our [actuator service template](../Advanced/LEDReadWrite.md#the-led-state-characteristic).
 </span>
 
-Some characteristics are two-way entities. That means the server (BLE peripheral) can both update them itself and receive new values for them from the client (phone). This two-way traffic makes BLE interactive: the user sends a new value to one or more characteristics and the device responds to these new values. For example, when a URI Beacon device is turned on, it goes into a temporary *configuration mode*, giving us a chance to update the values of its characteristics (containing the data it will later advertise). 
+Some characteristics are two-way entities. That means the server (BLE peripheral) can both update them itself and receive new values for them from the client (phone). This two-way traffic makes BLE interactive: the user sends a new value to one or more characteristics and the device responds to these new values. For example, when a UriBeacon device is turned on, it goes into a temporary *configuration mode*, giving us a chance to update the values of its characteristics (containing the data it will later advertise). 
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-For information about the configuration mode, see the [URI Beacon Advanced Features page](../Advanced/URIBeaconAdv.md).
+For information about the configuration mode, see the [UriBeacon Advanced Features page](../Advanced/URIBeaconAdv.md).
 </span>
 
 The service definition states, for each characteristic, whether clients have permission to write to that characteristic. This is done when setting up the GATT server on the peripheral. In our example, the *configuration mode* states that the advertising information is read/write, and the *advertising mode* states that it is read-only. The same characteristic can, therefore, have two different permissions, depending on the device's mode. 
