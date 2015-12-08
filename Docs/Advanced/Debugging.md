@@ -2,7 +2,7 @@
 
 This article reviews a few of the debugging techniques that you can use when writing applications with the BLE API on mbed boards. We'll look at using LEDs, the interface chip and third-party sniffers to debug applications.
 
-##The Quick Method: LEDs
+##The quick method: LEDs
 
 Most boards come with at least one LED that can be controlled using the standard mbed API. Turning the LED on or off, or flashing it, is a quick method of knowing that we’ve reached a certain state. For example:
 
@@ -33,7 +33,7 @@ LEDs require almost no coding and processing, giving them near-zero overhead. He
 
 ```
 
-###The LED Error() Utility
+###The LED error() utility
 
 The mbed SDK includes a utility called ``error()``. It takes in printf()-style parameters, but its output is an LED pattern that is easily identified as an alert. This gives visual error indication without need to write with ``printf()`` (as we do below). It is used for runtime errors, which are errors caused by:
 
@@ -45,7 +45,7 @@ The mbed SDK includes a utility called ``error()``. It takes in printf()-style p
 For more information about ``error()``, see the [handbook](http://developer.mbed.org/handbook/Debugging#runtime-errors).
 </span>
 
-##Debugging with the mbed Interface Chip
+##Debugging with the mbed interface chip
 
 Most mbed platforms come with an interface chip placed between the target microcontroller (in our case: the BLE microcontroller) and the development host (our computer). It is a USB bridge from the development host to the debugging capabilities available in ARM microcontrollers. This bridge functionality is encapsulated in a standard called [CMSIS-DAP](http://developer.mbed.org/handbook/CMSIS-DAP). Major toolchain vendors have started supporting this standard, so we expect it to grow in popularity and availability over time. 
 
@@ -117,8 +117,7 @@ This is the terminal output. Note that "waiting" is printed every time ``waitFor
 ![](../Advanced/Images/TerminalOutput1.png)
 </span>
 
-
-###Printf() Macros
+###Printf() macros
 
 There are some nifty tricks you can do with ``printf()`` using macro-replacement by the pre-processor.
 
@@ -198,7 +197,7 @@ You can use ``ASSERT()`` to improve error reporting. It will use ``error()`` (a 
 ```
 
 
-###Fast Circular Log Buffers Based on Printf()
+###Fast circular log buffers based on printf()
 
 When trying to capture logs from events that occur in rapid succession, using ``printf()`` may introduce unacceptable run-time latencies, which might alter the system's behaviour or destabilise it. But delays in ``printf()`` aren’t because of the cost of generating the messages. The biggest cause of delay with ``printf()`` is actually pushing the logs to the UART. So the obvious solution is not to avoid ``printf()``, but to avoid pushing the logs to the UART while the operation we're debugging is running.
 
@@ -259,7 +258,7 @@ Here is an example implementation of a ring buffer. We’ve created our own vers
 
 ```
 
-###pyOCD-Based Debugging (GDB Server)
+###pyOCD-based debugging (GDB server)
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Note:** using GDB (or any other debugger) to connect to the GDB server is useful only if we have access to the program symbols and their addresses. This is currently *not* exported when building ``.hex`` files using the mbed online IDE. We therefore need to export our project to an offline toolchain to be able to generate either an ``.elf`` file that holds symbols alongside the program, or a ``.map`` file for symbols. In the following section, we're assuming an ``.elf`` file.
@@ -352,7 +351,7 @@ Now, we connect to the GDB server (for ease of reading, we've added line breaks 
 Now we can perform normal debugging using the GDB command console (or a GUI, if our heart desires).
 
 <a name=”uart”>
-##The UART Service
+##The UART service
 </a>
 
 BLE has a UART service that allows debugging over the BLE connection (by forwarding the output over BLE), rather than through the interface chip.
@@ -396,6 +395,3 @@ Sniffing radio activity can now be done with smart phone apps like [Bluetooth HC
 </span>
 
 If you want to use a separate BLE device (not your phone) to sniff the BLE traffic, you can try [Nordic's nRF Sniffer](https://www.nordicsemi.com/eng/Products/Bluetooth-Smart-Bluetooth-low-energy/nRF-Sniffer) on a Nordic BLE board.
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
