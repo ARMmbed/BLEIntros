@@ -1,4 +1,4 @@
-#mbed BLE for Developers
+#mbed BLE for developers
 
 This document is written for experienced BLE developers who are switching to mbed platforms. If you feel that you need more information than this document provides, please refer to our [extended documentation](../Introduction/BeginnersIntro.md).
 
@@ -24,7 +24,7 @@ A BLE device currently requires an app or website running on a phone</span>
 ___
 
 
-##Rapid Prototyping
+##Rapid prototyping
 
 mbed comes from a heritage of rapid prototyping and allows you to test code and ideas on BLE devices very easily. 
 
@@ -34,13 +34,13 @@ For information about rapid prototyping with mbed BLE, see [here](../Introductio
 
 ___
 
-##BLE in Depth
+##BLE in depth
 
 If you want more information about how BLE works, see our [BLE in Depth document](../Introduction/BLEInDepth.md). 
 
 ___
 
-##Quick Samples
+##Quick samples
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
 **Tip:** The quick samples are written for experienced BLE developers with an understanding of the mbed IDE. If you want more information about the IDE, see the [tutorials](../mbed_Classic/Overview.md), which offer extended versions of the same samples. 
@@ -57,7 +57,7 @@ The samples cover:
 ____
 
 <a name="uribeaconsample">
-###Quick Sample One: URI Beacon
+###Quick sample one: URI Beacon
 </a>
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
@@ -107,7 +107,7 @@ You might be interested in some of the URI Beacon's [advanced features](../Advan
 ____
 
 <a name="hearratesample">
-###Quick Sample Two: Heart Rate
+###Quick sample two: heart rate
 </a>
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
@@ -133,6 +133,3 @@ To see the heart rate information on your phone, download PanoBike for [iOS](htt
 ____
 
 For service creation, see our [advanced samples](../Advanced/Overview.md).
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
