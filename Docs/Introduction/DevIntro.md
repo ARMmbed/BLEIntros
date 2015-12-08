@@ -1,4 +1,4 @@
-#BLE for Developers
+#mbed BLE for Developers
 
 This document is written for experienced BLE developers who are switching to mbed platforms. If you feel that you need more information than this document provides, please refer to our [extended documentation](../Introduction/BeginnersIntro.md).
 
