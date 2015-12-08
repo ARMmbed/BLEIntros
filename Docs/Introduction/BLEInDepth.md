@@ -2,7 +2,7 @@
 
 This document explores how BLE works, especially how you can use the two BLE modes - connected and advertising - for different purposes. 
 
-##Peripheral and Central Devices v Servers and Clients
+##Peripheral and central devices v servers and clients
 
 When we connect devices over BLE, we think of them as being either a peripheral (slave) device or a central (master) device. The Bluetooth standard established this division to match the resources available on the devices: 
 
