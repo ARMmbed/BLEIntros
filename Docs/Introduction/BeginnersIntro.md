@@ -1,4 +1,4 @@
-#mbed BLE for Beginners
+#mbed BLE for beginners
 
 BLE is an exciting technology that has a natural appeal for beginners who are looking to create art or solve problems. If you're a beginner - meaning you've never programmed anything - we're here to help you get your idea prototyped using BLE on mbed boards.
 
@@ -32,7 +32,7 @@ To tell the API what to do, you need a programming environment. BLE, like all ot
 <span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
 The standard process is to get a board (and maybe a few extending components), write a bit of code and import it to the board. Simple.</span>
 
-##The mbed Compiler
+##The mbed compiler
 
 The compiler fulfils two main purposes: it gives you a programming environment (a place to write your code), and it can turn (compile) that code into something that the mbed platforms can execute. The compiler can take the same code and compile it for different mbed platforms. This means you can try out your project on different boards and pick the one that suits you best without having to re-write your program for each board. 
 
@@ -40,11 +40,11 @@ Programming for mbed is done in *C++*. Don’t let C++ put you off; you can get 
 
 We'll walk you through using the compiler as we get started on our [coding samples](../mbed_Classic/Overview.md).
 
-#What Does it all Do?
+#What does it all do?
 
 The combination of an mbed board, extra components and BLE capabilities give you lots of possibilities for prototyping and production. Let's look at a few of those now (we'll discuss the limitations [later](../Introduction/Limitations.md)).
 
-##Rapid Prototyping
+##Rapid prototyping
 
 mbed comes from a heritage of rapid prototyping, and allows you to test code and ideas on BLE devices very easily. 
 
@@ -52,19 +52,19 @@ mbed comes from a heritage of rapid prototyping, and allows you to test code and
 For information about rapid prototyping with mbed BLE, see [here](../Introduction/Prototyping.md).
 </span>
 
-##Gathering Information
+##Gathering information
 
 Any mbed device, with or without BLE capabilities, can gather information. It can do that with [sensors](http://developer.mbed.org/components/) for anything from [light](http://developer.mbed.org/components/cat/light/) to [touch](http://developer.mbed.org/components/cat/capacitive-touch/), or it can receive information from a computer. 
 
 You could also get information directly from users by providing them some input mechanism, such as a mobile app or button. We'll talk about that later.
 
-##Displaying Information
+##Displaying information
 
 The first thing you can do with a BLE device is simply display information. You can do that with lights or a [display](http://developer.mbed.org/components/cat/display/), or you can send the information to a nearby Bluetooth-enabled device like a mobile phone.
 
 The information can be sensor input - for example, you could display the speed as provided by an [accelerometer](http://developer.mbed.org/components/cat/sensors-motion/) - or static information that you've programmed onto the device, like your own details. 
 
-##Processing Information 
+##Processing information 
 
 The two most common sources of information that you might want to process are sensors and user input. In either case, there are two main paradigms for processing:
 
@@ -74,13 +74,13 @@ The two most common sources of information that you might want to process are se
 
 BLE is intended for low power, battery-operated devices, so typical applications will not perform complex processing on the device - processing burns through batteries. Applications will instead export the data to be processed remotely, and wait for a response.
 
-##Sending or Storing Information
+##Sending or storing information
 
 If you want a small and power-efficient device, you probably don't want to store too much locally. Instead, send your information to a server (or even your own computer, if it's set up correctly).
 
 Because of restrictions on energy use in radio operation BLE is a short-range method, so you'll be able to send information over BLE only if your device and your destination are quite close. The range is a few dozen meters. If they're further away, you'll need to use Ethernet (regular cable connection), WiFi or radio.
 
-##Working With Apps or Websites
+##Working with apps or websites
 
 So if you can't store or process too much information with a BLE device, what is it good for?
 
@@ -88,7 +88,7 @@ The simplest way to use BLE is to advertise a small bit of information to any de
 
 If an advertisement-only solution isn’t enough, you can have a transactional interaction (the fancy way of saying “conversation”) between a client and a device over a BLE connection. This usually requires a custom mobile or web-based app, although some generic apps may be enough to get you off the ground. In addition to handling the data, the app may provide users with an interface through which they can send commands to the BLE device. A very common example is mobile fitness apps that get your heart rate information from a BLE-based heart rate monitor. The heart rate monitor doesn't store or process information - it just gets your heart rate and sends it to the app. The app displays the heart rate and gives you some control of the BLE device.
 
-##URI Beacons and the Physical Web
+##URI Beacons and the physical web
 
 Physical Web brings devices to the internet via websites (rather than device-specific applications), by using BLE as a business card that includes a link to the website. Interactions with the device are then performed via the website. Using websites rather than apps means that users don't have to install a new app for every device they want to interact with; the interaction is easier and more immediate.
 
@@ -96,7 +96,7 @@ The method used to provide the link is called [URI Beacon](http://developer.mbed
 
 For example, the beacon can be attached to a vending machine. It will send you to a web interface that gives you control of the machine. It can let you make a large purchase (providing sodas for several people in one transaction) by letting you select several options and pay for them all at once.
 
-##How a BLE Device Gets Internet Access
+##How a BLE device gets internet access
 
 At the moment, BLE devices don't have independent internet access. To get internet access, you can do one of two things:
 
@@ -105,6 +105,3 @@ At the moment, BLE devices don't have independent internet access. To get intern
 2. The BLE device can get internet over its BLE connection to a mobile phone. This means that when the phone terminates the BLE connection, the BLE device will lose its internet access. This doesn't require additional hardware, so it doesn't affect the price of the board, but it does mean that for the device to have constant internet access it will need a phone (or BLE-enabled computer) next to it.
 
 In the future, we may find routers that accept BLE connections, in the same way that they currently accept WiFi connections.
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
