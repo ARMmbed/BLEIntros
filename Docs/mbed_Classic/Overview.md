@@ -6,7 +6,7 @@ Please note: the code in these examples is for mbed Classic. If you want to see 
 
 The tutorials are numbered. You can work through them in any order you want, but if you're new to C++, you should probably go by the order we've suggested.
 
-1. The [URI Beacon](../mbed_Classic/URIBeacon.md) tutorial introduces the IDE, some C++ concepts and a working URI Beacon.
+1. The [UriBeacon](../mbed_Classic/URIBeacon.md) tutorial introduces the IDE, some C++ concepts and a working UriBeacon.
 
 2. The [Heart Rate](../mbed_Classic/HeartRate.md) tutorial introduces loops and conditions, and a simulated heart rate monitor reading.
 
@@ -24,7 +24,7 @@ We have a YouTube channel with videos that you might find useful:
 
 1. mbed [quick start](https://www.youtube.com/watch?v=L5TcmFFD0iw): for a first-time user with a new board.  
 
-2. [URI Beacon example](https://www.youtube.com/watch?v=vZ-_fZlV2-w): how to create a BLE URIBeacon using the mbed platform. We will import the project, modify the URIBeacon, compile, load code to the board, and demonstrate how to scan for the beacon with the Physical Web app.
+2. [UriBeacon example](https://www.youtube.com/watch?v=vZ-_fZlV2-w): how to create a BLE UriBeacon using the mbed platform. We will import the project, modify the UriBeacon, compile, load code to the board, and demonstrate how to scan for the beacon with the Physical Web app.
 
 3. [BLE GAP example](https://www.youtube.com/watch?v=m9uIx-NFS08): how to use the GAP advertising packet to transmit data with a BLE capable mbed platform. First without a name, then adding a name service to the device.
 
