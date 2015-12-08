@@ -88,11 +88,11 @@ The simplest way to use BLE is to advertise a small bit of information to any de
 
 If an advertisement-only solution isn’t enough, you can have a transactional interaction (the fancy way of saying “conversation”) between a client and a device over a BLE connection. This usually requires a custom mobile or web-based app, although some generic apps may be enough to get you off the ground. In addition to handling the data, the app may provide users with an interface through which they can send commands to the BLE device. A very common example is mobile fitness apps that get your heart rate information from a BLE-based heart rate monitor. The heart rate monitor doesn't store or process information - it just gets your heart rate and sends it to the app. The app displays the heart rate and gives you some control of the BLE device.
 
-##URI Beacons and the physical web
+##UriBeacons and the physical web
 
 Physical Web brings devices to the internet via websites (rather than device-specific applications), by using BLE as a business card that includes a link to the website. Interactions with the device are then performed via the website. Using websites rather than apps means that users don't have to install a new app for every device they want to interact with; the interaction is easier and more immediate.
 
-The method used to provide the link is called [URI Beacon](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_URIBeacon/), and it will be the first example we'll [show you](../mbed_Classic/URIBeacon.md) when we get to programming our BLE devices. A URI Beacon can be attached to anything that you might want to provide information about, or that you can provide any sort of interface for.
+The method used to provide the link is called [UriBeacon](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_URIBeacon/), and it will be the first example we'll [show you](../mbed_Classic/URIBeacon.md) when we get to programming our BLE devices. A UriBeacon can be attached to anything that you might want to provide information about, or that you can provide any sort of interface for.
 
 For example, the beacon can be attached to a vending machine. It will send you to a web interface that gives you control of the machine. It can let you make a large purchase (providing sodas for several people in one transaction) by letting you select several options and pay for them all at once.
 
