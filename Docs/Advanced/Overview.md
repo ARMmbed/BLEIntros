@@ -1,23 +1,6 @@
-#mbed and BLE in Depth
+#Section overview
 
-This section covers some BLE and mbed concepts in greater detailed than our Getting Started section:
-
-1. [Event Driven Programming](../mbed_Classic/Events.md): the event-driven nature of mbed programming and specifically its use in BLE.
-
-2. [Debugging BLE on mbed](../Advanced/Debugging.md): some techniques for debugging BLE.
-
-3. [Rapid prototyping on mbed BLE](../Advanced/Prototyping.md): how to rapidly prototype your product's app side.
-
-2. [Modes and Profiles](../Introduction/BLEInDepth.md): some BLE concepts such as GATT, GAP, advertising and connected modes and profiles.
-
-3. [Connection Parameters](../Introduction/ConnectionParameters.md): parameters that affect BLE's operation and specifically power use.
-
-4. [BLE Limitations](../Advanced/Limitations.md): current limitations of the BLE technology. 
-
-
-#Advanced Samples Overview
-
-Our advanced samples are designed to help you get serious projects into the prototyping stage.
+This section covers some BLE and mbed concepts in greater detail.
 
 ##Service Templates
 
@@ -41,5 +24,9 @@ Reviewing advanced features of standard implementations:
 
 * Creating an app for [high data rate, low latency transfers](../Advanced/HighData.md), if you need to transfer large amounts of data.
 
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
+## Firmware over the air
+
+Reviewing firmware over the air (FOTA):
+
+* General [overview of FOTA](../Advanced/FOTA.md): how to use FOTA in an application.
+* The [device firmware update (DFU)](../Advanced/Bootloader.md): working with the Nordic DFU boot loader.
