@@ -1,4 +1,4 @@
-#High Data Rate, Low Latency Transfers
+#High data rate, low latency transfers
 
 As mentioned in the [previous sections](../Introduction/BeginnersIntro.md), BLE is primarily designed for low data rate applications (where only a few bytes are transmitted every second). However, you may find yourself in need of transferring a large amount of data. So in this section we'll show you how to build a high data rate, low latency application using mbed’s ``BLE_API`` while still keeping a low power profile.
 
@@ -10,7 +10,7 @@ There are two orthogonal approaches to overcome these limitations:
 2. [Transfer often](#often): reducing the interval between connection events.
 
 <a name="fast">
-##Transfer Without Waiting for a Response
+##Transfer without waiting for a response
 </a>
 
 To decrease the time between successive packets, we can send and receive data between a client and server without waiting for a response after each message. The BLE standard defines a command and message pair for this:
@@ -20,7 +20,7 @@ To decrease the time between successive packets, we can send and receive data be
 2. The **_Handle Value Notification_** message for sending data from the [server to the client](#handle).
 
 <a name="write">
-###Client to Server
+###Client to server
 </a>
 
 For sending data from the client to the server, the ``_Write Without Response_`` property must be enabled in the write characteristic. Using ``BLE_API``, this is done by setting the ``GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY`` property in the property field when instantiating a new ``GattCharacteristic``:
@@ -47,7 +47,7 @@ Note that when writing large amounts of data, you might want to have your charac
 ```
 
 <a name="handle">
-###Server to Client
+###Server to client
 </a>
 
 Sending data in the opposite direction, from the server to the client, is slightly different because servers are not supposed to "write" to clients. However, this behaviour can be emulated by repurposing ``_Handle Value Notifications_``.
@@ -109,7 +109,7 @@ The server can now send a stream of low latency messages to the client by callin
 The function ``sendData`` is responsible for keeping track of what data to send and has to be called first to initiate the transfer. Once one or more messages have been sent, the callback function ``onDataSent`` will call ``sendData`` again. This ensures the BLE stack is kept busy as long as there is data to send.
 
 <a name="often">
-##Transfer Often
+##Transfer often
 </a>
 
 Another way to reduce latency is to increase the number of potential connections by updating the connection interval. Note that it's the central's right to establish connections (or not establish them). Connection preferences or requests issued by the peripheral are only recommendations, and the central can ignore them.
@@ -165,7 +165,3 @@ Where:
 
 * ``minConnectionInterval`` and ``maxConnectionInterval`` suggest to the central how often connections should be attempted.
 * ``slaveLatency`` suggests how many connection attempts the slave is allowed to miss before the central may consider the peripheral disconnected.
-
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
