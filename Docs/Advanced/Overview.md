@@ -22,7 +22,7 @@ Creating a BLE service may sound scary, but we've created two templates that you
 
 Reviewing advanced features of standard implementations:
 
-* The [URI Beacon](../Advanced/URIBeaconAdv.md): dynamic configuration of the URIBeacon on start up and configuration persistence. 
+* The [UriBeacon](../Advanced/URIBeaconAdv.md): dynamic configuration of the UriBeacon on start up and configuration persistence. 
 
 * Creating an app for [high data rate, low latency transfers](../Advanced/HighData.md), if you need to transfer large amounts of data.
 
