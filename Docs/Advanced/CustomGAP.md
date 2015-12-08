@@ -1,4 +1,4 @@
-#Custom GAP Advertising Packet
+#Custom GAP advertising packet
 
 We can change the content of the [generic access profile (GAP)](../Introduction/BLEInDepth.md#advertising-and-connected-mode) advertising packet (AP) to contain the information we want it to contain. If we have only a small amount of data we want to communicate to the world, then we can use the modified GAP AP to send that information to any BLE scanner, without waiting for it to establish a connection. In this article, we're going to modify advertising data step by step, then receive the result with a custom-built Evothings app.
 
@@ -19,7 +19,7 @@ You'll need:
 <span style="background-color:#F0F0F5; border:1px solid #000;display:block; height:100%; padding:10px">For more information about Evothings, see their [Quick Start Guide](http://evothings.com/getting-started-with-evothings-studio-in-90-seconds/), [tutorials](http://evothings.com/doc/studio/tutorials.html) and [BLE API reference](http://evothings.com/doc/plugins/com.evothings.ble/com.evothings.module_ble.html).
 </span>
 
-##GAP Data Review
+##GAP data review
 
 The general GAP broadcast's data breakdown is illustrated in this diagram:
 
@@ -142,11 +142,11 @@ Now we set the [advertising interval](../Introduction/ConnectionParameters.md#se
 
 This will take care of the GAP advertising on the mbed side.
 
-##Seeing Our Data
+##Seeing our data
 
 Compile your program and install it on your board ([drag and drop it to the board](../mbed_Classic/URIBeacon.md#compiling-and-installing-your-program)). Then decide if you want to use generic apps or the custom-made Evothings app (or use both and compare results).
 
-###Generic Apps
+###Generic apps
 
 On your phone, start the BLE application ([nRF Master Control Panel](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en) for Android and [LightBlue](https://itunes.apple.com/us/app/lightblue-bluetooth-low-energy/id557428110?mt=8) for iOS). It will scan for BLE devices, and should show us ours:
 
@@ -156,7 +156,7 @@ On your phone, start the BLE application ([nRF Master Control Panel](https://pla
 
 We can see the name we set, the appropriate flags and the data we pushed into the manufacturer data field.
 
-###Evothings Custom-Made App
+###Evothings custom-made app
 
 We've created an Evothings GAP smartphone example that works with the embedded mbed example above.
 
@@ -182,8 +182,4 @@ The phone app will show:
 
 The code for the application is in the **app.js** file. It is written in JavaScript and can be modified in real time. Try making a modification, save the changes, and watch them load to the Evothings client on your phone.
 
-This demo is very simple but provides a starting point for more advanced programming. 
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
-
+This demo is very simple but provides a starting point for more advanced programming.
