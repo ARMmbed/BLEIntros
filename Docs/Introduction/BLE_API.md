@@ -4,6 +4,8 @@ mbed development relies on APIs to do the grunt work of controlling the platform
 
 While the mbed OS interfaces with the platform itself, mbed’s BLE_API interfaces with the BLE controller on the platform. It's designed to hide the BLE stack’s complexity behind C++ abstractions and is compatible with all BLE-enabled mbed platforms. mbed OS and the BLE_API together let developers implicitly benefit from all the low-power optimisations the hardware offers by automatically configuring the clocks, timers and other hardware peripherals to work at their lowest power consumption. All that developers have to do is remember to yield to the BLE_API ``waitForEvent()`` function whenever the system needs to idle (for more information about ``waitForEvent()``, see our [event-driven programming section](../mbed_Classic/Events.md).
 
+<span style="background-color:#E6E6E6;  border:1px solid #000;display:block; height:100%; padding:10px">**Note:** the API is shared between mbed Classic and mbed OS.</span>
+
 ##BLE_API, Bridges and Stacks
 
 <span style="float:right; display:block; padding:5px;">
@@ -30,7 +32,7 @@ BLE_API offers building blocks to help construct applications. These fall into t
 
 2. Code under **'common/'** encapsulates headers that need to be shared between the public interfaces and underlying bridge code.
 
-3. Classes under **'services/'** to offer reference implementations for many of the commonly used GATT profiles. The code under 'services/' isn't essential, but it’s a useful starting point for prototyping. We continue to implement the standard GATT profiles, so these classes are updated from time to time. For a full list, see the [folder](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_API/file/tip/services).
+3. Classes under **'services/'** to offer reference implementations for many of the commonly used GATT profiles. The code under 'services/' isn't essential, but it’s a useful starting point for prototyping. We continue to implement the standard GATT profiles, so these classes are updated from time to time. For a full list, see the [folder](https://github.com/ARMmbed/ble/tree/master/ble/services).
 
 ##The BLEDevice Class and Header
 
@@ -56,11 +58,11 @@ The class's member functions can be divided by purpose:
 
 ##Sample mbed BLE Apps
 
-We have examples of the [BLE apps, along with documentation](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/).
+We have examples of [mbed OS BLE apps, along with documentation](https://github.com/ARMmbed/ble-examples).
 
 ##Full BLE_API Documentation
 
-The current BLE_API documentation is on the [developer site](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_API/).
+[You can read](https://docs.mbed.com/docs/ble-api/en/master/api/index.html) the current API documentation.
 
 ______
 Copyright © 2015 ARM Ltd. All rights reserved.
