@@ -14,7 +14,7 @@ However, to prevent confusion, we have divided the guide into sections:
 
 1. [Introduction to BLE](Introduction/Overview.md): Explores BLE as a technology and as a protocol. While this section might occasionally refer to either mbed Classic or mbed OS, it is almost entirely valid for both.
 
-1. [BLE on mbed OS](): Helps the transition from mbed Classic to mbed OS, with a focus on BLE. For a more general introduction to mbed OS, please see our [mbed OS User Guide](mbed_OS/Overview.md).
+1. [BLE on mbed OS](mbed_OS/Overview.md): Helps the transition from mbed Classic to mbed OS, with a focus on BLE. For a more general introduction to mbed OS, please see our [mbed OS User Guide](https://docs.mbed.com/docs/getting-started-mbed-os/).
 
 1. [BLE on mbed Classic](mbed_Classic/Overview.md): Details sample applications written for mbed Classic. This section includes general BLE information and basic C++ concepts, so you might find it useful even if you are working with mbed OS.
 
