@@ -1,4 +1,4 @@
-#BLE Modes and Profiles
+#BLE modes and profiles
 
 This document explores how BLE works, especially how you can use the two BLE modes - connected and advertising - for different purposes. 
 
@@ -32,11 +32,11 @@ The mbed board is the server or peripheral; the phones are the clients and centr
 </span>
 
 
-##Initiating Connections
+##Initiating connections
 
 The central initiates, controls and ends the connection - the peripheral cannot force the central to act (scan for BLE devices, view their information, connect and so on). The central also decides how often to ask the peripheral for information. However, the peripheral can recommend some things to the central. For more information about these decisions, see the [connection parameters section](../Introduction/ConnectionParameters.md).
 
-##Advertising and Connected Mode
+##Advertising and connected mode
 
 The two modes BLE uses are: 
 
@@ -94,7 +94,7 @@ For now, advertising and connected modes cannot co-exist. This is because a BLE 
 **Note:** the latest Bluetooth standard allows advertisements to continue in parallel with connections, and this will become a part of mbed's BLE_API before the end of 2015. 
 </span>
 
-##Services and Profiles (GATT)
+##Services and profiles (GATT)
 
 To make the conversation described above low power, the BLE specification imposes a specific structure on the way data is exchanged in connected mode. It relies on the BLE peripheral's ability to maintain a database of state variables, such as battery level, temperature and time, that clients can access. We can group state variables into services based on functionality. The Heart Rate Service, for instance, is a collection of state variables including *heart rate measurement* and *body sensor location*. The technical term for these state variables is “Characteristics”. For the sake of interoperability, each characteristic also holds a description of the value’s type. This  allows clients to interpret the value even if they’ve not been specifically programmed to recognise it. 
 
@@ -118,7 +118,7 @@ BLE has been around for a while, so it has some standard services that you can t
 
 Before you start working on a project, it's worthwhile to see if there's already a service that can do what you need done; it'll save you lots of coding and testing. You can find the list of available profiles and services [here](https://developer.bluetooth.org/TechnologyOverview/Pages/Profiles.aspx).
 
-##Characteristics and Interactions
+##Characteristics and interactions
 
 Services break their data down into *characteristics*. Each characteristic is mapped onto a single data point: it tells you one thing, and one thing only. For example, the [Device Information Service](https://developer.bluetooth.org/TechnologyOverview/Pages/DIS.aspx) has the following characteristics:
 
@@ -197,7 +197,7 @@ Each service and characteristic requires a universally unique identifier (UUID),
 
 More information about UUID assignments is available in our [service creation samples](../Advanced/Overview.md).
  
-##Profiles, Services and Characteristics - a Summary
+##Profiles, services and characteristics - a summary
 
 The full breakdown for a profile is, therefore: one or more services, each containing zero or more characteristic, with zero or more descriptors for every characteristic:
 
@@ -206,6 +206,3 @@ The full breakdown for a profile is, therefore: one or more services, each conta
 </span>
 <span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
 A single profile can contains several services, and each of the services can contain several characteristics</span>
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
