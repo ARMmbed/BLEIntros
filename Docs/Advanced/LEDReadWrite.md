@@ -1,4 +1,4 @@
-#Creating an Actuator Service
+#Creating an actuator service
 
 With mbed BLE, we offer a growing set of SIG-defined BLE services implemented as C++ headers to ease application development. These can be found under [our services repository](https://github.com/ARMmbed/ble/tree/master/ble/services).
 
@@ -6,7 +6,7 @@ But, we don’t expect you to settle for what’s already been done; we expect y
 
 In the [previous sample](../Advanced/InputButton.md) we went over the process of setting up a custom BLE service encapsulating a read-only characteristic. In this example, we'd like to review the creation of a service with a read-write characteristic. Together, these will form the basis of most BLE services.
 
-#LED Service
+#LED service
 
 Let's create a service for a trivial actuator: an LED. We'll assume a use-case where a phone app would like to connect to this mbed application and set the LED state. In the non-connected state, the application simply advertises its ability to provide an LED service.
 
@@ -14,7 +14,7 @@ Let's create a service for a trivial actuator: an LED. We'll assume a use-case w
 Get the code [here](https://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_LED/).
 </span>
 
-##The Basic Template - Advertising and Connecting
+##The basic template - advertising and connecting
 
 Here's a template to get you started with the very basics. We've thrown in a blinking LED to indicate program stability.
 
@@ -140,7 +140,7 @@ Adding the LED service UUID to the advertising payload is purely optional. But h
 **Note:** interpreting non-standard UUID has limited use, and may only work with custom phone apps.
 </span>
 
-##The LED State Characteristic
+##The LED state characteristic
 
 ``BLE_API`` offers C++ abstractions for entities involved in service definition. A ``GattService`` class contains one or more ``GattCharacteristics``. The ``GattCharacteristics`` represents state variables exposed by the service. Every ``GattCharacteristic`` implicitly contains at least one ``GattAttribute`` to hold the value. It may be have more than one``GattAttribute``, but that is uncommon.
 
@@ -172,7 +172,7 @@ We can make ``ledState`` readable by using ``ReadWriteGattCharacterisitc<T>``. T
 		&initialValueForLEDCharacteristic);
 ```
 
-##Constructing the LED Service
+##Constructing the LED service
 
 We can use the ``ledState`` characteristic to construct a GATT service called ``ledService``. We use a bit of C/C++ syntax to create a one-element array, using an initialiser list of pointers to ``GattCharacteristics``. 
 
@@ -186,7 +186,7 @@ We can then add this service to the BLE stack using ``BLEDevice::addService()``:
 	ble.addService(ledService);
 ```
 
-##Putting it Together
+##Putting it together
 
 We now have a custom LED service containing a characteristic that is both readable and writable:
 
@@ -417,7 +417,7 @@ If you click the **write** button you can enter a new value:
 ![Read write](../Advanced/Images/LED/WriteValue.png)
 </span>
 
-##The LEDService Class
+##The LEDService class
 
 The above application is fully functional, but has grown to be a bit messy. In particular, we could replace most of the plumbing creating the LED service with a simple initialisation of an ``LEDService`` class, without losing the functionality.
 
@@ -611,6 +611,3 @@ And now with this encapsulated away in the ``LEDService``, the main application 
 	}
 ```
 One final note: notice that we've set up ``ledServicePtr``. This was necessary because ``onDataWritten`` callback needs to refer to the ``ledService`` object. One reasonable solution would have been to move the definition of the ``ledService`` object in the global scope. But, constructing a ``ledService`` object requires the use of ``BLE_API`` calls such as ``ble.addService()``. These can only be used after a call to ``ble.init()``. Unfortunately, ``ble.init()`` is called only within ``main()``, delaying the instantiation of ``ledService``. This leads us to making a reference available to the ``ledService`` object through a pointer. This is a bit roundabout.
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
