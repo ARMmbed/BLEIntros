@@ -86,7 +86,7 @@ __To run the application on your board:__
 
 1. Connect your mbed board to your computer over USB. It appears as removable storage.
 
-1. When you run the ``yotta build`` command, as you did above, yotta creates a BIN or a combined HEX file in a ```build/<target-name>/source``` directory under the example's directory. Drag and drop the file to the removable storage.
+1. When you run the ``yotta build`` command, as you did above, yotta creates [a BIN or a combined HEX file](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/Full_Guide/app_on_yotta/#building-the-module) in a ```build/<target-name>/source``` directory under the example's directory. Drag and drop the file to the removable storage.
 
   For example, if you’re using the bbc-microbit-gcc target, you should copy the file:
   ``build/bbc-microbit-gcc/source/BLE_Beacon-combined.hex`` to the MICROBIT drive ```cp build/bbc-microbit-gcc/source/BLE_Beacon-combined.hex /path/to/MICROBIT/```
