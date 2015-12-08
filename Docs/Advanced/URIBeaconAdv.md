@@ -1,6 +1,6 @@
 #The URIBeacon’s advanced features
 
-##Configuring the URIBeacon Dynamically
+##Configuring the URIBeacon dynamically
 
 For the first few seconds after being powered on a URIBeacon device doesn't act as a beacon. Instead, it advertises itself as connectable and configurable. This period times out after ``CONFIG_ADVERTISEMENT_TIMEOUT_SECONDS``, and the application switches to being a regular, immutable URIBeacon. During the configurable period, it is possible to connect to the ``URIBeaconConfigService`` from a client to update the beacon's configuration. 
 
