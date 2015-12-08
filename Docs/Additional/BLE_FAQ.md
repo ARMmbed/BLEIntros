@@ -7,7 +7,7 @@ BLE devices become interactive when you:
 * Provide a means of input. This can be local, like a button or a touchpad, or remote, like a mobile app or webpage. 
 * Write your program so that it reacts to these inputs.
 
-To learn about prototyping interactivity, see [here](../InDepth/Prototyping.md).
+To learn about prototyping interactivity, see [here](../Advanced/Prototyping.md).
 
 ##Q: How is a BLE beacon better than a QR code?
 
@@ -29,7 +29,7 @@ BLE is short-range and designed for small bits of information. If you have a lot
 
 If you're trying to send your information to a server you should use Ethernet or WiFi. mbed boards offer support for both.
 
-If you still must send a large stream of data over BLE, you might want to shorten the connection interval and use write-without-response commands instead of a simple write. See [here](../AdvSamples/HighData.md) for more information.
+If you still must send a large stream of data over BLE, you might want to shorten the connection interval and use write-without-response commands instead of a simple write. See [here](../Advanced/HighData.md) for more information.
 
 ##Q: I have a lot of information to store. What do I do?
 
