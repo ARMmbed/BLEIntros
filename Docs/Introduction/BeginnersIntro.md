@@ -18,7 +18,7 @@ A BLE setup requires a board with BLE support and a way to control it - for exam
 
 ##mbed
 
-[mbed](http://developer.mbed.org) gives you three things: a platform, APIs for that platform, and a programming environment (compiler). 
+[mbed](https://www.mbed.com/) gives you three things: a platform, APIs for that platform, and a programming environment (compiler). 
 
 The platforms are little boards with a processor. They can do things like receive input, generate output and store small bits of information. Some boards require an external [BLE component](http://developer.mbed.org/components/cat/bluetooth/), and [some](http://developer.mbed.org/platforms/mbed-HRM1017/) [have it](http://developer.mbed.org/platforms/RedBearLab-BLE-Nano/) [built-in](http://developer.mbed.org/platforms/Nordic-nRF51-Dongle/).
 
@@ -38,18 +38,18 @@ The compiler fulfils two main purposes: it gives you a programming environment (
 
 Programming for mbed is done in *C++*. Don’t let C++ put you off; you can get quite a lot done with BLE without learning C++ in great detail, as many of its advanced features are not normally required.
 
-We'll walk you through using the compiler as we get started on our [coding samples](../mbed_Classic/IntroSamples.md).
+We'll walk you through using the compiler as we get started on our [coding samples](../mbed_Classic/Overview.md).
 
 #What Does it all Do?
 
-The combination of an mbed board, extra components and BLE capabilities give you lots of possibilities for prototyping and production. Let's look at a few of those now (we'll discuss the limitations [later](../Advanced/Limitations.md)).
+The combination of an mbed board, extra components and BLE capabilities give you lots of possibilities for prototyping and production. Let's look at a few of those now (we'll discuss the limitations [later](../Introduction/Limitations.md)).
 
 ##Rapid Prototyping
 
 mbed comes from a heritage of rapid prototyping, and allows you to test code and ideas on BLE devices very easily. 
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-For information about rapid prototyping with mbed BLE, see [here](../Advanced/Prototyping.md).
+For information about rapid prototyping with mbed BLE, see [here](../Introduction/Prototyping.md).
 </span>
 
 ##Gathering Information
