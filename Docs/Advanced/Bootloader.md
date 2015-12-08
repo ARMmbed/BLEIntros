@@ -1,10 +1,10 @@
-#Internals of the Nordic DFU Boot Loader
+#Internals of the Nordic DFU boot loader
 
 The Device Firmware Update (DFU) service, when added to a BLE application, enables Firmware Over the Air (FOTA). As we’re working with Nordic’s nRF51822 Bluetooth system, we need a Nordic-specific DFU boot loader.
 
 To update or modify the boot loader, you’ll need to understand how it works. We’ll start with reviewing the components, then the sources the boot loader needs, and finally see how to set up the boot loader and combine it with an initial application.
 
-##Overview of Components
+##Overview of components
 
 FOTA requires the following components:
 
@@ -18,7 +18,7 @@ FOTA requires the following components:
 
 * **UICR**: a register defined by nRF MCU, which tells the SoftDevice where to forward control: the boot loader or the application.
 
-## Overview of the System Startup Process
+## Overview of the system startup process
 
 Here’s a summary of the boot process. We present it early on in this document to prepare for the ideas that follow. Many of the details will be explained later.
 
@@ -30,7 +30,7 @@ If the boot loader receives control from the SoftDevice, it refers to the values
 
 If the boot loader receives control from an app that has triggered FOTA, it waits for a new firmware over BLE. Once new firmware has arrived, it is verified and receives control right away.
 
-###Updating Firmware with USB
+###Updating firmware with USB
 
 When working with the Nordic mKIT, or any mbed Nordic platform, drag-n-drop of the firmware over USB results in a mass-erase followed by programming. We have two possible builds for that firmware: 
 
@@ -38,7 +38,7 @@ When working with the Nordic mKIT, or any mbed Nordic platform, drag-n-drop of t
 
 2. A build that includes the initial application, which itself includes the SoftDevice, the initial firmware as described above, boot loader and the UICR (pointing to the boot loader). This is available for [download](https://developer.mbed.org/teams/Bluetooth-Low-Energy/wiki/Firmware-Over-the-Air-FOTA-Updates#default-bootloader).
 
-###Updating Firmware with FOTA
+###Updating firmware with FOTA
 
 When updating over FOTA, you’ll need to include only the application in the package you’re sending. Note, however:
 
@@ -48,7 +48,7 @@ When updating over FOTA, you’ll need to include only the application in the pa
 
 In other words, if you need FOTA you must first get the SoftDevice and boot loader, with initialised UICR, onto the device. You can use [srec_cat](http://srecord.sourceforge.net/) to combine things and initialise the UICR and boot loader settings.
 
-##Sources and Build Instructions for the Boot Loader
+##Sources and build instructions for the boot loader
 
 The [sources](https://github.com/mbedmicro/dfu-bootloader) are available publicly on GitHub. They are derived from Nordic's SDK V6.1.0 with very minor modifications. The boot loader cannot yet be built using the online toolchain on mbed.org because unlike regular mbed applications it needs to be located at a non-standard starting address at the upper end of the internal flash. Boot loader builds can be accomplished using a separate offline build system based on CMake. 
 
@@ -77,7 +77,7 @@ You can build the boot loader with the following steps:
 /BLE_BootLoader/Build$ make -j all
 ```
 
-###Size Limitations
+###Size limitations
 
 We expect to fit the boot loader within 16K of internal flash (at the upper end of the code space). This includes nearly 1K of configuration space (for boot loader settings), so the actual available code size is a little less than 15K. 
 
@@ -107,7 +107,7 @@ They specify the programming of the 4-byte value ``0x0003C000`` at address ``0x1
 
 Please also refer to the datasheet for the nRF51822 for the layout of registers within the UICR region.
 
-##Receiving Control at Startup
+##Receiving control at startup
 
 At reset, the SoftDevice checks the UICR.BOOTADDR register. Two things can happen:
 
@@ -115,7 +115,7 @@ At reset, the SoftDevice checks the UICR.BOOTADDR register. Two things can happe
 
 2. If the BOOTADDR register is set to an address different from ``0xFFFFFFFF``, the SoftDevice assumes that the boot loader vector table is located at this address. Interrupts are then forwarded to the boot loader at this address and execution will be started at the boot loader reset handler.
 
-##Setup to Forward Control to the Application
+##Setup to forward control to the application
 
 After being handed control, the boot loader looks for an application at the end of the SoftDevice (if it fails to find one, it sets up the DFUService and waits for a new firmware).
 
@@ -139,7 +139,7 @@ You can do that by amending the command line options to ``srec_cat`` with the fo
 -l-e-constant 0xFE 4 -generate 0x3FC0C 0x3FC20 -constant 0x00
 ```
 
-##Combining the SoftDevice and an Initial Application
+##Combining the SoftDevice and an initial application
 
 The initial image to be programmed onto a device needs to contain the SoftDevice with the DFU-boot loader and (optionally) an initial application. If there is no initial application, the boot loader will wait for FOTA.
 
@@ -158,7 +158,7 @@ combined.hex -intel
 
 Et voila, the above produces a ``combined.hex`` that is ready to be flashed onto the target following a mass-erase, and you've got your DFU boot loader all set up.
 
-##Receiving Control from an Application when FOTA Is Triggered
+##Receiving control from an application when FOTA is triggered
 
 The boot loader receives control in one of two possible cases: either from the SoftDevice during system startup (as we saw above), or from an application for which FOTA has been triggered. In the second case, the boot loader should always enter DFU mode and wait for a new firmware. It is important for the boot loader to be able to distinguish between the two possibilities. This is done through one of the registers in the power domain: the GPREGRET (general purpose retention register).
 
@@ -177,6 +177,3 @@ You're free to modify and enhance the boot loader. In fact, you're encouraged to
 We intend to rewrite the boot loader using mbed's BLE_API; we also want to abstract the platform agnostic parts of the boot loader to be able to produce a portable variety.
 
 Happy Hacking. And may FOTA be fun for you.
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
