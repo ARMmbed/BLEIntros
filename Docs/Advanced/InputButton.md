@@ -1,4 +1,4 @@
-#Creating an Input Service
+#Creating an input service
 
 With mbed BLE, we offer a growing set of SIG-defined BLE services implemented as C++ headers to ease application development. These can be found under [our services repository](https://github.com/mbedmicro/BLE_API/tree/master/services).
 
@@ -6,7 +6,7 @@ If, for instance, you needed to develop a heart-rate application for an mbed pla
 
 But, we don’t expect you to settle for what’s already been done; we expect you to develop applications for custom sensors and actuators,. These will often fall outside the scope of the standard Bluetooth services or the service templates offered by mbed BLE. In this case, you could use the ``BLE_API``. You may also find that you benefit from modelling your custom services as C++ classes for ease of use (and reuse). Here, we'd like to capture the process of creating a BLE service.
 
-#Button Service
+#Button service
 
 Let's create a service for a trivial sensor: a button. We'll assume a use-case where a phone-app would like to connect to this mbed application and poll for button state (that is, check whether the button is pressed or not). We could also set up notifications for asynchronous updates. In the non-connected state, the application simply advertises its ability to provide the button service.
 
@@ -14,7 +14,7 @@ Let's create a service for a trivial sensor: a button. We'll assume a use-case w
 Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_Button/).
 </span>
 
-##The Basic Template - Advertising and Connecting
+##The basic template - advertising and connecting
 
 Here's a basic template code to get you off the ground. We've thrown in a blinking LED to indicate program stability. This code doesn't create a custom service. It sets up:
 
@@ -137,7 +137,7 @@ Adding the button service UUID to the advertising payload is purely optional. Bu
 **Note:** interpreting non-standard service UUIDs has limited use, and may only work with custom phone apps.
 </span>
 
-##The Button State Characteristic
+##The button state characteristic
 
 ``BLE_API`` offers C++ abstractions for entities involved in service definition. A ``GattService`` class contains one or more ``GattCharacteristics``. The ``GattCharacteristics`` represents state variables exposed by the service. Every ``GattCharacteristic`` implicitly contains at least one ``GattAttribute`` to hold the value. It may be have more than one``GattAttribute``, but that is uncommon.
 
@@ -160,7 +160,7 @@ The code only looks complicated; it is in reality a simple use of C++ templates 
 **Tip:** there are several variants of ``GattCharacterisitc`` available to ease instantiation. Refer to template declarations at the bottom of [``GattCharacteristic.h``](https://github.com/mbedmicro/BLE_API/blob/master/public/GattCharacteristic.h).
 </span>
 
-##Adding Notifications
+##Adding notifications
 
 We can add to the buttonState characteristic definition to allow notifications. We'll use the optional parameters to specify additional properties:
 
@@ -172,7 +172,7 @@ We can add to the buttonState characteristic definition to allow notifications. 
 
 Notifications are a good way to establish asynchronous updates. With these updates, the app doesn’t have to keep checking the BLE device. Instead, the device will let the app know if there’s anything new. This helps the BLE device keep its energy usage down.
 
-##Constructing the Button Service
+##Constructing the button service
 
 We can use the ``buttonState``to construct a ``GattService`` called ``buttonService``. We use a bit of C/C++ syntax to create a one-element array, using an initialiser list of pointers to ``GattCharacteristics``.
 
@@ -192,7 +192,7 @@ We can then add the service to the BLE stack using ``BLEDevice::addService()``.
 	ble.addService(buttonService);```
 ```
 
-##Putting it Together
+##Putting it together
 
 So, now we have code that defines a custom button service containing a read-only characteristic:
 
@@ -271,7 +271,7 @@ When you connect to the service, you can see the characteristic and enable notif
 ![App notifications](../Advanced/Images/Button/Notifications.png)
 </span>
 
-##Updating the Button’s State
+##Updating the button’s state
 
 So far, the buttonState characteristic within the service has been static. But we can  use the ``BLEDevice::updateCharacteristicValue() API`` to update the characteristic when the button is pressed or released.
 
@@ -396,7 +396,7 @@ With notifications active, you can see the button characteristic's value change 
 ![Side by side - zero and one](../Advanced/Images/Button/SideBySide.png)
 </span>
 
-##The ButtonService Class
+##The ButtonService class
 
 The above application is fully functional, but has grown to be a bit messy. In particular, all the plumbing creating the button service could be encapsulated within a ``ButtonService`` class. In other words, it should be possible to substitute most of the above code with a simple initialisation of a ``ButtonService`` class.
 
@@ -592,6 +592,3 @@ And now with this encapsulated away in the ``ButtonService``, the main applicati
 ```
 
 One final note: notice that we've set up ``buttonServicePTR``. This was necessary because ``onDataWritten`` callback needs to refer to the ``buttonService`` object. One reasonable solution would have been to move the definition of the ``buttonService`` object in the global scope. But, constructing a ``buttonService`` object requires the use of ``BLE_API`` calls such as ``ble.addService()``. These can only be used after a call to ``ble.init()``. Unfortunately, ``ble.init()`` is called only within ``main()``, delaying the instantiation of ``buttonService``. This leads us to making a reference available to the ``buttonService`` object through a pointer. This is a bit roundabout.
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
