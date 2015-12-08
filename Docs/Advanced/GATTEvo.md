@@ -1,4 +1,4 @@
-#Custom GATT Service with Evothings
+#Custom GATT service with Evothings
 
 We're going to create a custom [generic attribute profile (GATT) service](../Introduction/BLEInDepth.md#services-and-profiles-gatt) to blink the LED on an mbed board, and demonstrate using Evothing to create a custom app that communicates with our GATT service.
 
@@ -19,7 +19,7 @@ You'll need:
 For more information about Evothings, see their [Quick Start Guide](http://evothings.com/getting-started-with-evothings-studio-in-90-seconds/), [tutorials](http://evothings.com/doc/studio/tutorials.html) and [BLE API reference](http://evothings.com/doc/plugins/com.evothings.ble/com.evothings.module_ble.html).
 </span>
 
-##Intro
+##Overview
 
 Unlike GAP, which broadcasts one-to-many, GATT uses a one-to-one connection between the board (server) and the phone (client). When the server connects with GATT it doesn't send all the data it has. Instead, it sends only a description of available services. Then, if the client requests details about a service, like the characteristics the service has and their values, GATT sends those details. In other words, all information must be explicitly requested from the server by the client. 
 
@@ -29,7 +29,7 @@ To demonstrate this we will create a service with two characteristics and assign
 You can see an example of setting up an input service on our [YouTube channel](https://www.youtube.com/watch?v=YaLG-6pDFrw).
 </span>
 
-##Review of Services
+##Review of services
 
 A GATT server can have multiple services. Each service contains one or more characteristics. Each characteristic has its own properties such as whether it can be read, send a notification or be written in to. Each characteristic has a single value of 512 bytes (although it's not mandatory to use them all) and can have zero or more descriptors.
 
@@ -232,7 +232,7 @@ And now that everything is set up, we can start advertising the connection:
 
 Compile your program and [install it on your board](../mbed_Classic/URIBeacon.md#compiling-and-installing-your-program) (drag and drop it to the board).
 
-##Interacting with the GATT Service - Evothings
+##Interacting with the GATT service - Evothings
 
 The service we created and put on our board is interactive: we can read the LED's status and change it. We do that using the "mbed Evothings GATT" example code. This example comes pre-packaged with the Evothings Workbench.
 
@@ -315,6 +315,3 @@ app.toggle = function()
         );
 }
 ```
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
