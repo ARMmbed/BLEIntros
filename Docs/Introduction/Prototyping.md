@@ -1,4 +1,4 @@
-#Rapid Prototyping on mbed BLE
+#Rapid prototyping on mbed BLE
 
 mbed comes from a heritage of rapid prototyping and allows you to test code and ideas on BLE devices very easily. For a truly awesome BLE experience, however, you'll need to pair mbed with tools for rapidly prototyping the app side of your solution. This article reviews tools that you might find useful in the early stages of development:
 
@@ -17,7 +17,7 @@ Once your prototype works as you wanted, you can invest some more time in your u
 </span>
 
 <a name="hardware">
-##Hardware Inputs
+##Hardware inputs
 </a>
 
 mbed supports a wide range of components, and many of them can be used to prototype user interaction. For example, [touch screens](http://developer.mbed.org/components/cat/display/), [wireless controllers](http://developer.mbed.org/components/cat/robotics/) or the buttons on the mbed board itself can be used for simple inputs.
@@ -29,7 +29,7 @@ mbed supports a wide range of components, and many of them can be used to protot
 [Evothings](http://evothings.com/) isn’t an mbed tool, but since it’s designed for the Internet of Things it works quite well with our BLE-enabled boards. It gives you the Evothings Studio on which to build your prototyping app, and an enveloping Evothings App that lets you run the app you built on your smartphone without custom-building it for each OS. You’ll see Evothings from time to time in our own samples, such as the [custom GAPP service sample](../Advanced/GATTEvo.md).
 
 <a name="apps">
-##Generic BLE Apps
+##Generic BLE apps
 </a>
 
 You can use a generic BLE app to see information sent by your device. In our samples we often use one of the following:
@@ -44,27 +44,24 @@ These apps scan for nearby BLE devices and display the information received from
 ![Read write](../Advanced/Images/LED/WriteValue.png)
 </span>
 
-##Debugging Techniques
+##Debugging techniques
 
 Debugging isn’t a prototyping technique, but since you can use it to show that your code works, it can be used as a first step or even as a proof of concept.
 
 <a name="chip">
-###Using the mbed Interface Chip
+###Using the mbed interface chip
 </a>
 
 You can use the mbed Interface Chip to receive messages from either ``printf()`` or ``pyOCD``. These are reviewed as part of our [debugging with the interface chip section](../Advanced/Debugging.md#debugging-with-the-mbed-interface-chip).
 
 <a name="uart">
-###Using the UART Service
+###Using the UART service
 </a>
 
 The UART Service can be used to debug directly over the BLE connection (with the aid of an app). For more information, see our [debugging with the UART service section](../Advanced/Debugging.md#the-uart-service). 
 
 <a name="sniffers">
-###Third-Party Sniffers
+###Third-party sniffers
 </a>
 
 Third party sniffers can intercept BLE communication on your phone or on dedicated hardware. For more information, see our [debugging with sniffers section](../Advanced/Debugging.md#sniffers).
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
