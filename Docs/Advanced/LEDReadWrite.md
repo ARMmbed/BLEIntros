@@ -1,6 +1,6 @@
 #Creating an Actuator Service
 
-With mbed BLE, we offer a growing set of SIG-defined BLE services implemented as C++ headers to ease application development. These can be found under [our services repository](https://github.com/mbedmicro/BLE_API/tree/master/services).
+With mbed BLE, we offer a growing set of SIG-defined BLE services implemented as C++ headers to ease application development. These can be found under [our services repository](https://github.com/ARMmbed/ble/tree/master/ble/services).
 
 But, we don’t expect you to settle for what’s already been done; we expect you to develop applications for custom sensors and actuators,. These will often fall outside the scope of the standard Bluetooth services or the service templates offered by mbed BLE. In this case, you could use the ``BLE_API``. You may also find that you benefit from modelling your custom services as C++ classes for ease of use (and reuse). Here, we'd like to capture the process of creating a BLE service.
 
@@ -159,7 +159,7 @@ The code only looks complicated; it is in reality a simple use of C++ templates 
 ```
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-**Tip:** there are several variants of ``GattCharacterisitc`` available to ease instantiation. Refer to template declarations at the bottom of [GattCharacteristic.h](https://github.com/mbedmicro/BLE_API/blob/master/public/GattCharacteristic.h).
+**Tip:** there are several variants of ``GattCharacterisitc`` available to ease instantiation. Refer to template declarations at the bottom of [GattCharacteristic.h](https://github.com/ARMmbed/ble/blob/master/ble/GattCharacteristic.h).
 </span>
 
 We can make ``ledState`` readable by using ``ReadWriteGattCharacterisitc<T>``. This will allow a phone app to connect and probe the ``ledState``:
