@@ -2,7 +2,7 @@
 
 This section covers some BLE and mbed concepts in greater detail.
 
-##Service Templates
+##Service templates
 
 With mbed BLE, we offer a growing set of SIG-defined BLE services implemented as C++ headers to ease application development. These can be found under [the mbed OS API services folder](https://github.com/ARMmbed/ble/tree/master/ble/services).
 
@@ -18,7 +18,7 @@ Creating a BLE service may sound scary, but we've created two templates that you
 
 <span style="background-color:#E6E6E6;  border:1px solid #000;display:block; height:100%; padding:10px">**Note:** These examples are all written for mbed Classic, but you may find them interesting even if you're working on mbed OS, becaues the underlying logic of BLE and the API is the same.</span>
 
-##Advanced Features
+##Advanced features
 
 Reviewing advanced features of standard implementations:
 
