@@ -7,7 +7,7 @@ BLE devices become interactive when you:
 * Provide a means of input. This can be local, like a button or a touchpad, or remote, like a mobile app or webpage. 
 * Write your program so that it reacts to these inputs.
 
-To learn about prototyping interactivity, see [here](../Advanced/Prototyping.md).
+To learn about prototyping interactivity, see [here](../Introduction/Prototyping.md).
 
 ##Q: How is a BLE beacon better than a QR code?
 
