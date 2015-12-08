@@ -32,7 +32,7 @@ You have to understand a few basic concepts of programming for mbed OS if you wa
 
 In mbed Classic, all application callbacks execute in handler mode (interrupt context). mbed OS comes with its own scheduler, [MINAR](https://github.com/ARMmbed/minar), which encourages an asynchronous programming style based on thread-mode callbacks (non-interrupt user context). With mbed OS, application code is made up entirely of callback handlers. We don’t even expose `main()` to users; instead; you should use `app_start()`. Please refer to [MINAR's documentation](https://github.com/ARMmbed/minar#impact) to understand its impact.
 
-
+**Tip:** An expended version of the MINAR documentation is avaialble in the [mbed OS user guide](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/Full_Guide/MINAR/).
 
 ## Guidelines for application code
 
@@ -67,15 +67,11 @@ Using MINAR to schedule callbacks means that the callback handler executes in th
 
 Again, you might find it useful to study the documentation covering [MINAR](https://github.com/ARMmbed/minar#minar-scheduler).
 
-
 ### Including BLE functionality in an application
 
-To help reduce the size of applications that use only other connectivity methods, mbed OS doesn't include BLE automatically. In fact, BLE functionality is ‘just another module’ to an mbed OS application. To use BLE in your application, you will therefore need to explicitly include the BLE API in both the application code and the project's [``module.json`` file]() (as you'll see below).
-
+To help reduce the size of applications that use only other connectivity methods, mbed OS doesn't include BLE automatically. In fact, BLE functionality is ‘just another module’ to an mbed OS application. To use BLE in your application, you will therefore need to explicitly include the BLE API in both the application code and the project's [``module.json`` file](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/Full_Guide/app_on_yotta/) (as you'll see below).
 
 #### General BLE functionality 
-
-
 
 To include BLE functionality, add the following to your application's ``main.cpp` file:
 
@@ -103,11 +99,11 @@ You will also need to add these dependencies to your project's ``module.json`` f
 
 The version qualification for the BLE dependency (above) indicates that any implementation of `ble` at major API version 2 would suffice. Ideally, new applications should depend on the latest version of BLE, which can be deduced from the ``module.json`` of the master branch of the ble repository on Github: https://github.com/ARMmbed/ble/blob/master/module.json#L3
 
-For more information about versions in ``module.json``, please see the [mbed OS User Guide]().
+For more information about versions in ``module.json``, please see the [mbed OS User Guide](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/Full_Guide/app_on_yotta/).
 
 #### BLE profiles and services
 
-The BLE API offers standard BLE [profiles and services](../InDepth/BLEInDepth.md) through headers in the ``ble`` module. These include [GATT and GAP](https://docs.mbed.com/docs/ble-intros/en/latest/InDepth/BLEInDepth/) functionality and some of the [BLE services](https://github.com/ARMmbed/ble/tree/master/ble/services). 
+The BLE API offers standard BLE [profiles and services](../Introduction/BLEInDepth.md) through headers in the ``ble`` module. These include GATT and GAP functionality and some of the [BLE services](https://github.com/ARMmbed/ble/tree/master/ble/services). 
 
 Here is the [BLE Heart Rate example](https://github.com/ARMmbed/ble-examples/tree/master/BLE_HeartRate) including the headers it requires:
 
@@ -121,6 +117,6 @@ Here is the [BLE Heart Rate example](https://github.com/ARMmbed/ble-examples/tre
 
 ## Where next
 
-A good way to understand the difference between mbed OS and mbed Classic BLE applications is to compare their [examples](examples.md).
+A good way to understand the difference between mbed OS and mbed Classic BLE applications is to compare their [examples](mbed_OS_examples.md).
 
 You might also want to look at the [mbed OS User Guide](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/).
