@@ -1,4 +1,4 @@
-#Creating Services
+#Creating services
 
 With mbed BLE, we offer a growing set of SIG-defined BLE services implemented as C++ headers to ease application development. These can be found under [the mbed OS API services folder](https://github.com/ARMmbed/ble/tree/master/ble/services).
 
@@ -9,6 +9,3 @@ Creating a BLE service may sound daunting, but we've created two templates that 
 1. The *input service* template demonstrates the use of a simple input (boolean values) from a read-only characteristic. You can get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_Button/) or read the full explanation [here](../Advanced/InputButton.md).
 
 2. The *actuator service* template demonstrates the use of a read-write characteristic to control an LED through a phone app. You can get the code [here](https://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_LED/) or read the full explanation [here](../Advanced/LEDReadWrite.md).
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
