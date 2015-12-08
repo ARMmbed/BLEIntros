@@ -26,9 +26,9 @@ Reviewing advanced features of standard implementations:
 
 * Creating an app for [high data rate, low latency transfers](../Advanced/HighData.md), if you need to transfer large amounts of data.
 
-## Firmware over the air
+## Firmware Over the Air
 
-Reviewing firmware over the air (FOTA):
+Reviewing Firmware Over the Air (FOTA):
 
 * General [overview of FOTA](../Advanced/FOTA.md): how to use FOTA in an application.
 
