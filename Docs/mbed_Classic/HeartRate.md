@@ -17,7 +17,7 @@ This tutorial covers a lot, and you may need to read it more than once:
 ##What you'll need
 </a>
 
-If you don't already know how to import your board and a program into the compiler, please see the [URI Beacon](../mbed_Classic/URIBeacon.md) sample.
+If you don't already know how to import your board and a program into the compiler, please see the [UriBeacon](../mbed_Classic/URIBeacon.md) sample.
 
 To see the heart rate information on your phone, download Panobike for [iOS](https://itunes.apple.com/gb/app/panobike/id567403997?mt=8) or [Android](https://play.google.com/store/apps/details?id=com.topeak.panobike&hl=en).
 
@@ -99,7 +99,7 @@ The third line of code is more interesting, as in it we set up the full service.
 		hrmCounter, HeartRateService::LOCATION_FINGER);
 ```
 
-In our [URI Beacon](../mbed_Classic/URIBeacon.md) sample we talked about objects and their instances. To get the heart rate measurement we want, we need to create an instance of a type called ``HeartRateService``. This is an object that's defined as part of ``BLE_API``, so you can find its ``.h`` file in your compiler by going to **BLE_HeartRate > BLE_API > services > HeartRateService.h**. You don't need to look at that file if you don't want to, but you might find it interesting.
+In our [UriBeacon](../mbed_Classic/URIBeacon.md) sample we talked about objects and their instances. To get the heart rate measurement we want, we need to create an instance of a type called ``HeartRateService``. This is an object that's defined as part of ``BLE_API``, so you can find its ``.h`` file in your compiler by going to **BLE_HeartRate > BLE_API > services > HeartRateService.h**. You don't need to look at that file if you don't want to, but you might find it interesting.
 
 When we create the instance of a type, we first give it a name (in this case ``hrService``), and then provide it with information it needs to be set up correctly:
 
