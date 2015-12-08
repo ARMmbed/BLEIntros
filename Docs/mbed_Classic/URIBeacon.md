@@ -1,4 +1,4 @@
-#Tutorial 1: URI Beacon (and an Intro to the mbed Compiler)
+#Tutorial 1: URI Beacon (and an intro to the mbed Compiler)
 
 Please note: the code in these examples is for mbed Classic. If you want to see the code adjusted for mbed OS, please see our [BLE samples on GitHub](https://github.com/ARMmbed/ble-examples)
 
@@ -15,7 +15,7 @@ This tutorial covers:
 
 You might want to start with a short [video](https://www.youtube.com/watch?v=vZ-_fZlV2-w&feature=youtu.be).
 
-##What You'll Need
+##What you'll need
 
 To get this going, you'll need:
 
@@ -36,7 +36,7 @@ To get this going, you'll need:
 
 + A user account on [developer.mbed.org](http://developer.mbed.org) to access the compiler. We recommend you get access to the compiler even if you don't have a board yet, so that you can play along with the example.
 
-##Quick Guide
+##Quick guide
 
 If you’re familiar with mbed and our compiler, you can get the beacon working in just a few minutes:
 
@@ -58,7 +58,7 @@ If you’re familiar with mbed and our compiler, you can get the beacon working 
 **Note:** the URIBeacon goes into [configuration mode](../Advanced/URIBeaconAdv.md) for the first 60 seconds after it's turned on. It will appear with your information when that minute is up.
 
 <a name=”compiler”>
-##Getting Started With the Compiler
+##Getting started with the compiler
 </a>
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
@@ -98,7 +98,7 @@ To select a board for the program:
 </span>
 
 <a name=”import”>
-##Getting a URI Beacon Program
+##Getting a URI Beacon program
 </a>
 
 URI Beacons have a basic structure that's available on the mbed website. All you need to do is import it to the compiler and replace the default information with your own. To do that:
@@ -128,7 +128,7 @@ You can now edit the beacon. We'll show you below how to do it, but first we'd l
 ___
 
 <a name=”understanding”>
-##Understanding the Code
+##Understanding the code
 </a>
 
 <span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
@@ -146,7 +146,7 @@ Click ``main.cpp`` to see its code.
 The first thing you'll see is a bunch of green text, sitting between /* and */. Text between /* and */ is always *comments*, meaning the compiler doesn't read it - it's intended for humans. Comments are supposed to help you understand the code, but they sometimes fall a bit short of that.
 
 <a name=”include”>
-###Including Other Files
+###Including other files
 </a>
 
 ```c
@@ -200,7 +200,7 @@ You can very easily spot the interesting bit - it's "http://www.mbed.org". You c
 The URI Beacon isn't limitless in size. It can only accept 18 characters, with “HTTP://www” counting as one, and the suffix “.org” (or “.com”) counting as another. If your URL is very long, you'll have to use services like [bit.ly](https://bitly.com) and [tinyurl.com](http://tinyurl.com) to get a short version.
 
 <a name=”installing”>
-##Compiling and Installing Your Program
+##Compiling and installing your program
 </a>
 
 For your code to work on a board, it needs to be compiled: the compiler takes all of the files it needs and turns them into a single file, in our case a file of type *HEX*. That file can then be installed on your board. 
@@ -223,7 +223,7 @@ To compile and install your program:
 <br />
 **Note:** the URIBeacon goes into [configuration mode](../Advanced/URIBeaconAdv.md) for the first 60 seconds after it's turned on. It will appear with your information when that minute is up.
 
-##Finding Your URI Beacon
+##Finding your URI Beacon
 
 Using one of the applications you installed on your phone during our *What You'll Need* section, discover your beacon and check that the URL is correct (don't forget that the beacon will be in configuration mode for the first 60 seconds after it's turned on).
 
@@ -260,6 +260,3 @@ To get a URI Beacon:
 7. You had a nice cup of tea to celebrate. 
 
 Along the way, you also learned a little about object oriented programming and the general principle of importing, compiling and installing programs. Try our [Heart Rate Monitor Tutorial](../mbed_Classic/HeartRate.md) next.
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
