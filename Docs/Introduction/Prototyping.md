@@ -52,16 +52,16 @@ Debugging isn’t a prototyping technique, but since you can use it to show that
 ###Using the mbed interface chip
 </a>
 
-You can use the mbed Interface Chip to receive messages from either ``printf()`` or ``pyOCD``. These are reviewed as part of our [debugging with the interface chip section](../Advanced/Debugging.md#debugging-with-the-mbed-interface-chip).
+You can use the mbed Interface Chip to receive messages from either ``printf()`` or ``pyOCD``. These are reviewed as part of our [debugging with the interface chip section](../Introduction/Debugging.md#debugging-with-the-mbed-interface-chip).
 
 <a name="uart">
 ###Using the UART service
 </a>
 
-The UART Service can be used to debug directly over the BLE connection (with the aid of an app). For more information, see our [debugging with the UART service section](../Advanced/Debugging.md#the-uart-service). 
+The UART Service can be used to debug directly over the BLE connection (with the aid of an app). For more information, see our [debugging with the UART service section](../Introduction/Debugging.md#the-uart-service). 
 
 <a name="sniffers">
 ###Third-party sniffers
 </a>
 
-Third party sniffers can intercept BLE communication on your phone or on dedicated hardware. For more information, see our [debugging with sniffers section](../Advanced/Debugging.md#sniffers).
+Third party sniffers can intercept BLE communication on your phone or on dedicated hardware. For more information, see our [debugging with sniffers section](../Introduction/Debugging.md#sniffers).
