@@ -75,14 +75,13 @@ To help reduce the size of applications that use only other connectivity methods
 
 To include BLE functionality, add the following to your application's ``main.cpp` file:
 
-```
+```c++
 #include "ble/BLE.h"
 ```
 
 If you're using one of the standard Bluetooth services that come with BLE API, include its header as well:
 
-```c
-
+```c++
 #include "ble/services/iBeacon.h" 
 ```
 
@@ -94,7 +93,8 @@ You will also need to add these dependencies to your project's ``module.json`` f
 	"ble": "^2.0.0" 
 }
 ```
-**Tip:** ``ble`` has ``mbed-drivers`` as its own dependency, so there is no need to explicitly list ``mbed-drivers`` in ``module.json``.
+
+<span style="background-color:#E6E6E6;  border:1px solid #000;display:block; height:100%; padding:10px">**Tip:** ``ble`` has ``mbed-drivers`` as its own dependency, so there is no need to explicitly list ``mbed-drivers`` in ``module.json``.</span>
 
 The version qualification for the BLE dependency (above) indicates that any implementation of `ble` at major API version 2 would suffice. Ideally, new applications should depend on the latest version of BLE, which can be deduced from the ``module.json`` of the master branch of the ble repository on Github: https://github.com/ARMmbed/ble/blob/master/module.json#L3
 
@@ -111,7 +111,6 @@ Here is the [BLE Heart Rate example](https://github.com/ARMmbed/ble-examples/tre
 #include "ble/BLE.h"
 #include "ble/Gap.h"
 #include "ble/services/HeartRateService.h"
-
 ```
 
 ## Where next
