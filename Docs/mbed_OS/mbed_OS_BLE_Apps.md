@@ -42,23 +42,23 @@ If you're porting an mebd Classic application to mbed OS, please:
 
 * Unlike the former main(), app_start() should *not* finish with an infinite wait loop for system events or for entering sleep. mbed OS expects app_start() to return quickly and yield to the scheduler for callback execution. The application should handle events by posting callbacks, and when there are no pending callbacks the system is automatically put to low-power sleep (the scheduler implicitly calls the equivalent of ``BLE::waitForEvent()``). Please remove any equivalent of the following from your app_start():
 
-  ```C++
-  while (true) {
-      ble.waitForEvent();
-  }
-  ```
+	```
+	while (true) {
+		ble.waitForEvent();
+	}
+	```
 
 * If you expect objects to persist across callbacks, you need to allocate them either from the global static context or [from the free-store](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/Full_Guide/memory/) (that is, using malloc() or new()). This is similar to the situation in mbed Classic - the key difference is that objects allocated in app_start() do not persist over the lifetime of the programme as they would if created in main().
 
 * Migrate your applications to newer system APIs. For instance, with mbed Classic, applications use the Ticker to post time-deferred callbacks. You should now use MINAR's postCallback APIs directly. Refer to [https://github.com/ARMmbed/minar#using-events](https://github.com/ARMmbed/minar#using-events). The replacement code would look something like:
 
-	```C
+	```
 	minar::Scheduler::postCallback(callback).delay(minar::milliseconds(DELAY));
 	```
 	
 	Or, if we are more explicit:
 	
-	```C
+	```
 	Event e(FunctionPointer0<void>(callback).bind());
 	minar::Scheduler::postCallback(e).delay(minar::milliseconds(DELAY));
 	```
@@ -75,9 +75,8 @@ To help reduce the size of applications that use only other connectivity methods
 
 To include BLE functionality, add the following to your application's ``main.cpp` file:
 
-```c
+```
 #include "ble/BLE.h"
-
 ```
 
 If you're using one of the standard Bluetooth services that come with BLE API, include its header as well:
