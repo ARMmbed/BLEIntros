@@ -26,13 +26,13 @@ Verify that the program is running by scanning for a Heart Rate monitor with a B
 
 You have to understand a few basic concepts of programming for mbed OS if you want to make the transition from mbed Classic, because the two are very different. You can then either write new applications, or port your mbed Classic applications to mbed OS.
 
-**Note:** To learn more about mbed OS, see [the user guide](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/).
+<span style="background-color:#E6E6E6;  border:1px solid #000;display:block; height:100%; padding:10px">**Note:** To learn more about mbed OS, see [the user guide](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/).</span>
 
 ## Moving to asynchronous programming
 
 In mbed Classic, all application callbacks execute in handler mode (interrupt context). mbed OS comes with its own scheduler, [MINAR](https://github.com/ARMmbed/minar), which encourages an asynchronous programming style based on thread-mode callbacks (non-interrupt user context). With mbed OS, application code is made up entirely of callback handlers. We don’t even expose `main()` to users; instead; you should use `app_start()`. Please refer to [MINAR's documentation](https://github.com/ARMmbed/minar#impact) to understand its impact.
 
-**Tip:** An expended version of the MINAR documentation is avaialble in the [mbed OS user guide](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/Full_Guide/MINAR/).
+<span style="background-color:#E6E6E6;  border:1px solid #000;display:block; height:100%; padding:10px">**Tip:** An expended version of the MINAR documentation is avaialble in the [mbed OS user guide](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/Full_Guide/MINAR/).</span>
 
 ## Guidelines for application code
 
