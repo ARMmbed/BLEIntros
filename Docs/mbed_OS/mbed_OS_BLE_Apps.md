@@ -52,20 +52,20 @@ If you're porting an mebd Classic application to mbed OS, please:
 
 * Migrate your applications to newer system APIs. For instance, with mbed Classic, applications use the Ticker to post time-deferred callbacks. You should now use MINAR's postCallback APIs directly. Refer to [https://github.com/ARMmbed/minar#using-events](https://github.com/ARMmbed/minar#using-events). The replacement code would look something like:
 
-  ```C++
-  minar::Scheduler::postCallback(callback).delay(minar::milliseconds(DELAY));
-  ```
-
-  Or, if we are more explicit:
-
-  ```C++
-  Event e(FunctionPointer0<void>(callback).bind());
-  minar::Scheduler::postCallback(e).delay(minar::milliseconds(DELAY));
-  ```
+	```C
+	minar::Scheduler::postCallback(callback).delay(minar::milliseconds(DELAY));
+	```
+	
+	Or, if we are more explicit:
+	
+	```C
+	Event e(FunctionPointer0<void>(callback).bind());
+	minar::Scheduler::postCallback(e).delay(minar::milliseconds(DELAY));
+	```
   
-Using MINAR to schedule callbacks means that the callback handler executes in thread mode (non-interrupt context), which results in a more stable system.
+	Using MINAR to schedule callbacks means that the callback handler executes in thread mode (non-interrupt context), which results in a more stable system.
 
-Again, you might find it useful to study the documentation covering [MINAR](https://github.com/ARMmbed/minar#minar-scheduler).
+	Again, you might find it useful to study the documentation covering [MINAR](https://github.com/ARMmbed/minar#minar-scheduler).
 
 ### Including BLE functionality in an application
 
@@ -75,14 +75,14 @@ To help reduce the size of applications that use only other connectivity methods
 
 To include BLE functionality, add the following to your application's ``main.cpp` file:
 
-```c++
+```c
 #include "ble/BLE.h"
 
 ```
 
 If you're using one of the standard Bluetooth services that come with BLE API, include its header as well:
 
-```c++
+```c
 
 #include "ble/services/iBeacon.h" 
 ```
