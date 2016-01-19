@@ -21,3 +21,9 @@ However, to prevent confusion, we have divided the guide into sections:
 1. [Advanced samples and features](Advanced/Overview.md): Reviews more advanced BLE features. These focus on mbed Classic, but serve as good demonstrations of using the API, so mbed OS users might find them interesting, too.
 
 1. [Additional resources](Additional/Overview.md): Provides links to other sources, answers to frequently asked questions and a list of abbreviations.
+ 
+If you're looking for the API documentation, please see:
+
+ *  [For mbed Classic](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_API/).
+ *  [For mbed OS](https://docs.mbed.com/docs/ble-api/en/master/api/index.html).
+
