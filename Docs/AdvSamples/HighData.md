@@ -23,7 +23,7 @@ To decrease the time between successive packets, we can send and receive data be
 ###Client to Server
 </a>
 
-For sending data from the client to the server, the ``_Write Without Response_`` property must be enabled in the write characteristic. Using ``BLE_API``, this is done by setting the ``GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY`` property in the property field when instantiating a new ``GattCharacteristic``:
+For sending data from the client to the server, the ``_Write Without Response_`` property must be enabled in the write characteristic. Using ``BLE_API``, this is done by setting the ``GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_WRITE_WITHOUT_RESPONSE`` property in the property field when instantiating a new ``GattCharacteristic``:
 
 ```c
 	WriteOnlyGattCharacteristic<uint32_t> writeTo(uuid, valuePtr,
