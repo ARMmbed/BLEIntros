@@ -15,7 +15,7 @@ pages:
 - ['Introduction/Limitations.md', 'Introduction to BLE', 'Limitations']
 - ['mbed_OS/Overview.md', 'BLE on mbed OS', 'Section overview']
 - ['mbed_OS/mbed_OS_BLE_Apps.md', 'BLE on mbed OS', 'Creating mbed OS BLE applications']
-- ['mbed_OS/mbed_OS_examples.md', 'BLE on mbed OS', 'Review of mbed OS BLE applications']
+- ['mbed_OS/mbed_OS_examples.md', 'BLE on mbed OS', 'mbed OS BLE sample applications']
 - ['mbed_Classic/Overview.md', 'BLE on mbed Classic', 'Section overview']
 - ['mbed_Classic/Events.md', 'BLE on mbed Classic', 'Event-driven programming']
 - ['mbed_Classic/URIBeacon.md', 'BLE on mbed Classic', 'Tutorial 1: UriBeacon']
