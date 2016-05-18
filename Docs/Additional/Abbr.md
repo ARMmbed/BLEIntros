@@ -2,37 +2,37 @@
 
 Below is a list of commonly used abbreviations. 
 
-**AD**: *a*dvertising *d*ata. 
+<span class="tips">**AD**: *a*dvertising *d*ata. 
 
 **AD Struct**: *a*dvertising *d*ata *struct*ure. 
 
-**API**: *a*pplication *p*rogram *i*nterface.
+**API**: *a*pplication *p*rogram *i*nterface.</span>
 
-**BLE SIG**: Bluetooth Special Interest Group.
+<span class="tips">**BLE SIG**: Bluetooth Special Interest Group.</span>
 
-**DFU**: *d*evice *f*irmware *u*pdate.
+<span class="tips">**DFU**: *d*evice *f*irmware *u*pdate.</span>
 
-**FOTA**: *f*irmware *o*ver *t*he *a*ir.
+<span class="tips">**FOTA**: *f*irmware *o*ver *t*he *a*ir.</span>
 
-**GAP**: *g*eneric *a*ccess *p*rofile.
+<span class="tips">**GAP**: *g*eneric *a*ccess *p*rofile.
 
 **GATT**: *g*eneric *att*ribute *p*rofile.
 
-**GCC**: *GNU* *c*ompiler *c*ollection. 
+**GCC**: *GNU* *c*ompiler *c*ollection. </span>
 
-**HRM**: *h*eart *r*ate *m*onitor. 
+<span class="tips">**HRM**: *h*eart *r*ate *m*onitor. </span>
 
-**IDE**: *i*ntegrated *d*evelopment *e*nvironment.
+<span class="tips">**IDE**: *i*ntegrated *d*evelopment *e*nvironment.
 
-**I/O**: *i*nput and *o*utput.
+**I/O**: *i*nput and *o*utput.</span>
 
-**MCU**: *m*icrocontroller. 
+<span class="tips">**MCU**: *m*icrocontroller. </span>
 
-**PDU**: *p*acket *d*ata *u*nit.
+<span class="tips">**PDU**: *p*acket *d*ata *u*nit.</span>
 
-**SDK**: *s*oftware *d*evelopment *k*it.
+<span class="tips">**SDK**: *s*oftware *d*evelopment *k*it.</span>
 
-**UART**: *u*niversal *a*synchronous *r*eceiver/*t*ransmitter. 
+<span class="tips">**UART**: *u*niversal *a*synchronous *r*eceiver/*t*ransmitter. 
 
 **UICR**: *u*ser *i*nformation *c*onfiguration *r*egisters.
 
@@ -40,4 +40,4 @@ Below is a list of commonly used abbreviations.
 
 **URL**: *u*niform *r*esource *l*ocator. 
 
-**UUID**: *u*niversally *u*nique *id*entifier. 
+**UUID**: *u*niversally *u*nique *id*entifier. </span>
