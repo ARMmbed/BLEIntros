@@ -51,39 +51,39 @@ First, we need to include a couple of headers: for mbed and for BLE:
 
 ```c
 
-	#include "mbed.h"
-	#include "BLEDevice.h"
+#include "mbed.h"
+#include "BLEDevice.h"
 ```
 
 Then, we declare the BLE object:
 
 ```c
 
-	BLEDevice ble;
+BLEDevice ble;
 ```
 
 Now we provide the name of the device:
 
 ```c
 	
-	// change the device's name
-	const static char DEVICE_NAME[] = "ChangeMe!!"; 
+// change the device's name
+const static char DEVICE_NAME[] = "ChangeMe!!"; 
 ```
 
 We have up to 26 bytes of data to customise (less is fine, but you can't exceed 26 bytes!):
 
 ```c
 
-	// example of hex data
-	const static uint8_t AdvData[] = {0x01,0x02,0x03,0x04,0x05};   
+// example of hex data
+const static uint8_t AdvData[] = {0x01,0x02,0x03,0x04,0x05};   
 ```
 
 We can use character data instead of hex:
 
 ```c
 
-	// example of character data
-	const static uint8_t AdvData[] = {"ChangeThisData"};         
+// example of character data
+const static uint8_t AdvData[] = {"ChangeThisData"};         
 ```
 
 <span class="notes">**Note:** most BLE scanner programs will only display the hex representation, so you may see the characters displayed as the numbers that represent them.</span>
@@ -92,9 +92,9 @@ All of that was just setup. Now we need to do something with it. We start by cal
 
 ```c
 
-	int main(void)
-	{
-		ble.init();
+int main(void)
+{
+	ble.init();
 ```
 
 <span class="notes">**Note:** the ``ble.init()`` should always be performed before any other BLE setup.</span>
@@ -103,10 +103,10 @@ Next, we set up the advertising flags:
 
 ```c
 
-	    ble.accumulateAdvertisingPayload(GapAdvertisingData::
-			BREDR_NOT_SUPPORTED | 
-			GapAdvertisingData::LE_GENERAL_DISCOVERABLE );
-    	ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
+ble.accumulateAdvertisingPayload(GapAdvertisingData::
+		BREDR_NOT_SUPPORTED | 
+		GapAdvertisingData::LE_GENERAL_DISCOVERABLE );
+ble.setAdvertisingType(GapAdvertisingParams::ADV_CONNECTABLE_UNDIRECTED);
 ```
 
 The second half of the first line puts the advertisement in the *general discoverable* mode, and the last flag sets the type of advertisement to be a *connectable undirected advertisement*. These are the flags that will cost us a total of three out of the 31 bytes.
@@ -117,9 +117,9 @@ We can then set up the payload. The header ``MANUFACTURER_SPECIFIC_DATA`` is whe
 
 ```c
 
-	    ble.accumulateAdvertisingPayload(GapAdvertisingData::
-			MANUFACTURER_SPECIFIC_DATA, 
-			AdvData, sizeof(AdvData));
+ble.accumulateAdvertisingPayload(GapAdvertisingData::
+		MANUFACTURER_SPECIFIC_DATA, 
+		AdvData, sizeof(AdvData));
 ```
 
 Notice that the ``AdvData`` variable is added to the BLE device at this point.
@@ -127,9 +127,8 @@ Notice that the ``AdvData`` variable is added to the BLE device at this point.
 Now we set the [advertising interval](../Introduction/ConnectionParameters.md#setadvertisinginterval) and start advertising:
 
 ```c
-
-    ble.setAdvertisingInterval(160); // 100ms; in multiples of 0.625ms.
-    ble.startAdvertising();
+ble.setAdvertisingInterval(160); // 100ms; in multiples of 0.625ms.
+ble.startAdvertising();
 ```
 
 This will take care of the GAP advertising on the mbed side.
