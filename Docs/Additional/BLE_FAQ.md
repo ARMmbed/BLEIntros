@@ -53,7 +53,7 @@ A beacon can explicitly reveal its location through its advertisement payload. B
 
 ##Q: What is BLE's range, and can I extend or limit it?
 
-Bluetooth signals have a limited range, with Class 2 devices limited to about ten meters (33 feet); this can be extended with an antenna. 
+Bluetooth signals have a limited range, with Class 2 devices limited to about ten meters (33 feet); this can be extended with an antenna.
 
 Concrete and metal can block signals, so a room's walls may be the signal's border, even if the room is small.
 
