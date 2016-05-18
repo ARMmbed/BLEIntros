@@ -1,10 +1,10 @@
-#mbed BLE
+# mbed BLE
 
 Welcome. We're here to help you build something awesome with an mbed-enabled BLE platform.
 
 If you're totally new check out our [starters documentation](Introduction/BeginnersIntro.md), which will walk you through everything you need to know. If you have some BLE experience, check out the [short version](Introduction/DevIntro.md) and get your first project up and running. 
 
-# mbed Classic, mbed OS and the BLE API
+## mbed Classic, mbed OS and the BLE API
 
 mbed currently supports two generations of the mbed operating system: mbed Classic and mbed OS. Both generations rely on APIs: mbed Classic has ``BLE_API``, and mbed OS has renamed it, simply, ``ble``.
 
@@ -22,6 +22,8 @@ However, to prevent confusion, we have divided the guide into sections:
 
 1. [Additional resources](Additional/Overview.md): Provides links to other sources, answers to frequently asked questions and a list of abbreviations.
  
+## BLE documentation 
+
 If you're looking for the API documentation, please see:
 
  *  [For mbed Classic](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_API/).
