@@ -2,33 +2,42 @@
 
 Below is a list of commonly used abbreviations. 
 
-<span class="tips">**AD**: *a*dvertising *d*ata. 
-</br>**AD Struct**: *a*dvertising *d*ata *struct*ure. 
-</br>**API**: *a*pplication *p*rogram *i*nterface.</span>
+**AD**: *a*dvertising *d*ata. 
 
-<span class="tips">**BLE SIG**: Bluetooth Special Interest Group.</span>
+**AD Struct**: *a*dvertising *d*ata *struct*ure. 
 
-<span class="tips">**DFU**: *d*evice *f*irmware *u*pdate.</span>
+**API**: *a*pplication *p*rogram *i*nterface.
 
-<span class="tips">**FOTA**: *f*irmware *o*ver *t*he *a*ir.</span>
+**BLE SIG**: Bluetooth Special Interest Group.
 
-<span class="tips">**GAP**: *g*eneric *a*ccess *p*rofile.
-</br>**GATT**: *g*eneric *att*ribute *p*rofile.
-</br>**GCC**: *GNU* *c*ompiler *c*ollection. </span>
+**DFU**: *d*evice *f*irmware *u*pdate.
 
-<span class="tips">**HRM**: *h*eart *r*ate *m*onitor. </span>
+**FOTA**: *f*irmware *o*ver *t*he *a*ir.
 
-<span class="tips">**IDE**: *i*ntegrated *d*evelopment *e*nvironment.
-</br>**I/O**: *i*nput and *o*utput.</span>
+**GAP**: *g*eneric *a*ccess *p*rofile.
 
-<span class="tips">**MCU**: *m*icrocontroller. </span>
+**GATT**: *g*eneric *att*ribute *p*rofile.
 
-<span class="tips">**PDU**: *p*acket *d*ata *u*nit.</span>
+**GCC**: *GNU* *c*ompiler *c*ollection. 
 
-<span class="tips">**SDK**: *s*oftware *d*evelopment *k*it.</span>
+**HRM**: *h*eart *r*ate *m*onitor. 
 
-<span class="tips">**UART**: *u*niversal *a*synchronous *r*eceiver/*t*ransmitter. 
-</br>**UICR**: *u*ser *i*nformation *c*onfiguration *r*egisters.
-</br>**URI**: *u*niform *r*esource *i*dentifier.
-</br>**URL**: *u*niform *r*esource *l*ocator. 
-</br>**UUID**: *u*niversally *u*nique *id*entifier. </span>
+**IDE**: *i*ntegrated *d*evelopment *e*nvironment.
+
+**I/O**: *i*nput and *o*utput.
+
+**MCU**: *m*icrocontroller. 
+
+**PDU**: *p*acket *d*ata *u*nit.
+
+**SDK**: *s*oftware *d*evelopment *k*it.
+
+**UART**: *u*niversal *a*synchronous *r*eceiver/*t*ransmitter. 
+
+**UICR**: *u*ser *i*nformation *c*onfiguration *r*egisters.
+
+**URI**: *u*niform *r*esource *i*dentifier.
+
+**URL**: *u*niform *r*esource *l*ocator. 
+
+**UUID**: *u*niversally *u*nique *id*entifier. 
