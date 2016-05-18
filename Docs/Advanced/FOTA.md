@@ -2,13 +2,11 @@
 
 Firmware Over the Air (FOTA) is our latest development for Bluetooth Low Energy (BLE) devices. We're working towards enabling FOTA for the platforms based on Nordic's [nRF51822](http://developer.mbed.org/platforms/Nordic-nRF51822/) Bluetooth system, so that any BLE application may enable FOTA by the simple addition of a Device Firmware Upgrade (DFU) service to its GATT server.
 
-You can view a [short video about FOTA](https://www.youtube.com/watch?v=54V2_4TR9Wo#t=114), starting at 01:55. We'll show you the same example, in greater detail, below. 
+<span class="tips">You can view a [short video about FOTA](https://www.youtube.com/watch?v=54V2_4TR9Wo#t=114), starting at 01:55. We'll show you the same example, in greater detail, below.</span>
 
 Note that this functionality requires the use of a (Nordic-specific) DFU boot loader on the device, to provide the basic functionality of firmware download and reprogramming. Instructions for the boot loader’s installation are available below.
 
-<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-**Warning:** at the moment, the firmware-update protocol has very little security; we're working on this.
-</span>
+<span class="warnings">**Warning:** at the moment, the firmware-update protocol has very little security; we're working on this.</span>
 
 We’ll start with a general review of the software components needed to support FOTA, and then move to an execution example to show just how easily a FOTA update can be performed.
 
@@ -22,17 +20,14 @@ The following figure shows the layout of the main software components of a FOTA-
 
 3.	**Boot loader:** responsible for firmware updates.
 
-<span style="text-align:center; display:block;">
-![](../Advanced/Images/FOTA/FOTASystem.png)
-</span>
-<span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
-*Main software components in a FOTA-dapable system*</span>
+<span class="images">![](../Advanced/Images/FOTA/FOTASystem.png)<span>Main software components in a FOTA-dapable system</span></span>
 
 ###How FOTA updates work
 
 FOTA updates rely on the SoftDevice and boot loader:
 
 1.	On power up, the SoftDevice checks the User Information Configuration Register (UICR). The UICR can point either to the app or to the boot loader. 
+	
 	* If the UICR points to the app, the SoftDevice passes control to the app, which starts up normally.
 	
 	* If the UICR points to the boot loader, the SoftDevice passes control to the boot loader. The UICR will point to the boot loader if the boot loader had overwritten it; see our Default Boot Loader to understand how that's done. For a FOTA platform, a bootloader is always resident, with the UICR pointing to it.
@@ -45,11 +40,7 @@ The FOTA process can currently be driven from an external BLE agent, such as an 
 
 We'll soon be releasing our own reference apps for iOS and Android, together with SDKs to build custom apps for FOTA. 
 
-<span style="text-align:center; display:block;">
-![](../Advanced/Images/FOTA/Sequence.png)
-</span>
-<span style="background-color: #F0F0F5; display:block; height:100%; padding:10px;">
-*FOTA sequence diagram*</span>
+<span class="images">![](../Advanced/Images/FOTA/Sequence.png)<span>FOTA sequence diagram</span></span>
 
 ###The default boot loader
 
@@ -76,21 +67,20 @@ If you're building for a non-FOTA platform, you'll need to explicitly introduce 
 2. Call the service, as shown below:
 
 ```c
+/* Enable over-the-air firmware updates. 
+*Instantiating DFUSservice introduces a
+* control characteristic which can be used to 
+* trigger the application to
+* handover control to a resident bootloader. */
 
-	/* Enable over-the-air firmware updates. 
-	*Instantiating DFUSservice introduces a
-	* control characteristic which can be used to 
-	* trigger the application to
-	* handover control to a resident bootloader. */
-
-	DFUService dfu(ble);
+DFUService dfu(ble);
 ```
 
 ##Running a FOTA update
 
 The next three sections explain how to use Nordic's Master Control Panel to view, trigger and drive a FOTA update. As an example, we’ll update the default app bundled into the initial boot loader image. Among other services, this application offers a DFU service that supports FOTA.
 
-You can view a [short video demonstrating this](https://www.youtube.com/watch?v=54V2_4TR9Wo#t=114), starting at 01:55.
+<span class="tips">You can view a [short video demonstrating this](https://www.youtube.com/watch?v=54V2_4TR9Wo#t=114), starting at 01:55.</span>
 
 ###Viewing the DFU service
 
@@ -98,21 +88,15 @@ The following images show how to use Nordic's Master Control Panel to view a DFU
 
 * The default app (DefaultApp), listed in the Master Control Panel. Tap the app to view more information.
 
-<span style="text-align:center; display:block;">
-![](../Advanced/Images/FOTA/Viewing1.png)
-</span>
+<span class="images">![](../Advanced/Images/FOTA/Viewing1.png)</span>
 
 * General information for the default app. Note the Device Firmware Update Service section; tap the section to view more information.
 
-<span style="text-align:center; display:block;">
-![](../Advanced/Images/FOTA/Viewing2.png)
-</span>
+<span class="images">![](../Advanced/Images/FOTA/Viewing2.png)</span>
 
 * Detailed information for the Device Firmware Update Service.
 
-<span style="text-align:center; display:block;">
-![](../Advanced/Images/FOTA/Viewing3.png)
-</span>
+<span class="images">![](../Advanced/Images/FOTA/Viewing3.png)</span>
 
 ###Triggering FOTA
 
@@ -120,36 +104,26 @@ The following images show how Nordic's Master Control Panel can be used to cause
 
 * We start at the detailed view of the app that we saw in the previous section. The DFU Control Point offers FOTA triggers.
 
-<span style="text-align:center; display:block;">
-![](../Advanced/Images/FOTA/Trigger1.png)
-</span>
+<span class="images">![](../Advanced/Images/FOTA/Trigger1.png)</span>
 
 * Tap the up arrow to view the write options. This is the FOTA’s control-point.
 
-<span style="text-align:center; display:block;">
-![](../Advanced/Images/FOTA/Trigger2.png)
-</span>
+<span class="images">![](../Advanced/Images/FOTA/Trigger2.png)</span>
 
 * The control-point options are:
 	* SoftDevice.
 	* Boot loader.
 	* Application.
 
-<span style="text-align:center; display:block;">
-![](../Advanced/Images/FOTA/Trigger3.png)
-</span>
+<span class="images">![](../Advanced/Images/FOTA/Trigger3.png)</span>
 
 * For this example, we select the third option: Application.
 
-<span style="text-align:center; display:block;">
-![](../Advanced/Images/FOTA/Trigger4.png)
-</span>
+<span class="images">![](../Advanced/Images/FOTA/Trigger4.png)</span>
 
 * The Master Control Panel now shows the default application under the name DfuTarg, indicating that the boot loader is running.
 
-<span style="text-align:center; display:block;">
-![](../Advanced/Images/FOTA/Trigger5.png)
-</span>
+<span class="images">![](../Advanced/Images/FOTA/Trigger5.png)</span>
 
 ###Driving FOTA
 
@@ -157,90 +131,71 @@ Finally, these images show the main FOTA sequence using the boot loader:
 
 * We start at the detailed view of the app that we saw in the first section. Since we already triggered FOTA in the previous section (meaning we transferred control of the application to the DFU-service), we can now update the application.
 
-<span style="text-align:center; display:block;">
-![](../Advanced/Images/FOTA/Driving1.png)
-</span>
+<span class="images">![](../Advanced/Images/FOTA/Driving1.png)</span>
 
 * Tap the DFU button to select a file type.
 
-<span style="text-align:center; display:block;">
-![](../Advanced/Images/FOTA/Driving2.png)
-</span>
+<span class="images">![](../Advanced/Images/FOTA/Driving2.png)</span>
 
 * The file type options are:
 	* SoftDevice.
 	* Boot loader.
 	* Application.
 	* Multiple files (in ZIP format).
-<br /><br />For this example, we select the Application file type.
+
+	For this example, we select the Application file type.
 
 
-<span style="text-align:center; display:block;">
-![](../Advanced/Images/FOTA/Driving3.png)
-</span>
+<span class="images">![](../Advanced/Images/FOTA/Driving3.png)</span>
 
 * We can now select a source for the file.
 
-
-<span style="text-align:center; display:block;">
-![](../Advanced/Images/FOTA/Driving4.png)
-</span>
+<span class="images">![](../Advanced/Images/FOTA/Driving4.png)</span>
 
 * The update begins as soon as we select the file. We can see its progress, and the transfer speed.
 
-
-<span style="text-align:center; display:block;">
-![](../Advanced/Images/FOTA/Driving5.png)
-</span>
-
+<span class="images">![](../Advanced/Images/FOTA/Driving5.png)</span>
 
 * When the update is finished, we return to the Master Control Panel. The application is no longer under the boot loader’s control. Instead, it is back under its own control, and is therefore no longer listed as DfuTarg (note that the update changed the application’s name, so that it is also no longer called DefaultApp). 
 
-
-<span style="text-align:center; display:block;">
-![](../Advanced/Images/FOTA/Driving6.png)
-</span>
+<span class="images">![](../Advanced/Images/FOTA/Driving6.png)</span>
 
 ###Attribute and service caching
 
 Note that a GATT client app often caches the results from a service discovery. However, after changing or updating an application – and especially after replacing it with a different application – your app may need to re-discover services. You may therefore want to restart the app or the Bluetooth service after a FOTA update.
 
 ##UART access over BLE
+
 ###Overview
 
 If you want to receive console outputs from an updated app, it is possible to do so over the BLE UART Service. For instance, the default app that comes bundled with the boot loader generates regular pings on the RX characteristic of the UARTService. These pings can be received using several UART apps, such as Nordic's nRF UART.
 
 Please note:
 
-1.	At the moment, you cannot have more than one active connection to a BLE device. For example, if you're working with a heart-rate application and you've connected to it using nRF UART for console output, then you cannot simultaneously connect to it from another heart-rate phone app.
+1. At the moment, you cannot have more than one active connection to a BLE device. For example, if you're working with a heart-rate application and you've connected to it using nRF UART for console output, then you cannot simultaneously connect to it from another heart-rate phone app.
 
-2.	Console messages are sent in notification packets of up to 20 bytes; this limit is imposed by the Bluetooth standard. Longer messages need to be cropped into a sequence of 20-byte packets. 
+1. Console messages are sent in notification packets of up to 20 bytes; this limit is imposed by the Bluetooth standard. Longer messages need to be cropped into a sequence of 20-byte packets. 
 
-3.	Output buffers internal to the UARTService are flushed upon encountering a newline character; the receiving UART application should be able to stitch together cropped portions of longer messages.
+1. Output buffers internal to the UARTService are flushed upon encountering a newline character; the receiving UART application should be able to stitch together cropped portions of longer messages.
 
 ###Using the UART service
 
 The following program illustrates the use of UARTService to redirect something like printf() to use the BLE transport.
 
-<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-[Import the BLE_UARTConsole program to your compiler](https://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_UARTConsole/).
-</span>
+<span class="tips">[Import the BLE_UARTConsole program to your compiler](https://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_UARTConsole/).</span>
 
 ```c
+#if NEED_CONSOLE_OUTPUT
+#define DEBUG(STR) { if (uart) uart->write(STR, strlen(STR)); }
+#else
+#define DEBUG(...) /* nothing */
+#endif /* #if NEED_CONSOLE_OUTPUT */
 
-	#if NEED_CONSOLE_OUTPUT
-	#define DEBUG(STR) { if (uart) uart->write(STR, strlen(STR)); }
-	#else
-	#define DEBUG(...) /* nothing */
-	#endif /* #if NEED_CONSOLE_OUTPUT */
-
-		uart = new UARTService(ble);
-		DEBUG("ping\r\n");
+	uart = new UARTService(ble);
+	DEBUG("ping\r\n");
 ```
 
-<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-**Note:** You will need to include ``UARTService.h.``
-</span>
+<span class="notes">**Note:** You will need to include ``UARTService.h.``</span>
 
 ##Limitations of the current implementation
 
