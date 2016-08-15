@@ -18,6 +18,3 @@ And on other sites:
 2. [Bluetooth on Apple devices](https://developer.apple.com/bluetooth/).
 
 3. [Bluetooth on Android devices](https://developer.android.com/guide/topics/connectivity/bluetooth-le.html).
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.

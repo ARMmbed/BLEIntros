@@ -88,6 +88,3 @@ FOTA works (on the Nordic nRF51822 board), but at the moment it doesn’t come w
 _____
 
 Still have questions? Ask [our community](https://developer.mbed.org/teams/Bluetooth-Low-Energy/community/).
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.

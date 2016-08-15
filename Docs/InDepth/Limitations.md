@@ -11,6 +11,3 @@ Technology always has limitations. For mbed BLE, the most important ones are:
 4. **Bluetooth signals have a limited range, with Class 2 devices limited to about ten meters (33 feet)**; this can be extended with an antenna. Signals can be blocked by concrete and metal, so they don't always travel through walls. 
 
 5. **Bluetooth 4 doesn't work on older mobile phones**, but as phones are upgraded quite often, in a year or two you can expect the majority of phones in the west to be able to communicate with our devices.
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.

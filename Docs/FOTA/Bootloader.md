@@ -177,6 +177,3 @@ You're free to modify and enhance the boot loader. In fact, you're encouraged to
 We intend to rewrite the boot loader using mbed's BLE_API; we also want to abstract the platform agnostic parts of the boot loader to be able to produce a portable variety.
 
 Happy Hacking. And may FOTA be fun for you.
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.

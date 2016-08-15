@@ -315,6 +315,3 @@ app.toggle = function()
         );
 }
 ```
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.

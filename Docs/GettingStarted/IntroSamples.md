@@ -29,6 +29,3 @@ We have a YouTube channel with videos that you might find useful:
 3. [BLE GAP example](https://www.youtube.com/watch?v=m9uIx-NFS08): how to use the GAP advertising packet to transmit data with a BLE capable mbed platform. First without a name, then adding a name service to the device.
 
 4. [Firmware updates](https://youtu.be/SSRCJgzeEek?list=PLiVCejcvpsetJ1n9nRXzLWvE4dp4RwGOf): how to update the firmware on an mbed platform.
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.

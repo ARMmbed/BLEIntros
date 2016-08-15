@@ -252,7 +252,3 @@ The following program illustrates the use of UARTService to redirect something l
 * FOTA requires installing an initial image containing the boot loader. For non-official mbed platforms, this means that a user would need to understand the internals well enough to be able to build an initial image, and also find a programming interface to transfer it to the target. We're working on releasing a USB->SWD adaptor that can target nRF51822 boards that don't have an mbed CMSIS-DAP interface.
 
 * The two-stage FOTA process is cumbersome and error-prone. We're working on creating a simple reference app to drive FOTA. Eventually we hope to release an SDK to allow users to create their own FOTA driver applications.
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
-

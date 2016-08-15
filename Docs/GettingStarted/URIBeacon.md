@@ -260,6 +260,3 @@ To get a URI Beacon:
 7. You had a nice cup of tea to celebrate. 
 
 Along the way, you also learned a little about object oriented programming and the general principle of importing, compiling and installing programs. Try our [Heart Rate Monitor Tutorial](../GettingStarted/HeartRate.md) next.
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.

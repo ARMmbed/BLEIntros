@@ -24,5 +24,3 @@ Reviewing advanced features of standard implementations:
 
 * Creating an app for [high data rate, low latency transfers](../AdvSamples/HighData.md), if you need to transfer large amounts of data.
 
-______
-Copyright © 2015 ARM Ltd. All rights reserved.

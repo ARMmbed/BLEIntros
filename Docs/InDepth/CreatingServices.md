@@ -9,6 +9,3 @@ Creating a BLE service may sound daunting, but we've created two templates that 
 1. The *input service* template demonstrates the use of a simple input (boolean values) from a read-only characteristic. You can get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_Button/) or read the full explanation [here](../AdvSamples/InputButton.md).
 
 2. The *actuator service* template demonstrates the use of a read-write characteristic to control an LED through a phone app. You can get the code [here](https://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_LED/) or read the full explanation [here](../AdvSamples/LEDReadWrite.md).
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.

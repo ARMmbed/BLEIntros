@@ -14,5 +14,3 @@ This section covers some BLE and mbed concepts in greater detailed than our Gett
 
 4. [BLE Limitations](../InDepth/Limitations.md): current limitations of the BLE technology. 
 
-______
-Copyright © 2015 ARM Ltd. All rights reserved.

@@ -337,6 +337,3 @@ The server will notify our phone with each new value:
 </span>
 
 And that's it!
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.

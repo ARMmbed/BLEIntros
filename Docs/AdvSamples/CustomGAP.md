@@ -183,7 +183,3 @@ The phone app will show:
 The code for the application is in the **app.js** file. It is written in JavaScript and can be modified in real time. Try making a modification, save the changes, and watch them load to the Evothings client on your phone.
 
 This demo is very simple but provides a starting point for more advanced programming. 
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
-

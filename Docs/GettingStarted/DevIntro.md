@@ -133,6 +133,3 @@ To see the heart rate information on your phone, download PanoBike for [iOS](htt
 ____
 
 For service creation, see our [advanced samples](../AdvSamples/Overview.md).
-
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
