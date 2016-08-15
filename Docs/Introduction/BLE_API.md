@@ -64,5 +64,3 @@ We have examples of [mbed OS BLE apps, along with documentation](https://github.
 
 [You can read](https://docs.mbed.com/docs/ble-api/en/master/api/index.html) the current API documentation.
 
-______
-Copyright © 2015 ARM Ltd. All rights reserved.
