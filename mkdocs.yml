@@ -35,4 +35,4 @@ pages:
 - ['Additional/BLE_FAQ.md','Additional resources', 'FAQ']
 - ['Additional/Links.md','Additional resources', 'Links']
 
-extra_css: ['FullCSS.css']
+copyright: © ARM Ltd. Copyright 2016 – ARM mbed IoT Device Platform
