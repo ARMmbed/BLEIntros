@@ -29,6 +29,6 @@ However, to prevent confusion, we have divided the guide into sections:
 
 If you're looking for the API documentation, please see:
 
- *  [For mbed 2.0 and 5.0](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_API/).
+ *  [For mbed OS 5.0](https://docs.mbed.com/docs/mbed-os-api-reference/en/5.1/APIs/communication/ble/).
  *  [For mbed OS 3.0](https://docs.mbed.com/docs/ble-api/en/master/api/index.html).
 
