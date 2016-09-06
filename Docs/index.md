@@ -2,7 +2,7 @@
 
 Welcome. We're here to help you build something awesome with an mbed-enabled BLE platform.
 
-<span class="notes">**Note:** This version of the documentation covers mbed OS 2.0 and 5.0. If you're working with mbed OS 3.0, please [go here](https://docs.mbed.com/docs/ble-intros/en/latest/).</span>
+<span class="notes">**Note:** This version of the documentation covers mbed OS 2.0 and 5.0. If you're working with mbed OS 3.0, please [go here](https://docs.mbed.com/docs/ble-intros/en/mbed_OS_3/).</span>
 
 If you're totally new check out our [starters documentation](GettingStarted/BeginnersIntro.md), which will walk you through everything you need to know. If you have some BLE experience, check out the [short version](GettingStarted/DevIntro.md) and get your first project up and running. 
 
