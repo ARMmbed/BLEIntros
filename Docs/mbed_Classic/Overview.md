@@ -2,7 +2,7 @@
 
 Our tutorials are here to help you learn how to use BLE on mbed boards, and with the mbed Compiler. All tutorials include a quick-guide for experienced developers and more detailed explanations for new developers. A few of the first tutorials include some C++ background. 
 
-Please note: the code in these examples is for mbed Classic. If you want to see the code adjusted for mbed OS, please see our [BLE samples on GitHub](https://github.com/ARMmbed/ble-examples)
+Please note: the code in these examples is for mbed OS 2.0 and 5.0. If you want to see the code adjusted for mbed OS 3.0, please see our [BLE samples on GitHub](https://github.com/ARMmbed/ble-examples)
 
 The tutorials are numbered. You can work through them in any order you want, but if you're new to C++, you should probably go by the order we've suggested.
 

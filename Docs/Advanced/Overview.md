@@ -16,7 +16,7 @@ Creating a BLE service may sound scary, but we've created two templates that you
 
 * We have two more service samples that include the use of Evothings custom apps. The first reviews [customising a GAP advertising packet](../Advanced/CustomGAP.md), and the second creates a [GATT service for control of a LED](../Advanced/GATTEvo.md).
 
-<span style="background-color:#E6E6E6;  border:1px solid #000;display:block; height:100%; padding:10px">**Note:** These examples are all written for mbed Classic, but you may find them interesting even if you're working on mbed OS, becaues the underlying logic of BLE and the API is the same.</span>
+<span style="background-color:#E6E6E6;  border:1px solid #000;display:block; height:100%; padding:10px">**Note:** These examples are all written for mbed 2.0 and 5.0, but you may find them interesting even if you're working on mbed OS 3.0, because the underlying logic of BLE and the API is the same.</span>
 
 ##Advanced features
 
