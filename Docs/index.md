@@ -4,7 +4,9 @@ Welcome. We're here to help you build something awesome with an mbed-enabled BLE
 
 If you're totally new check out our [starters documentation](Introduction/BeginnersIntro.md), which will walk you through everything you need to know. If you have some BLE experience, check out the [short version](Introduction/DevIntro.md) and get your first project up and running. 
 
-## mbed Classic, mbed OS and the BLE API
+## mbed OS 3.0
+
+<span class="notes">**Note:** This version of the documentation covers mbed OS 3.0. If you're working with version 2.0 or 5.0, please [go here](https://docs.mbed.com/docs/ble-intros/en/latest/).</span>
 
 mbed currently supports two generations of the mbed operating system: mbed Classic and mbed OS. Both generations rely on APIs: mbed Classic has ``BLE_API``, and mbed OS has renamed it, simply, ``ble``.
 
