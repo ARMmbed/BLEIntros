@@ -4,7 +4,7 @@ mbed development relies on APIs to do the grunt work of controlling the platform
 
 While the mbed OS interfaces with the platform itself, mbed’s BLE_API interfaces with the BLE controller on the platform. It's designed to hide the BLE stack’s complexity behind C++ abstractions and is compatible with all BLE-enabled mbed platforms. mbed OS and the BLE_API together let developers implicitly benefit from all the low-power optimisations the hardware offers by automatically configuring the clocks, timers and other hardware peripherals to work at their lowest power consumption. All that developers have to do is remember to yield to the BLE_API ``waitForEvent()`` function whenever the system needs to idle (for more information about ``waitForEvent()``, see our [event-driven programming section](../mbed_Classic/Events.md).
 
-<span style="background-color:#E6E6E6;  border:1px solid #000;display:block; height:100%; padding:10px">**Note:** the API is shared between mbed Classic and mbed OS.</span>
+<span style="background-color:#E6E6E6;  border:1px solid #000;display:block; height:100%; padding:10px">**Note:** the API is shared between all mbed OS versions.</span>
 
 ##BLE_API, bridges and stacks
 

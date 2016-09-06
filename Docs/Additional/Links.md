@@ -5,8 +5,8 @@ The fun doesn't stop here. You may be interested in:
 1. Our [online community](https://developer.mbed.org/teams/Bluetooth-Low-Energy/community/).
 
 2. The BLE API:
- *  [For mbed Classic](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_API/).
- *  [For mbed OS](https://docs.mbed.com/docs/ble-api/en/master/api/index.html).
+ *  [For mbed OS 2.0](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_API/).
+ *  [For mbed OS 3.0](https://docs.mbed.com/docs/ble-api/en/master/api/index.html).
 
 3. Further [samples](http://developer.mbed.org/teams/Bluetooth-Low-Energy/).
 

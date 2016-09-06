@@ -1,12 +1,12 @@
-# Creating mbed OS BLE applications
+# Creating mbed OS 3.0 BLE applications
 
-This chapter explains how to use BLE on mbed OS, our [new operating system](www.mbed.com/en/development/software/mbed-os) for mbed-enabled boards.
+This chapter explains how to use BLE on [mbed OS 3.0](www.mbed.com/en/development/software/mbed-os) for mbed-enabled boards.
 
-The BLE libraries in mbed OS work as they did in mbed Classic: the BLE API abstracts the BLE protocol, so that no matter which manufacturer's stack you're using, the API remains the same and you don't need to rewrite your code. By moving to yotta, however, we have gained the ability to switch between API implementations depending on which [target](http://yottadocs.mbed.com/tutorial/targets.html) we select. 
+The BLE libraries in mbed OS 3.0 work as they did in mbed 2.0: the BLE API abstracts the BLE protocol, so that no matter which manufacturer's stack you're using, the API remains the same and you don't need to rewrite your code. By moving to yotta, however, we have gained the ability to switch between API implementations depending on which [target](http://yottadocs.mbed.com/tutorial/targets.html) we select. 
 
 ## Instructions for the impatient
 
-If you want to jump straight in - and already have some background with mbed or BLE - this section allows you to get a BLE example running on an existing supported mbed OS board.
+If you want to jump straight in - and already have some background with mbed or BLE - this section allows you to get a BLE example running on an existing supported mbed OS 3.0 board.
 
 1. Install yotta [by following the docs here](http://yottadocs.mbed.com).
 1. Clone the ble-examples repository:
@@ -22,25 +22,25 @@ If you want to jump straight in - and already have some background with mbed or 
 
 Verify that the program is running by scanning for a Heart Rate monitor with a BLE scanning app on your computer or phone (see below for more).
 
-## Migrating from mbed Classic and the original mbed IDE
+## Migrating from mbed OS 2.0 and the original mbed IDE
 
-You have to understand a few basic concepts of programming for mbed OS if you want to make the transition from mbed Classic, because the two are very different. You can then either write new applications, or port your mbed Classic applications to mbed OS.
+You have to understand a few basic concepts of programming for mbed OS 3.0 if you want to make the transition from mbed OS 2.0, because the two are very different. You can then either write new applications, or port your mbed OS 2.0 applications to mbed OS 3.0.
 
-<span style="background-color:#E6E6E6;  border:1px solid #000;display:block; height:100%; padding:10px">**Note:** To learn more about mbed OS, see [the user guide](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/).</span>
+<span style="background-color:#E6E6E6;  border:1px solid #000;display:block; height:100%; padding:10px">**Note:** To learn more about mbed OS 3.0, see [the user guide](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/).</span>
 
 ## Moving to asynchronous programming
 
-In mbed Classic, all application callbacks execute in handler mode (interrupt context). mbed OS comes with its own scheduler, [MINAR](https://github.com/ARMmbed/minar), which encourages an asynchronous programming style based on thread-mode callbacks (non-interrupt user context). With mbed OS, application code is made up entirely of callback handlers. We don’t even expose `main()` to users; instead; you should use `app_start()`. Please refer to [MINAR's documentation](https://github.com/ARMmbed/minar#impact) to understand its impact.
+In mbed OS 2.0, all application callbacks execute in handler mode (interrupt context). mbed OS 3.0 comes with its own scheduler, [MINAR](https://github.com/ARMmbed/minar), which encourages an asynchronous programming style based on thread-mode callbacks (non-interrupt user context). With mbed OS 3.0, application code is made up entirely of callback handlers. We don’t even expose `main()` to users; instead; you should use `app_start()`. Please refer to [MINAR's documentation](https://github.com/ARMmbed/minar#impact) to understand its impact.
 
-<span style="background-color:#E6E6E6;  border:1px solid #000;display:block; height:100%; padding:10px">**Tip:** An expended version of the MINAR documentation is avaialble in the [mbed OS user guide](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/Full_Guide/MINAR/).</span>
+<span style="background-color:#E6E6E6;  border:1px solid #000;display:block; height:100%; padding:10px">**Tip:** An expended version of the MINAR documentation is avaialble in the [mbed OS 3.0 user guide](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/Full_Guide/MINAR/).</span>
 
 ## Guidelines for application code
 
-If you're porting an mebd Classic application to mbed OS, please:
+If you're porting an mbed OS 2.0 application to mbed OS 3.0, please:
 
 * Replace `main()` with `void app_start(int argc, char *argv[])`. app_start() receives control after system initialization, but should finish quickly without blocking (like any other callback handler). If application initialization needs to issue blocking calls, app_start() can pend callbacks for later activity.
 
-* Unlike the former main(), app_start() should *not* finish with an infinite wait loop for system events or for entering sleep. mbed OS expects app_start() to return quickly and yield to the scheduler for callback execution. The application should handle events by posting callbacks, and when there are no pending callbacks the system is automatically put to low-power sleep (the scheduler implicitly calls the equivalent of ``BLE::waitForEvent()``). Please remove any equivalent of the following from your app_start():
+* Unlike the former main(), app_start() should *not* finish with an infinite wait loop for system events or for entering sleep. mbed OS 3.0 expects app_start() to return quickly and yield to the scheduler for callback execution. The application should handle events by posting callbacks, and when there are no pending callbacks the system is automatically put to low-power sleep (the scheduler implicitly calls the equivalent of ``BLE::waitForEvent()``). Please remove any equivalent of the following from your app_start():
 
 	```
 	while (true) {
@@ -48,9 +48,9 @@ If you're porting an mebd Classic application to mbed OS, please:
 	}
 	```
 
-* If you expect objects to persist across callbacks, you need to allocate them either from the global static context or [from the free-store](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/Full_Guide/memory/) (that is, using malloc() or new()). This is similar to the situation in mbed Classic - the key difference is that objects allocated in app_start() do not persist over the lifetime of the programme as they would if created in main().
+* If you expect objects to persist across callbacks, you need to allocate them either from the global static context or [from the free-store](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/Full_Guide/memory/) (that is, using malloc() or new()). This is similar to the situation in mbed OS 2.0 - the key difference is that objects allocated in app_start() do not persist over the lifetime of the programme as they would if created in main().
 
-* Migrate your applications to newer system APIs. For instance, with mbed Classic, applications use the Ticker to post time-deferred callbacks. You should now use MINAR's postCallback APIs directly. Refer to [https://github.com/ARMmbed/minar#using-events](https://github.com/ARMmbed/minar#using-events). The replacement code would look something like:
+* Migrate your applications to newer system APIs. For instance, with mbed OS 2.0, applications use the Ticker to post time-deferred callbacks. You should now use MINAR's postCallback APIs directly. Refer to [https://github.com/ARMmbed/minar#using-events](https://github.com/ARMmbed/minar#using-events). The replacement code would look something like:
 
 	```
 	minar::Scheduler::postCallback(callback).delay(minar::milliseconds(DELAY));
@@ -69,7 +69,7 @@ If you're porting an mebd Classic application to mbed OS, please:
 
 ### Including BLE functionality in an application
 
-To help reduce the size of applications that use only other connectivity methods, mbed OS doesn't include BLE automatically. In fact, BLE functionality is ‘just another module’ to an mbed OS application. To use BLE in your application, you will therefore need to explicitly include the BLE API in both the application code and the project's [``module.json`` file](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/Full_Guide/app_on_yotta/) (as you'll see below).
+To help reduce the size of applications that use only other connectivity methods, mbed OS 3.0 doesn't include BLE automatically. In fact, BLE functionality is ‘just another module’ to an mbed OS 3.0 application. To use BLE in your application, you will therefore need to explicitly include the BLE API in both the application code and the project's [``module.json`` file](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/Full_Guide/app_on_yotta/) (as you'll see below).
 
 #### General BLE functionality 
 
@@ -98,7 +98,7 @@ You will also need to add these dependencies to your project's ``module.json`` f
 
 The version qualification for the BLE dependency (above) indicates that any implementation of `ble` at major API version 2 would suffice. Ideally, new applications should depend on the latest version of BLE, which can be deduced from the ``module.json`` of the master branch of the ble repository on Github: https://github.com/ARMmbed/ble/blob/master/module.json#L3
 
-For more information about versions in ``module.json``, please see the [mbed OS User Guide](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/Full_Guide/app_on_yotta/).
+For more information about versions in ``module.json``, please see the [mbed OS 3.0 User Guide](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/Full_Guide/app_on_yotta/).
 
 #### BLE profiles and services
 
@@ -115,6 +115,6 @@ Here is the [BLE Heart Rate example](https://github.com/ARMmbed/ble-examples/tre
 
 ## Where next
 
-A good way to understand the difference between mbed OS and mbed Classic BLE applications is to compare their [examples](mbed_OS_examples.md).
+A good way to understand the difference between mbed OS 3.0 and mbed OS 2.0 BLE applications is to compare their [examples](mbed_OS_examples.md).
 
-You might also want to look at the [mbed OS User Guide](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/).
+You might also want to look at the [mbed OS 3.0 User Guide](https://docs.mbed.com/docs/getting-started-mbed-os/en/latest/).
