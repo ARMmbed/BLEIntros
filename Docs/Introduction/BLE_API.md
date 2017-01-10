@@ -58,7 +58,7 @@ The class's member functions can be divided by purpose:
 
 ##Sample mbed BLE apps
 
-We have examples of [mbed OS BLE apps, along with documentation](https://github.com/ARMmbed/ble-examples).
+We have examples of [mbed OS BLE apps, along with documentation](https://github.com/ARMmbed/mbed-os-example-ble).
 
 ##Full BLE_API documentation
 
