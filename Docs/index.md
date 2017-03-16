@@ -8,8 +8,6 @@ This guide covers:
 
 1. [Introduction to BLE](Introduction/Overview.md): Explores BLE as a technology and as a protocol. While this section might occasionally refer to one version or another of mbed OS, it is largely valid for all versions.
 
-1. [BLE on mbed OS 3.0](mbed_OS/Overview.md): Helps the transition from mbed 2.0 or 5.0 to mbed OS, with a focus on BLE.
-
 1. [Advanced samples and features](Advanced/Overview.md): Reviews more advanced BLE features.
 
 1. [Additional resources](Additional/Overview.md): Provides links to other sources, answers to frequently asked questions and a list of abbreviations.
