@@ -10,12 +10,11 @@ You'll need:
 
 1. A BLE-enabled mbed board. [Any of these will work](https://developer.mbed.org/platforms/?connectivity=3).
 
-2. A BLE-capable smartphone or tablet.
+1. A BLE-capable smartphone or tablet.
 
-2. Install the [Evothings Workbench on your PC](http://evothings.com/download/) and the app on your phone. See here for [Android](https://play.google.com/store/apps/details?id=com.evothings.evothingsclient) or [iOS](https://itunes.apple.com/nz/app/evothings-client/id848974292?mt=8).
+1. Install the [Evothings Workbench on your PC](http://evothings.com/download/) and the app on your phone. See here for [Android](https://play.google.com/store/apps/details?id=com.evothings.evothingsclient) or [iOS](https://itunes.apple.com/nz/app/evothings-client/id848974292?mt=8).
 
-<span class="tips">For more information about Evothings, see their [Quick Start Guide](http://evothings.com/getting-started-with-evothings-studio-in-90-seconds/), [tutorials](http://evothings.com/doc/studio/tutorials.html) and [BLE API reference](http://evothings.com/doc/plugins/com.evothings.ble/com.evothings.module_ble.html).
-</span>
+<span class="tips">For more information about Evothings, see their [Quick Start Guide](http://evothings.com/getting-started-with-evothings-studio-in-90-seconds/), [tutorials](http://evothings.com/doc/studio/tutorials.html) and [BLE API reference](http://evothings.com/doc/plugins/com.evothings.ble/com.evothings.module_ble.html).</span>
 
 ## Overview
 
@@ -96,7 +95,7 @@ Now we can set up the custom service:
 
 1. We initialise a GATT service by filling the characteristics array with references to the read and write characteristics. 
 
-2. We declare the GATT service. The declaration includes the UUID, the characteristics array and the number of characteristics included.
+1. We declare the GATT service. The declaration includes the UUID, the characteristics array and the number of characteristics included.
 
 ```c
 // Set up custom service
@@ -170,11 +169,11 @@ Now we set up the advertising parameters:
 
 1. First, we set the flag saying that this advertising message is BLE only. 
 
-2. We then set the advertising type as connectable and undirected. 
+1. We then set the advertising type as connectable and undirected. 
 
-3. The payload can now be given the device name we've chosen and the service's UUID list.
+1. The payload can now be given the device name we've chosen and the service's UUID list.
 
-4. Last, we establish the advertising interval, in multiples of 0.625ms (which is the standard interval size).
+1. Last, we establish the advertising interval, in multiples of 0.625ms (which is the standard interval size).
 
 ```c
 /* setup advertising */
@@ -212,9 +211,9 @@ while (true) {
 }
 ```
 
-Compile your program and [install it on your board](../mbed_Classic/URIBeacon.md#compiling-and-installing-your-program) (drag and drop it to the board).
+Compile your program and [install it on your board](https://docs.mbed.com/docs/mbed-os-handbook/en/latest/getting_started/blinky_compiler/) (drag and drop it to the board).
 
-##Interacting with the GATT service - Evothings
+## Interacting with the GATT service - Evothings
 
 The service we created and put on our board is interactive: we can read the LED's status and change it. We do that using the "mbed Evothings GATT" example code. This example comes pre-packaged with the Evothings Workbench.
 

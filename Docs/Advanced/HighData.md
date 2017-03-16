@@ -1,4 +1,4 @@
-#High data rate, low latency transfers
+# High data rate, low latency transfers
 
 As mentioned in the [previous sections](../Introduction/BeginnersIntro.md), BLE is primarily designed for low data rate applications (where only a few bytes are transmitted every second). However, you may find yourself in need of transferring a large amount of data. So in this section we'll show you how to build a high data rate, low latency application using mbed’s ``BLE_API`` while still keeping a low power profile.
 
@@ -17,7 +17,7 @@ To decrease the time between successive packets, we can send and receive data be
 
 1. The **_Write Without Response_** command for sending data from the [client to the server](#write).
 
-2. The **_Handle Value Notification_** message for sending data from the [server to the client](#handle).
+1. The **_Handle Value Notification_** message for sending data from the [server to the client](#handle).
 
 <a name="write">
 ### Client to server

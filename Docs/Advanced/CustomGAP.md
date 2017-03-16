@@ -1,25 +1,24 @@
-#Custom GAP advertising packet
+#C ustom GAP advertising packet
 
 We can change the content of the [generic access profile (GAP)](../Introduction/BLEInDepth.md#advertising-and-connected-mode) advertising packet (AP) to contain the information we want it to contain. If we have only a small amount of data we want to communicate to the world, then we can use the modified GAP AP to send that information to any BLE scanner, without waiting for it to establish a connection. In this article, we're going to modify advertising data step by step, then receive the result with a custom-built Evothings app.
 
 <span class="tips">Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_GAP_Example/).</span>
 
-##Prerequisites
+## Prerequisites
 
 You'll need:
 
 1. A BLE-enabled mbed board. [Any of these will work](https://developer.mbed.org/platforms/?connectivity=3).
 
-2. Install the [Evothings Workbench on your PC](http://evothings.com/download/) and the app on your phone. See here for [Android](https://play.google.com/store/apps/details?id=com.evothings.evothingsclient) or [iOS](https://itunes.apple.com/nz/app/evothings-client/id848974292?mt=8).
+1. Install the [Evothings Workbench on your PC](http://evothings.com/download/) and the app on your phone. See here for [Android](https://play.google.com/store/apps/details?id=com.evothings.evothingsclient) or [iOS](https://itunes.apple.com/nz/app/evothings-client/id848974292?mt=8).
 
-3. A tablet or smartphone with BLE.
+1. A tablet or smartphone with BLE.
 
-3. The [LightBlue iOS](https://itunes.apple.com/us/app/lightblue-bluetooth-low-energy/id557428110?mt=8) app or the [nRF Master Control Panel Android](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en) app to view the results.
+1. The [LightBlue iOS](https://itunes.apple.com/us/app/lightblue-bluetooth-low-energy/id557428110?mt=8) app or the [nRF Master Control Panel Android](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en) app to view the results.
 
-<span class="tips">For more information about Evothings, see their [Quick Start Guide](http://evothings.com/getting-started-with-evothings-studio-in-90-seconds/), [tutorials](http://evothings.com/doc/studio/tutorials.html) and [BLE API reference](http://evothings.com/doc/plugins/com.evothings.ble/com.evothings.module_ble.html).
-</span>
+<span class="tips">For more information about Evothings, see their [Quick Start Guide](http://evothings.com/getting-started-with-evothings-studio-in-90-seconds/), [tutorials](http://evothings.com/doc/studio/tutorials.html) and [BLE API reference](http://evothings.com/doc/plugins/com.evothings.ble/com.evothings.module_ble.html).</span>
 
-##GAP data review
+## GAP data review
 
 The general GAP broadcast's data breakdown is illustrated in this diagram:
 
@@ -43,14 +42,13 @@ And here's what the bottom two layers of structure look like for our particular 
 
 <span class="images">![](../Advanced/Images/GAP/ExampleStruct.png)<span>The example we use here only requires two data structures, one of 3B, one of 28B (of which two are used for data length and type indications)</span></span>
 
-##Using the mbed BLE API
+## Using the mbed BLE API
 
 <span class="tips">[Get the code here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_GAP_Example/).</span>
 
 First, we need to include a couple of headers: for mbed and for BLE:
 
 ```c
-
 #include "mbed.h"
 #include "BLEDevice.h"
 ```
@@ -58,14 +56,12 @@ First, we need to include a couple of headers: for mbed and for BLE:
 Then, we declare the BLE object:
 
 ```c
-
 BLEDevice ble;
 ```
 
 Now we provide the name of the device:
 
 ```c
-	
 // change the device's name
 const static char DEVICE_NAME[] = "ChangeMe!!"; 
 ```
@@ -73,7 +69,6 @@ const static char DEVICE_NAME[] = "ChangeMe!!";
 We have up to 26 bytes of data to customise (less is fine, but you can't exceed 26 bytes!):
 
 ```c
-
 // example of hex data
 const static uint8_t AdvData[] = {0x01,0x02,0x03,0x04,0x05};   
 ```
@@ -81,7 +76,6 @@ const static uint8_t AdvData[] = {0x01,0x02,0x03,0x04,0x05};
 We can use character data instead of hex:
 
 ```c
-
 // example of character data
 const static uint8_t AdvData[] = {"ChangeThisData"};         
 ```
@@ -91,7 +85,6 @@ const static uint8_t AdvData[] = {"ChangeThisData"};
 All of that was just setup. Now we need to do something with it. We start by calling the initialiser for the BLE base layer:
 
 ```c
-
 int main(void)
 {
 	ble.init();
@@ -102,7 +95,6 @@ int main(void)
 Next, we set up the advertising flags:
 
 ```c
-
 ble.accumulateAdvertisingPayload(GapAdvertisingData::
 		BREDR_NOT_SUPPORTED | 
 		GapAdvertisingData::LE_GENERAL_DISCOVERABLE );
@@ -116,7 +108,6 @@ It is worth noting that the ``ADV_CONNECTABLE_UNDIRECTED`` flag could just as ea
 We can then set up the payload. The header ``MANUFACTURER_SPECIFIC_DATA`` is where we lose another two bytes of data. Once the header has announced the data we plug in the array we created earlier:
 
 ```c
-
 ble.accumulateAdvertisingPayload(GapAdvertisingData::
 		MANUFACTURER_SPECIFIC_DATA, 
 		AdvData, sizeof(AdvData));
@@ -133,11 +124,11 @@ ble.startAdvertising();
 
 This will take care of the GAP advertising on the mbed side.
 
-##Seeing our data
+## Seeing our data
 
-Compile your program and install it on your board ([drag and drop it to the board](../mbed_Classic/URIBeacon.md#compiling-and-installing-your-program)). Then decide if you want to use generic apps or the custom-made Evothings app (or use both and compare results).
+Compile your program and install it on your board ([drag and drop it to the board](https://docs.mbed.com/docs/mbed-os-handbook/en/latest/getting_started/blinky_compiler/). Then decide if you want to use generic apps or the custom-made Evothings app (or use both and compare results).
 
-###Generic apps
+### Generic apps
 
 On your phone, start the BLE application ([nRF Master Control Panel](https://play.google.com/store/apps/details?id=no.nordicsemi.android.mcp&hl=en) for Android and [LightBlue](https://itunes.apple.com/us/app/lightblue-bluetooth-low-energy/id557428110?mt=8) for iOS). It will scan for BLE devices, and should show us ours:
 
@@ -145,7 +136,7 @@ On your phone, start the BLE application ([nRF Master Control Panel](https://pla
 
 We can see the name we set, the appropriate flags and the data we pushed into the manufacturer data field.
 
-###Evothings custom-made app
+### Evothings custom-made app
 
 We've created an Evothings GAP smartphone example that works with the embedded mbed example above.
 

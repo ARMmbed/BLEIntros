@@ -1,8 +1,8 @@
-#Debugging on mbed BLE
+# Debugging on mbed BLE
 
 This article reviews a few of the debugging techniques that you can use when writing applications with the BLE API on mbed boards. We'll look at using LEDs, the interface chip and third-party sniffers to debug applications.
 
-##The quick method: LEDs
+## The quick method: LEDs
 
 Most boards come with at least one LED that can be controlled using the standard mbed API. Turning the LED on or off, or flashing it, is a quick method of knowing that we’ve reached a certain state. For example:
 
@@ -30,7 +30,7 @@ DigitalOut led(LED1); // DigitalOut is part of the standard mbed API
 	led = 0;
 ```
 
-###The LED error() utility
+### The LED error() utility
 
 The mbed SDK includes a utility called ``error()``. It takes in printf()-style parameters, but its output is an LED pattern that is easily identified as an alert. This gives visual error indication without need to write with ``printf()`` (as we do below). It is used for runtime errors, which are errors caused by:
 
@@ -40,7 +40,7 @@ The mbed SDK includes a utility called ``error()``. It takes in printf()-style p
 
 <span class="tips">For more information about ``error()``, see the [handbook](http://developer.mbed.org/handbook/Debugging#runtime-errors).</span>
 
-##Debugging with the mbed interface chip
+## Debugging with the mbed interface chip
 
 Most mbed platforms come with an interface chip placed between the target microcontroller (in our case: the BLE microcontroller) and the development host (our computer). It is a USB bridge from the development host to the debugging capabilities available in ARM microcontrollers. This bridge functionality is encapsulated in a standard called [CMSIS-DAP](http://developer.mbed.org/handbook/CMSIS-DAP). Major toolchain vendors have started supporting this standard, so we expect it to grow in popularity and availability over time. 
 
@@ -54,7 +54,7 @@ By using the interface chip we can debug with:
 
 <span class="images">![](../Advanced/Images/DebugviaUSB1.png)<span>The development host uses a USB connection with the interface chip to debug the microcontroller. Some of the terms in this image will be clarified later in the document.</span></span>
 
-###Printf()
+### Printf()
 
 Programs typically use the printf() family to communicate something readable back to the user:
 
@@ -77,7 +77,7 @@ Programs typically use the printf() family to communicate something readable bac
 
 These two costs require that we use ``printf()`` judiciously. First, because there is limited code-space on the microcontroller's internal flash. Second, because it delays the program so much. Be particularly careful about using it in an event handler, which we expect to terminate within a few microseconds.
 
-<span class="notes">*Note:** ``printf()`` doesn’t require that you tell it beforehand how many parameters it should expect; it can receive any number you throw at it. To do this, you need to provide a format string with format specifiers, followed by a matching number of arguments. For example, ``printf(“temp too high %d”, temp)``: the format string is “temp too high %d”, and the format specifier is %d. The last bit is the argument: temp. It matches the format specifier %d, which specifies an integer. You can learn more on [Wikipedia](http://en.wikipedia.org/wiki/Printf_format_string).</span>
+<span class="notes">**Note:** ``printf()`` doesn’t require that you tell it beforehand how many parameters it should expect; it can receive any number you throw at it. To do this, you need to provide a format string with format specifiers, followed by a matching number of arguments. For example, ``printf(“temp too high %d”, temp)``: the format string is “temp too high %d”, and the format specifier is %d. The last bit is the argument: temp. It matches the format specifier %d, which specifies an integer. You can learn more on [Wikipedia](http://en.wikipedia.org/wiki/Printf_format_string).</span>
 
 Using ``printf()`` on mbed requires including the ``stdio`` header:
 
@@ -101,13 +101,15 @@ This is the terminal output. Note that "waiting" is printed every time ``waitFor
 
 <span class="images">![](../Advanced/Images/TerminalOutput1.png)</span>
 
-###Printf() macros
+### Printf() macros
 
 There are some nifty tricks you can do with ``printf()`` using macro-replacement by the pre-processor.
 
 The general form for a simple macro definition is:
 
-	#define MACRO_NAME value 
+```
+#define MACRO_NAME value
+```
 
 This associates with the **MACRO_NAME** whatever **value** appears between the first space after the **MACRO_NAME** and the end of the line. The value constitutes the body of the macro.
 
@@ -115,8 +117,9 @@ This associates with the **MACRO_NAME** whatever **value** appears between the f
 
 The general form for defining a parameterized macro is:
 
-	#define MACRO_NAME(param1, param2, ...)      
-		{body-of-macro}
+```
+#define MACRO_NAME(param1, param2, ...)      	{body-of-macro}
+```
 
 For example, it is often useful to categorise ``printf()`` statements by severity levels like ‘DEBUG’, ‘WARNING’ and ‘ERROR’. For this, we define levels of severity. Then, each time we compile or run the program, we specify which level we’d like to use. The level we specified is used by our macros in an ``if`` condition. That condition can control the format of the information the macro will print, or whether or not it will print anything at all. This gives us full control of the debug information presented to us every run.
 
@@ -124,8 +127,7 @@ Remember that ``printf()`` can take as many parameters as you throw at it. Macro
 
 Here is an example:
 
-```c
-	
+```c	
 -- within some header file named something like trace.h --
 enum {
 	TRACE_LEVEL_DEBUG,
@@ -175,7 +177,7 @@ You can use ``ASSERT()`` to improve error reporting. It will use ``error()`` (a 
 	} }
 ```
 
-###Fast circular log buffers based on printf()
+### Fast circular log buffers based on printf()
 
 When trying to capture logs from events that occur in rapid succession, using ``printf()`` may introduce unacceptable run-time latencies, which might alter the system's behaviour or destabilise it. But delays in ``printf()`` aren’t because of the cost of generating the messages. The biggest cause of delay with ``printf()`` is actually pushing the logs to the UART. So the obvious solution is not to avoid ``printf()``, but to avoid pushing the logs to the UART while the operation we're debugging is running.
 
@@ -231,7 +233,7 @@ void xprintf(const char *format, ...)
 }
 ```
 
-###pyOCD-based debugging (GDB server)
+### pyOCD-based debugging (GDB server)
 
 <span class="notes">**Note:** using GDB (or any other debugger) to connect to the GDB server is useful only if we have access to the program symbols and their addresses. This is currently *not* exported when building ``.hex`` files using the mbed online IDE. We therefore need to export our project to an offline toolchain to be able to generate either an ``.elf`` file that holds symbols alongside the program, or a ``.map`` file for symbols. In the following section, we're assuming an ``.elf`` file.</span>
 
@@ -267,7 +269,6 @@ INFO:root:4 hardware breakpoints, 0 literal comparators
 INFO:root:CPU core is Cortex-M0
 INFO:root:2 hardware watchpoints
 INFO:root:GDB server started at port:3333
-
 ```
 
 At this point, the target microcontroller is waiting for interaction from a GDB server. This server is running at port 3333 on the development host. You can connect to it from a debugger such as GDB (the client).
@@ -275,7 +276,6 @@ At this point, the target microcontroller is waiting for interaction from a GDB 
 Here is an example of launching the GDB client:
 
 ```
-
 ~/play/demo-apps/BLE_Beacon/Build$ arm-none-eabi-gdb BLE_BEACON.elf
 GNU gdb (GNU Tools for ARM Embedded Processors) 7.6.0.20140731-cvs
 Copyright (C) 2013 Free Software Foundation, Inc.
@@ -312,7 +312,7 @@ HardFault_Handler () at 	/home/rgrover/play/mbed-src/libraries
 Now we can perform normal debugging using the GDB command console (or a GUI, if our heart desires).
 
 <a name=”uart”>
-##The UART service
+## The UART service
 </a>
 
 BLE has a UART service that allows debugging over the BLE connection (by forwarding the output over BLE), rather than through the interface chip.
@@ -322,7 +322,6 @@ BLE has a UART service that allows debugging over the BLE connection (by forward
 To be able to use the UART service, your app needs:
 
 ```c
-
 #include “UARTService.h”
 
 ...
@@ -343,7 +342,7 @@ Note that:
 
 * Currently you can only have one BLE connection to the device at any one time, and the UART app used for debugging takes up that connection. For example, if you're monitoring a heart rate device and receiving output over the nRF UART app, you cannot simultaneously connect to the heart rate device with a standard heart rate app.
 
-##Sniffers
+## Sniffers
 
 Third-party sniffers can intercept the BLE communication itself and show us what's being sent (and how). For example, we could see if our [connection parameters](../Introduction/ConnectionParameters.md) are being honoured. 
 
@@ -352,3 +351,7 @@ Sniffing radio activity can now be done with smart phone apps like [Bluetooth HC
 <span class="tips">**Tip:** to learn about the Android Bluetooth HCI snoop log, start [here](http://www.androidcentral.com/all-about-your-phones-developer-options).</span>
 
 If you want to use a separate BLE device (not your phone) to sniff the BLE traffic, you can try [Nordic's nRF Sniffer](https://www.nordicsemi.com/eng/Products/Bluetooth-Smart-Bluetooth-low-energy/nRF-Sniffer) on a Nordic BLE board.
+
+## Further reading
+
+For more information about debugging, see [the mbed OS handbook](https://docs.mbed.com/docs/mbed-os-handbook/en/latest/debugging/debugging/).
