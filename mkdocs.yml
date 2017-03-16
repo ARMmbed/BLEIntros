@@ -23,7 +23,6 @@ pages:
 - ['Advanced/LEDReadWrite.md', 'Advanced samples and features', 'Creating an actuator service']
 - ['Advanced/CustomGAP.md', 'Advanced samples and features', 'Custom GAP advertising packet']
 - ['Advanced/GATTEvo.md', 'Advanced samples and features', 'Custom GATT service with Evothings']
-- ['Advanced/URIBeaconAdv.md', 'Advanced samples and features', 'The UriBeacon’s advanced features']
 - ['Advanced/HighData.md', 'Advanced samples and features', 'High data rate, low latency transfers']
 - ['Advanced/FOTA.md', 'Advanced samples and features', 'Firmware Over the Air']
 - ['Advanced/Bootloader.md', 'Advanced samples and features', 'The Nordic DFU boot loader']
