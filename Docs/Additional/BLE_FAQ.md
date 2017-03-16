@@ -85,8 +85,7 @@ As we said, meshing isn't a workable option yet. But BLE devices on their own ca
 
 FOTA stands for Firmware Over the Air, and is a method of updating the BLE device's programming remotely, rather than by physically connecting it to the computer. 
 
-FOTA works (on the Nordic nRF51822 board), but at the moment it doesn’t come with security features to authenticate or verify new firmware. We’ll bring security into mbed FOTA during 2015.
-
+FOTA only works on Nordic based platforms.  
 _____
 
 Still have questions? Ask [our community](http://forums.mbed.com/).
