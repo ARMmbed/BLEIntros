@@ -1,8 +1,8 @@
-#Section overview
+# Section overview
 
 This section covers some BLE and mbed concepts in greater detail.
 
-##Service templates
+## Service templates
 
 With mbed BLE, we offer a growing set of SIG-defined BLE services implemented as C++ headers to ease application development. These can be found under [the mbed OS API services folder](https://github.com/ARMmbed/ble/tree/master/ble/services).
 
@@ -16,13 +16,11 @@ Creating a BLE service may sound scary, but we've created two templates that you
 
 * We have two more service samples that include the use of Evothings custom apps. The first reviews [customising a GAP advertising packet](../Advanced/CustomGAP.md), and the second creates a [GATT service for control of a LED](../Advanced/GATTEvo.md).
 
-<span style="background-color:#E6E6E6;  border:1px solid #000;display:block; height:100%; padding:10px">**Note:** These examples are all written for mbed 2.0 and 5.0, but you may find them interesting even if you're working on mbed OS 3.0, because the underlying logic of BLE and the API is the same.</span>
+<span class="notes">**Note:** These examples are all written for mbed 2.0 and 5.0, but you may find them interesting even if you're working on mbed OS 3.0, because the underlying logic of BLE and the API is the same.</span>
 
-##Advanced features
+## Advanced features
 
 Reviewing advanced features of standard implementations:
-
-* The [UriBeacon](../Advanced/URIBeaconAdv.md): dynamic configuration of the UriBeacon on start up and configuration persistence. 
 
 * Creating an app for [high data rate, low latency transfers](../Advanced/HighData.md), if you need to transfer large amounts of data.
 
