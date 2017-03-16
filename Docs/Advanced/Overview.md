@@ -26,10 +26,3 @@ Reviewing advanced features of standard implementations:
 
 * Creating an app for [high data rate, low latency transfers](../Advanced/HighData.md), if you need to transfer large amounts of data.
 
-## Firmware Over the Air
-
-Reviewing Firmware Over the Air (FOTA):
-
-* General [overview of FOTA](../Advanced/FOTA.md): how to use FOTA in an application.
-
-* The [device firmware update (DFU)](../Advanced/Bootloader.md): working with the Nordic DFU boot loader.
