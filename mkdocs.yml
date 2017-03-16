@@ -24,8 +24,6 @@ pages:
 - ['Advanced/CustomGAP.md', 'Advanced samples and features', 'Custom GAP advertising packet']
 - ['Advanced/GATTEvo.md', 'Advanced samples and features', 'Custom GATT service with Evothings']
 - ['Advanced/HighData.md', 'Advanced samples and features', 'High data rate, low latency transfers']
-- ['Advanced/FOTA.md', 'Advanced samples and features', 'Firmware Over the Air']
-- ['Advanced/Bootloader.md', 'Advanced samples and features', 'The Nordic DFU boot loader']
 - ['Additional/Overview.md','Additional resources', 'Section overview']
 - ['Additional/Abbr.md','Additional resources', 'List of abbreviations']
 - ['Additional/BLE_FAQ.md','Additional resources', 'FAQ']
