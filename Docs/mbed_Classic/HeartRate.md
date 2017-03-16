@@ -1,4 +1,4 @@
-# Tutorial 2: heart rate monitor (BLE services)
+# Tutorial: heart rate monitor (BLE services)
 
 
 The heart rate service gathers the heart rate reading from a monitor and sends it to an app. This app must be capable of working with the heart rate profile. Both the profile and the service are predefined and [publicly available](https://developer.bluetooth.org/TechnologyOverview/Pages/HRP.aspx). That means that if you want to get a heart rate monitor's input to your phone, you don't have to write your own code.
