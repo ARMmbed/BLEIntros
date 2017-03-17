@@ -10,9 +10,7 @@ But, we don’t expect you to settle for what’s already been done; we expect y
 
 Let's create a service for a trivial sensor: a button. We'll assume a use-case where a phone-app would like to connect to this mbed application and poll for button state (that is, check whether the button is pressed or not). We could also set up notifications for asynchronous updates. In the non-connected state, the application simply advertises its ability to provide the button service.
 
-<span style="background-color:#E6E6E6; border:1px solid #000;display:block; height:100%; padding:10px">
-Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_Button/).
-</span>
+<span class="tips">Get the code [here](http://developer.mbed.org/teams/Bluetooth-Low-Energy/code/BLE_Button/).</span>
 
 ## The basic template - advertising and connecting
 
@@ -157,8 +155,8 @@ ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID,
 We can add to the buttonState characteristic definition to allow notifications. We'll use the optional parameters to specify additional properties:
 
 ```c
-	ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, 
-		&buttonPressed, GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY);
+ReadOnlyGattCharacteristic<bool> buttonState(BUTTON_STATE_CHARACTERISTIC_UUID, 
+	&buttonPressed, GattCharacteristic::BLE_GATT_CHAR_PROPERTIES_NOTIFY);
 ```
 
 Notifications are a good way to establish asynchronous updates. With these updates, the app doesn’t have to keep checking the BLE device. Instead, the device will let the app know if there’s anything new. This helps the BLE device keep its energy usage down.

@@ -63,8 +63,7 @@ Programs typically use the printf() family to communicate something readable bac
 1. The chip forwards the feed to the development host. 
 1. This printf() traffic can be viewed with a terminal program running on the host. 
 
-<span class="tips">
-**Tip:** The following examples use the CoolTerm serial port application to read the ``printf()`` output, but you can use any terminal program you want and expect similar results.
+<span class="tips">**Tip:** The following examples use the CoolTerm serial port application to read the ``printf()`` output, but you can use any terminal program you want and expect similar results.
 </br>
 **Tip:** The UART protocol requires that the sender and receiver each maintain their own clocks and know the baud rate. mbed interface chips use the 9,600 baud rate and your terminal program should be set to that baud rate to intercept the communication.
 </span>
@@ -250,11 +249,11 @@ The interface chip implements CMSIS-DAP. To drive the CMSIS-DAP interface chip o
 <br /><br />
 **Notes:**
 <br />
-* You'll need to run ``setup.py`` for both the USB libraries and pyOCD. 
+You'll need to run ``setup.py`` for both the USB libraries and pyOCD. 
 <br />
-* You can follow [HOW_TO_BUILD.md](https://github.com/mbedmicro/pyOCD/blob/master/HOW_TO_BUILD.md) to see how to build pyOCD into a single executable GDB server program.
+You can follow [HOW_TO_BUILD.md](https://github.com/mbedmicro/pyOCD/blob/master/HOW_TO_BUILD.md) to see how to build pyOCD into a single executable GDB server program.
 <br />
-* A series of tests in the [test sub-folder](https://github.com/mbedmicro/pyOCD/tree/master/test) offers scripts that you may find useful as a foundation for developing custom interaction with the targets over CMSIS-DAP.</span>
+A series of tests in the [test sub-folder](https://github.com/mbedmicro/pyOCD/tree/master/test) offers scripts that you may find useful as a foundation for developing custom interaction with the targets over CMSIS-DAP.</span>
 
 The GDB server can be launched by running ``gdb_server.py``. This script should be able to detect any connected mbed boards. Here is an example of executing the script from the terminal while a Nordic mKIT is connected:
 
@@ -348,8 +347,7 @@ Third-party sniffers can intercept the BLE communication itself and show us what
 
 Sniffing radio activity can now be done with smart phone apps like [Bluetooth HCI Logger (for Android)](https://play.google.com/store/apps/details?id=com.android_rsap.logger&hl=en). These generate logs that can be analysed with tools like [Wireshark](https://www.wireshark.org/).
 
-<span class="tips">
-**Tip:** to learn about the Android Bluetooth HCI snoop log, start [here](http://www.androidcentral.com/all-about-your-phones-developer-options).
+<span class="tips">**Tip:** to learn about the Android Bluetooth HCI snoop log, start [here](http://www.androidcentral.com/all-about-your-phones-developer-options).
 </span>
 
 If you want to use a separate BLE device (not your phone) to sniff the BLE traffic, you can try [Nordic's nRF Sniffer](https://www.nordicsemi.com/eng/Products/Bluetooth-Smart-Bluetooth-low-energy/nRF-Sniffer) on a Nordic BLE board.

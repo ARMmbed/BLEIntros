@@ -174,7 +174,7 @@ hrmCounter++;
 
 C++ has several shorthands it uses for common mathematical actions. When we see ``hrmCounter++``, it means that ``hrmCounter``'s value grows by 1. It's the same as saying ``hrmCounter = hrmCounter + 1``. This is called an *increment operator*.
 
-`hrmCounter`` starts with a value of 100, because that's the value we gave it when we set up our service earlier. Every time the loop runs we take the current value of ``hrmCounter`` and add 1. So our app will show 100, 101, 102, 103...
+``hrmCounter`` starts with a value of 100, because that's the value we gave it when we set up our service earlier. Every time the loop runs we take the current value of ``hrmCounter`` and add 1. So our app will show 100, 101, 102, 103...
 
 <a name=”conditions”>
 #### IF
